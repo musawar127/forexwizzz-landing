@@ -423,10 +423,75 @@ export default function Home() {
       </FadeSection>
 
       {/* ================================================================ */}
-      {/*  4. SCREENSHOT GALLERY                                           */}
+      {/*  4. MEMBER RESULTS SCREENSHOTS                                  */}
       {/* ================================================================ */}
       <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-trading-gold/[0.02] to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+              <span className="text-trading-gold text-glow-gold">MEMBER RESULTS</span>
+              <br />
+              <span className="text-foreground">FROM OUR COMMUNITY</span>
+            </h2>
+            <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+              Real screenshots shared by our community members showing their trading results.
+            </p>
+          </div>
+
+          {/* Earning Screenshots Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+            {[
+              { src: "/earning-1.jpg", alt: "Community member trading result screenshot" },
+              { src: "/earning-2.jpg", alt: "Community member trading result screenshot" },
+              { src: "/earning-3.jpg", alt: "Community member trading result screenshot" },
+              { src: "/earning-4.jpg", alt: "Community member trading result screenshot" },
+              { src: "/earning-5.jpg", alt: "Community member trading result screenshot" },
+            ].map((img, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300"
+              >
+                <div className="p-3 border-b border-white/5 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-trading-green animate-pulse" />
+                  <span className="text-xs font-semibold text-muted-foreground">
+                    Community Member
+                  </span>
+                  <span className="ml-auto text-xs text-trading-gold font-medium">Real Screenshot</span>
+                </div>
+                <div className="p-2">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-xl object-cover"
+                    unoptimized
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Disclaimer */}
+          <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+            Results vary. Trading involves risk. Past performance does not
+            guarantee future results. These are real screenshots shared by community members.
+          </p>
+
+          <div className="text-center">
+            <TelegramCTA text="JOIN THE COMMUNITY" variant="primary" />
+          </div>
+        </div>
+      </FadeSection>
+
+      {/* ================================================================ */}
+      {/*  5. INSIDE OUR TELEGRAM COMMUNITY (SCREENSHOT GALLERY)          */}
+      {/* ================================================================ */}
+      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
         <div className="relative z-10 max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
@@ -441,13 +506,13 @@ export default function Home() {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
-            {/* Real screenshot */}
+            {/* Real community screenshot */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="sm:col-span-2 lg:col-span-1 glass-strong rounded-2xl overflow-hidden gradient-border"
+              className="sm:col-span-2 lg:col-span-2 glass-strong rounded-2xl overflow-hidden gradient-border"
             >
               <div className="p-3 border-b border-white/5 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-trading-green" />
@@ -459,15 +524,15 @@ export default function Home() {
                 <Image
                   src="/telegram-screenshot.jpg"
                   alt="ForexWizzz Telegram community screenshot showing trading signals and analysis"
-                  width={600}
-                  height={400}
+                  width={800}
+                  height={500}
                   className="w-full h-auto rounded-xl object-cover"
                   unoptimized
                 />
               </div>
             </motion.div>
 
-            {/* Placeholder-style cards for other gallery items */}
+            {/* Feature info cards */}
             {[
               {
                 title: "Forex Trading Signals",
@@ -492,12 +557,6 @@ export default function Home() {
                 desc: "Real-time conversations with traders sharing ideas and feedback.",
                 gradient: "from-purple-400/10 to-transparent",
                 icon: <MessageCircle className="w-6 h-6 text-purple-400" />,
-              },
-              {
-                title: "Entry & Exit Setups",
-                desc: "Clear TP and SL levels with chart-based explanations.",
-                gradient: "from-trading-green/10 to-trading-gold/10",
-                icon: <ShieldCheck className="w-6 h-6 text-trading-green" />,
               },
             ].map((item, i) => (
               <motion.div
