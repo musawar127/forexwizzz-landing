@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/forexwizzz-landing",
+  // basePath removed for custom domain forexwizard.online
   images: {
     unoptimized: true,
   },
