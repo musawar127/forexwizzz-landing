@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
+// Images use <img> for reliable basePath handling on GitHub Pages
 import {
   TrendingUp,
   BarChart3,
@@ -441,11 +441,11 @@ export default function Home() {
           {/* Earning Screenshots Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
             {[
-              { src: "/earning-1.jpg", alt: "Community member trading result screenshot" },
-              { src: "/earning-2.jpg", alt: "Community member trading result screenshot" },
-              { src: "/earning-3.jpg", alt: "Community member trading result screenshot" },
-              { src: "/earning-4.jpg", alt: "Community member trading result screenshot" },
-              { src: "/earning-5.jpg", alt: "Community member trading result screenshot" },
+              { src: "earning-1.jpg", alt: "Community member trading result screenshot" },
+              { src: "earning-2.jpg", alt: "Community member trading result screenshot" },
+              { src: "earning-3.jpg", alt: "Community member trading result screenshot" },
+              { src: "earning-4.jpg", alt: "Community member trading result screenshot" },
+              { src: "earning-5.jpg", alt: "Community member trading result screenshot" },
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -463,13 +463,11 @@ export default function Home() {
                   <span className="ml-auto text-xs text-trading-gold font-medium">Real Screenshot</span>
                 </div>
                 <div className="p-2">
-                  <Image
+                  <img
                     src={img.src}
                     alt={img.alt}
-                    width={600}
-                    height={400}
                     className="w-full h-auto rounded-xl object-cover"
-                    unoptimized
+                    loading="lazy"
                   />
                 </div>
               </motion.div>
@@ -521,13 +519,11 @@ export default function Home() {
                 </span>
               </div>
               <div className="p-2">
-                <Image
-                  src="/telegram-screenshot.jpg"
+                <img
+                  src="telegram-screenshot.jpg"
                   alt="ForexWizzz Telegram community screenshot showing trading signals and analysis"
-                  width={800}
-                  height={500}
                   className="w-full h-auto rounded-xl object-cover"
-                  unoptimized
+                  loading="lazy"
                 />
               </div>
             </motion.div>
