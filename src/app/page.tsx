@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   TrendingUp,
   BarChart3,
@@ -183,14 +184,22 @@ export default function Home() {
           <span className="text-lg font-bold text-foreground tracking-tight">
             ForexWizzz
           </span>
-          <a
-            href={TELEGRAM_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium text-trading-green hover:text-trading-green/80 transition-colors no-underline"
-          >
-            Join on Telegram
-          </a>
+          <nav className="flex items-center gap-6">
+            <Link
+              href="/forex-signals/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
+            >
+              Forex Signals
+            </Link>
+            <a
+              href={TELEGRAM_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+            >
+              Join on Telegram
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -458,7 +467,15 @@ export default function Home() {
               <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
                 ForexWizzz provides a focused space for Forex and Gold traders
                 to share market analysis, discuss XAUUSD price levels, and follow
-                trading setups together.
+                trading setups together. Explore our{" "}
+                <Link href="/forex-signals/" className="text-trading-green hover:text-trading-green/80 transition-colors no-underline font-medium">
+                  forex trading signals
+                </Link>{" "}
+                and{" "}
+                <Link href="/gold-signals/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  gold analysis
+                </Link>{" "}
+                coverage for more details.
               </p>
             </div>
 
@@ -566,14 +583,22 @@ export default function Home() {
               shared in our community is for educational and informational
               purposes only and should not be considered financial advice.
             </p>
-            <a
-              href={TELEGRAM_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-4 text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
-            >
-              t.me/ForexWizzz
-            </a>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <Link
+                href="/forex-signals/"
+                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+              >
+                Forex Signals
+              </Link>
+              <a
+                href={TELEGRAM_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+              >
+                t.me/ForexWizzz
+              </a>
+            </div>
           </div>
         </footer>
       </main>
