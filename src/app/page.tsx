@@ -191,6 +191,12 @@ export default function Home() {
             >
               Forex Signals
             </Link>
+            <Link
+              href="/gold-signals/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
+            >
+              Gold Signals
+            </Link>
             <a
               href={TELEGRAM_LINK}
               target="_blank"
