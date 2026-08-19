@@ -292,6 +292,12 @@ export default function ForexSignalsPage() {
             >
               Gold Signals
             </Link>
+            <Link
+              href="/xauusd-analysis/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
+            >
+              XAUUSD Analysis
+            </Link>
             <a
               href={TELEGRAM_LINK}
               target="_blank"

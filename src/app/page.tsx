@@ -197,6 +197,12 @@ export default function Home() {
             >
               Gold Signals
             </Link>
+            <Link
+              href="/xauusd-analysis/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
+            >
+              XAUUSD Analysis
+            </Link>
             <a
               href={TELEGRAM_LINK}
               target="_blank"
@@ -480,6 +486,10 @@ export default function Home() {
                 and{" "}
                 <Link href="/gold-signals/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
                   gold analysis
+                </Link>{" "}
+                and{" "}
+                <Link href="/xauusd-analysis/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  XAUUSD analysis
                 </Link>{" "}
                 coverage for more details.
               </p>
