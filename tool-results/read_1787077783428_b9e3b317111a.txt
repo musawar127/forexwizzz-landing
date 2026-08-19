@@ -1,0 +1,613 @@
+     1→import Link from "next/link";
+     2→import {
+     3→  TrendingUp,
+     4→  BarChart3,
+     5→  Trophy,
+     6→  Smartphone,
+     7→  GraduationCap,
+     8→  Zap,
+     9→  Clock,
+    10→  Star,
+    11→  ArrowRight,
+    12→  MessageCircle,
+    13→  ShieldCheck,
+    14→} from "lucide-react";
+    15→import {
+    16→  FadeSection,
+    17→  FadeIn,
+    18→  ScaleIn,
+    19→  HeroAnimation,
+    20→  PulsingGlow,
+    21→  FloatingElement,
+    22→  PulsingIcon,
+    23→  StickyTelegramButton,
+    24→} from "@/components/fade-section";
+    25→import { CandlestickBackground } from "@/components/candlestick-background";
+    26→
+    27→const TELEGRAM_LINK = "https://t.me/ForexWizzz";
+    28→
+    29→/* ------------------------------------------------------------------ */
+    30→/*  REUSABLE CTA BUTTON (server-rendered, no motion dependency)       */
+    31→/* ------------------------------------------------------------------ */
+    32→function TelegramCTA({
+    33→  text,
+    34→  variant = "primary",
+    35→  className = "",
+    36→}: {
+    37→  text: string;
+    38→  variant?: "primary" | "secondary" | "gold";
+    39→  className?: string;
+    40→}) {
+    41→  const base =
+    42→    "inline-flex items-center justify-center gap-2 font-bold text-base md:text-lg rounded-xl px-6 py-3.5 md:px-8 md:py-4 transition-all duration-300 cursor-pointer no-underline select-none";
+    43→
+    44→  const variants = {
+    45→    primary:
+    46→      "bg-trading-green text-trading-dark glow-green hover:scale-105 hover:shadow-[0_0_30px_rgba(0,230,118,0.6)] active:scale-95",
+    47→    secondary:
+    48→      "glass-strong text-trading-green border border-trading-green/30 hover:bg-trading-green/10 hover:scale-105 active:scale-95",
+    49→    gold: "bg-trading-gold text-trading-dark glow-gold hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,64,0.6)] active:scale-95",
+    50→  };
+    51→
+    52→  return (
+    53→    <a
+    54→      href={TELEGRAM_LINK}
+    55→      target="_blank"
+    56→      rel="noopener noreferrer"
+    57→      className={`${base} ${variants[variant]} ${className}`}
+    58→    >
+    59→      <MessageCircle className="w-5 h-5" />
+    60→      {text}
+    61→      <ArrowRight className="w-4 h-4" />
+    62→    </a>
+    63→  );
+    64→}
+    65→
+    66→/* ------------------------------------------------------------------ */
+    67→/*  DATA                                                               */
+    68→/* ------------------------------------------------------------------ */
+    69→const features = [
+    70→  {
+    71→    icon: <TrendingUp className="w-8 h-8" />,
+    72→    title: "FREE TRADING SIGNALS",
+    73→    emoji: "✅",
+    74→    desc: "Access trading ideas and potential setups shared with the community.",
+    75→  },
+    76→  {
+    77→    icon: <BarChart3 className="w-8 h-8" />,
+    78→    title: "MARKET ANALYSIS",
+    79→    emoji: "📊",
+    80→    desc: "Stay updated with market movements and important trading opportunities.",
+    81→  },
+    82→  {
+    83→    icon: <Trophy className="w-8 h-8" />,
+    84→    title: "FOREX & GOLD",
+    85→    emoji: "🥇",
+    86→    desc: "Follow trading setups covering popular Forex pairs and Gold/XAUUSD.",
+    87→  },
+    88→  {
+    89→    icon: <Smartphone className="w-8 h-8" />,
+    90→    title: "TELEGRAM COMMUNITY",
+    91→    emoji: "📱",
+    92→    desc: "Join a community of traders and follow market discussions in one place.",
+    93→  },
+    94→  {
+    95→    icon: <GraduationCap className="w-8 h-8" />,
+    96→    title: "LEARN & IMPROVE",
+    97→    emoji: "🎓",
+    98→    desc: "Use market insights and analysis to improve your own trading knowledge.",
+    99→  },
+   100→  {
+   101→    icon: <Zap className="w-8 h-8" />,
+   102→    title: "EASY TO JOIN",
+   103→    emoji: "⚡",
+   104→    desc: "Click the button and instantly access our free Telegram community.",
+   105→  },
+   106→];
+   107→
+   108→const testimonials = [
+   109→  {
+   110→    name: "Ahmed K.",
+   111→    text: "The free signals have helped me understand the market much better. I always check the group before entering a trade.",
+   112→    stars: 5,
+   113→  },
+   114→  {
+   115→    name: "Sarah M.",
+   116→    text: "I joined for the free signals and stayed because the market analysis is really useful. Great community.",
+   117→    stars: 5,
+   118→  },
+   119→  {
+   120→    name: "Raj P.",
+   121→    text: "Daily updates on Gold and Forex pairs have been a great addition to my trading routine. Highly recommend.",
+   122→    stars: 4,
+   123→  },
+   124→  {
+   125→    name: "Omar T.",
+   126→    text: "The community shares real market insights. It is a good place to learn and follow trading discussions.",
+   127→    stars: 5,
+   128→  },
+   129→  {
+   130→    name: "David L.",
+   131→    text: "I appreciate the transparency. The signals come with clear entry and exit levels which helps a lot.",
+   132→    stars: 4,
+   133→  },
+   134→  {
+   135→    name: "Yusuf H.",
+   136→    text: "Best free Telegram group I have found for Forex and Gold. The analysis quality is solid.",
+   137→    stars: 5,
+   138→  },
+   139→];
+   140→
+   141→const earningImages = [
+   142→  { src: "earning-1.jpg", alt: "ForexWizzz community member shared screenshot of a Gold trade on their trading platform", width: 590, height: 1280 },
+   143→  { src: "earning-2.jpg", alt: "Trading account screenshot shared by a ForexWizzz Telegram group member", width: 891, height: 1280 },
+   144→  { src: "earning-3.jpg", alt: "XAUUSD trade screenshot from a member of the ForexWizzz trading community", width: 591, height: 1280 },
+   145→  { src: "earning-4.jpg", alt: "Forex trade activity screenshot submitted by a ForexWizzz community member", width: 1080, height: 1042 },
+   146→  { src: "earning-5.jpg", alt: "Gold trade screenshot shared in the ForexWizzz free Telegram signals group", width: 589, height: 1280 },
+   147→];
+   148→
+   149→const telegramFeatures = [
+   150→  {
+   151→    title: "Forex Trading Signals",
+   152→    desc: "Daily buy/sell setups with entry, TP, and SL levels for major pairs.",
+   153→    gradient: "from-trading-green/10 to-transparent",
+   154→    icon: <TrendingUp className="w-6 h-6 text-trading-green" />,
+   155→  },
+   156→  {
+   157→    title: "XAUUSD / Gold Signals",
+   158→    desc: "Gold-specific analysis and trading ideas shared with the community.",
+   159→    gradient: "from-trading-gold/10 to-transparent",
+   160→    icon: <Trophy className="w-6 h-6 text-trading-gold" />,
+   161→  },
+   162→  {
+   163→    title: "Market Analysis",
+   164→    desc: "In-depth market breakdowns and key levels to watch.",
+   165→    gradient: "from-blue-400/10 to-transparent",
+   166→    icon: <BarChart3 className="w-6 h-6 text-blue-400" />,
+   167→  },
+   168→  {
+   169→    title: "Community Discussions",
+   170→    desc: "Real-time conversations with traders sharing ideas and feedback.",
+   171→    gradient: "from-purple-400/10 to-transparent",
+   172→    icon: <MessageCircle className="w-6 h-6 text-purple-400" />,
+   173→  },
+   174→];
+   175→
+   176→/* ------------------------------------------------------------------ */
+   177→/*  MAIN PAGE (Server Component)                                      */
+   178→/* ------------------------------------------------------------------ */
+   179→export default function Home() {
+   180→  return (
+   181→    <>
+   182→      <header className="relative z-20">
+   183→        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+   184→          <span className="text-lg font-bold text-foreground tracking-tight">
+   185→            ForexWizzz
+   186→          </span>
+   187→          <nav className="flex items-center gap-6">
+   188→            <Link
+   189→              href="/forex-signals/"
+   190→              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
+   191→            >
+   192→              Forex Signals
+   193→            </Link>
+   194→            <a
+   195→              href={TELEGRAM_LINK}
+   196→              target="_blank"
+   197→              rel="noopener noreferrer"
+   198→              className="text-sm font-medium text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+   199→            >
+   200→              Join on Telegram
+   201→            </a>
+   202→          </nav>
+   203→        </div>
+   204→      </header>
+   205→
+   206→      <main className="min-h-screen bg-trading-dark text-foreground overflow-x-hidden">
+   207→        <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 md:py-28 overflow-hidden">
+   208→          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-trading-green/5 rounded-full blur-[120px] pointer-events-none" />
+   209→          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-trading-gold/5 rounded-full blur-[100px] pointer-events-none" />
+   210→
+   211→          <CandlestickBackground />
+   212→
+   213→          <HeroAnimation className="relative z-10 text-center max-w-4xl mx-auto">
+   214→            <FadeIn delay={0.2} className="inline-flex">
+   215→              <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-green">
+   216→                <span className="w-2 h-2 bg-trading-green rounded-full animate-pulse" />
+   217→                100% Free Trading Community
+   218→              </span>
+   219→            </FadeIn>
+   220→
+   221→            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+   222→              <span className="text-foreground">GET FREE </span>
+   223→              <span className="text-trading-green text-glow-green">FOREX</span>
+   224→              <span className="text-foreground"> &amp; </span>
+   225→              <span className="text-trading-gold text-glow-gold">GOLD</span>
+   226→              <br />
+   227→              <span className="text-foreground">TRADING SIGNALS</span>
+   228→            </h1>
+   229→
+   230→            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+   231→              ForexWizzz is a free Telegram community where traders share daily
+   232→              Forex and Gold trading signals, XAUUSD analysis, market breakdowns,
+   233→              and educational trading content. Join to follow real-time discussions
+   234→              and improve your understanding of the forex market.
+   235→            </p>
+   236→
+   237→            <FadeIn delay={0.5}>
+   238→              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+   239→            </FadeIn>
+   240→
+   241→            <FadeIn delay={0.8}>
+   242→              <p className="mt-6 text-sm text-muted-foreground flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+   243→                <span className="flex items-center gap-1">
+   244→                  <ShieldCheck className="w-3.5 h-3.5 text-trading-green" />
+   245→                  100% Free to Join
+   246→                </span>
+   247→                <span className="text-trading-border">|</span>
+   248→                <span>Daily Signals</span>
+   249→                <span className="text-trading-border">|</span>
+   250→                <span>Forex</span>
+   251→                <span className="text-trading-border">|</span>
+   252→                <span>Gold</span>
+   253→                <span className="text-trading-border">|</span>
+   254→                <span>Market Analysis</span>
+   255→              </p>
+   256→            </FadeIn>
+   257→          </HeroAnimation>
+   258→
+   259→          <FloatingElement className="absolute bottom-8 left-1/2 -translate-x-1/2">
+   260→            <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-1.5">
+   261→              <div className="w-1.5 h-1.5 bg-trading-green rounded-full animate-bounce" />
+   262→            </div>
+   263→          </FloatingElement>
+   264→        </section>
+   265→
+   266→        <FadeSection className="relative py-20 md:py-28 px-4">
+   267→          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-trading-green/[0.03] to-transparent pointer-events-none" />
+   268→          <div className="relative z-10 max-w-3xl mx-auto text-center">
+   269→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+   270→              <span className="text-trading-gold text-glow-gold">
+   271→                LOOKING FOR YOUR NEXT
+   272→              </span>
+   273→              <br />
+   274→              <span className="text-foreground">TRADING OPPORTUNITY?</span>
+   275→            </h2>
+   276→            <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+   277→              Instead of searching for trading opportunities alone, join the
+   278→              ForexWizzz free Telegram community. Members share daily Forex analysis,
+   279→              Gold and XAUUSD trading ideas, and market commentary to help each
+   280→              other stay informed.
+   281→            </p>
+   282→            <TelegramCTA text="Join ForexWizzz on Telegram" variant="gold" />
+   283→          </div>
+   284→        </FadeSection>
+   285→
+   286→        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   287→          <div className="max-w-6xl mx-auto">
+   288→            <div className="text-center mb-14">
+   289→              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   290→                <span className="text-foreground">SEE WHAT OUR </span>
+   291→                <span className="text-trading-green text-glow-green">
+   292→                  COMMUNITY
+   293→                </span>
+   294→                <br />
+   295→                <span className="text-foreground">IS SAYING</span>
+   296→              </h2>
+   297→              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   298→                Real feedback from members of our trading community.
+   299→              </p>
+   300→            </div>
+   301→
+   302→            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+   303→              {testimonials.map((t, i) => (
+   304→                <FadeIn key={i} delay={i * 0.1}>
+   305→                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+   306→                    <div className="flex gap-1">
+   307→                      {Array.from({ length: 5 }).map((_, si) => (
+   308→                        <Star
+   309→                          key={si}
+   310→                          className={`w-4 h-4 ${
+   311→                            si < t.stars
+   312→                              ? "fill-trading-gold text-trading-gold"
+   313→                              : "text-white/20"
+   314→                          }`}
+   315→                        />
+   316→                      ))}
+   317→                    </div>
+   318→                    <p className="text-sm text-foreground/90 leading-relaxed flex-1">
+   319→                      &ldquo;{t.text}&rdquo;
+   320→                    </p>
+   321→                    <div className="flex items-center gap-3 pt-2 border-t border-white/5">
+   322→                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-trading-green/20 to-trading-gold/20 flex items-center justify-center text-sm font-bold text-trading-green">
+   323→                        {t.name.charAt(0)}
+   324→                      </div>
+   325→                      <span className="text-sm font-semibold text-foreground/80">
+   326→                        {t.name}
+   327→                      </span>
+   328→                    </div>
+   329→                  </div>
+   330→                </FadeIn>
+   331→              ))}
+   332→            </div>
+   333→
+   334→            <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+   335→              Results vary. Trading involves risk. Past performance does not
+   336→              guarantee future results.
+   337→            </p>
+   338→
+   339→            <div className="text-center">
+   340→              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+   341→            </div>
+   342→          </div>
+   343→        </FadeSection>
+   344→
+   345→        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   346→          <div className="max-w-6xl mx-auto">
+   347→            <div className="text-center mb-14">
+   348→              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   349→                <span className="text-trading-gold text-glow-gold">MEMBER RESULTS</span>
+   350→                <br />
+   351→                <span className="text-foreground">FROM OUR COMMUNITY</span>
+   352→              </h2>
+   353→              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   354→                Real screenshots shared by our community members showing their trading activity.
+   355→              </p>
+   356→            </div>
+   357→
+   358→            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+   359→              {earningImages.map((img, i) => (
+   360→                <ScaleIn key={i} delay={i * 0.1}>
+   361→                  <div className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300">
+   362→                    <div className="p-3 border-b border-white/5 flex items-center gap-2">
+   363→                      <div className="w-2 h-2 rounded-full bg-trading-green animate-pulse" />
+   364→                      <span className="text-xs font-semibold text-muted-foreground">
+   365→                        Community Member
+   366→                      </span>
+   367→                      <span className="ml-auto text-xs text-trading-gold font-medium">Real Screenshot</span>
+   368→                    </div>
+   369→                    <div className="p-2">
+   370→                      <img
+   371→                        src={img.src}
+   372→                        alt={img.alt}
+   373→                        width={img.width}
+   374→                        height={img.height}
+   375→                        className="w-full h-auto rounded-xl object-cover"
+   376→                        loading="lazy"
+   377→                      />
+   378→                    </div>
+   379→                  </div>
+   380→                </ScaleIn>
+   381→              ))}
+   382→            </div>
+   383→
+   384→            <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+   385→              Results vary. Trading involves risk. Past performance does not
+   386→              guarantee future results. These are real screenshots shared by community members.
+   387→            </p>
+   388→
+   389→            <div className="text-center">
+   390→              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+   391→            </div>
+   392→          </div>
+   393→        </FadeSection>
+   394→
+   395→        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   396→          <div className="relative z-10 max-w-6xl mx-auto">
+   397→            <div className="text-center mb-14">
+   398→              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   399→                <span className="text-trading-gold text-glow-gold">INSIDE OUR</span>
+   400→                <br />
+   401→                <span className="text-foreground">TELEGRAM COMMUNITY</span>
+   402→              </h2>
+   403→              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   404→                Take a look at what our members see every day in the group.
+   405→              </p>
+   406→            </div>
+   407→
+   408→            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+   409→              <ScaleIn className="sm:col-span-2 lg:col-span-2">
+   410→                <div className="glass-strong rounded-2xl overflow-hidden gradient-border">
+   411→                  <div className="p-3 border-b border-white/5 flex items-center gap-2">
+   412→                    <div className="w-2 h-2 rounded-full bg-trading-green" />
+   413→                    <span className="text-xs font-semibold text-muted-foreground">
+   414→                      Live Community Screenshot
+   415→                    </span>
+   416→                  </div>
+   417→                  <div className="p-2">
+   418→                    <img
+   419→                      src="telegram-screenshot.jpg"
+   420→                      alt="ForexWizzz Telegram group screenshot showing Forex and Gold signal discussions"
+   421→                      width={640}
+   422→                      height={640}
+   423→                      className="w-full h-auto rounded-xl object-cover"
+   424→                    />
+   425→                  </div>
+   426→                </div>
+   427→              </ScaleIn>
+   428→
+   429→              {telegramFeatures.map((item, i) => (
+   430→                <FadeIn key={i} delay={(i + 1) * 0.1}>
+   431→                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+   432→                    <div
+   433→                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center`}
+   434→                    >
+   435→                      {item.icon}
+   436→                    </div>
+   437→                    <h3 className="text-base font-bold text-foreground">
+   438→                      {item.title}
+   439→                    </h3>
+   440→                    <p className="text-sm text-muted-foreground leading-relaxed">
+   441→                      {item.desc}
+   442→                    </p>
+   443→                  </div>
+   444→                </FadeIn>
+   445→              ))}
+   446→            </div>
+   447→
+   448→            <div className="text-center mb-10">
+   449→              <p className="text-lg font-semibold text-foreground mb-5">
+   450→                WANT TO SEE OUR FREE SIGNALS FOR YOURSELF?
+   451→              </p>
+   452→              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+   453→            </div>
+   454→          </div>
+   455→        </FadeSection>
+   456→
+   457→        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   458→          <div className="max-w-6xl mx-auto">
+   459→            <div className="text-center mb-14">
+   460→              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   461→                <span className="text-foreground">WHY JOIN OUR</span>
+   462→                <br />
+   463→                <span className="text-trading-green text-glow-green">
+   464→                  COMMUNITY?
+   465→                </span>
+   466→              </h2>
+   467→              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   468→                ForexWizzz provides a focused space for Forex and Gold traders
+   469→                to share market analysis, discuss XAUUSD price levels, and follow
+   470→                trading setups together. Explore our{" "}
+   471→                <Link href="/forex-signals/" className="text-trading-green hover:text-trading-green/80 transition-colors no-underline font-medium">
+   472→                  forex trading signals
+   473→                </Link>{" "}
+   474→                and{" "}
+   475→                <Link href="/gold-signals/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+   476→                  gold analysis
+   477→                </Link>{" "}
+   478→                coverage for more details.
+   479→              </p>
+   480→            </div>
+   481→
+   482→            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+   483→              {features.map((f, i) => (
+   484→                <FadeIn key={i} delay={i * 0.08}>
+   485→                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 group h-full">
+   486→                    <div className="flex items-center gap-3">
+   487→                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-trading-gold/10 flex items-center justify-center text-trading-green group-hover:from-trading-green/20 group-hover:to-trading-gold/20 transition-colors duration-300">
+   488→                        {f.icon}
+   489→                      </div>
+   490→                      <h3 className="text-base font-bold text-foreground">
+   491→                        {f.emoji} {f.title}
+   492→                      </h3>
+   493→                    </div>
+   494→                    <p className="text-sm text-muted-foreground leading-relaxed">
+   495→                      {f.desc}
+   496→                    </p>
+   497→                  </div>
+   498→                </FadeIn>
+   499→              ))}
+   500→            </div>
+   501→
+   502→            <div className="text-center">
+   503→              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+   504→            </div>
+   505→          </div>
+   506→        </FadeSection>
+   507→
+   508→        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   509→          <div className="max-w-3xl mx-auto text-center">
+   510→            <PulsingIcon className="inline-flex items-center justify-center w-20 h-20 rounded-full glass-strong mb-8 glow-green-sm">
+   511→              <Clock className="w-10 h-10 text-trading-green" />
+   512→            </PulsingIcon>
+   513→
+   514→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+   515→              <span className="text-foreground">DON&apos;T MISS THE NEXT</span>
+   516→              <br />
+   517→              <span className="text-trading-gold text-glow-gold">
+   518→                MARKET SETUP
+   519→              </span>
+   520→            </h2>
+   521→            <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+   522→              The Forex and Gold markets move every day. Join the ForexWizzz
+   523→              community now so you don&apos;t miss the next trading idea, market
+   524→              update, or XAUUSD analysis shared by fellow traders.
+   525→            </p>
+   526→            <TelegramCTA
+   527→              text="Join ForexWizzz on Telegram"
+   528→              variant="gold"
+   529→            />
+   530→          </div>
+   531→        </FadeSection>
+   532→
+   533→        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   534→          <div className="relative max-w-4xl mx-auto">
+   535→            <div className="absolute inset-0 bg-gradient-to-br from-trading-green/5 via-transparent to-trading-gold/5 rounded-3xl blur-sm" />
+   536→
+   537→            <div className="relative glass-strong rounded-3xl p-8 md:p-14 text-center gradient-border">
+   538→              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+   539→                <span className="text-foreground">READY TO JOIN THE</span>
+   540→                <br />
+   541→                <span className="text-trading-green text-glow-green">
+   542→                  COMMUNITY?
+   543→                </span>
+   544→              </h2>
+   545→              <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
+   546→                Get free access to Forex and Gold trading signals, daily market
+   547→                updates, XAUUSD analysis, and trading community discussions. Forex
+   548→                trading involves significant risk — all content shared is for
+   549→                educational and informational purposes.
+   550→              </p>
+   551→
+   552→              <PulsingGlow className="inline-block rounded-xl">
+   553→                <TelegramCTA
+   554→                  text="Join ForexWizzz on Telegram"
+   555→                  variant="primary"
+   556→                  className="text-lg md:text-xl px-10 py-5"
+   557→                />
+   558→              </PulsingGlow>
+   559→
+   560→              <p className="mt-6 text-xs text-muted-foreground/60 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+   561→                <span className="flex items-center gap-1">
+   562→                  <ShieldCheck className="w-3 h-3 text-trading-green" />
+   563→                  Free to join
+   564→                </span>
+   565→                <span className="text-trading-border">|</span>
+   566→                <span>No payment required</span>
+   567→                <span className="text-trading-border">|</span>
+   568→                <span>Trading involves risk</span>
+   569→              </p>
+   570→            </div>
+   571→          </div>
+   572→        </FadeSection>
+   573→
+   574→        <footer className="py-10 px-4 border-t border-white/5">
+   575→          <div className="max-w-4xl mx-auto text-center">
+   576→            <p className="text-sm text-muted-foreground mb-2">
+   577→              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+   578→            </p>
+   579→            <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
+   580→              Risk Disclaimer: Forex and other financial markets involve
+   581→              significant risk of loss and are not suitable for all investors.
+   582→              Past performance does not guarantee future results. The content
+   583→              shared in our community is for educational and informational
+   584→              purposes only and should not be considered financial advice.
+   585→            </p>
+   586→            <div className="flex items-center justify-center gap-4 mt-4">
+   587→              <Link
+   588→                href="/forex-signals/"
+   589→                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+   590→              >
+   591→                Forex Signals
+   592→              </Link>
+   593→              <a
+   594→                href={TELEGRAM_LINK}
+   595→                target="_blank"
+   596→                rel="noopener noreferrer"
+   597→                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+   598→              >
+   599→                t.me/ForexWizzz
+   600→              </a>
+   601→            </div>
+   602→          </div>
+   603→        </footer>
+   604→      </main>
+   605→
+   606→      <StickyTelegramButton
+   607→        href={TELEGRAM_LINK}
+   608→        label="Join ForexWizzz on Telegram"
+   609→      />
+   610→    </>
+   611→  );
+   612→}
+   613→

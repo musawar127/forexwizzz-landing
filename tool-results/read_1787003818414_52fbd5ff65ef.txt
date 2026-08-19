@@ -1,0 +1,757 @@
+     1→"use client";
+     2→
+     3→import { motion, useInView } from "framer-motion";
+     4→import { useRef } from "react";
+     5→// Images use <img> for reliable basePath handling on GitHub Pages
+     6→import {
+     7→  TrendingUp,
+     8→  BarChart3,
+     9→  Trophy,
+    10→  Smartphone,
+    11→  GraduationCap,
+    12→  Zap,
+    13→  Clock,
+    14→  Star,
+    15→  ArrowRight,
+    16→  MessageCircle,
+    17→  ShieldCheck,
+    18→} from "lucide-react";
+    19→
+    20→const TELEGRAM_LINK = "https://t.me/ForexWizzz";
+    21→
+    22→/* ------------------------------------------------------------------ */
+    23→/*  ANIMATED CANDLESTICK BACKGROUND (SVG canvas)                     */
+    24→/* ------------------------------------------------------------------ */
+    25→function CandlestickBackground() {
+    26→  const candles = [
+    27→    { x: 10, h: 40, o: 20, c: 50, green: true },
+    28→    { x: 40, h: 55, o: 45, c: 25, green: false },
+    29→    { x: 70, h: 35, o: 30, c: 60, green: true },
+    30→    { x: 100, h: 50, o: 55, c: 20, green: false },
+    31→    { x: 130, h: 45, o: 15, c: 55, green: true },
+    32→    { x: 160, h: 60, o: 50, c: 30, green: false },
+    33→    { x: 190, h: 38, o: 25, c: 58, green: true },
+    34→    { x: 220, h: 52, o: 48, c: 18, green: false },
+    35→    { x: 250, h: 42, o: 20, c: 56, green: true },
+    36→    { x: 280, h: 48, o: 52, c: 22, green: false },
+    37→    { x: 310, h: 36, o: 28, c: 60, green: true },
+    38→    { x: 340, h: 55, o: 50, c: 28, green: false },
+    39→    { x: 370, h: 40, o: 22, c: 54, green: true },
+    40→    { x: 400, h: 50, o: 46, c: 24, green: false },
+    41→    { x: 430, h: 44, o: 18, c: 58, green: true },
+    42→    { x: 460, h: 58, o: 52, c: 26, green: false },
+    43→    { x: 490, h: 34, o: 30, c: 62, green: true },
+    44→    { x: 520, h: 46, o: 42, c: 20, green: false },
+    45→    { x: 550, h: 38, o: 24, c: 56, green: true },
+    46→    { x: 580, h: 52, o: 48, c: 30, green: false },
+    47→  ];
+    48→
+    49→  return (
+    50→    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+    51→      <svg
+    52→        className="absolute bottom-0 left-0 w-full h-full"
+    53→        preserveAspectRatio="none"
+    54→        viewBox="0 0 600 80"
+    55→      >
+    56→        {candles.map((c, i) => (
+    57→          <g key={i} style={{ animationDelay: `${i * 0.2}s` }} className="animate-candlestick">
+    58→            {/* Wick */}
+    59→            <line
+    60→              x1={c.x + 6}
+    61→              y1={80 - c.h - 10}
+    62→              x2={c.x + 6}
+    63→              y2={80 - c.h + 30}
+    64→              stroke={c.green ? "#00e676" : "#ff1744"}
+    65→              strokeWidth={1.5}
+    66→              opacity={0.6}
+    67→            />
+    68→            {/* Body */}
+    69→            <rect
+    70→              x={c.x}
+    71→              y={80 - Math.max(c.o, c.c)}
+    72→              width={12}
+    73→              height={Math.abs(c.c - c.o) || 4}
+    74→              fill={c.green ? "#00e676" : "#ff1744"}
+    75→              opacity={0.7}
+    76→              rx={1}
+    77→            />
+    78→          </g>
+    79→        ))}
+    80→        {/* Grid lines */}
+    81→        {[20, 40, 60].map((y) => (
+    82→          <line
+    83→            key={y}
+    84→            x1="0"
+    85→            y1={y}
+    86→            x2="600"
+    87→            y2={y}
+    88→            stroke="rgba(255,255,255,0.05)"
+    89→            strokeWidth={0.5}
+    90→          />
+    91→        ))}
+    92→      </svg>
+    93→    </div>
+    94→  );
+    95→}
+    96→
+    97→/* ------------------------------------------------------------------ */
+    98→/*  REUSABLE CTA BUTTON                                               */
+    99→/* ------------------------------------------------------------------ */
+   100→function TelegramCTA({
+   101→  text,
+   102→  variant = "primary",
+   103→  className = "",
+   104→}: {
+   105→  text: string;
+   106→  variant?: "primary" | "secondary" | "gold";
+   107→  className?: string;
+   108→}) {
+   109→  const base =
+   110→    "inline-flex items-center justify-center gap-2 font-bold text-base md:text-lg rounded-xl px-6 py-3.5 md:px-8 md:py-4 transition-all duration-300 cursor-pointer no-underline select-none";
+   111→
+   112→  const variants = {
+   113→    primary:
+   114→      "bg-trading-green text-trading-dark glow-green hover:scale-105 hover:shadow-[0_0_30px_rgba(0,230,118,0.6)] active:scale-95",
+   115→    secondary:
+   116→      "glass-strong text-trading-green border border-trading-green/30 hover:bg-trading-green/10 hover:scale-105 active:scale-95",
+   117→    gold: "bg-trading-gold text-trading-dark glow-gold hover:scale-105 hover:shadow-[0_0_30px_rgba(255,215,64,0.6)] active:scale-95",
+   118→  };
+   119→
+   120→  return (
+   121→    <motion.a
+   122→      href={TELEGRAM_LINK}
+   123→      target="_blank"
+   124→      rel="noopener noreferrer"
+   125→      className={`${base} ${variants[variant]} ${className}`}
+   126→      whileTap={{ scale: 0.95 }}
+   127→    >
+   128→      <MessageCircle className="w-5 h-5" />
+   129→      {text}
+   130→      <ArrowRight className="w-4 h-4" />
+   131→    </motion.a>
+   132→  );
+   133→}
+   134→
+   135→/* ------------------------------------------------------------------ */
+   136→/*  SECTION WRAPPER WITH FADE-IN                                      */
+   137→/* ------------------------------------------------------------------ */
+   138→function FadeSection({
+   139→  children,
+   140→  className = "",
+   141→  delay = 0,
+   142→}: {
+   143→  children: React.ReactNode;
+   144→  className?: string;
+   145→  delay?: number;
+   146→}) {
+   147→  const ref = useRef(null);
+   148→  const isInView = useInView(ref, { once: true, margin: "-60px" });
+   149→
+   150→  return (
+   151→    <motion.section
+   152→      ref={ref}
+   153→      initial={{ opacity: 0, y: 40 }}
+   154→      animate={isInView ? { opacity: 1, y: 0 } : {}}
+   155→      transition={{ duration: 0.7, delay, ease: "easeOut" }}
+   156→      className={className}
+   157→    >
+   158→      {children}
+   159→    </motion.section>
+   160→  );
+   161→}
+   162→
+   163→/* ------------------------------------------------------------------ */
+   164→/*  MAIN PAGE                                                         */
+   165→/* ------------------------------------------------------------------ */
+   166→export default function Home() {
+   167→  const features = [
+   168→    {
+   169→      icon: <TrendingUp className="w-8 h-8" />,
+   170→      title: "FREE TRADING SIGNALS",
+   171→      emoji: "✅",
+   172→      desc: "Access trading ideas and potential setups shared with the community.",
+   173→    },
+   174→    {
+   175→      icon: <BarChart3 className="w-8 h-8" />,
+   176→      title: "MARKET ANALYSIS",
+   177→      emoji: "📊",
+   178→      desc: "Stay updated with market movements and important trading opportunities.",
+   179→    },
+   180→    {
+   181→      icon: <Trophy className="w-8 h-8" />,
+   182→      title: "FOREX & GOLD",
+   183→      emoji: "🥇",
+   184→      desc: "Follow trading setups covering popular Forex pairs and Gold/XAUUSD.",
+   185→    },
+   186→    {
+   187→      icon: <Smartphone className="w-8 h-8" />,
+   188→      title: "TELEGRAM COMMUNITY",
+   189→      emoji: "📱",
+   190→      desc: "Join a community of traders and follow market discussions in one place.",
+   191→    },
+   192→    {
+   193→      icon: <GraduationCap className="w-8 h-8" />,
+   194→      title: "LEARN & IMPROVE",
+   195→      emoji: "🎓",
+   196→      desc: "Use market insights and analysis to improve your own trading knowledge.",
+   197→    },
+   198→    {
+   199→      icon: <Zap className="w-8 h-8" />,
+   200→      title: "EASY TO JOIN",
+   201→      emoji: "⚡",
+   202→      desc: "Click the button and instantly access our free Telegram community.",
+   203→    },
+   204→  ];
+   205→
+   206→  const testimonials = [
+   207→    {
+   208→      name: "Ahmed K.",
+   209→      text: "The free signals have helped me understand the market much better. I always check the group before entering a trade.",
+   210→      stars: 5,
+   211→    },
+   212→    {
+   213→      name: "Sarah M.",
+   214→      text: "I joined for the free signals and stayed because the market analysis is really useful. Great community.",
+   215→      stars: 5,
+   216→    },
+   217→    {
+   218→      name: "Raj P.",
+   219→      text: "Daily updates on Gold and Forex pairs have been a great addition to my trading routine. Highly recommend.",
+   220→      stars: 4,
+   221→    },
+   222→    {
+   223→      name: "Omar T.",
+   224→      text: "The community shares real market insights. It is a good place to learn and follow trading discussions.",
+   225→      stars: 5,
+   226→    },
+   227→    {
+   228→      name: "David L.",
+   229→      text: "I appreciate the transparency. The signals come with clear entry and exit levels which helps a lot.",
+   230→      stars: 4,
+   231→    },
+   232→    {
+   233→      name: "Yusuf H.",
+   234→      text: "Best free Telegram group I have found for Forex and Gold. The analysis quality is solid.",
+   235→      stars: 5,
+   236→    },
+   237→  ];
+   238→
+   239→  return (
+   240→    <main className="min-h-screen bg-trading-dark text-foreground overflow-x-hidden">
+   241→      {/* ================================================================ */}
+   242→      {/*  1. HERO SECTION                                                 */}
+   243→      {/* ================================================================ */}
+   244→      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 md:py-28 overflow-hidden">
+   245→        {/* Radial glow behind headline */}
+   246→        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-trading-green/5 rounded-full blur-[120px] pointer-events-none" />
+   247→        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-trading-gold/5 rounded-full blur-[100px] pointer-events-none" />
+   248→
+   249→        <CandlestickBackground />
+   250→
+   251→        <motion.div
+   252→          initial={{ opacity: 0, y: 30 }}
+   253→          animate={{ opacity: 1, y: 0 }}
+   254→          transition={{ duration: 0.8, ease: "easeOut" }}
+   255→          className="relative z-10 text-center max-w-4xl mx-auto"
+   256→        >
+   257→          {/* Badge */}
+   258→          <motion.div
+   259→            initial={{ opacity: 0, scale: 0.8 }}
+   260→            animate={{ opacity: 1, scale: 1 }}
+   261→            transition={{ delay: 0.2, duration: 0.5 }}
+   262→            className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-green"
+   263→          >
+   264→            <span className="w-2 h-2 bg-trading-green rounded-full animate-pulse" />
+   265→            100% Free Trading Community
+   266→          </motion.div>
+   267→
+   268→          {/* Headline */}
+   269→          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+   270→            <span className="text-foreground">GET FREE </span>
+   271→            <span className="text-trading-green text-glow-green">FOREX</span>
+   272→            <span className="text-foreground"> & </span>
+   273→            <span className="text-trading-gold text-glow-gold">GOLD</span>
+   274→            <br />
+   275→            <span className="text-foreground">TRADING SIGNALS</span>
+   276→          </h1>
+   277→
+   278→          {/* Subheadline */}
+   279→          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+   280→            Join our free Telegram trading community and get access to daily
+   281→            market insights, trading setups, free signals, and market updates
+   282→            shared with our community.
+   283→          </p>
+   284→
+   285→          {/* CTA */}
+   286→          <motion.div
+   287→            initial={{ opacity: 0, y: 20 }}
+   288→            animate={{ opacity: 1, y: 0 }}
+   289→            transition={{ delay: 0.5, duration: 0.5 }}
+   290→          >
+   291→            <TelegramCTA text="JOIN OUR FREE TELEGRAM GROUP" variant="primary" />
+   292→          </motion.div>
+   293→
+   294→          {/* Tags */}
+   295→          <motion.p
+   296→            initial={{ opacity: 0 }}
+   297→            animate={{ opacity: 1 }}
+   298→            transition={{ delay: 0.8, duration: 0.6 }}
+   299→            className="mt-6 text-sm text-muted-foreground flex flex-wrap items-center justify-center gap-x-3 gap-y-1"
+   300→          >
+   301→            <span className="flex items-center gap-1">
+   302→              <ShieldCheck className="w-3.5 h-3.5 text-trading-green" />
+   303→              100% Free to Join
+   304→            </span>
+   305→            <span className="text-trading-border">|</span>
+   306→            <span>Daily Signals</span>
+   307→            <span className="text-trading-border">|</span>
+   308→            <span>Forex</span>
+   309→            <span className="text-trading-border">|</span>
+   310→            <span>Gold</span>
+   311→            <span className="text-trading-border">|</span>
+   312→            <span>Market Analysis</span>
+   313→          </motion.p>
+   314→        </motion.div>
+   315→
+   316→        {/* Scroll indicator */}
+   317→        <motion.div
+   318→          initial={{ opacity: 0 }}
+   319→          animate={{ opacity: 1 }}
+   320→          transition={{ delay: 1.2, duration: 0.5 }}
+   321→          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float"
+   322→        >
+   323→          <div className="w-6 h-10 border-2 border-white/20 rounded-full flex items-start justify-center p-1.5">
+   324→            <motion.div
+   325→              animate={{ y: [0, 12, 0] }}
+   326→              transition={{ duration: 1.5, repeat: Infinity }}
+   327→              className="w-1.5 h-1.5 bg-trading-green rounded-full"
+   328→            />
+   329→          </div>
+   330→        </motion.div>
+   331→      </section>
+   332→
+   333→      {/* ================================================================ */}
+   334→      {/*  2. ATTENTION-GRABBING HOOK                                      */}
+   335→      {/* ================================================================ */}
+   336→      <FadeSection className="relative py-20 md:py-28 px-4">
+   337→        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-trading-green/[0.03] to-transparent pointer-events-none" />
+   338→        <div className="relative z-10 max-w-3xl mx-auto text-center">
+   339→          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+   340→            <span className="text-trading-gold text-glow-gold">
+   341→              LOOKING FOR YOUR NEXT
+   342→            </span>
+   343→            <br />
+   344→            <span className="text-foreground">TRADING OPPORTUNITY?</span>
+   345→          </h2>
+   346→          <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+   347→            Stop searching for trading opportunities alone. Join our free
+   348→            Telegram community to discover trading ideas, market analysis, and
+   349→            potential setups shared with traders every day.
+   350→          </p>
+   351→          <TelegramCTA text="JOIN THE FREE SIGNALS GROUP" variant="gold" />
+   352→        </div>
+   353→      </FadeSection>
+   354→
+   355→      {/* ================================================================ */}
+   356→      {/*  3. SOCIAL PROOF / COMMUNITY REVIEWS                             */}
+   357→      {/* ================================================================ */}
+   358→      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   359→        <div className="max-w-6xl mx-auto">
+   360→          <div className="text-center mb-14">
+   361→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   362→              <span className="text-foreground">SEE WHAT OUR </span>
+   363→              <span className="text-trading-green text-glow-green">
+   364→                COMMUNITY
+   365→              </span>
+   366→              <br />
+   367→              <span className="text-foreground">IS SAYING</span>
+   368→            </h2>
+   369→            <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   370→              Real feedback from members of our trading community.
+   371→            </p>
+   372→          </div>
+   373→
+   374→          {/* Testimonial Grid */}
+   375→          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+   376→            {testimonials.map((t, i) => (
+   377→              <motion.div
+   378→                key={i}
+   379→                initial={{ opacity: 0, y: 30 }}
+   380→                whileInView={{ opacity: 1, y: 0 }}
+   381→                viewport={{ once: true }}
+   382→                transition={{ delay: i * 0.1, duration: 0.5 }}
+   383→                className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300"
+   384→              >
+   385→                {/* Stars */}
+   386→                <div className="flex gap-1">
+   387→                  {Array.from({ length: 5 }).map((_, si) => (
+   388→                    <Star
+   389→                      key={si}
+   390→                      className={`w-4 h-4 ${
+   391→                        si < t.stars
+   392→                          ? "fill-trading-gold text-trading-gold"
+   393→                          : "text-white/20"
+   394→                      }`}
+   395→                    />
+   396→                  ))}
+   397→                </div>
+   398→                <p className="text-sm text-foreground/90 leading-relaxed flex-1">
+   399→                  &ldquo;{t.text}&rdquo;
+   400→                </p>
+   401→                <div className="flex items-center gap-3 pt-2 border-t border-white/5">
+   402→                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-trading-green/20 to-trading-gold/20 flex items-center justify-center text-sm font-bold text-trading-green">
+   403→                    {t.name.charAt(0)}
+   404→                  </div>
+   405→                  <span className="text-sm font-semibold text-foreground/80">
+   406→                    {t.name}
+   407→                  </span>
+   408→                </div>
+   409→              </motion.div>
+   410→            ))}
+   411→          </div>
+   412→
+   413→          {/* Disclaimer */}
+   414→          <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+   415→            Results vary. Trading involves risk. Past performance does not
+   416→            guarantee future results.
+   417→          </p>
+   418→
+   419→          <div className="text-center">
+   420→            <TelegramCTA text="JOIN THE COMMUNITY" variant="primary" />
+   421→          </div>
+   422→        </div>
+   423→      </FadeSection>
+   424→
+   425→      {/* ================================================================ */}
+   426→      {/*  4. MEMBER RESULTS SCREENSHOTS                                  */}
+   427→      {/* ================================================================ */}
+   428→      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   429→        <div className="max-w-6xl mx-auto">
+   430→          <div className="text-center mb-14">
+   431→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   432→              <span className="text-trading-gold text-glow-gold">MEMBER RESULTS</span>
+   433→              <br />
+   434→              <span className="text-foreground">FROM OUR COMMUNITY</span>
+   435→            </h2>
+   436→            <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   437→              Real screenshots shared by our community members showing their trading results.
+   438→            </p>
+   439→          </div>
+   440→
+   441→          {/* Earning Screenshots Grid */}
+   442→          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+   443→            {[
+   444→              { src: "earning-1.jpg", alt: "Community member trading result screenshot" },
+   445→              { src: "earning-2.jpg", alt: "Community member trading result screenshot" },
+   446→              { src: "earning-3.jpg", alt: "Community member trading result screenshot" },
+   447→              { src: "earning-4.jpg", alt: "Community member trading result screenshot" },
+   448→              { src: "earning-5.jpg", alt: "Community member trading result screenshot" },
+   449→            ].map((img, i) => (
+   450→              <motion.div
+   451→                key={i}
+   452→                initial={{ opacity: 0, scale: 0.95 }}
+   453→                whileInView={{ opacity: 1, scale: 1 }}
+   454→                viewport={{ once: true }}
+   455→                transition={{ delay: i * 0.1, duration: 0.5 }}
+   456→                className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300"
+   457→              >
+   458→                <div className="p-3 border-b border-white/5 flex items-center gap-2">
+   459→                  <div className="w-2 h-2 rounded-full bg-trading-green animate-pulse" />
+   460→                  <span className="text-xs font-semibold text-muted-foreground">
+   461→                    Community Member
+   462→                  </span>
+   463→                  <span className="ml-auto text-xs text-trading-gold font-medium">Real Screenshot</span>
+   464→                </div>
+   465→                <div className="p-2">
+   466→                  <img
+   467→                    src={img.src}
+   468→                    alt={img.alt}
+   469→                    className="w-full h-auto rounded-xl object-cover"
+   470→                    loading="lazy"
+   471→                  />
+   472→                </div>
+   473→              </motion.div>
+   474→            ))}
+   475→          </div>
+   476→
+   477→          {/* Disclaimer */}
+   478→          <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+   479→            Results vary. Trading involves risk. Past performance does not
+   480→            guarantee future results. These are real screenshots shared by community members.
+   481→          </p>
+   482→
+   483→          <div className="text-center">
+   484→            <TelegramCTA text="JOIN THE COMMUNITY" variant="primary" />
+   485→          </div>
+   486→        </div>
+   487→      </FadeSection>
+   488→
+   489→      {/* ================================================================ */}
+   490→      {/*  5. INSIDE OUR TELEGRAM COMMUNITY (SCREENSHOT GALLERY)          */}
+   491→      {/* ================================================================ */}
+   492→      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   493→        <div className="relative z-10 max-w-6xl mx-auto">
+   494→          <div className="text-center mb-14">
+   495→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   496→              <span className="text-trading-gold text-glow-gold">INSIDE OUR</span>
+   497→              <br />
+   498→              <span className="text-foreground">TELEGRAM COMMUNITY</span>
+   499→            </h2>
+   500→            <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+   501→              Take a look at what our members see every day in the group.
+   502→            </p>
+   503→          </div>
+   504→
+   505→          {/* Gallery Grid */}
+   506→          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+   507→            {/* Real community screenshot */}
+   508→            <motion.div
+   509→              initial={{ opacity: 0, scale: 0.95 }}
+   510→              whileInView={{ opacity: 1, scale: 1 }}
+   511→              viewport={{ once: true }}
+   512→              transition={{ duration: 0.5 }}
+   513→              className="sm:col-span-2 lg:col-span-2 glass-strong rounded-2xl overflow-hidden gradient-border"
+   514→            >
+   515→              <div className="p-3 border-b border-white/5 flex items-center gap-2">
+   516→                <div className="w-2 h-2 rounded-full bg-trading-green" />
+   517→                <span className="text-xs font-semibold text-muted-foreground">
+   518→                  Live Community Screenshot
+   519→                </span>
+   520→              </div>
+   521→              <div className="p-2">
+   522→                <img
+   523→                  src="telegram-screenshot.jpg"
+   524→                  alt="ForexWizzz Telegram community screenshot showing trading signals and analysis"
+   525→                  className="w-full h-auto rounded-xl object-cover"
+   526→                  loading="lazy"
+   527→                />
+   528→              </div>
+   529→            </motion.div>
+   530→
+   531→            {/* Feature info cards */}
+   532→            {[
+   533→              {
+   534→                title: "Forex Trading Signals",
+   535→                desc: "Daily buy/sell setups with entry, TP, and SL levels for major pairs.",
+   536→                gradient: "from-trading-green/10 to-transparent",
+   537→                icon: <TrendingUp className="w-6 h-6 text-trading-green" />,
+   538→              },
+   539→              {
+   540→                title: "XAUUSD / Gold Signals",
+   541→                desc: "Gold-specific analysis and trading ideas shared with the community.",
+   542→                gradient: "from-trading-gold/10 to-transparent",
+   543→                icon: <Trophy className="w-6 h-6 text-trading-gold" />,
+   544→              },
+   545→              {
+   546→                title: "Market Analysis",
+   547→                desc: "In-depth market breakdowns and key levels to watch.",
+   548→                gradient: "from-blue-400/10 to-transparent",
+   549→                icon: <BarChart3 className="w-6 h-6 text-blue-400" />,
+   550→              },
+   551→              {
+   552→                title: "Community Discussions",
+   553→                desc: "Real-time conversations with traders sharing ideas and feedback.",
+   554→                gradient: "from-purple-400/10 to-transparent",
+   555→                icon: <MessageCircle className="w-6 h-6 text-purple-400" />,
+   556→              },
+   557→            ].map((item, i) => (
+   558→              <motion.div
+   559→                key={i}
+   560→                initial={{ opacity: 0, y: 20 }}
+   561→                whileInView={{ opacity: 1, y: 0 }}
+   562→                viewport={{ once: true }}
+   563→                transition={{ delay: (i + 1) * 0.1, duration: 0.5 }}
+   564→                className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300"
+   565→              >
+   566→                <div
+   567→                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center`}
+   568→                >
+   569→                  {item.icon}
+   570→                </div>
+   571→                <h3 className="text-base font-bold text-foreground">
+   572→                  {item.title}
+   573→                </h3>
+   574→                <p className="text-sm text-muted-foreground leading-relaxed">
+   575→                  {item.desc}
+   576→                </p>
+   577→              </motion.div>
+   578→            ))}
+   579→          </div>
+   580→
+   581→          <div className="text-center mb-10">
+   582→            <p className="text-lg font-semibold text-foreground mb-5">
+   583→              WANT TO SEE OUR FREE SIGNALS FOR YOURSELF?
+   584→            </p>
+   585→            <TelegramCTA text="JOIN FREE TELEGRAM" variant="primary" />
+   586→          </div>
+   587→        </div>
+   588→      </FadeSection>
+   589→
+   590→      {/* ================================================================ */}
+   591→      {/*  5. WHY JOIN OUR COMMUNITY?                                      */}
+   592→      {/* ================================================================ */}
+   593→      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   594→        <div className="max-w-6xl mx-auto">
+   595→          <div className="text-center mb-14">
+   596→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+   597→              <span className="text-foreground">WHY JOIN OUR</span>
+   598→              <br />
+   599→              <span className="text-trading-green text-glow-green">
+   600→                COMMUNITY?
+   601→              </span>
+   602→            </h2>
+   603→          </div>
+   604→
+   605→          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+   606→            {features.map((f, i) => (
+   607→              <motion.div
+   608→                key={i}
+   609→                initial={{ opacity: 0, y: 30 }}
+   610→                whileInView={{ opacity: 1, y: 0 }}
+   611→                viewport={{ once: true }}
+   612→                transition={{ delay: i * 0.08, duration: 0.5 }}
+   613→                className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 group"
+   614→              >
+   615→                <div className="flex items-center gap-3">
+   616→                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-trading-gold/10 flex items-center justify-center text-trading-green group-hover:from-trading-green/20 group-hover:to-trading-gold/20 transition-colors duration-300">
+   617→                    {f.icon}
+   618→                  </div>
+   619→                  <h3 className="text-base font-bold text-foreground">
+   620→                    {f.emoji} {f.title}
+   621→                  </h3>
+   622→                </div>
+   623→                <p className="text-sm text-muted-foreground leading-relaxed">
+   624→                  {f.desc}
+   625→                </p>
+   626→              </motion.div>
+   627→            ))}
+   628→          </div>
+   629→
+   630→          <div className="text-center">
+   631→            <TelegramCTA text="JOIN FOREX WIZZZ FREE" variant="primary" />
+   632→          </div>
+   633→        </div>
+   634→      </FadeSection>
+   635→
+   636→      {/* ================================================================ */}
+   637→      {/*  6. URGENCY / FOMO SECTION                                       */}
+   638→      {/* ================================================================ */}
+   639→      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   640→        <div className="max-w-3xl mx-auto text-center">
+   641→          {/* Pulsing clock icon */}
+   642→          <motion.div
+   643→            animate={{ scale: [1, 1.1, 1] }}
+   644→            transition={{ duration: 2, repeat: Infinity }}
+   645→            className="inline-flex items-center justify-center w-20 h-20 rounded-full glass-strong mb-8 glow-green-sm"
+   646→          >
+   647→            <Clock className="w-10 h-10 text-trading-green" />
+   648→          </motion.div>
+   649→
+   650→          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+   651→            <span className="text-foreground">DON&apos;T MISS THE NEXT</span>
+   652→            <br />
+   653→            <span className="text-trading-gold text-glow-gold">
+   654→              MARKET SETUP
+   655→            </span>
+   656→          </h2>
+   657→          <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+   658→            The market moves every day. Join the community now so you don&apos;t
+   659→            miss the next trading idea, market update, or potential setup.
+   660→          </p>
+   661→          <TelegramCTA
+   662→            text="JOIN THE FREE TELEGRAM GROUP NOW"
+   663→            variant="gold"
+   664→          />
+   665→        </div>
+   666→      </FadeSection>
+   667→
+   668→      {/* ================================================================ */}
+   669→      {/*  7. FINAL CTA                                                    */}
+   670→      {/* ================================================================ */}
+   671→      <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+   672→        <div className="relative max-w-4xl mx-auto">
+   673→          {/* Background glow */}
+   674→          <div className="absolute inset-0 bg-gradient-to-br from-trading-green/5 via-transparent to-trading-gold/5 rounded-3xl blur-sm" />
+   675→
+   676→          <div className="relative glass-strong rounded-3xl p-8 md:p-14 text-center gradient-border">
+   677→            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+   678→              <span className="text-foreground">READY TO JOIN THE</span>
+   679→              <br />
+   680→              <span className="text-trading-green text-glow-green">
+   681→                COMMUNITY?
+   682→              </span>
+   683→            </h2>
+   684→            <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
+   685→              Get free access to trading signals, market updates, Forex & Gold
+   686→              analysis, and trading discussions.
+   687→            </p>
+   688→
+   689→            <motion.div
+   690→              animate={{ boxShadow: ["0 0 20px rgba(0,230,118,0.3)", "0 0 40px rgba(0,230,118,0.5)", "0 0 20px rgba(0,230,118,0.3)"] }}
+   691→              transition={{ duration: 2, repeat: Infinity }}
+   692→              className="inline-block rounded-xl"
+   693→            >
+   694→              <TelegramCTA
+   695→                text="JOIN OUR FREE TELEGRAM GROUP"
+   696→                variant="primary"
+   697→                className="text-lg md:text-xl px-10 py-5"
+   698→              />
+   699→            </motion.div>
+   700→
+   701→            <p className="mt-6 text-xs text-muted-foreground/60 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+   702→              <span className="flex items-center gap-1">
+   703→                <ShieldCheck className="w-3 h-3 text-trading-green" />
+   704→                Free to join
+   705→              </span>
+   706→              <span className="text-trading-border">|</span>
+   707→              <span>No payment required</span>
+   708→              <span className="text-trading-border">|</span>
+   709→              <span>Trading involves risk</span>
+   710→            </p>
+   711→          </div>
+   712→        </div>
+   713→      </FadeSection>
+   714→
+   715→      {/* ================================================================ */}
+   716→      {/*  FOOTER                                                          */}
+   717→      {/* ================================================================ */}
+   718→      <footer className="py-10 px-4 border-t border-white/5">
+   719→        <div className="max-w-4xl mx-auto text-center">
+   720→          <p className="text-sm text-muted-foreground mb-2">
+   721→            ForexWizzz &mdash; Free Forex & Gold Trading Signals Community
+   722→          </p>
+   723→          <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
+   724→            Risk Disclaimer: Forex and other financial markets involve
+   725→            significant risk of loss and are not suitable for all investors.
+   726→            Past performance does not guarantee future results. The content
+   727→            shared in our community is for educational and informational
+   728→            purposes only and should not be considered financial advice.
+   729→          </p>
+   730→        </div>
+   731→      </footer>
+   732→
+   733→      {/* ================================================================ */}
+   734→      {/*  STICKY FLOATING TELEGRAM BUTTON                                 */}
+   735→      {/* ================================================================ */}
+   736→      <motion.a
+   737→        href={TELEGRAM_LINK}
+   738→        target="_blank"
+   739→        rel="noopener noreferrer"
+   740→        initial={{ opacity: 0, y: 30 }}
+   741→        animate={{ opacity: 1, y: 0 }}
+   742→        transition={{ delay: 1.5, duration: 0.5 }}
+   743→        className="fixed bottom-6 right-4 md:right-8 z-50 flex items-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white font-bold text-sm md:text-base rounded-full pl-4 pr-5 py-3.5 shadow-[0_4px_20px_rgba(0,136,204,0.5)] hover:shadow-[0_4px_30px_rgba(0,136,204,0.7)] transition-all duration-300 hover:scale-105 active:scale-95 no-underline select-none"
+   744→        aria-label="Join our free Telegram group"
+   745→      >
+   746→        <svg
+   747→          className="w-5 h-5 md:w-6 md:h-6"
+   748→          viewBox="0 0 24 24"
+   749→          fill="currentColor"
+   750→        >
+   751→          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+   752→        </svg>
+   753→        <span className="hidden sm:inline">JOIN FREE TELEGRAM</span>
+   754→      </motion.a>
+   755→    </main>
+   756→  );
+   757→}
