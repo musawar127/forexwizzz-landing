@@ -203,6 +203,12 @@ export default function Home() {
             >
               XAUUSD Analysis
             </Link>
+            <Link
+              href="/about/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden lg:block"
+            >
+              About
+            </Link>
             <a
               href={TELEGRAM_LINK}
               target="_blank"
@@ -599,12 +605,18 @@ export default function Home() {
               shared in our community is for educational and informational
               purposes only and should not be considered financial advice.
             </p>
-            <div className="flex items-center justify-center gap-4 mt-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
               <Link
                 href="/forex-signals/"
                 className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
               >
                 Forex Signals
+              </Link>
+              <Link
+                href="/about/"
+                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+              >
+                About ForexWizard
               </Link>
               <a
                 href={TELEGRAM_LINK}

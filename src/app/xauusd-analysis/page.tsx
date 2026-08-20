@@ -299,6 +299,12 @@ export default function XauusdAnalysisPage() {
             >
               XAUUSD Analysis
             </Link>
+            <Link
+              href="/about/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden lg:block"
+            >
+              About
+            </Link>
             <a
               href={TELEGRAM_LINK}
               target="_blank"
