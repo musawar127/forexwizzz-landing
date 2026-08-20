@@ -770,6 +770,21 @@ export default function XauusdAnalysisPage() {
                 </FadeIn>
               ))}
             </div>
+
+            <div className="mt-10 text-center">
+              <FadeIn>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Want to go deeper into reading gold price action on the chart?
+                </p>
+                <Link
+                  href="/how-to-read-xauusd-price-action/"
+                  className="inline-flex items-center gap-2 text-trading-gold hover:text-trading-gold/80 font-semibold text-sm transition-colors no-underline"
+                >
+                  Learn how to read XAUUSD price action
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </FadeIn>
+            </div>
           </div>
         </FadeSection>
 
