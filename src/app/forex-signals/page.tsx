@@ -29,15 +29,15 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 export const metadata: Metadata = {
   title: "Forex Signals | Free Forex Trading Signals & Market Analysis",
   description:
-    "Explore ForexWizard forex trading signals, market analysis and educational insights for forex and gold traders. Join our Telegram community for updates.",
+    "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
   alternates: {
     canonical: "https://forexwizard.online/forex-signals/",
   },
   openGraph: {
     title: "Forex Signals | Free Forex Trading Signals & Market Analysis",
     description:
-      "Explore ForexWizard forex trading signals, market analysis and educational insights for forex and gold traders. Join our Telegram community for updates.",
-    type: "website",
+      "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
+    type: "article",
     url: "https://forexwizard.online/forex-signals/",
     siteName: "ForexWizzz",
     images: [
@@ -53,67 +53,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Forex Signals | Free Forex Trading Signals & Market Analysis",
     description:
-      "Explore ForexWizard forex trading signals, market analysis and educational insights for forex and gold traders. Join our Telegram community for updates.",
+      "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
     images: ["/og-image.jpg"],
   },
 };
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
-
-const faqStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What are forex signals?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Forex signals are trade ideas or suggestions that indicate potential entry and exit points for currency pair trades. A typical forex signal may include the currency pair, trade direction (buy or sell), suggested entry price, stop-loss level, and take-profit target. Traders use forex signals as one input in their decision-making process, but they should always apply their own analysis and risk management before entering any trade.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are forex signals guaranteed to make money?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No legitimate trading signal can guarantee profits. Forex trading involves significant risk, and even well-analyzed signals can result in losses. Market conditions can change rapidly, and no analysis method is foolproof. Traders should never risk money they cannot afford to lose and should always use proper risk management regardless of any signal they follow.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What currency pairs can forex traders analyze?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Forex traders commonly analyze major currency pairs such as EUR/USD, GBP/USD, USD/JPY, AUD/USD, USD/CAD, USD/CHF, and NZD/USD. Some traders also follow cross pairs and exotic currencies. The specific pairs covered by any community or analyst can vary depending on market conditions and the trader's focus.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are forex signals suitable for beginners?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Beginners should focus on understanding forex market fundamentals, risk management, and trading basics before relying heavily on signals. Forex signals can be educational for beginners who want to see how experienced traders approach the market, but they should not replace learning how to trade independently. Understanding concepts like stop-loss, position sizing, and market structure is essential before using any trading signal.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where can I get ForexWizard updates?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can join the ForexWizard community on Telegram to follow forex market updates, trading insights, and analysis discussions. The community is free to join and provides market commentary, potential trading setups, and educational content for forex and gold traders.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is forex trading risky?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, forex trading involves substantial risk of loss and is not suitable for all investors. The forex market is highly leveraged, which means both gains and losses can be amplified. Traders can lose more than their initial investment in some cases. It is important to only trade with capital you can afford to lose, use stop-loss orders, and understand the risks fully before participating in the forex market.",
-      },
-    },
-  ],
-};
 
 /* ------------------------------------------------------------------ */
 /*  CTA BUTTON                                                        */
@@ -252,7 +197,28 @@ const faqs = [
     q: "Is forex trading risky?",
     a: "Yes, forex trading involves substantial risk and is not suitable for all investors. The forex market operates with high leverage, which amplifies both potential gains and potential losses. Currency prices can move rapidly in response to economic data, central bank decisions, and geopolitical events. Traders can lose their entire investment and, in some cases with high leverage, more than their initial deposit. It is critical to understand these risks fully, use stop-loss orders, manage position sizes carefully, and only trade with capital you can afford to lose entirely.",
   },
+  {
+    q: "How do forex trading signals work?",
+    a: "Forex trading signals work by providing traders with a structured trade idea based on the analyst's review of the market. The analyst identifies a currency pair, determines a directional bias using technical or fundamental analysis, defines an entry zone, sets a stop-loss level to limit risk, and identifies one or more take-profit targets. The signal is then shared with the community. Traders who receive the signal should evaluate it against their own analysis, consider whether it fits their trading plan, and apply appropriate position sizing before deciding whether to act on it. A signal is a starting point for analysis, not a final trading instruction.",
+  },
+  {
+    q: "How should beginners evaluate a forex signal?",
+    a: "Beginners should start by understanding the reasoning behind a signal rather than blindly following it. Check whether the signal includes a clear stop-loss and take-profit, and whether the stated risk/reward ratio is favorable. Consider whether the signal aligns with the broader market trend and key support or resistance levels. Most importantly, beginners should never risk more than they can afford to lose on a single trade, regardless of how confident the signal appears. Building your own understanding of market structure and price action over time will help you evaluate signals more effectively.",
+  },
 ];
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
 
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                              */
@@ -332,10 +298,7 @@ export default function ForexSignalsPage() {
             </FadeIn>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              <span className="text-foreground">Forex Trading Signals</span>
-              <br />
-              <span className="text-foreground">&amp; </span>
-              <span className="text-trading-gold text-glow-gold">Market Analysis</span>
+              <span className="text-trading-green text-glow-green">Forex Signals</span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -478,8 +441,8 @@ export default function ForexSignalsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Forex </span>
-                <span className="text-trading-gold text-glow-gold">Market Analysis</span>
+                <span className="text-foreground">How Forex </span>
+                <span className="text-trading-gold text-glow-gold">Market Analysis Supports Signals</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 The types of analysis that ForexWizard may cover when sharing
@@ -507,19 +470,19 @@ export default function ForexSignalsPage() {
 
             <div className="mt-10 text-center">
               <p className="text-sm text-muted-foreground mb-4">
-                For more detailed analysis, visit our{" "}
+                For XAUUSD-specific analysis, visit our{" "}
                 <Link
-                  href="/forex-analysis/"
+                  href="/xauusd-analysis/"
                   className="text-trading-green hover:text-trading-green/80 transition-colors no-underline font-medium"
                 >
-                  Forex analysis
+                  XAUUSD analysis
                 </Link>{" "}
                 page or explore{" "}
                 <Link
                   href="/gold-signals/"
                   className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
                 >
-                  Gold analysis
+                  Gold trading signals
                 </Link>{" "}
                 coverage.
               </p>
@@ -535,8 +498,8 @@ export default function ForexSignalsPage() {
                 <AlertTriangle className="w-8 h-8 text-trading-red" />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Risk </span>
-                <span className="text-trading-red">Management</span>
+                <span className="text-foreground">Risk Management When Using </span>
+                <span className="text-trading-red">Forex Signals</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Understanding and managing risk is essential for anyone
