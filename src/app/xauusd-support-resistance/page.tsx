@@ -35,14 +35,14 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 export const metadata: Metadata = {
   title: "XAUUSD Support and Resistance | How to Identify Key Levels",
   description:
-    "Learn how to identify XAUUSD support and resistance using swing points, price reactions, psychological levels, multiple timeframes and price action.",
+    "Learn how to identify XAUUSD support and resistance, key price levels, zones, breakouts, role reversals and price action around important levels.",
   alternates: {
     canonical: "https://forexwizard.online/xauusd-support-resistance/",
   },
   openGraph: {
     title: "XAUUSD Support and Resistance | How to Identify Key Levels",
     description:
-      "Learn how traders analyze support and resistance on XAUUSD using market structure, price reactions, key levels and multiple timeframes.",
+      "Learn how to identify XAUUSD support and resistance zones, key price levels, breakouts, role reversals and price action around important levels.",
     type: "article",
     url: "https://forexwizard.online/xauusd-support-resistance/",
     siteName: "ForexWizzz",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "XAUUSD Support and Resistance | How to Identify Key Levels",
     description:
-      "Learn how traders analyze support and resistance on XAUUSD using market structure, price reactions, key levels and multiple timeframes.",
+      "Learn how to identify XAUUSD support and resistance zones, key price levels, breakouts, role reversals and price action around important levels.",
     images: ["/og-image.jpg"],
   },
 };
@@ -353,12 +353,52 @@ const riskPoints = [
   },
 ];
 
+const faqs = [
+  {
+    q: "What is support and resistance in XAUUSD?",
+    a: "Support refers to a price area where buying interest has historically been strong enough to slow or halt a decline, while resistance refers to an area where selling pressure has slowed or reversed an upward move. On XAUUSD, these areas are typically identified at previous swing lows (support) and swing highs (resistance), as well as at psychological round numbers and consolidation zones. They represent zones where market participants have shown a willingness to act, rather than guaranteed turning points.",
+  },
+  {
+    q: "How do I find support and resistance on XAUUSD?",
+    a: "Start on a higher timeframe such as the daily or weekly chart and identify the most significant swing highs and swing lows. Look for areas where price has reacted multiple times, as repeated touches increase the significance of a level. Mark zones rather than exact single prices, and then drop to lower timeframes to study how price behaves around those zones in more detail. Checking whether a level is still relevant to the current market structure is also important.",
+  },
+  {
+    q: "What is the difference between a support level and a support zone?",
+    a: "A support level is a single specific price, while a support zone covers a small range of prices. In practice, price rarely reverses at an exact pip. A zone-based approach accounts for wicks, closes, and consolidation ranges, giving price room to react within a broader area. For example, if price bounced off a general area spanning five to ten dollars on three separate occasions, the entire range forms the support zone rather than a single line.",
+  },
+  {
+    q: "Can XAUUSD support become resistance?",
+    a: "Yes. When price breaks below a significant support zone and moves away, that former support area can sometimes become new resistance if price returns to it. The same principle applies in reverse: former resistance can become support after a confirmed bullish breakout. This is called role reversal. Not every breakout produces a role reversal, but when one does occur, it often provides a meaningful reference point because the area has significance to both the buyers and sellers who were previously active there.",
+  },
+  {
+    q: "How should beginners use support and resistance?",
+    a: "Beginners should focus on identifying the most obvious levels on higher timeframes, such as the daily chart, rather than trying to mark every minor level. It is more effective to identify a few significant zones where price has reacted multiple times than to draw many lines at every peak and valley. Combining support and resistance with an understanding of the broader trend, and waiting to see how price actually behaves when it reaches a zone, provides a more reliable approach than reacting to levels in isolation.",
+  },
+];
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                              */
 /* ------------------------------------------------------------------ */
 export default function XauusdSupportResistancePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link
@@ -612,7 +652,7 @@ export default function XauusdSupportResistancePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-trading-gold text-glow-gold">Swing Highs and Swing Lows</span>
+                <span className="text-trading-gold text-glow-gold">How Swing Highs and Lows Reveal Key Levels</span>
               </h2>
             </div>
 
@@ -680,8 +720,7 @@ export default function XauusdSupportResistancePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Support and Resistance </span>
-                <span className="text-trading-gold text-glow-gold">Zones</span>
+                <span className="text-trading-gold text-glow-gold">Understanding Support and Resistance Zones</span>
               </h2>
             </div>
 
@@ -884,8 +923,7 @@ export default function XauusdSupportResistancePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Multiple Timeframe </span>
-                <span className="text-trading-gold text-glow-gold">Analysis</span>
+                <span className="text-trading-gold text-glow-gold">Using Multiple Timeframes to Confirm Key Levels</span>
               </h2>
             </div>
 
@@ -1041,8 +1079,8 @@ export default function XauusdSupportResistancePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Price Action Around </span>
-                <span className="text-trading-gold text-glow-gold">Key Levels</span>
+                <span className="text-foreground">How to Read XAUUSD </span>
+                <span className="text-trading-gold text-glow-gold">Price Action Around Key Levels</span>
               </h2>
             </div>
 
@@ -1094,8 +1132,8 @@ export default function XauusdSupportResistancePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Economic Events and </span>
-                <span className="text-trading-gold text-glow-gold">Gold Levels</span>
+                <span className="text-foreground">How Economic Events Affect </span>
+                <span className="text-trading-gold text-glow-gold">Gold's Key Levels</span>
               </h2>
             </div>
 
@@ -1300,6 +1338,38 @@ export default function XauusdSupportResistancePage() {
                 educational and informational purposes only and should not be
                 considered personalized financial advice.
               </p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* FAQ */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">Frequently Asked </span>
+                <span className="text-trading-gold text-glow-gold">Questions</span>
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <FadeIn key={i} delay={i * 0.05}>
+                  <details className="glass-strong rounded-2xl gradient-border group">
+                    <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none">
+                      <h3 className="text-base font-bold text-foreground pr-4">
+                        {faq.q}
+                      </h3>
+                      <ArrowDownRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="px-6 pb-6 -mt-2">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </details>
+                </FadeIn>
+              ))}
             </div>
           </div>
         </FadeSection>
