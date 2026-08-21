@@ -30,16 +30,16 @@ import {
 import { CandlestickBackground } from "@/components/candlestick-background";
 
 export const metadata: Metadata = {
-  title: "Gold Trading Signals | XAUUSD Signals & Market Analysis",
+  title: "Gold Signals | XAUUSD Trading Signals & Gold Market Analysis",
   description:
-    "Explore ForexWizard gold trading signals, XAUUSD market analysis and educational insights for gold traders. Join our Telegram community for market updates.",
+    "Explore gold trading signals and XAUUSD market analysis with trade ideas, key levels, market context and responsible risk management.",
   alternates: {
     canonical: "https://forexwizard.online/gold-signals/",
   },
   openGraph: {
-    title: "Gold Trading Signals | XAUUSD Signals & Market Analysis",
+    title: "Gold Signals | XAUUSD Trading Signals & Gold Market Analysis",
     description:
-      "Gold and XAUUSD market analysis, trading insights and educational information from the ForexWizard community.",
+      "Explore gold trading signals and XAUUSD market analysis with trade ideas, key levels, market context and responsible risk management.",
     type: "website",
     url: "https://forexwizard.online/gold-signals/",
     siteName: "ForexWizzz",
@@ -54,68 +54,57 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gold Trading Signals | XAUUSD Signals & Market Analysis",
+    title: "Gold Signals | XAUUSD Trading Signals & Gold Market Analysis",
     description:
-      "Gold and XAUUSD market analysis, trading insights and educational information from the ForexWizard community.",
+      "Explore gold trading signals and XAUUSD market analysis with trade ideas, key levels, market context and responsible risk management.",
     images: ["/og-image.jpg"],
   },
 };
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
 
+const faqs = [
+  {
+    q: "What are gold trading signals?",
+    a: "Gold trading signals are trade ideas or suggestions focused on the gold market, typically referencing the XAUUSD currency pair which represents gold priced in US dollars. A gold signal generally includes the direction of the trade (buy or sell), a suggested entry area, a stop-loss level to limit potential losses, and one or more take-profit targets. Some signals also include the technical reasoning behind the idea, such as key support or resistance levels, chart patterns, or macroeconomic context. Gold signals are analytical inputs, not instructions. Every trader should evaluate whether a signal aligns with their own trading plan, risk tolerance, and market understanding before committing capital to a position.",
+  },
+  {
+    q: "What does XAUUSD mean?",
+    a: "XAUUSD is the standard trading symbol for gold priced in US dollars on financial platforms. The code XAU is the ISO 4217 designation for one troy ounce of gold, and USD represents the US dollar. When you see XAUUSD on a chart or trading platform, it shows the current exchange rate telling you how many US dollars are required to buy one troy ounce of gold. XAUUSD is one of the most widely traded commodity pairs globally, attracting interest from retail traders, institutional investors, and central banks alike. Understanding this symbol is fundamental for anyone looking to analyze or trade gold in the financial markets.",
+  },
+  {
+    q: "Are XAUUSD signals guaranteed to make money?",
+    a: "No legitimate trading signal can guarantee profits, and this applies fully to XAUUSD signals. Gold trading involves significant risk, and even thoroughly researched signals can result in losses. Gold prices are influenced by countless unpredictable factors including economic data releases, central bank policy shifts, geopolitical developments, and sudden changes in market sentiment. Anyone who claims that their gold signals guarantee returns is being misleading. Traders should approach all signals with healthy skepticism, apply their own analysis, use proper risk management including stop-loss orders and appropriate position sizing, and never risk capital they cannot afford to lose.",
+  },
+  {
+    q: "Is gold trading risky?",
+    a: "Yes, gold trading involves substantial risk and is not suitable for all investors. Although gold is traditionally viewed as a store of value and a hedge against uncertainty, its price can experience sharp and sustained movements in either direction. The use of leverage in gold trading amplifies both potential gains and potential losses, meaning traders can lose more than their initial investment in some cases. Gold prices can be particularly volatile around major economic announcements, Federal Reserve decisions, and geopolitical events. It is essential to understand these risks fully, use stop-loss orders on every trade, manage position sizes carefully, and only trade with capital you can afford to lose entirely.",
+  },
+  {
+    q: "What affects the price of gold?",
+    a: "Gold prices are influenced by a complex interplay of factors. The strength of the US dollar is one of the most significant, as gold is priced in dollars and typically moves inversely to dollar strength. Interest rate expectations, particularly those set by the US Federal Reserve, also play a major role since higher rates increase the opportunity cost of holding non-yielding assets like gold. Inflation data, employment reports such as Non-Farm Payrolls, GDP figures, and consumer confidence indices can all drive significant gold price movements. Geopolitical tensions, trade disputes, and global uncertainty tend to support higher gold prices as investors seek safe-haven assets. Additionally, supply and demand dynamics from central bank gold reserves, jewelry demand, and industrial use provide underlying structural support for gold prices over time.",
+  },
+  {
+    q: "What is the difference between gold signals and XAUUSD analysis?",
+    a: "Gold signals and XAUUSD analysis serve different purposes for traders. A gold signal is a specific trade idea that typically includes a direction, entry area, stop-loss, and take-profit levels for a potential trade. XAUUSD analysis, on the other hand, is a broader study of the gold market that examines trends, key levels, market structure, and macroeconomic factors without necessarily issuing a specific trade recommendation. Analysis provides the context and reasoning that informs signals. Traders benefit from both: analysis helps build understanding of the gold market, while signals offer concrete trade ideas to consider within that analytical framework.",
+  },
+  {
+    q: "Where can I get ForexWizard gold updates?",
+    a: "You can join the ForexWizard Telegram community to follow gold and XAUUSD market updates, trading insights, and analysis discussions. The community is free to join and provides regular market commentary, potential gold trading setups, and educational content designed for gold traders at all experience levels. You can find the community by searching for ForexWizzz on Telegram or by visiting the ForexWizard website and clicking the Telegram link.",
+  },
+];
+
 const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What are gold trading signals?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Gold trading signals are trade ideas or suggestions focused on the gold market, typically referencing the XAUUSD pair (gold priced in US dollars). A gold signal may include an entry area, stop-loss level, take-profit targets, and the reasoning behind the setup. Traders use these signals as one input in their decision-making process, but they should always apply their own analysis and risk management before entering any trade.",
-      },
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
     },
-    {
-      "@type": "Question",
-      name: "What does XAUUSD mean?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "XAUUSD is the trading symbol for gold priced in US dollars. XAU is the ISO currency code for one troy ounce of gold, and USD is the US dollar. When you see XAUUSD on a trading platform, it represents the current exchange rate between gold and the US dollar. It is one of the most actively traded commodity pairs in the financial markets.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Are XAUUSD signals guaranteed to make money?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No legitimate trading signal can guarantee profits. Gold trading involves significant risk, and even thoroughly analyzed signals can result in losses. Gold prices can be volatile and are influenced by many unpredictable factors including economic data, central bank policies, and geopolitical events. Traders should never risk money they cannot afford to lose and should always use proper risk management regardless of any signal they follow.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is gold trading risky?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, gold trading involves substantial risk and is not suitable for all investors. While gold is often considered a safe-haven asset, its price can experience sharp and unpredictable movements. Leverage amplifies both potential gains and losses. Traders can lose more than their initial investment in some cases. It is important to only trade with capital you can afford to lose, use stop-loss orders, and understand the risks fully before participating.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What affects the price of gold?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Gold prices are influenced by multiple factors including US dollar strength, interest rate expectations set by central banks (particularly the Federal Reserve), inflation data, employment reports, geopolitical tensions, market risk sentiment, and supply and demand dynamics. When the US dollar weakens, gold prices tend to rise. When interest rates increase, gold may face downward pressure. Economic uncertainty and inflation concerns typically support higher gold prices.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Where can I get ForexWizard gold updates?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can join the ForexWizard community on Telegram to follow gold and XAUUSD market updates, trading insights, and analysis discussions. The community is free to join and provides market commentary, potential trading setups, and educational content for gold traders. Search for ForexWizzz on Telegram or visit the ForexWizard website.",
-      },
-    },
-  ],
+  })),
 };
 
 /* ------------------------------------------------------------------ */
@@ -359,33 +348,6 @@ const whyFollow = [
   },
 ];
 
-const faqs = [
-  {
-    q: "What are gold trading signals?",
-    a: "Gold trading signals are trade ideas or suggestions focused on the gold market, typically referencing the XAUUSD currency pair which represents gold priced in US dollars. A gold signal generally includes the direction of the trade (buy or sell), a suggested entry area, a stop-loss level to limit potential losses, and one or more take-profit targets. Some signals also include the technical reasoning behind the idea, such as key support or resistance levels, chart patterns, or macroeconomic context. Gold signals are analytical inputs, not instructions. Every trader should evaluate whether a signal aligns with their own trading plan, risk tolerance, and market understanding before committing capital to a position.",
-  },
-  {
-    q: "What does XAUUSD mean?",
-    a: "XAUUSD is the standard trading symbol for gold priced in US dollars on financial platforms. The code XAU is the ISO 4217 designation for one troy ounce of gold, and USD represents the US dollar. When you see XAUUSD on a chart or trading platform, it shows the current exchange rate telling you how many US dollars are required to buy one troy ounce of gold. XAUUSD is one of the most widely traded commodity pairs globally, attracting interest from retail traders, institutional investors, and central banks alike. Understanding this symbol is fundamental for anyone looking to analyze or trade gold in the financial markets.",
-  },
-  {
-    q: "Are XAUUSD signals guaranteed to make money?",
-    a: "No legitimate trading signal can guarantee profits, and this applies fully to XAUUSD signals. Gold trading involves significant risk, and even thoroughly researched signals can result in losses. Gold prices are influenced by countless unpredictable factors including economic data releases, central bank policy shifts, geopolitical developments, and sudden changes in market sentiment. Anyone who claims that their gold signals guarantee returns is being misleading. Traders should approach all signals with healthy skepticism, apply their own analysis, use proper risk management including stop-loss orders and appropriate position sizing, and never risk capital they cannot afford to lose.",
-  },
-  {
-    q: "Is gold trading risky?",
-    a: "Yes, gold trading involves substantial risk and is not suitable for all investors. Although gold is traditionally viewed as a store of value and a hedge against uncertainty, its price can experience sharp and sustained movements in either direction. The use of leverage in gold trading amplifies both potential gains and potential losses, meaning traders can lose more than their initial investment in some cases. Gold prices can be particularly volatile around major economic announcements, Federal Reserve decisions, and geopolitical events. It is essential to understand these risks fully, use stop-loss orders on every trade, manage position sizes carefully, and only trade with capital you can afford to lose entirely.",
-  },
-  {
-    q: "What affects the price of gold?",
-    a: "Gold prices are influenced by a complex interplay of factors. The strength of the US dollar is one of the most significant, as gold is priced in dollars and typically moves inversely to dollar strength. Interest rate expectations, particularly those set by the US Federal Reserve, also play a major role since higher rates increase the opportunity cost of holding non-yielding assets like gold. Inflation data, employment reports such as Non-Farm Payrolls, GDP figures, and consumer confidence indices can all drive significant gold price movements. Geopolitical tensions, trade disputes, and global uncertainty tend to support higher gold prices as investors seek safe-haven assets. Additionally, supply and demand dynamics from central bank gold reserves, jewelry demand, and industrial use provide underlying structural support for gold prices over time.",
-  },
-  {
-    q: "Where can I get ForexWizard gold updates?",
-    a: "You can join the ForexWizard Telegram community to follow gold and XAUUSD market updates, trading insights, and analysis discussions. The community is free to join and provides regular market commentary, potential gold trading setups, and educational content designed for gold traders at all experience levels. You can find the community by searching for ForexWizzz on Telegram or by visiting the ForexWizard website and clicking the Telegram link.",
-  },
-];
-
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                              */
 /* ------------------------------------------------------------------ */
@@ -533,9 +495,8 @@ export default function GoldSignalsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">What a Gold Signal</span>
-                <br />
-                <span className="text-trading-gold text-glow-gold">Can Include</span>
+                <span className="text-foreground">What Can a Gold Signal </span>
+                <span className="text-trading-gold text-glow-gold">Include?</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 The components below are commonly found in a well-structured
@@ -568,8 +529,8 @@ export default function GoldSignalsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">XAUUSD </span>
-                <span className="text-trading-gold text-glow-gold">Market Analysis</span>
+                <span className="text-foreground">How XAUUSD Market Analysis </span>
+                <span className="text-trading-gold text-glow-gold">Supports Gold Signals</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 The types of analysis that traders commonly apply when studying
@@ -596,22 +557,39 @@ export default function GoldSignalsPage() {
             </div>
 
             <div className="mt-10 text-center">
-              <p className="text-sm text-muted-foreground mb-4">
-                For more detailed XAUUSD analysis, visit our{" "}
+              <p className="text-sm text-muted-foreground mb-2">
+                For in-depth XAUUSD analysis, visit our{" "}
                 <Link
                   href="/xauusd-analysis/"
                   className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
                 >
                   XAUUSD analysis
                 </Link>{" "}
-                page or explore{" "}
+                hub. To build your technical foundation, learn{" "}
+                <Link
+                  href="/how-to-read-xauusd-price-action/"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
+                >
+                  how to read XAUUSD price action
+                </Link>{" "}
+                and explore{" "}
+                <Link
+                  href="/xauusd-support-resistance/"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
+                >
+                  XAUUSD support and resistance
+                </Link>{" "}
+                levels in detail.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                For broader currency pair coverage, see our{" "}
                 <Link
                   href="/forex-signals/"
                   className="text-trading-green hover:text-trading-green/80 transition-colors no-underline font-medium"
                 >
-                  Forex trading signals
+                  Forex signals
                 </Link>{" "}
-                coverage.
+                page.
               </p>
             </div>
           </div>
@@ -707,8 +685,8 @@ export default function GoldSignalsPage() {
                 <AlertTriangle className="w-8 h-8 text-trading-red" />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Gold Risk </span>
-                <span className="text-trading-red">Management</span>
+                <span className="text-foreground">Risk Management When Using </span>
+                <span className="text-trading-red">Gold Signals</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Gold can be volatile, and managing risk is essential for anyone
@@ -808,6 +786,84 @@ export default function GoldSignalsPage() {
               <p className="mt-6 text-xs text-muted-foreground/60">
                 Free to join &middot; Trading involves risk
               </p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* CONTINUE LEARNING */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">Continue </span>
+                <span className="text-trading-gold text-glow-gold">Learning</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Explore more of ForexWizard to deepen your gold trading
+                knowledge and market understanding.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <FadeIn delay={0}>
+                <Link
+                  href="/xauusd-analysis/"
+                  className="block h-full no-underline"
+                >
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center">
+                      <LineChart className="w-7 h-7 text-trading-gold" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">
+                      XAUUSD Analysis
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      The main hub for XAUUSD and gold market analysis, covering
+                      price action, key levels, and market structure.
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
+
+              <FadeIn delay={0.07}>
+                <Link
+                  href="/forex-signals/"
+                  className="block h-full no-underline"
+                >
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                      <BarChart3 className="w-7 h-7 text-trading-green" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">
+                      Forex Signals
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Broader forex trading signals covering major and minor
+                      currency pairs beyond gold and XAUUSD.
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
+
+              <FadeIn delay={0.14}>
+                <Link
+                  href="/about/"
+                  className="block h-full no-underline"
+                >
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-trading-green/10 flex items-center justify-center">
+                      <BookOpen className="w-7 h-7 text-trading-gold" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">
+                      About ForexWizard
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Learn about the ForexWizard community, our approach to
+                      market education, and what to expect.
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
             </div>
           </div>
         </FadeSection>
