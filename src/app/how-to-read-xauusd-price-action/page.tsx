@@ -750,6 +750,16 @@ export default function HowToReadXauusdPriceActionPage() {
                 precise lines generally leads to better trading decisions and
                 fewer unnecessary stop-outs.
               </p>
+
+              <div className="mt-8 text-center">
+                <Link
+                  href="/xauusd-support-resistance/"
+                  className="inline-flex items-center gap-2 text-trading-gold hover:text-trading-gold/80 font-semibold text-sm transition-colors no-underline"
+                >
+                  Learn how to identify XAUUSD support and resistance
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </FadeSection>

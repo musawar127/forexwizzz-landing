@@ -696,6 +696,18 @@ export default function XauusdAnalysisPage() {
               change as the market moves and should always be identified on
               current charts.
             </p>
+
+            <div className="mt-6 text-center">
+              <FadeIn>
+                <Link
+                  href="/xauusd-support-resistance/"
+                  className="inline-flex items-center gap-2 text-trading-gold hover:text-trading-gold/80 font-semibold text-sm transition-colors no-underline"
+                >
+                  Learn about XAUUSD support and resistance in depth
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </FadeIn>
+            </div>
           </div>
         </FadeSection>
 
