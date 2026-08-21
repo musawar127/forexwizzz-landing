@@ -34,14 +34,14 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 export const metadata: Metadata = {
   title: "How to Read XAUUSD Price Action | Gold Trading Guide",
   description:
-    "Learn how to read XAUUSD price action using market structure, support and resistance, trends, candlesticks and risk management.",
+    "Learn how to read XAUUSD price action using market structure, candlesticks, support and resistance, trends, momentum and multiple timeframe analysis.",
   alternates: {
     canonical: "https://forexwizard.online/how-to-read-xauusd-price-action/",
   },
   openGraph: {
     title: "How to Read XAUUSD Price Action | Gold Trading Guide",
     description:
-      "A practical educational guide to reading gold/XAUUSD price action, market structure, support and resistance and candlestick behavior.",
+      "A practical educational guide to reading gold/XAUUSD price action using market structure, candlestick analysis, support and resistance, and multiple timeframe analysis.",
     type: "article",
     url: "https://forexwizard.online/how-to-read-xauusd-price-action/",
     siteName: "ForexWizzz",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How to Read XAUUSD Price Action | Gold Trading Guide",
     description:
-      "A practical educational guide to reading gold/XAUUSD price action, market structure, support and resistance and candlestick behavior.",
+      "A practical educational guide to reading gold/XAUUSD price action using market structure, candlestick analysis, support and resistance, and multiple timeframe analysis.",
     images: ["/og-image.jpg"],
   },
 };
@@ -370,12 +370,52 @@ const riskPoints = [
   },
 ];
 
+const faqs = [
+  {
+    q: "What is XAUUSD price action?",
+    a: "XAUUSD price action refers to the study of raw price movement on a gold chart (XAU/USD) without relying on mathematical indicators. It involves analyzing candlestick formations, swing highs and lows, support and resistance levels, and trend structure to understand how buyers and sellers are interacting. Price action traders use the open, high, low, and close of each candle along with the sequence of swings to form a reading of market sentiment and potential direction.",
+  },
+  {
+    q: "How do I read XAUUSD price action?",
+    a: "Reading XAUUSD price action typically starts with identifying the broader market condition on a higher timeframe such as the daily chart: is gold trending up, down, or moving sideways? From there, you identify the market structure using swing highs and lows, mark key support and resistance zones, and then examine candlestick behavior and momentum on lower timeframes around those levels. The goal is to combine multiple observations rather than relying on any single signal.",
+  },
+  {
+    q: "What market structure should I look for on XAUUSD?",
+    a: "On XAUUSD, look for sequences of higher highs and higher lows to identify an uptrend, or lower highs and lower lows to identify a downtrend. When neither pattern is clear, the market is likely ranging. Gold can be less clean in its structure than some other instruments due to its volatility and sensitivity to economic events, so structure breaks should be treated with caution and confirmed with additional evidence rather than traded in isolation.",
+  },
+  {
+    q: "How do support and resistance help with XAUUSD?",
+    a: "Support and resistance levels mark price areas where buying or selling interest has historically been strong enough to halt or reverse a move. On gold, these levels are often found at previous swing highs and lows, round numbers, and zones where price has reacted multiple times. Support and resistance provide context for interpreting candlestick patterns and potential entry or exit points, but they should be treated as zones rather than exact lines.",
+  },
+  {
+    q: "Which timeframe should beginners use for XAUUSD analysis?",
+    a: "Beginners generally benefit from starting with higher timeframes such as the daily or 4-hour chart. These timeframes filter out noise and make it easier to identify the dominant trend and major levels. Once the broader picture is clear on a higher timeframe, lower timeframes like the 1-hour or 15-minute chart can be used to study price action detail around the areas of interest identified on the higher timeframe.",
+  },
+];
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                              */
 /* ------------------------------------------------------------------ */
 export default function HowToReadXauusdPriceActionPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link
@@ -606,7 +646,7 @@ export default function HowToReadXauusdPriceActionPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-trading-gold text-glow-gold">XAUUSD Market Structure</span>
+                <span className="text-trading-gold text-glow-gold">How Market Structure Helps Read XAUUSD</span>
               </h2>
             </div>
 
@@ -668,7 +708,7 @@ export default function HowToReadXauusdPriceActionPage() {
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">Support and </span>
-                <span className="text-trading-gold text-glow-gold">Resistance on XAUUSD</span>
+                <span className="text-trading-gold text-glow-gold">Resistance in XAUUSD Analysis</span>
               </h2>
             </div>
 
@@ -769,7 +809,7 @@ export default function HowToReadXauusdPriceActionPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-trading-gold text-glow-gold">Candlestick Price Action</span>
+                <span className="text-trading-gold text-glow-gold">How to Read Candlestick Price Action</span>
               </h2>
             </div>
 
@@ -863,8 +903,7 @@ export default function HowToReadXauusdPriceActionPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Multiple </span>
-                <span className="text-trading-gold text-glow-gold">Timeframe Analysis</span>
+                <span className="text-trading-gold text-glow-gold">How to Analyze XAUUSD Across Multiple Timeframes</span>
               </h2>
             </div>
 
@@ -1191,6 +1230,38 @@ export default function HowToReadXauusdPriceActionPage() {
           </div>
         </FadeSection>
 
+        {/* FAQ */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">Frequently Asked </span>
+                <span className="text-trading-gold text-glow-gold">Questions</span>
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <FadeIn key={i} delay={i * 0.05}>
+                  <details className="glass-strong rounded-2xl gradient-border group">
+                    <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none">
+                      <h3 className="text-base font-bold text-foreground pr-4">
+                        {faq.q}
+                      </h3>
+                      <ArrowDownRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="px-6 pb-6 -mt-2">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </details>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </FadeSection>
+
         {/* INTERNAL LINKS / RELATED CONTENT */}
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">
@@ -1203,7 +1274,7 @@ export default function HowToReadXauusdPriceActionPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <FadeIn>
                 <Link
                   href="/xauusd-analysis/"
@@ -1219,6 +1290,23 @@ export default function HowToReadXauusdPriceActionPage() {
                     Explore comprehensive XAUUSD analysis covering market
                     structure, technical levels, and the economic factors
                     that influence gold prices.
+                  </p>
+                </Link>
+              </FadeIn>
+              <FadeIn delay={0.05}>
+                <Link
+                  href="/xauusd-support-resistance/"
+                  className="glass rounded-2xl p-6 block h-full hover:border-trading-gold/30 border border-transparent transition-all duration-300 no-underline group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <Crosshair className="w-6 h-6 text-trading-gold" />
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-trading-gold transition-colors">
+                      XAUUSD Support and Resistance
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Learn how to identify, confirm, and trade XAUUSD support
+                    and resistance levels with detailed educational examples.
                   </p>
                 </Link>
               </FadeIn>
@@ -1239,7 +1327,7 @@ export default function HowToReadXauusdPriceActionPage() {
                   </p>
                 </Link>
               </FadeIn>
-              <FadeIn delay={0.2}>
+              <FadeIn delay={0.15}>
                 <Link
                   href="/forex-signals/"
                   className="glass rounded-2xl p-6 block h-full hover:border-trading-green/30 border border-transparent transition-all duration-300 no-underline group"
@@ -1256,7 +1344,7 @@ export default function HowToReadXauusdPriceActionPage() {
                   </p>
                 </Link>
               </FadeIn>
-              <FadeIn delay={0.3}>
+              <FadeIn delay={0.2}>
                 <Link
                   href="/about/"
                   className="glass rounded-2xl p-6 block h-full hover:border-trading-green/30 border border-transparent transition-all duration-300 no-underline group"
