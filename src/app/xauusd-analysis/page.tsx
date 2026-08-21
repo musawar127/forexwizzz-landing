@@ -32,14 +32,14 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 export const metadata: Metadata = {
   title: "XAUUSD Analysis | Gold Price & Market Analysis",
   description:
-    "Get XAUUSD and gold market analysis covering price action, technical levels, support and resistance, market structure and key economic factors.",
+    "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
   alternates: {
     canonical: "https://forexwizard.online/xauusd-analysis/",
   },
   openGraph: {
     title: "XAUUSD Analysis | Gold Price & Market Analysis",
     description:
-      "ForexWizard XAUUSD and gold market analysis covering technical levels, price action, market structure and important market factors.",
+      "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
     type: "website",
     url: "https://forexwizard.online/xauusd-analysis/",
     siteName: "ForexWizzz",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "XAUUSD Analysis | Gold Price & Market Analysis",
     description:
-      "ForexWizard XAUUSD and gold market analysis covering technical levels, price action, market structure and important market factors.",
+      "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
     images: ["/og-image.jpg"],
   },
 };
@@ -264,14 +264,35 @@ const faqs = [
     q: "Where can I get ForexWizard gold updates?",
     a: "You can join the ForexWizard Telegram community to follow XAUUSD market updates, gold analysis, and trading discussions. The community is free to join and shares market commentary, educational content, and potential trading ideas for gold and forex traders. Search for ForexWizzz on Telegram or visit the ForexWizard website to access the community link.",
   },
+  {
+    q: "Is XAUUSD analysis guaranteed to predict price movements?",
+    a: "No form of market analysis, including XAUUSD analysis, can guarantee future price movements. Markets are influenced by countless variables, many of which are unpredictable. Technical analysis, fundamental analysis, and price action all provide frameworks for thinking about probability, not certainty. Traders who treat analysis as a tool for managing risk and identifying potential opportunities, rather than as a crystal ball, tend to make more disciplined decisions. Any source that claims guaranteed predictions should be treated with extreme caution.",
+  },
 ];
 
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                              */
 /* ------------------------------------------------------------------ */
 export default function XauusdAnalysisPage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a,
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link
@@ -333,9 +354,7 @@ export default function XauusdAnalysisPage() {
             </FadeIn>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              <span className="text-foreground">XAUUSD Analysis </span>
-              <span className="text-foreground">&amp; </span>
-              <span className="text-trading-gold text-glow-gold">Gold Market Analysis</span>
+              <span className="text-trading-gold text-glow-gold">XAUUSD Analysis</span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -405,8 +424,8 @@ export default function XauusdAnalysisPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">XAUUSD </span>
-                <span className="text-trading-gold text-glow-gold">Market Analysis</span>
+                <span className="text-foreground">How </span>
+                <span className="text-trading-gold text-glow-gold">XAUUSD Market Analysis Works</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 The core components of a structured approach to analyzing
@@ -442,7 +461,7 @@ export default function XauusdAnalysisPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Factors That Influence </span>
+                <span className="text-foreground">Key Factors That Influence </span>
                 <span className="text-trading-gold text-glow-gold">Gold Prices</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
@@ -482,8 +501,8 @@ export default function XauusdAnalysisPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Thinking in </span>
-                <span className="text-trading-gold text-glow-gold">Scenarios</span>
+                <span className="text-foreground">Understanding </span>
+                <span className="text-trading-gold text-glow-gold">Bullish and Bearish Scenarios</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Rather than predicting a single outcome, professional traders
@@ -585,8 +604,8 @@ export default function XauusdAnalysisPage() {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">XAUUSD Support </span>
-                <span className="text-trading-gold text-glow-gold">&amp; Resistance</span>
+                <span className="text-foreground">How Support and Resistance Help </span>
+                <span className="text-trading-gold text-glow-gold">XAUUSD Analysis</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Understanding how key price levels work in the gold market
@@ -716,7 +735,7 @@ export default function XauusdAnalysisPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">How to Read </span>
+                <span className="text-foreground">How to Interpret </span>
                 <span className="text-trading-gold text-glow-gold">XAUUSD Analysis</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
@@ -842,7 +861,14 @@ export default function XauusdAnalysisPage() {
                 suitable for all investors. Past performance does not guarantee
                 future results. Information provided by ForexWizard is for
                 educational and informational purposes only and should not be
-                considered financial advice.
+                considered financial advice. Learn more about the{" "}
+                <Link
+                  href="/about/"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
+                >
+                  ForexWizard community
+                </Link>{" "}
+                and our approach.
               </p>
             </div>
           </div>
