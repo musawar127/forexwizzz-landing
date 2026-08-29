@@ -807,6 +807,26 @@ export default function GoldSignalsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <FadeIn delay={0}>
                 <Link
+                  href="/how-to-trade-xauusd/"
+                  className="block h-full no-underline"
+                >
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center">
+                      <ShieldCheck className="w-7 h-7 text-trading-gold" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">
+                      How to Trade XAUUSD
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      A beginner-friendly guide to trading gold, covering market
+                      analysis, trade planning, position sizing and risk management.
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
+
+              <FadeIn delay={0.07}>
+                <Link
                   href="/xauusd-analysis/"
                   className="block h-full no-underline"
                 >

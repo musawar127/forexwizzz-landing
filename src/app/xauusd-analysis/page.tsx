@@ -873,7 +873,14 @@ export default function XauusdAnalysisPage() {
                 suitable for all investors. Past performance does not guarantee
                 future results. Information provided by ForexWizard is for
                 educational and informational purposes only and should not be
-                considered financial advice. Learn more about the{" "}
+                considered financial advice. If you are new to gold, our{" "}
+                <Link
+                  href="/how-to-trade-xauusd/"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
+                >
+                  how to trade XAUUSD
+                </Link>{" "}
+                guide is a good starting point. Learn more about the{" "}
                 <Link
                   href="/about/"
                   className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"

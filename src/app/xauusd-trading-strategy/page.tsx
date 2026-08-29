@@ -322,6 +322,13 @@ const whenNotToTrade = [
 
 const continueLearningCards = [
   {
+    href: "/how-to-trade-xauusd/",
+    icon: <ShieldCheck className="w-7 h-7 text-trading-gold" />,
+    title: "How to Trade XAUUSD",
+    desc: "A beginner-friendly guide covering what you need before trading gold, how to analyze XAUUSD, plan trades and manage risk.",
+    gradient: "from-trading-gold/10 to-transparent",
+  },
+  {
     href: "/xauusd-analysis/",
     icon: <LineChart className="w-7 h-7 text-trading-gold" />,
     title: "XAUUSD Analysis",
