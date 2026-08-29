@@ -97,3 +97,47 @@ Stage Summary:
 - Cannibalization avoided: this page covers beginner journey; strategy page covers strategy construction
 - Zero fabricated data, no profit claims, all examples labeled hypothetical
 - Keyword separation maintained across all 9 pages
+
+---
+Task ID: 5
+Agent: Main Agent
+Task: Build /best-time-to-trade-xauusd/ page (SEO Page #10) - XAUUSD trading sessions and timing
+
+Work Log:
+- Created /best-time-to-trade-xauusd/page.tsx (548 lines) with 18 content sections + 8 FAQs + FAQPage schema
+- Built via Python script (scripts/generate-best-time-page.py) due to file size
+- All financial safety rules followed: approximate session times, DST disclaimers, no guaranteed best time
+- Backlinks from 3 pages, sitemap updated to 10 URLs
+- Build, deploy, and full verification completed
+
+Stage Summary:
+- New page targets "best time to trade XAUUSD" keyword - sessions, timing, volatility
+- Cannibalization avoided: distinct from strategy (framework), analysis (market), how-to-trade (beginner process)
+- All 10 pages confirmed HTTP 200 live
+
+---
+Task ID: 6
+Agent: Main Agent
+Task: Build /xauusd-lot-size/ page (SEO Page #11) - XAUUSD lot size and position sizing
+
+Work Log:
+- Read existing pages to confirm import patterns, component usage, and backlink insertion points
+- Created /xauusd-lot-size/page.tsx (776 lines) via Python script (scripts/generate-lot-size-page.py)
+- 18 content sections + 8 FAQs + FAQPage schema + Continue Learning (8 cards)
+- Sections: What Is XAUUSD Lot Size, What Does 1 Lot Mean, Standard/Mini/Micro Lot Concepts, Why Lot Size Matters, Position Size vs Lot Size, Information Needed to Calculate, Basic Formula, Hypothetical Example, Stop-Loss Distance Effect, Account Risk Effect, Leverage, Margin, Tick Size/Tick Value/Price Movement, Calculator Requirements, Common Mistakes, Lot Size in Trading Plan, Lot Size During Volatile Sessions, Risk Management Checklist
+- All financial safety rules followed: no personalized advice, no universal risk %, no recommended lot sizes, broker specification disclaimers throughout, hypothetical example clearly labeled
+- Fixed 4 embedded double-quote parsing errors (lotConcepts, distinctions, commonMistakes arrays)
+- Added contextual backlinks from 3 existing pages:
+  - /how-to-trade-xauusd/ - added "XAUUSD lot size" link in resource exploration paragraph
+  - /xauusd-trading-strategy/ - added lot size guide link in risk management section
+  - /best-time-to-trade-xauusd/ - added position sizing note in risk management section
+- Updated sitemap.xml to 11 URLs (added /xauusd-lot-size/)
+- Build succeeded, all 11 pages verified
+- Deployed via git push, waited for GitHub Actions
+- All 11 pages + sitemap.xml + robots.txt return HTTP 200 live
+
+Stage Summary:
+- New page targets "XAUUSD lot size" keyword - position sizing, contract specs, risk calculations
+- Cannibalization avoided: distinct from how-to-trade (beginner process), strategy (framework), best-time (sessions)
+- All examples hypothetical, broker specs repeatedly noted as variable
+- FAQ schema matches visible FAQ (8 questions, single source of truth)
