@@ -322,6 +322,13 @@ const whenNotToTrade = [
 
 const continueLearningCards = [
   {
+    href: "/best-time-to-trade-xauusd/",
+    icon: <Clock className="w-7 h-7 text-trading-gold" />,
+    title: "Best Time to Trade XAUUSD",
+    desc: "Understand how Asian, London and New York sessions affect gold liquidity, volatility and trading conditions.",
+    gradient: "from-trading-gold/10 to-transparent",
+  },
+  {
     href: "/how-to-trade-xauusd/",
     icon: <ShieldCheck className="w-7 h-7 text-trading-gold" />,
     title: "How to Trade XAUUSD",

@@ -1,0 +1,67 @@
+        {/* 16. EXAMPLE SESSION SCENARIOS */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Example </span><span className="text-trading-gold text-glow-gold">Session Scenarios</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Clearly labelled hypothetical examples for educational purposes only.</p>
+            </div>
+            <div className="space-y-6">
+              {scenarios.map((s) => (
+                <FadeIn key={s.label}>
+                  <div className="glass rounded-2xl p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-xs font-bold text-trading-gold bg-trading-gold/10 px-3 py-1 rounded-full">{s.label}</span>
+                      <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            <div className="mt-8 glass rounded-2xl p-5 border border-trading-red/30">
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Disclaimer:</span> These scenarios are entirely hypothetical and do not represent actual trades, specific price levels, or guaranteed outcomes. They exist purely to illustrate how a trader might think about session conditions. Past scenarios do not predict future results.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 17. COMMON TIMING MISTAKES */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Common </span><span className="text-trading-gold text-glow-gold">Timing Mistakes</span></h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {timingMistakes.map((item) => (
+                <FadeIn key={item.title}>
+                  <div className="glass rounded-2xl p-6 h-full">
+                    <div className="flex items-center gap-3 mb-3">{item.icon}<h3 className="text-lg font-bold text-foreground">{item.title}</h3></div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 18. RISK MANAGEMENT */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-trading-gold text-glow-gold">Risk Management</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Volatility and session timing affect risk. These principles apply regardless of when you trade.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {riskPoints.map((item) => (
+                <FadeIn key={item.title}>
+                  <div className="glass rounded-2xl p-6 h-full">
+                    <div className="flex items-center gap-3 mb-3">{item.icon}<h3 className="text-lg font-bold text-foreground">{item.title}</h3></div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            <div className="mt-12 glass rounded-2xl p-6 md:p-8 border border-trading-red/30">
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Risk Disclaimer:</span> Forex and gold trading involve significant risk and may not be suitable for all investors. Past performance does not guarantee future results. The information on ForexWizard is for educational and informational purposes only and should not be considered personalized financial advice.</p>
+            </div>
+          </div>
+        </FadeSection>

@@ -1,0 +1,82 @@
+        {/* 12. ECONOMIC EVENTS */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Economic Events That Can Change </span><span className="text-trading-gold text-glow-gold">Gold Volatility</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Understanding which events can move gold helps traders plan around periods of elevated risk. This is about awareness, not prediction.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {eventTypes.map((item) => (
+                <FadeIn key={item.title}>
+                  <div className="glass rounded-2xl p-6 h-full">
+                    <div className="flex items-center gap-3 mb-3">{item.icon}<h3 className="text-lg font-bold text-foreground">{item.title}</h3></div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            <div className="mt-8 glass rounded-2xl p-5 border border-trading-gold/20">
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Note:</span> Traders should consult a reliable, current economic calendar for specific event dates and times. The events listed above are categories, not a schedule. ForexWizard does not provide live event data or predict market direction.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 13. WHEN TRADING MAY BE MORE DIFFICULT */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">When Trading XAUUSD May Be </span><span className="text-trading-gold text-glow-gold">More Difficult</span></h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {difficultConditions.map((item) => (
+                <FadeIn key={item.title}>
+                  <div className="glass rounded-2xl p-6 h-full">
+                    <div className="flex items-center gap-3 mb-3">{item.icon}<h3 className="text-lg font-bold text-foreground">{item.title}</h3></div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 14. TIMEZONE AND DAYLIGHT-SAVING CONSIDERATIONS */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Timezone and Daylight-Saving </span><span className="text-trading-gold text-glow-gold">Considerations</span></h2>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p><span className="text-foreground font-medium">UTC as a reference</span> is the most practical way to think about trading sessions. Because session times are typically quoted in UTC, converting your local time to UTC (and back) gives you a consistent framework regardless of where you are in the world or what time of year it is.</p>
+              <p><span className="text-foreground font-medium">Daylight-saving time (DST)</span> complicates things because London and New York enter and exit DST on different dates. The United States typically changes clocks in March and November, while Europe changes in March and October. This means that for several weeks each year, the time difference between London and New York is not the usual five hours — it is four hours during the period when only one has switched.</p>
+              <p>This matters for XAUUSD traders because the London–New York overlap shifts in UTC terms when DST changes occur. If you have memorized session times in your local clock, those times will be wrong for several weeks a year unless you account for the DST transition dates.</p>
+              <p><span className="text-foreground font-medium">Broker server time</span> adds another layer of complexity. Your broker&rsquo;s platform may run on a server in a different time zone, and it may or may not adjust for DST. A chart on your broker&rsquo;s platform might show a different timestamp than your local clock, which can cause confusion about when sessions begin and end. Checking your broker&rsquo;s server time and understanding its DST behavior is a practical step.</p>
+              <p>The key takeaway is that static timezone claims can become incorrect. Rather than relying on a fixed conversion, traders should verify session times periodically throughout the year and especially around the March and October/November DST transition periods.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 15. HOW TO CHOOSE YOUR TRADING WINDOW */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">How to Choose Your Own XAUUSD </span><span className="text-trading-gold text-glow-gold">Trading Window</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">A practical framework for selecting when to trade, not a guaranteed system.</p>
+            </div>
+            <div className="space-y-4">
+              {windowSteps.map((item) => (
+                <FadeIn key={item.step}>
+                  <div className="glass rounded-2xl p-5 md:p-6">
+                    <div className="flex items-start gap-4">
+                      <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-trading-gold/10 flex items-center justify-center text-trading-gold font-extrabold text-sm">{item.step}</span>
+                      <div>
+                        <h3 className="text-base font-bold text-foreground mb-1">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </FadeSection>

@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""Generate best-time-to-trade-xauusd/page.tsx"""
+
+OUT = "/home/z/my-project/src/app/best-time-to-trade-xauusd/page.tsx"
+
+lines = []
+def w(s=""):
+    lines.append(s)
+
+w('import type { Metadata } from "next";')
+w('import Link from "next/link";')
+w('import {')
+w('  Clock,')
+w('  Globe,')
+w('  Sun,')
+w('  Building2,')
+w('  MapPin,')
+w('  TrendingUp,')
+w('  BarChart3,')
+w('  AlertTriangle,')
+w('  ArrowRight,')
+w('  MessageCircle,')
+w('  Target,')
+w('  Layers,')
+w('  Activity,')
+w('  BookOpen,')
+w('  LineChart,')
+w('  ArrowDownRight,')
+w('  ShieldCheck,')
+w('  Eye,')
+w('  XCircle,')
+w('  Zap,')
+w('  Moon,')
+w('  CalendarClock,')
+w('  Timer,')
+w('  AlertOctagon,')
+w('} from "lucide-react";')
+w('import {')
+w('  FadeSection,')
+w('  FadeIn,')
+w('  HeroAnimation,')
+w('  PulsingGlow,')
+w('  StickyTelegramButton,')
+w('} from "@/components/fade-section";')
+w('import { CandlestickBackground } from "@/components/candlestick-background";')
+w('')

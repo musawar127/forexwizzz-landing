@@ -997,6 +997,11 @@ export default function HowToTradeXauusdPage() {
                 There is no universally “best” timeframe. Different traders
                 use different timeframes based on their style, availability, and
                 objectives. The key is understanding what each timeframe offers.
+                Session timing also affects which timeframes are most useful —
+                see our guide on the{" "}
+                <Link href="/best-time-to-trade-xauusd/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  best time to trade XAUUSD
+                </Link>{" for a detailed look at trading sessions and hours."}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

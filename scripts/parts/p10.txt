@@ -1,0 +1,71 @@
+        {/* CONTINUE LEARNING */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Continue </span><span className="text-trading-gold text-glow-gold">Learning</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of ForexWizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <FadeIn delay={0}><Link href="/how-to-trade-xauusd/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><BookOpen className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">How to Trade XAUUSD</h3><p className="text-sm text-muted-foreground leading-relaxed">A beginner-friendly guide covering what you need before trading gold, how to analyze XAUUSD, plan trades and manage risk.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.07}><Link href="/xauusd-trading-strategy/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><Target className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">XAUUSD Trading Strategy</h3><p className="text-sm text-muted-foreground leading-relaxed">A step-by-step framework for building and executing a structured XAUUSD trading strategy.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.14}><Link href="/xauusd-analysis/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><LineChart className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">XAUUSD Analysis</h3><p className="text-sm text-muted-foreground leading-relaxed">The main hub for ongoing XAUUSD market analysis, key levels, and gold market structure updates.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.21}><Link href="/how-to-read-xauusd-price-action/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><Activity className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">How to Read XAUUSD Price Action</h3><p className="text-sm text-muted-foreground leading-relaxed">A dedicated guide to reading candlestick patterns, market structure, and price behavior on XAUUSD charts.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.28}><Link href="/xauusd-support-resistance/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><Layers className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">XAUUSD Support and Resistance</h3><p className="text-sm text-muted-foreground leading-relaxed">How to identify, draw, and trade from key support and resistance levels on the gold chart.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.35}><Link href="/gold-signals/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center"><BarChart3 className="w-7 h-7 text-trading-green" /></div><h3 className="text-base font-bold text-foreground">Gold Trading Signals</h3><p className="text-sm text-muted-foreground leading-relaxed">Gold signals, XAUUSD trade ideas, and market updates from the ForexWizard community.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.42}><Link href="/about/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-trading-green/10 flex items-center justify-center"><ShieldCheck className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">About ForexWizard</h3><p className="text-sm text-muted-foreground leading-relaxed">Learn about the ForexWizard community, our approach to market education, and what to expect.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* TELEGRAM CTA */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <FadeIn>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4"><span className="text-foreground">Join the </span><span className="text-trading-gold text-glow-gold">ForexWizard</span><span className="text-foreground"> Community</span></h2>
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">Follow XAUUSD market updates, educational analysis, and trading discussions with the ForexWizard Telegram community. Free to join.</p>
+              <TelegramCTA text="Join ForexWizard on Telegram" variant="gold" />
+            </FadeIn>
+          </div>
+        </FadeSection>
+
+        {/* FAQ */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Frequently Asked </span><span className="text-trading-gold text-glow-gold">Questions</span></h2>
+            </div>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <FadeIn key={i} delay={i * 0.05}>
+                  <details className="glass-strong rounded-2xl gradient-border group">
+                    <summary className="flex items-center justify-between p-6 cursor-pointer list-none select-none">
+                      <h3 className="text-base font-bold text-foreground pr-4">{faq.q}</h3>
+                      <ArrowDownRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-180" />
+                    </summary>
+                    <div className="px-6 pb-6 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p></div>
+                  </details>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* FOOTER */}
+        <footer className="py-10 px-4 border-t border-white/5">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-sm text-muted-foreground mb-2">ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community</p>
+            <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">Risk Disclaimer: Forex and other financial markets involve significant risk of loss and are not suitable for all investors. Past performance does not guarantee future results. The content shared in our community is for educational and informational purposes only and should not be considered financial advice.</p>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <Link href="/" className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline">Home</Link>
+              <Link href="/forex-signals/" className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline">Forex Signals</Link>
+              <Link href="/gold-signals/" className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline">Gold Signals</Link>
+              <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline">t.me/ForexWizzz</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+
+      <StickyTelegramButton href={TELEGRAM_LINK} label="Join ForexWizzz on Telegram" />
+    </>
+  );
+}

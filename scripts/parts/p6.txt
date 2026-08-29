@@ -1,0 +1,181 @@
+export default function BestTimeToTradeXauusdPage() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <header className="relative z-20">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors">ForexWizzz</Link>
+          <nav className="flex items-center gap-6">
+            <Link href="/forex-signals/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">Forex Signals</Link>
+            <Link href="/gold-signals/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">Gold Signals</Link>
+            <Link href="/xauusd-analysis/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">XAUUSD Analysis</Link>
+            <Link href="/about/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden lg:block">About</Link>
+            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-trading-green hover:text-trading-green/80 transition-colors no-underline">Join on Telegram</a>
+          </nav>
+        </div>
+      </header>
+
+      <main className="min-h-screen bg-trading-dark text-foreground overflow-x-hidden">
+        {/* HERO */}
+        <section className="relative min-h-[70vh] flex flex-col items-center justify-center px-4 py-24 md:py-32 overflow-hidden">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-trading-gold/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-trading-green/5 rounded-full blur-[100px] pointer-events-none" />
+          <CandlestickBackground />
+          <HeroAnimation className="relative z-10 text-center max-w-4xl mx-auto">
+            <FadeIn delay={0.2} className="inline-flex">
+              <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
+                <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
+                ForexWizard Trading Guide
+              </span>
+            </FadeIn>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+              <span className="text-foreground">Best Time to Trade </span>
+              <span className="text-trading-gold text-glow-gold">XAUUSD</span>
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+              Understand how trading sessions, market overlaps, liquidity and
+              economic events affect XAUUSD — and how to choose a trading
+              window that fits your approach.
+            </p>
+            <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <Link href="/xauusd-analysis/" className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95">
+                <BarChart3 className="w-5 h-5" />XAUUSD Analysis Hub
+              </Link>
+            </FadeIn>
+          </HeroAnimation>
+        </section>
+
+        {/* 1. WHAT ARE XAUUSD TRADING HOURS? */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">What Are </span><span className="text-trading-gold text-glow-gold">XAUUSD Trading Hours?</span></h2>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>XAUUSD is the symbol for gold priced in US dollars, and it is one of the most widely traded instruments in the forex and CFD markets. Spot gold trading is available for most of the trading week, typically from Sunday evening through Friday evening in US time, though the exact schedule depends on your broker.</p>
+              <p>It is important to understand that XAUUSD trading hours are set by each broker individually. There is no central exchange that dictates a single global open and close time for spot gold. Brokers may have different daily maintenance or rollover periods, during which trading may be temporarily unavailable or spreads may widen significantly. These maintenance windows vary between brokers and should be checked in your broker&rsquo;s contract specifications.</p>
+              <p>Rather than thinking of XAUUSD as having a single &ldquo;open&rdquo; and &ldquo;close,&rdquo; it is more useful to think in terms of <span className="text-foreground font-medium">trading sessions</span> — the Asian, London, and New York sessions — which represent periods of heightened activity from different geographic regions. These sessions overlap, and the characteristics of XAUUSD trading can shift considerably depending on which sessions are active at any given time.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 2. WHY TRADING SESSIONS MATTER */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Why Trading Sessions Matter for </span><span className="text-trading-gold text-glow-gold">XAUUSD</span></h2>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>Trading sessions represent the periods when major financial centers are active. The three primary sessions — Asian, London, and New York — each bring different levels of market participation, and these differences affect how XAUUSD behaves throughout the day.</p>
+              <p><span className="text-foreground font-medium">Market participation</span> is one of the most important factors. When more participants are active, there is generally more liquidity, which means orders can be filled more readily and spreads tend to be tighter. However, higher participation also often brings more volatility, which increases both potential opportunity and potential risk in equal measure.</p>
+              <p><span className="text-foreground font-medium">Price movement</span> tends to be more directional during periods of strong participation, as institutional order flow can push price through key levels. During quieter sessions, price may consolidate into ranges. Neither condition is inherently better — they simply offer different characteristics that suit different approaches.</p>
+              <p><span className="text-foreground font-medium">Execution conditions</span> can also vary. Fast-moving markets during active sessions may produce slippage on stop-loss orders, while thin markets during quiet sessions may have wider spreads. Understanding these dynamics helps traders choose when to be active and how to manage risk during different conditions.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 3. ASIAN SESSION */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Asian </span><span className="text-trading-gold text-glow-gold">Session</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Approximately 00:00 – 08:00 UTC</p>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>The Asian session covers the trading hours when markets in Tokyo, Sydney, Singapore, and other Asia-Pacific centers are open. For XAUUSD, this session is generally quieter in terms of participation and price movement compared to the London and New York sessions, although it is not inactive.</p>
+              <p>During the Asian session, gold often develops trading ranges that can provide useful context for later in the day. Traders who focus on range-based approaches may find opportunities during this period, while those who prefer momentum-based strategies may choose to observe and plan for the more active sessions ahead.</p>
+              <p>Activity during the Asian session can increase around significant regional economic data releases, central-bank announcements from Asian institutions, or geopolitical developments affecting the region. These events can cause sharp moves even during an otherwise quiet session, which is why traders should still check the economic calendar regardless of which session they plan to trade.</p>
+              <p>The decision to trade or observe during the Asian session depends on individual strategy, availability, and goals. Some traders use it exclusively for preparation, while others actively trade the ranges and breakout attempts that occur during this window.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 4. LONDON SESSION */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">London </span><span className="text-trading-gold text-glow-gold">Session</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Approximately 07:00 – 16:00 UTC</p>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>The London session brings increased European market participation, and London has historically been one of the most important centers for precious metals trading globally. The increase in participation often translates to higher liquidity, more directional price movement, and the potential for tighter spreads compared to the Asian session.</p>
+              <p>European economic data releases — including inflation figures, GDP data, and central-bank communications from the European Central Bank and the Bank of England — can all influence gold during this session. The relationship between the euro, the pound, and the dollar can also affect XAUUSD price action as currency dynamics shift.</p>
+              <p>The London open is sometimes associated with breakout attempts as European participants react to developments that occurred during the Asian session. These breakouts do not always follow through, and traders should look for confirmation rather than automatically trading the London open in a particular direction.</p>
+              <p>As with any session, the presence of more participants and higher liquidity does not guarantee profitable trading conditions. The market can still produce choppy or misleading price action during the London session, and risk management remains essential.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 5. NEW YORK SESSION */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">New York </span><span className="text-trading-gold text-glow-gold">Session</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Approximately 12:00 – 21:00 UTC</p>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>The New York session marks the opening of US markets and brings significant volume to XAUUSD trading. Because gold is priced in US dollars, the interaction between gold and the dollar is particularly relevant during this session. Dollar strength or weakness driven by US economic developments can have a pronounced effect on gold prices.</p>
+              <p>Major US economic releases — including Non-Farm Payrolls, Consumer Price Index data, and Federal Reserve decisions — occur during the New York session and frequently cause sharp XAUUSD volatility. COMEX gold futures, which are a significant part of the global gold market, are also most actively traded during US hours.</p>
+              <p>Traders who are active during the New York session should be especially aware of the economic calendar and the potential for fast, sharp moves around scheduled releases. Stop-losses should account for the possibility of slippage during volatile conditions, and position sizes should reflect the elevated risk profile of this session.</p>
+              <p>While the New York session often provides clear directional moves, it can also produce false signals and whipsaws, particularly around data releases when price may spike in one direction before reversing. Patience and discipline are especially important during these conditions.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 6. LONDON–NEW YORK OVERLAP */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">London–New York </span><span className="text-trading-gold text-glow-gold">Overlap</span></h2>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Approximately 12:00 – 16:00 UTC</p>
+            </div>
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>The London–New York overlap is often one of the most active periods for XAUUSD trading. When both European and US market participants are simultaneously active, gold typically experiences its highest liquidity, tightest spreads, and most significant price movements of the day. This four-hour window is when many of the week&rsquo;s most impactful trading conditions tend to occur.</p>
+              <p>During the overlap, the combined participation of London and New York creates deep liquidity, which means that large orders can generally be filled with relatively less slippage than during thinner periods. Spreads tend to be at their tightest, reducing the cost of entering and exiting positions.</p>
+              <p>Volatility during this window is often elevated, driven by the convergence of European and US economic developments, corporate actions, and institutional order flow. Major US economic releases frequently occur during the overlap, adding another layer of potential volatility. This combination of liquidity and volatility is what makes the overlap popular among many gold traders.</p>
+              <p>However, it is critical to understand that higher volatility and more participation do not guarantee profitable trading. The same conditions that create opportunity also amplify risk. Losses can accumulate as quickly as gains during this period, and the speed of price movement can challenge even experienced traders. Whether the overlap is appropriate depends on the individual trader&rsquo;s strategy, risk tolerance, and ability to manage positions during fast market conditions.</p>
+              <p>Execution risk should also be considered. While liquidity is generally strong during the overlap, fast moves around news releases can still produce slippage on stop-losses and limit orders. Traders should plan for this possibility rather than assuming perfect execution during every overlap session.</p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* 7. XAUUSD SESSION TABLE */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">XAUUSD </span><span className="text-trading-gold text-glow-gold">Session Comparison</span></h2>
+            </div>
+            <div className="space-y-6">
+              {sessionComparison.map((s) => (
+                <FadeIn key={s.name}>
+                  <div className="glass rounded-2xl p-6 md:p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      {s.icon}
+                      <h3 className="text-xl font-bold text-foreground">{s.name}</h3>
+                      <span className="text-sm text-muted-foreground ml-auto hidden sm:block">{s.utcRange}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-1 sm:hidden text-trading-gold">{s.utcRange}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <p className="text-foreground font-semibold mb-1">Characteristics</p>
+                        <p className="text-muted-foreground leading-relaxed">{s.characteristics}</p>
+                      </div>
+                      <div>
+                        <p className="text-foreground font-semibold mb-1">Potential Advantages</p>
+                        <p className="text-muted-foreground leading-relaxed">{s.advantages}</p>
+                      </div>
+                      <div>
+                        <p className="text-foreground font-semibold mb-1">Risks / Considerations</p>
+                        <p className="text-muted-foreground leading-relaxed">{s.risks}</p>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+            <div className="mt-8 glass rounded-2xl p-5 border border-trading-gold/20">
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Important:</span> Session times can shift relative to your local clock because of daylight-saving changes. Broker-specific XAUUSD trading hours may also differ. The UTC ranges above are approximate and should be verified against your broker&rsquo;s schedule and your local time zone. Times are not guaranteed to be precise on any given day.</p>
+            </div>
+          </div>
+        </FadeSection>
