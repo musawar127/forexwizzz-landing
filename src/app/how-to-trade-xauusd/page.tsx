@@ -597,8 +597,8 @@ export default function HowToTradeXauusdPage() {
               <p>
                 For beginners, some basic terminology is helpful to understand. A{" "}
                 <span className="text-foreground font-medium">pip</span> on
-                XAUUSD typically refers to a 0.01 move in price (a 10-cent move
-                on a standard lot). A{" "}
+                XAUUSD refers to a small unit of price movement, though the
+                exact definition varies between brokers — see <Link href="/xauusd-pip-value/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD pip value</Link> for a detailed explanation. A{" "}
                 <span className="text-foreground font-medium">lot</span>{" "}
                 refers to a standardized trade size, with a standard lot being 100
                 troy ounces. Many brokers also offer mini lots (10 ounces) and

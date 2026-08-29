@@ -1007,6 +1007,15 @@ export default function XauusdTradingStrategyPage() {
               </p>
             </div>
 
+            <div className="mt-6 glass-strong rounded-2xl p-6 md:p-8 text-center border border-trading-gold/20">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                Understanding how to measure gold price movement is essential for risk calculations. To learn about pip, point, and tick terminology in XAUUSD, see our guide on{" "}
+                <Link href="/xauusd-pip-value/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  XAUUSD pip value
+                </Link>.
+              </p>
+            </div>
+
             <div className="mt-6 glass-strong rounded-2xl p-6 md:p-8 text-center border border-trading-red/10">
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 Gold and forex trading involves significant risk and may not be
