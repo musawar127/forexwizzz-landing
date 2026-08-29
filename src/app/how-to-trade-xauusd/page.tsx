@@ -1164,11 +1164,15 @@ export default function HowToTradeXauusdPage() {
                 </Link>,{" "}
                 <Link href="/xauusd-trading-strategy/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
                   XAUUSD strategy
-                </Link>, and{" "}
+                </Link>,{" "}
                 <Link href="/xauusd-analysis/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
                   XAUUSD analysis
                 </Link>{" "}
-                to dive deeper into each area. None of these resources guarantee
+                to dive deeper into each area. For understanding how to calculate gold position size, our{" "}
+                <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  XAUUSD lot size
+                </Link>{" "}
+                guide covers contract specifications, formulas and common mistakes. None of these resources guarantee
                 results — they exist to support education and informed
                 decision-making.
               </p>

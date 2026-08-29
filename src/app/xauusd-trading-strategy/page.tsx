@@ -998,7 +998,16 @@ export default function XauusdTradingStrategyPage() {
               ))}
             </div>
 
-            <div className="mt-10 glass-strong rounded-2xl p-6 md:p-8 text-center border border-trading-red/10">
+            <div className="mt-10 glass-strong rounded-2xl p-6 md:p-8 text-center border border-trading-gold/20">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                Position sizing is a critical part of risk management. To understand how to calculate XAUUSD lot size, including contract specifications, tick value, and the relationship between stop distance and position size, see our guide on{" "}
+                <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  XAUUSD lot size
+                </Link>.
+              </p>
+            </div>
+
+            <div className="mt-6 glass-strong rounded-2xl p-6 md:p-8 text-center border border-trading-red/10">
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 Gold and forex trading involves significant risk and may not be
                 suitable for all investors. Past performance does not guarantee

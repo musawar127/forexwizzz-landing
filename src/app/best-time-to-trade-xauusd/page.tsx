@@ -470,7 +470,10 @@ const faqStructuredData = {
                 </FadeIn>
               ))}
             </div>
-            <div className="mt-12 glass rounded-2xl p-6 md:p-8 border border-trading-red/30">
+            <div className="mt-12 glass rounded-2xl p-6 border border-trading-gold/20">
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Note on position sizing:</span> During volatile sessions, some traders adjust their gold position sizing to account for larger potential swings. To learn how to calculate XAUUSD lot size, see our guide on <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD lot size and position sizing</Link>.</p>
+            </div>
+            <div className="mt-6 glass rounded-2xl p-6 md:p-8 border border-trading-red/30">
               <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Risk Disclaimer:</span> Forex and gold trading involve significant risk and may not be suitable for all investors. Past performance does not guarantee future results. The information on ForexWizard is for educational and informational purposes only and should not be considered personalized financial advice.</p>
             </div>
           </div>
