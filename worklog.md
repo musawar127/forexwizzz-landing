@@ -73,3 +73,27 @@ Stage Summary:
 - No existing pages rewritten — only added 1 card/link per page for backlink
 - FAQ schema perfectly matches visible FAQ (7 questions, single source of truth)
 - Zero fabricated data: all examples explicitly labeled hypothetical, no win rates or performance claims
+
+---
+Task ID: 4
+Agent: Main Agent
+Task: Build /how-to-trade-xauusd/ page (SEO Page #9) - beginner guide to trading gold
+
+Work Log:
+- Created /how-to-trade-xauusd/page.tsx (1363 lines) with 16 content sections + 8 FAQs + FAQPage schema
+- Sections: What Is XAUUSD, Why Do Traders Trade XAUUSD, What You Need Before Trading, How to Analyze XAUUSD Before a Trade, How to Read the XAUUSD Chart, How to Identify XAUUSD Support and Resistance, How to Plan an XAUUSD Trade, Understanding XAUUSD Position Size, Risk Management, Economic Events That Can Affect Gold, Choosing a Timeframe, Beginner Trading Workflow (12 steps), Common Beginner Mistakes, When to Stay Out, Difference Between Trading/Signals/Analysis/Strategy, Continue Learning (7 cards)
+- Metadata: title, meta description, canonical, OG, Twitter all verified correct
+- FAQPage JSON-LD schema generated from same faqs array (single source of truth)
+- Contextual internal links to /xauusd-analysis/, /xauusd-trading-strategy/, /how-to-read-xauusd-price-action/, /xauusd-support-resistance/, /gold-signals/, /forex-signals/, /about/
+- All internal links use trailing slashes
+- Backlinks added from 3 existing pages: /xauusd-trading-strategy/ (Continue Learning card), /xauusd-analysis/ (risk disclaimer link), /gold-signals/ (Continue Learning card)
+- Updated sitemap.xml: 9 URLs (added /how-to-trade-xauusd/)
+- Pre-deployment verification: 1 H1, correct title/meta/canonical/OG/Twitter, 18 H2s, FAQ section, FAQ schema, 7 internal page links, all trailing slashes, sitemap 9 URLs, robots.txt correct
+- Build: all 9 pages generate correctly
+- Deployed to GitHub Actions, all 9 pages return HTTP 200 live
+
+Stage Summary:
+- New page targets "how to trade XAUUSD" keyword — distinct from /xauusd-trading-strategy/ (strategy framework)
+- Cannibalization avoided: this page covers beginner journey; strategy page covers strategy construction
+- Zero fabricated data, no profit claims, all examples labeled hypothetical
+- Keyword separation maintained across all 9 pages
