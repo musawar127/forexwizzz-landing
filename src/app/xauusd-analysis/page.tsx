@@ -815,6 +815,18 @@ export default function XauusdAnalysisPage() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </FadeIn>
+              <FadeIn className="mt-3">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Ready to combine these concepts into a structured approach?
+                </p>
+                <Link
+                  href="/xauusd-trading-strategy/"
+                  className="inline-flex items-center gap-2 text-trading-gold hover:text-trading-gold/80 font-semibold text-sm transition-colors no-underline"
+                >
+                  Build an XAUUSD trading strategy
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </FadeIn>
             </div>
           </div>
         </FadeSection>

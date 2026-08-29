@@ -827,6 +827,26 @@ export default function GoldSignalsPage() {
 
               <FadeIn delay={0.07}>
                 <Link
+                  href="/xauusd-trading-strategy/"
+                  className="block h-full no-underline"
+                >
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center">
+                      <Target className="w-7 h-7 text-trading-gold" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">
+                      XAUUSD Trading Strategy
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      A step-by-step framework for building and executing a
+                      structured XAUUSD trading strategy.
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
+
+              <FadeIn delay={0.14}>
+                <Link
                   href="/forex-signals/"
                   className="block h-full no-underline"
                 >
@@ -845,7 +865,7 @@ export default function GoldSignalsPage() {
                 </Link>
               </FadeIn>
 
-              <FadeIn delay={0.14}>
+              <FadeIn delay={0.21}>
                 <Link
                   href="/about/"
                   className="block h-full no-underline"

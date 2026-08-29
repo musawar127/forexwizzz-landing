@@ -1455,6 +1455,23 @@ export default function XauusdSupportResistancePage() {
               </FadeIn>
               <FadeIn delay={0.1}>
                 <Link
+                  href="/xauusd-trading-strategy/"
+                  className="glass rounded-2xl p-6 block h-full hover:border-trading-gold/30 border border-transparent transition-all duration-300 no-underline group"
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <Target className="w-6 h-6 text-trading-gold" />
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-trading-gold transition-colors">
+                      XAUUSD Trading Strategy
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Learn how to build a structured XAUUSD trading strategy
+                    using support, resistance, and price action.
+                  </p>
+                </Link>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <Link
                   href="/how-to-read-xauusd-price-action/"
                   className="glass rounded-2xl p-6 block h-full hover:border-trading-gold/30 border border-transparent transition-all duration-300 no-underline group"
                 >
