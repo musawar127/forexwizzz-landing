@@ -19,7 +19,6 @@ import {
   Zap,
   TrendingDown,
   Info,
-  Clock,
 } from "lucide-react";
 import {
   FadeSection,
@@ -269,58 +268,6 @@ const faqs = [
   {
     q: "Is XAUUSD analysis guaranteed to predict price movements?",
     a: "No form of market analysis, including XAUUSD analysis, can guarantee future price movements. Markets are influenced by countless variables, many of which are unpredictable. Technical analysis, fundamental analysis, and price action all provide frameworks for thinking about probability, not certainty. Traders who treat analysis as a tool for managing risk and identifying potential opportunities, rather than as a crystal ball, tend to make more disciplined decisions. Any source that claims guaranteed predictions should be treated with extreme caution.",
-  },
-];
-
-const continueLearningCards = [
-  {
-    href: "/how-to-trade-xauusd/",
-    icon: <ShieldCheck className="w-7 h-7 text-trading-gold" />,
-    title: "How to Trade XAUUSD",
-    desc: "A beginner-friendly guide covering what you need before trading gold, how to analyze XAUUSD, plan trades and manage risk.",
-    gradient: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/xauusd-trading-strategy/",
-    icon: <Target className="w-7 h-7 text-trading-gold" />,
-    title: "XAUUSD Trading Strategy",
-    desc: "A step-by-step framework for building a gold trading strategy using market structure, price action, and risk management.",
-    gradient: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/how-to-read-xauusd-price-action/",
-    icon: <Activity className="w-7 h-7 text-trading-gold" />,
-    title: "How to Read XAUUSD Price Action",
-    desc: "A dedicated guide to reading candlestick patterns, market structure, and price behavior on XAUUSD charts.",
-    gradient: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/xauusd-support-resistance/",
-    icon: <Layers className="w-7 h-7 text-trading-gold" />,
-    title: "XAUUSD Support and Resistance",
-    desc: "How to identify, draw, and trade from key support and resistance levels on the gold chart.",
-    gradient: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/best-time-to-trade-xauusd/",
-    icon: <Clock className="w-7 h-7 text-trading-gold" />,
-    title: "Best Time to Trade XAUUSD",
-    desc: "Understand how Asian, London and New York sessions affect gold liquidity, volatility and trading conditions.",
-    gradient: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/xauusd-lot-size/",
-    icon: <BarChart3 className="w-7 h-7 text-trading-gold" />,
-    title: "XAUUSD Lot Size",
-    desc: "Learn how to calculate the right lot size for XAUUSD trades based on account size, risk percentage, and stop-loss distance.",
-    gradient: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/xauusd-pip-value/",
-    icon: <LineChart className="w-7 h-7 text-trading-gold" />,
-    title: "XAUUSD Pip Value",
-    desc: "Understand how pip values work for gold, how to calculate them, and why they matter for risk management.",
-    gradient: "from-trading-gold/10 to-transparent",
   },
 ];
 
@@ -1001,48 +948,6 @@ export default function XauusdAnalysisPage() {
               <p className="mt-6 text-xs text-muted-foreground/60">
                 Free to join &middot; Trading involves risk
               </p>
-            </div>
-          </div>
-        </FadeSection>
-
-        {/* CONTINUE LEARNING */}
-        <FadeSection className="py-20 md:py-28 px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
-                <span className="text-foreground">Continue </span>
-                <span className="text-trading-gold text-glow-gold">Learning</span>
-              </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                Explore the rest of the Forex Wizard XAUUSD education cluster to
-                build a well-rounded understanding of gold trading.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {continueLearningCards.map((item, i) => (
-                <FadeIn key={i} delay={i * 0.07}>
-                  <Link
-                    href={item.href}
-                    className="block h-full no-underline"
-                  >
-                    <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center`}>
-                        {item.icon}
-                      </div>
-                      <h3 className="text-base font-bold text-foreground">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {item.desc}
-                      </p>
-                      <span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">
-                        Read more <ArrowRight className="w-3 h-3" />
-                      </span>
-                    </div>
-                  </Link>
-                </FadeIn>
-              ))}
             </div>
           </div>
         </FadeSection>
