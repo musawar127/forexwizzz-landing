@@ -28,6 +28,7 @@ import {
   StickyTelegramButton,
 } from "@/components/fade-section";
 import { CandlestickBackground } from "@/components/candlestick-background";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Gold Signals | XAUUSD Trading Signals & Gold Market Analysis",
@@ -941,42 +942,7 @@ export default function GoldSignalsPage() {
         </FadeSection>
 
         {/* FOOTER */}
-        <footer className="py-10 px-4 border-t border-white/5">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm text-muted-foreground mb-2">
-              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
-            </p>
-            <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
-              Risk Disclaimer: Forex and other financial markets involve
-              significant risk of loss and are not suitable for all investors.
-              Past performance does not guarantee future results. The content
-              shared in our community is for educational and informational
-              purposes only and should not be considered financial advice.
-            </p>
-            <div className="flex items-center justify-center gap-4 mt-4">
-              <Link
-                href="/"
-                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
-              >
-                Home
-              </Link>
-              <Link
-                href="/forex-signals/"
-                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
-              >
-                Forex Signals
-              </Link>
-              <a
-                href={TELEGRAM_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
-              >
-                t.me/ForexWizzz
-              </a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </main>
 
       <StickyTelegramButton

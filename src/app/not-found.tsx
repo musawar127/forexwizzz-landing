@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, MessageCircle, TrendingUp, BarChart3, LineChart, BookOpen, Info } from "lucide-react";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Page Not Found | Forex Wizard",
@@ -133,20 +134,7 @@ export default function NotFound() {
       </main>
 
       {/* FOOTER */}
-      <footer className="py-10 px-4 border-t border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-muted-foreground mb-2">
-            Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
-          </p>
-          <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
-            Risk Disclaimer: Forex and other financial markets involve
-            significant risk of loss and are not suitable for all investors.
-            Past performance does not guarantee future results. The content
-            shared in our community is for educational and informational
-            purposes only and should not be considered financial advice.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
