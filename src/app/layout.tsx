@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ForexWizzz - Free Forex & Gold Trading Signals | Telegram Community",
+  title: "Forex Wizard - Free Forex & Gold Trading Signals | Telegram Community",
   description:
-    "Join ForexWizzz, a free Telegram trading community for daily Forex and Gold signals, XAUUSD analysis, market breakdowns, trading setups, and educational content. Learn and follow market discussions — 100% free to join.",
+    "Join Forex Wizard, a free Telegram trading community for daily Forex and Gold signals, XAUUSD analysis, market breakdowns, trading setups, and educational content. Learn and follow market discussions — 100% free to join.",
   keywords: [
     "forex signals",
     "gold signals",
@@ -43,26 +43,26 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "ForexWizzz - Free Forex & Gold Trading Signals",
+    title: "Forex Wizard - Free Forex & Gold Trading Signals",
     description:
-      "Join ForexWizzz on Telegram for daily Forex and Gold trading signals, XAUUSD analysis, and market discussions. Free to join.",
+      "Join Forex Wizard on Telegram for daily Forex and Gold trading signals, XAUUSD analysis, and market discussions. Free to join.",
     type: "website",
     url: "https://forexwizard.online",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ForexWizzz - Free Forex & Gold Trading Signals",
+    title: "Forex Wizard - Free Forex & Gold Trading Signals",
     description:
-      "Join ForexWizzz on Telegram for daily Forex and Gold trading signals, XAUUSD analysis, and market discussions. Free to join.",
+      "Join Forex Wizard on Telegram for daily Forex and Gold trading signals, XAUUSD analysis, and market discussions. Free to join.",
     images: ["/og-image.jpg"],
   },
 };
@@ -76,7 +76,7 @@ export default function RootLayout({
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "ForexWizzz",
+      name: "Forex Wizard",
       url: "https://forexwizard.online",
       description:
         "Free Forex and Gold trading signals and market analysis Telegram community",
@@ -84,7 +84,7 @@ export default function RootLayout({
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "ForexWizzz",
+      name: "Forex Wizard",
       url: "https://forexwizard.online",
       sameAs: ["https://t.me/ForexWizzz"],
     },

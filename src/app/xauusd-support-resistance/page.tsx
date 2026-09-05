@@ -45,13 +45,13 @@ export const metadata: Metadata = {
       "Learn how to identify XAUUSD support and resistance zones, key price levels, breakouts, role reversals and price action around important levels.",
     type: "article",
     url: "https://forexwizard.online/xauusd-support-resistance/",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
@@ -405,7 +405,7 @@ export default function XauusdSupportResistancePage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -455,7 +455,7 @@ export default function XauusdSupportResistancePage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
-                ForexWizard Educational Guide
+                Forex Wizard Educational Guide
               </span>
             </FadeIn>
 
@@ -476,7 +476,7 @@ export default function XauusdSupportResistancePage() {
             </p>
 
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link
                 href="/xauusd-analysis/"
                 className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95"
@@ -1334,7 +1334,7 @@ export default function XauusdSupportResistancePage() {
                 <span className="text-trading-red font-semibold">Risk Disclaimer:</span>{" "}
                 Forex and gold trading involve significant risk and may not be
                 suitable for all investors. Past performance does not guarantee
-                future results. The information on ForexWizard is provided for
+                future results. The information on Forex Wizard is provided for
                 educational and informational purposes only and should not be
                 considered personalized financial advice.
               </p>
@@ -1405,7 +1405,7 @@ export default function XauusdSupportResistancePage() {
                 >
                   XAUUSD analysis
                 </Link>{" "}
-                hub on ForexWizard. To go deeper into reading raw price movement
+                hub on Forex Wizard. To go deeper into reading raw price movement
                 on the chart, including candlestick patterns and momentum, see
                 our guide on{" "}
                 <Link
@@ -1430,7 +1430,7 @@ export default function XauusdSupportResistancePage() {
                 <span className="text-foreground">Continue Learning</span>
               </h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-                Explore more XAUUSD and forex educational content from ForexWizard.
+                Explore more XAUUSD and forex educational content from Forex Wizard.
               </p>
             </div>
 
@@ -1499,7 +1499,7 @@ export default function XauusdSupportResistancePage() {
                     </h3>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Learn about gold trading signals and how ForexWizard
+                    Learn about gold trading signals and how Forex Wizard
                     approaches sharing XAUUSD analysis with the community.
                   </p>
                 </Link>
@@ -1516,7 +1516,7 @@ export default function XauusdSupportResistancePage() {
                     </h3>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Explore ForexWizard forex signals and educational content
+                    Explore Forex Wizard forex signals and educational content
                     for major and minor currency pairs.
                   </p>
                 </Link>
@@ -1529,11 +1529,11 @@ export default function XauusdSupportResistancePage() {
                   <div className="flex items-center gap-3 mb-3">
                     <BookOpen className="w-6 h-6 text-trading-green" />
                     <h3 className="text-lg font-bold text-foreground group-hover:text-trading-green transition-colors">
-                      About ForexWizard
+                      About Forex Wizard
                     </h3>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Learn about the ForexWizard community, our approach to
+                    Learn about the Forex Wizard community, our approach to
                     analysis, and what we stand for.
                   </p>
                 </Link>
@@ -1548,15 +1548,15 @@ export default function XauusdSupportResistancePage() {
             <FadeIn>
               <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
                 <span className="text-foreground">Join the </span>
-                <span className="text-trading-gold text-glow-gold">ForexWizard</span>
+                <span className="text-trading-gold text-glow-gold">Forex Wizard</span>
                 <span className="text-foreground"> Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
                 Follow XAUUSD market updates, educational analysis, and trading
-                discussions with the ForexWizard Telegram community. Free to
+                discussions with the Forex Wizard Telegram community. Free to
                 join.
               </p>
-              <TelegramCTA text="Join ForexWizard on Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="gold" />
             </FadeIn>
           </div>
         </FadeSection>
@@ -1565,7 +1565,7 @@ export default function XauusdSupportResistancePage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -1608,7 +1608,7 @@ export default function XauusdSupportResistancePage() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );

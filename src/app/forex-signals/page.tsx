@@ -39,13 +39,13 @@ export const metadata: Metadata = {
       "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
     type: "article",
     url: "https://forexwizard.online/forex-signals/",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
@@ -190,8 +190,8 @@ const faqs = [
     a: "Beginners should prioritize learning forex fundamentals, risk management, and basic technical analysis before relying heavily on signals. Forex signals can be educational — seeing how experienced traders analyze the market and structure trade ideas can help beginners learn. However, signals should not replace developing your own trading skills. Understanding concepts like stop-loss placement, position sizing, support and resistance, and market structure is essential. Following signals without understanding them can lead to poor risk management decisions.",
   },
   {
-    q: "Where can I get ForexWizard updates?",
-    a: "You can join the ForexWizard Telegram community to follow forex market updates, trading insights, and analysis discussions. The community is free to join and provides market commentary, potential trading setups, and educational content for forex and gold traders. Visit the ForexWizard homepage or search for ForexWizzz on Telegram to find the community.",
+    q: "Where can I get Forex Wizard updates?",
+    a: "You can join the Forex Wizard Telegram community to follow forex market updates, trading insights, and analysis discussions. The community is free to join and provides market commentary, potential trading setups, and educational content for forex and gold traders. Visit the Forex Wizard homepage or search for @ForexWizzz on Telegram to find the community.",
   },
   {
     q: "Is forex trading risky?",
@@ -237,7 +237,7 @@ export default function ForexSignalsPage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -293,7 +293,7 @@ export default function ForexSignalsPage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-green">
                 <span className="w-2 h-2 bg-trading-green rounded-full animate-pulse" />
-                ForexWizard Trading Community
+                Forex Wizard Trading Community
               </span>
             </FadeIn>
 
@@ -302,13 +302,13 @@ export default function ForexSignalsPage() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              ForexWizard provides forex market analysis, trading insights, and
+              Forex Wizard provides forex market analysis, trading insights, and
               educational information for forex and gold traders. Join our
               Telegram community to follow market updates and discussions.
             </p>
 
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="primary" />
               <a
                 href="#market-analysis"
                 className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-green border border-white/10 hover:border-trading-green/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95"
@@ -403,7 +403,7 @@ export default function ForexSignalsPage() {
                 <span className="text-trading-green text-glow-green">We Follow</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                These are the major currency pairs that the ForexWizard community
+                These are the major currency pairs that the Forex Wizard community
                 commonly covers. Market analysis and available signals vary
                 depending on market conditions and opportunity.
               </p>
@@ -445,7 +445,7 @@ export default function ForexSignalsPage() {
                 <span className="text-trading-gold text-glow-gold">Market Analysis Supports Signals</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                The types of analysis that ForexWizard may cover when sharing
+                The types of analysis that Forex Wizard may cover when sharing
                 market insights and trading ideas with the community.
               </p>
             </div>
@@ -530,7 +530,7 @@ export default function ForexSignalsPage() {
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 Forex trading involves significant risk and may not be suitable
                 for all investors. Past performance does not guarantee future
-                results. The information provided on ForexWizard is for
+                results. The information provided on Forex Wizard is for
                 educational and informational purposes only and should not be
                 considered financial advice.
               </p>
@@ -544,10 +544,10 @@ export default function ForexSignalsPage() {
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">Why Follow </span>
-                <span className="text-trading-green text-glow-green">ForexWizard?</span>
+                <span className="text-trading-green text-glow-green">Forex Wizard?</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                ForexWizard offers a focused space for forex and gold traders
+                Forex Wizard offers a focused space for forex and gold traders
                 who want to follow market analysis and trading community
                 discussions.
               </p>
@@ -581,14 +581,14 @@ export default function ForexSignalsPage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                 <span className="text-foreground">Join the </span>
                 <span className="text-trading-green text-glow-green">
-                  ForexWizard
+                  Forex Wizard
                 </span>
                 <br />
                 <span className="text-foreground">Telegram Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
                 Follow Forex and market updates, analysis and trading insights
-                through the ForexWizard community on Telegram.
+                through the Forex Wizard community on Telegram.
               </p>
               <PulsingGlow className="inline-block rounded-xl">
                 <TelegramCTA
@@ -640,7 +640,7 @@ export default function ForexSignalsPage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -671,7 +671,7 @@ export default function ForexSignalsPage() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );

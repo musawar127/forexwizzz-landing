@@ -42,13 +42,13 @@ export const metadata: Metadata = {
       "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
     type: "website",
     url: "https://forexwizard.online/xauusd-analysis/",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
@@ -261,8 +261,8 @@ const faqs = [
     a: "Yes, XAUUSD trading involves substantial risk. Gold prices can move sharply and unpredictably in response to economic data, central bank decisions, and geopolitical events. The use of leverage, which is commonly available on gold trading, amplifies both potential gains and potential losses. Traders can lose more than their initial investment in some leveraged scenarios. Gold is not inherently safe just because it is a physical commodity. It requires the same discipline, risk management, and respect for market risk as any other form of trading.",
   },
   {
-    q: "Where can I get ForexWizard gold updates?",
-    a: "You can join the ForexWizard Telegram community to follow XAUUSD market updates, gold analysis, and trading discussions. The community is free to join and shares market commentary, educational content, and potential trading ideas for gold and forex traders. Search for ForexWizzz on Telegram or visit the ForexWizard website to access the community link.",
+    q: "Where can I get Forex Wizard gold updates?",
+    a: "You can join the Forex Wizard Telegram community to follow XAUUSD market updates, gold analysis, and trading discussions. The community is free to join and shares market commentary, educational content, and potential trading ideas for gold and forex traders. Search for @ForexWizzz on Telegram or visit the Forex Wizard website to access the community link.",
   },
   {
     q: "Is XAUUSD analysis guaranteed to predict price movements?",
@@ -299,7 +299,7 @@ export default function XauusdAnalysisPage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -349,7 +349,7 @@ export default function XauusdAnalysisPage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
-                ForexWizard XAUUSD Analysis Hub
+                Forex Wizard XAUUSD Analysis Hub
               </span>
             </FadeIn>
 
@@ -360,12 +360,12 @@ export default function XauusdAnalysisPage() {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Explore educational XAUUSD analysis covering price action, market
               structure, key technical levels, and the economic factors that
-              influence gold prices. Content provided by ForexWizard is for
+              influence gold prices. Content provided by Forex Wizard is for
               educational and informational purposes.
             </p>
 
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link
                 href="/gold-signals/"
                 className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95"
@@ -747,7 +747,7 @@ export default function XauusdAnalysisPage() {
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 A step-by-step framework for evaluating gold market analysis,
-                whether from ForexWizard or any other source.
+                whether from Forex Wizard or any other source.
               </p>
             </div>
 
@@ -878,7 +878,7 @@ export default function XauusdAnalysisPage() {
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 Gold and forex trading involves significant risk and may not be
                 suitable for all investors. Past performance does not guarantee
-                future results. Information provided by ForexWizard is for
+                future results. Information provided by Forex Wizard is for
                 educational and informational purposes only and should not be
                 considered financial advice. If you are new to gold, our{" "}
                 <Link
@@ -892,7 +892,7 @@ export default function XauusdAnalysisPage() {
                   href="/about/"
                   className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
                 >
-                  ForexWizard community
+                  Forex Wizard community
                 </Link>{" "}
                 and our approach.
               </p>
@@ -916,10 +916,10 @@ export default function XauusdAnalysisPage() {
               </div>
               <p className="text-base text-muted-foreground leading-relaxed max-w-xl mx-auto mb-8">
                 Market updates and analysis will be published here as new
-                market conditions are reviewed. Join the ForexWizard Telegram
+                market conditions are reviewed. Join the Forex Wizard Telegram
                 community to receive gold market analysis directly.
               </p>
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
             </div>
           </div>
         </FadeSection>
@@ -930,16 +930,16 @@ export default function XauusdAnalysisPage() {
             <div className="absolute inset-0 bg-gradient-to-br from-trading-gold/5 via-transparent to-trading-green/5 rounded-3xl blur-sm" />
             <div className="relative glass-strong rounded-3xl p-8 md:p-14 text-center gradient-border">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
-                <span className="text-foreground">Follow ForexWizard </span>
+                <span className="text-foreground">Follow Forex Wizard </span>
                 <span className="text-trading-gold text-glow-gold">XAUUSD Analysis</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
-                Follow ForexWizard for gold market analysis, XAUUSD insights,
+                Follow Forex Wizard for gold market analysis, XAUUSD insights,
                 trading education and community updates.
               </p>
               <PulsingGlow className="inline-block rounded-xl">
                 <TelegramCTA
-                  text="Join ForexWizard Telegram"
+                  text="Join Forex Wizard Telegram"
                   variant="gold"
                   className="text-lg md:text-xl px-10 py-5"
                 />
@@ -987,7 +987,7 @@ export default function XauusdAnalysisPage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -1030,7 +1030,7 @@ export default function XauusdAnalysisPage() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );

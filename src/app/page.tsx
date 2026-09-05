@@ -139,11 +139,11 @@ const testimonials = [
 ];
 
 const earningImages = [
-  { src: "earning-1.jpg", alt: "ForexWizzz community member shared screenshot of a Gold trade on their trading platform", width: 590, height: 1280 },
-  { src: "earning-2.jpg", alt: "Trading account screenshot shared by a ForexWizzz Telegram group member", width: 891, height: 1280 },
-  { src: "earning-3.jpg", alt: "XAUUSD trade screenshot from a member of the ForexWizzz trading community", width: 591, height: 1280 },
-  { src: "earning-4.jpg", alt: "Forex trade activity screenshot submitted by a ForexWizzz community member", width: 1080, height: 1042 },
-  { src: "earning-5.jpg", alt: "Gold trade screenshot shared in the ForexWizzz free Telegram signals group", width: 589, height: 1280 },
+  { src: "earning-1.jpg", alt: "Forex Wizard community member shared screenshot of a Gold trade on their trading platform", width: 590, height: 1280 },
+  { src: "earning-2.jpg", alt: "Trading account screenshot shared by a Forex Wizard Telegram group member", width: 891, height: 1280 },
+  { src: "earning-3.jpg", alt: "XAUUSD trade screenshot from a member of the Forex Wizard trading community", width: 591, height: 1280 },
+  { src: "earning-4.jpg", alt: "Forex trade activity screenshot submitted by a Forex Wizard community member", width: 1080, height: 1042 },
+  { src: "earning-5.jpg", alt: "Gold trade screenshot shared in the Forex Wizard free Telegram signals group", width: 589, height: 1280 },
 ];
 
 const telegramFeatures = [
@@ -182,7 +182,7 @@ export default function Home() {
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <span className="text-lg font-bold text-foreground tracking-tight">
-            ForexWizzz
+            Forex Wizard
           </span>
           <nav className="flex items-center gap-6">
             <Link
@@ -246,14 +246,14 @@ export default function Home() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              ForexWizzz is a free Telegram community where traders share daily
+              Forex Wizard is a free Telegram community where traders share daily
               Forex and Gold trading signals, XAUUSD analysis, market breakdowns,
               and educational trading content. Join to follow real-time discussions
               and improve your understanding of the forex market.
             </p>
 
             <FadeIn delay={0.5}>
-              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
             </FadeIn>
 
             <FadeIn delay={0.8}>
@@ -293,11 +293,11 @@ export default function Home() {
             </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
               Instead of searching for trading opportunities alone, join the
-              ForexWizzz free Telegram community. Members share daily Forex analysis,
+              Forex Wizard free Telegram community. Members share daily Forex analysis,
               Gold and XAUUSD trading ideas, and market commentary to help each
               other stay informed.
             </p>
-            <TelegramCTA text="Join ForexWizzz on Telegram" variant="gold" />
+            <TelegramCTA text="Join Forex Wizard on Telegram" variant="gold" />
           </div>
         </FadeSection>
 
@@ -355,7 +355,7 @@ export default function Home() {
             </p>
 
             <div className="text-center">
-              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
             </div>
           </div>
         </FadeSection>
@@ -405,7 +405,7 @@ export default function Home() {
             </p>
 
             <div className="text-center">
-              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
             </div>
           </div>
         </FadeSection>
@@ -435,7 +435,7 @@ export default function Home() {
                   <div className="p-2">
                     <img
                       src="telegram-screenshot.jpg"
-                      alt="ForexWizzz Telegram group screenshot showing Forex and Gold signal discussions"
+                      alt="Forex Wizard Telegram group screenshot showing Forex and Gold signal discussions"
                       width={640}
                       height={640}
                       className="w-full h-auto rounded-xl object-cover"
@@ -467,7 +467,7 @@ export default function Home() {
               <p className="text-lg font-semibold text-foreground mb-5">
                 WANT TO SEE OUR FREE SIGNALS FOR YOURSELF?
               </p>
-              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
             </div>
           </div>
         </FadeSection>
@@ -483,7 +483,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
-                ForexWizzz provides a focused space for Forex and Gold traders
+                Forex Wizard provides a focused space for Forex and Gold traders
                 to share market analysis, discuss XAUUSD price levels, and follow
                 trading setups together. Explore our{" "}
                 <Link href="/forex-signals/" className="text-trading-green hover:text-trading-green/80 transition-colors no-underline font-medium">
@@ -522,7 +522,7 @@ export default function Home() {
             </div>
 
             <div className="text-center">
-              <TelegramCTA text="Join ForexWizzz on Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
             </div>
           </div>
         </FadeSection>
@@ -541,12 +541,12 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
-              The Forex and Gold markets move every day. Join the ForexWizzz
+              The Forex and Gold markets move every day. Join the Forex Wizard
               community now so you don&apos;t miss the next trading idea, market
               update, or XAUUSD analysis shared by fellow traders.
             </p>
             <TelegramCTA
-              text="Join ForexWizzz on Telegram"
+              text="Join Forex Wizard on Telegram"
               variant="gold"
             />
           </div>
@@ -573,7 +573,7 @@ export default function Home() {
 
               <PulsingGlow className="inline-block rounded-xl">
                 <TelegramCTA
-                  text="Join ForexWizzz on Telegram"
+                  text="Join Forex Wizard on Telegram"
                   variant="primary"
                   className="text-lg md:text-xl px-10 py-5"
                 />
@@ -596,7 +596,7 @@ export default function Home() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -616,7 +616,7 @@ export default function Home() {
                 href="/about/"
                 className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
               >
-                About ForexWizard
+                About Forex Wizard
               </Link>
               <a
                 href={TELEGRAM_LINK}
@@ -633,7 +633,7 @@ export default function Home() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );

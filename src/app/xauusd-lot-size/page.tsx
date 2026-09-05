@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     description: "Learn how XAUUSD lot size works, how to calculate gold position size, understand contract size, leverage, stop distance and risk before placing a trade.",
     type: "article",
     url: "https://forexwizard.online/xauusd-lot-size/",
-    siteName: "ForexWizzz",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community" }],
+    siteName: "Forex Wizard",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -146,8 +146,8 @@ const continueLearningCards = [
   { href: "/xauusd-analysis/", icon: <LineChart className="w-7 h-7 text-trading-gold" />, title: "XAUUSD Analysis", desc: "The main hub for ongoing XAUUSD market analysis, key levels, and gold market structure updates.", gradient: "from-trading-gold/10 to-transparent" },
   { href: "/how-to-read-xauusd-price-action/", icon: <Activity className="w-7 h-7 text-trading-gold" />, title: "How to Read XAUUSD Price Action", desc: "A dedicated guide to reading candlestick patterns, market structure, and price behavior on XAUUSD charts.", gradient: "from-trading-gold/10 to-transparent" },
   { href: "/xauusd-support-resistance/", icon: <Layers className="w-7 h-7 text-trading-gold" />, title: "XAUUSD Support and Resistance", desc: "How to identify, draw, and trade from key support and resistance levels on the gold chart.", gradient: "from-trading-gold/10 to-transparent" },
-  { href: "/gold-signals/", icon: <BarChart3 className="w-7 h-7 text-trading-green" />, title: "Gold Trading Signals", desc: "Gold signals, XAUUSD trade ideas, and market updates from the ForexWizard community.", gradient: "from-trading-green/10 to-transparent" },
-  { href: "/about/", icon: <Info className="w-7 h-7 text-trading-gold" />, title: "About ForexWizard", desc: "Learn about the ForexWizard community, our approach to market education, and what to expect.", gradient: "from-trading-gold/10 to-trading-green/10" },
+  { href: "/gold-signals/", icon: <BarChart3 className="w-7 h-7 text-trading-green" />, title: "Gold Trading Signals", desc: "Gold signals, XAUUSD trade ideas, and market updates from the Forex Wizard community.", gradient: "from-trading-green/10 to-transparent" },
+  { href: "/about/", icon: <Info className="w-7 h-7 text-trading-gold" />, title: "About Forex Wizard", desc: "Learn about the Forex Wizard community, our approach to market education, and what to expect.", gradient: "from-trading-gold/10 to-trading-green/10" },
 ];
 
 const faqs = [
@@ -181,7 +181,7 @@ export default function XauusdLotSizePage() {
 
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors">ForexWizzz</Link>
+          <Link href="/" className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors">Forex Wizard</Link>
           <nav className="flex items-center gap-6">
             <Link href="/forex-signals/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">Forex Signals</Link>
             <Link href="/gold-signals/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">Gold Signals</Link>
@@ -202,7 +202,7 @@ export default function XauusdLotSizePage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
-                ForexWizard Trading Guide
+                Forex Wizard Trading Guide
               </span>
             </FadeIn>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
@@ -214,7 +214,7 @@ export default function XauusdLotSizePage() {
               matter for every XAUUSD trade you place.
             </p>
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link href="/how-to-trade-xauusd/" className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95">
                 <BookOpen className="w-5 h-5" />How to Trade XAUUSD
               </Link>
@@ -261,7 +261,7 @@ export default function XauusdLotSizePage() {
               ))}
             </div>
             <div className="mt-8 glass rounded-2xl p-5 border border-trading-red/30">
-              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Important:</span> ForexWizard does not provide broker-specific contract specifications. The information above describes concepts. Always refer to your own broker&rsquo;s specification for exact figures.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Important:</span> Forex Wizard does not provide broker-specific contract specifications. The information above describes concepts. Always refer to your own broker&rsquo;s specification for exact figures.</p>
             </div>
           </div>
         </FadeSection>
@@ -505,7 +505,7 @@ export default function XauusdLotSizePage() {
               <p><span className="text-foreground font-medium">Used margin</span> increases as you increase your position size. A larger lot size requires more margin. If you open multiple positions simultaneously, the combined used margin can reduce your free margin significantly, limiting your ability to manage those positions or open new ones.</p>
               <p><span className="text-foreground font-medium">Margin level</span> is typically expressed as a percentage: (equity &divide; used margin) &times; 100. Brokers often have a minimum margin level that must be maintained. If the margin level falls below this threshold, the broker may automatically close positions (a stop-out). The specific threshold varies between brokers.</p>
               <div className="glass rounded-2xl p-5 border border-trading-gold/20">
-                <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Key point:</span> Margin is not a measure of risk. It is a broker requirement for holding a position. Your actual risk is determined by your position size, stop distance, and the market's price movement. A trade can have very low margin but very high risk if the position is large and the stop is far away. ForexWizard does not provide specific broker margin figures, as these vary significantly between brokers.</p>
+                <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Key point:</span> Margin is not a measure of risk. It is a broker requirement for holding a position. Your actual risk is determined by your position size, stop distance, and the market's price movement. A trade can have very low margin but very high risk if the position is large and the stop is far away. Forex Wizard does not provide specific broker margin figures, as these vary significantly between brokers.</p>
               </div>
             </div>
           </div>
@@ -678,7 +678,7 @@ export default function XauusdLotSizePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Continue </span><span className="text-trading-gold text-glow-gold">Learning</span></h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of ForexWizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of Forex Wizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {continueLearningCards.map((item, i) => (
@@ -704,15 +704,15 @@ export default function XauusdLotSizePage() {
             <div className="relative glass-strong rounded-3xl p-8 md:p-14 text-center gradient-border">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                 <span className="text-foreground">Join the </span>
-                <span className="text-trading-gold text-glow-gold">ForexWizard</span>
+                <span className="text-trading-gold text-glow-gold">Forex Wizard</span>
                 <br />
                 <span className="text-foreground">Trading Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
                 Follow XAUUSD market analysis, trading discussions and
-                educational content through the ForexWizard Telegram community.
+                educational content through the Forex Wizard Telegram community.
               </p>
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" className="text-lg md:text-xl px-10 py-5" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" className="text-lg md:text-xl px-10 py-5" />
               <p className="mt-6 text-xs text-muted-foreground/60">
                 Free to join &middot; Trading involves risk
               </p>
@@ -751,7 +751,7 @@ export default function XauusdLotSizePage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -769,7 +769,7 @@ export default function XauusdLotSizePage() {
         </footer>
       </main>
 
-      <StickyTelegramButton href={TELEGRAM_LINK} label="Join ForexWizzz on Telegram" />
+      <StickyTelegramButton href={TELEGRAM_LINK} label="Join Forex Wizard on Telegram" />
     </>
   );
 }

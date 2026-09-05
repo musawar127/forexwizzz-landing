@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     description: "Learn how XAUUSD pip value works, how to calculate gold pips, and understand the difference between pips, points, ticks, contract size and lot size.",
     type: "article",
     url: "https://forexwizard.online/xauusd-pip-value/",
-    siteName: "ForexWizzz",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "ForexWizzz - Free Forex &amp; Gold Trading Telegram Community" }],
+    siteName: "Forex Wizard",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Forex Wizard - Free Forex &amp; Gold Trading Telegram Community" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -162,8 +162,8 @@ const continueLearningCards = [
   { href: "/xauusd-analysis/", title: "XAUUSD Analysis", desc: "Follow regular gold market analysis covering price structure, key levels, and potential trade setups.", icon: <LineChart className="w-7 h-7 text-trading-green" />, gradient: "from-trading-green/10 to-transparent" },
   { href: "/how-to-read-xauusd-price-action/", title: "XAUUSD Price Action", desc: "Learn to read candlestick patterns, market structure, and price behavior for better trade decisions.", icon: <BarChart3 className="w-7 h-7 text-trading-gold" />, gradient: "from-trading-gold/10 to-transparent" },
   { href: "/xauusd-support-resistance/", title: "XAUUSD Support and Resistance", desc: "Understand how to identify and trade from key support and resistance levels in gold.", icon: <Target className="w-7 h-7 text-trading-gold" />, gradient: "from-trading-gold/10 to-transparent" },
-  { href: "/gold-signals/", title: "Gold Trading Signals", desc: "Access free gold trading signals and market updates through the ForexWizard Telegram community.", icon: <Zap className="w-7 h-7 text-trading-green" />, gradient: "from-trading-green/10 to-transparent" },
-  { href: "/about/", title: "About ForexWizard", desc: "Learn more about the ForexWizzz community, our approach, and what we offer to traders.", icon: <Info className="w-7 h-7 text-trading-gold" />, gradient: "from-trading-gold/10 to-transparent" },
+  { href: "/gold-signals/", title: "Gold Trading Signals", desc: "Access free gold trading signals and market updates through the Forex Wizard Telegram community.", icon: <Zap className="w-7 h-7 text-trading-green" />, gradient: "from-trading-green/10 to-transparent" },
+  { href: "/about/", title: "About Forex Wizard", desc: "Learn more about the Forex Wizard community, our approach, and what we offer to traders.", icon: <Info className="w-7 h-7 text-trading-gold" />, gradient: "from-trading-gold/10 to-transparent" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -182,7 +182,7 @@ export default function XauusdPipValuePage() {
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="text-lg font-extrabold text-trading-gold tracking-tight no-underline">
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/forex-signals/" className="text-sm font-medium text-muted-foreground hover:text-trading-green transition-colors no-underline">Forex Signals</Link>
@@ -204,7 +204,7 @@ export default function XauusdPipValuePage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
-                ForexWizard Trading Guide
+                Forex Wizard Trading Guide
               </span>
             </FadeIn>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
@@ -216,7 +216,7 @@ export default function XauusdPipValuePage() {
               accurately for your specific setup.
             </p>
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link href="/xauusd-lot-size/" className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95">
                 <Layers className="w-5 h-5" />XAUUSD Lot Size
               </Link>
@@ -685,7 +685,7 @@ export default function XauusdPipValuePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Continue </span><span className="text-trading-gold text-glow-gold">Learning</span></h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of ForexWizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of Forex Wizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {continueLearningCards.map((item, i) => (
@@ -711,15 +711,15 @@ export default function XauusdPipValuePage() {
             <div className="relative glass-strong rounded-3xl p-8 md:p-14 text-center gradient-border">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                 <span className="text-foreground">Join the </span>
-                <span className="text-trading-gold text-glow-gold">ForexWizard</span>
+                <span className="text-trading-gold text-glow-gold">Forex Wizard</span>
                 <br />
                 <span className="text-foreground">Trading Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
                 Follow XAUUSD market analysis, trading discussions and
-                educational content through the ForexWizard Telegram community.
+                educational content through the Forex Wizard Telegram community.
               </p>
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" className="text-lg md:text-xl px-10 py-5" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" className="text-lg md:text-xl px-10 py-5" />
               <p className="mt-6 text-xs text-muted-foreground/60">
                 Free to join &middot; Trading involves risk
               </p>
@@ -758,7 +758,7 @@ export default function XauusdPipValuePage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -776,7 +776,7 @@ export default function XauusdPipValuePage() {
         </footer>
       </main>
 
-      <StickyTelegramButton href={TELEGRAM_LINK} label="Join ForexWizzz on Telegram" />
+      <StickyTelegramButton href={TELEGRAM_LINK} label="Join Forex Wizard on Telegram" />
     </>
   );
 }

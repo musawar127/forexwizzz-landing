@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, MessageCircle, TrendingUp, BarChart3, LineChart, BookOpen, Info } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Page Not Found | ForexWizzz",
-  description: "The page you are looking for may have moved or no longer exists. Return to ForexWizzz for free Forex and Gold trading signals.",
+  title: "Page Not Found | Forex Wizard",
+  description: "The page you are looking for may have moved or no longer exists. Return to Forex Wizard for free Forex and Gold trading signals.",
   robots: { index: false, follow: false },
 };
 
@@ -28,7 +28,7 @@ export default function NotFound() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -82,7 +82,7 @@ export default function NotFound() {
               URL may be incorrect.
             </p>
             <p className="text-muted-foreground/70 text-sm leading-relaxed mb-10">
-              You can return to ForexWizzz or continue learning with one of our
+              You can return to Forex Wizard or continue learning with one of our
               trading guides.
             </p>
 
@@ -100,7 +100,7 @@ export default function NotFound() {
         {/* Explore links section */}
         <section className="relative z-10 max-w-2xl mx-auto px-4 pb-20">
           <p className="text-xs font-medium text-muted-foreground/50 tracking-widest uppercase text-center mb-6">
-            Explore ForexWizzz
+            Explore Forex Wizard
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {exploreLinks.map((link) => (
@@ -136,7 +136,7 @@ export default function NotFound() {
       <footer className="py-10 px-4 border-t border-white/5">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-muted-foreground mb-2">
-            ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+            Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
           </p>
           <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
             Risk Disclaimer: Forex and other financial markets involve

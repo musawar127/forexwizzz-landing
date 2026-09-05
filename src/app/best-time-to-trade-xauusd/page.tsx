@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     description: "Learn the best times to trade XAUUSD by understanding Asian, London and New York sessions, market overlaps, liquidity, volatility and major economic events.",
     type: "article",
     url: "https://forexwizard.online/best-time-to-trade-xauusd/",
-    siteName: "ForexWizzz",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community" }],
+    siteName: "Forex Wizard",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -95,7 +95,7 @@ const faqStructuredData = {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors">ForexWizzz</Link>
+          <Link href="/" className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors">Forex Wizard</Link>
           <nav className="flex items-center gap-6">
             <Link href="/forex-signals/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">Forex Signals</Link>
             <Link href="/gold-signals/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block">Gold Signals</Link>
@@ -116,7 +116,7 @@ const faqStructuredData = {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
-                ForexWizard Trading Guide
+                Forex Wizard Trading Guide
               </span>
             </FadeIn>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
@@ -129,7 +129,7 @@ const faqStructuredData = {
               window that fits your approach.
             </p>
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link href="/xauusd-analysis/" className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95">
                 <BarChart3 className="w-5 h-5" />XAUUSD Analysis Hub
               </Link>
@@ -345,7 +345,7 @@ const faqStructuredData = {
               ))}
             </div>
             <div className="mt-8 glass rounded-2xl p-5 border border-trading-gold/20">
-              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Note:</span> Traders should consult a reliable, current economic calendar for specific event dates and times. The events listed above are categories, not a schedule. ForexWizard does not provide live event data or predict market direction.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Note:</span> Traders should consult a reliable, current economic calendar for specific event dates and times. The events listed above are categories, not a schedule. Forex Wizard does not provide live event data or predict market direction.</p>
             </div>
           </div>
         </FadeSection>
@@ -474,7 +474,7 @@ const faqStructuredData = {
               <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Note on position sizing:</span> During volatile sessions, some traders adjust their gold position sizing to account for larger potential swings. To learn how to calculate XAUUSD lot size, see our guide on <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD lot size and position sizing</Link>.</p>
             </div>
             <div className="mt-6 glass rounded-2xl p-6 md:p-8 border border-trading-red/30">
-              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Risk Disclaimer:</span> Forex and gold trading involve significant risk and may not be suitable for all investors. Past performance does not guarantee future results. The information on ForexWizard is for educational and informational purposes only and should not be considered personalized financial advice.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Risk Disclaimer:</span> Forex and gold trading involve significant risk and may not be suitable for all investors. Past performance does not guarantee future results. The information on Forex Wizard is for educational and informational purposes only and should not be considered personalized financial advice.</p>
             </div>
           </div>
         </FadeSection>        {/* CONTINUE LEARNING */}
@@ -482,7 +482,7 @@ const faqStructuredData = {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Continue </span><span className="text-trading-gold text-glow-gold">Learning</span></h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of ForexWizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of Forex Wizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               <FadeIn delay={0}><Link href="/how-to-trade-xauusd/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><BookOpen className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">How to Trade XAUUSD</h3><p className="text-sm text-muted-foreground leading-relaxed">A beginner-friendly guide covering what you need before trading gold, how to analyze XAUUSD, plan trades and manage risk.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
@@ -490,8 +490,8 @@ const faqStructuredData = {
               <FadeIn delay={0.14}><Link href="/xauusd-analysis/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><LineChart className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">XAUUSD Analysis</h3><p className="text-sm text-muted-foreground leading-relaxed">The main hub for ongoing XAUUSD market analysis, key levels, and gold market structure updates.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
               <FadeIn delay={0.21}><Link href="/how-to-read-xauusd-price-action/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><Activity className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">How to Read XAUUSD Price Action</h3><p className="text-sm text-muted-foreground leading-relaxed">A dedicated guide to reading candlestick patterns, market structure, and price behavior on XAUUSD charts.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
               <FadeIn delay={0.28}><Link href="/xauusd-support-resistance/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-transparent flex items-center justify-center"><Layers className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">XAUUSD Support and Resistance</h3><p className="text-sm text-muted-foreground leading-relaxed">How to identify, draw, and trade from key support and resistance levels on the gold chart.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
-              <FadeIn delay={0.35}><Link href="/gold-signals/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center"><BarChart3 className="w-7 h-7 text-trading-green" /></div><h3 className="text-base font-bold text-foreground">Gold Trading Signals</h3><p className="text-sm text-muted-foreground leading-relaxed">Gold signals, XAUUSD trade ideas, and market updates from the ForexWizard community.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
-              <FadeIn delay={0.42}><Link href="/about/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-trading-green/10 flex items-center justify-center"><ShieldCheck className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">About ForexWizard</h3><p className="text-sm text-muted-foreground leading-relaxed">Learn about the ForexWizard community, our approach to market education, and what to expect.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.35}><Link href="/gold-signals/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center"><BarChart3 className="w-7 h-7 text-trading-green" /></div><h3 className="text-base font-bold text-foreground">Gold Trading Signals</h3><p className="text-sm text-muted-foreground leading-relaxed">Gold signals, XAUUSD trade ideas, and market updates from the Forex Wizard community.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
+              <FadeIn delay={0.42}><Link href="/about/" className="block h-full no-underline"><div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full"><div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-gold/10 to-trading-green/10 flex items-center justify-center"><ShieldCheck className="w-7 h-7 text-trading-gold" /></div><h3 className="text-base font-bold text-foreground">About Forex Wizard</h3><p className="text-sm text-muted-foreground leading-relaxed">Learn about the Forex Wizard community, our approach to market education, and what to expect.</p><span className="text-xs text-trading-gold font-medium mt-auto flex items-center gap-1">Read more <ArrowRight className="w-3 h-3" /></span></div></Link></FadeIn>
             </div>
           </div>
         </FadeSection>
@@ -500,9 +500,9 @@ const faqStructuredData = {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
-              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4"><span className="text-foreground">Join the </span><span className="text-trading-gold text-glow-gold">ForexWizard</span><span className="text-foreground"> Community</span></h2>
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">Follow XAUUSD market updates, educational analysis, and trading discussions with the ForexWizard Telegram community. Free to join.</p>
-              <TelegramCTA text="Join ForexWizard on Telegram" variant="gold" />
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4"><span className="text-foreground">Join the </span><span className="text-trading-gold text-glow-gold">Forex Wizard</span><span className="text-foreground"> Community</span></h2>
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">Follow XAUUSD market updates, educational analysis, and trading discussions with the Forex Wizard Telegram community. Free to join.</p>
+              <TelegramCTA text="Join Forex Wizard on Telegram" variant="gold" />
             </FadeIn>
           </div>
         </FadeSection>
@@ -532,7 +532,7 @@ const faqStructuredData = {
         {/* FOOTER */}
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm text-muted-foreground mb-2">ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community</p>
+            <p className="text-sm text-muted-foreground mb-2">Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community</p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">Risk Disclaimer: Forex and other financial markets involve significant risk of loss and are not suitable for all investors. Past performance does not guarantee future results. The content shared in our community is for educational and informational purposes only and should not be considered financial advice.</p>
             <div className="flex items-center justify-center gap-4 mt-4">
               <Link href="/" className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline">Home</Link>
@@ -544,7 +544,7 @@ const faqStructuredData = {
         </footer>
       </main>
 
-      <StickyTelegramButton href={TELEGRAM_LINK} label="Join ForexWizzz on Telegram" />
+      <StickyTelegramButton href={TELEGRAM_LINK} label="Join Forex Wizard on Telegram" />
     </>
   );
 }

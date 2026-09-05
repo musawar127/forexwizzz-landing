@@ -26,33 +26,33 @@ import {
 import { CandlestickBackground } from "@/components/candlestick-background";
 
 export const metadata: Metadata = {
-  title: "About ForexWizard | Forex & Gold Market Analysis",
+  title: "About Forex Wizard | Forex & Gold Market Analysis",
   description:
-    "Learn about ForexWizard, our forex and gold market analysis approach, educational content, trading insights and Telegram community.",
+    "Learn about Forex Wizard, our forex and gold market analysis approach, educational content, trading insights and Telegram community.",
   alternates: {
     canonical: "https://forexwizard.online/about/",
   },
   openGraph: {
-    title: "About ForexWizard | Forex & Gold Market Analysis",
+    title: "About Forex Wizard | Forex & Gold Market Analysis",
     description:
-      "Learn about ForexWizard, our approach to forex and gold market analysis, trading education and community updates.",
+      "Learn about Forex Wizard, our approach to forex and gold market analysis, trading education and community updates.",
     type: "website",
     url: "https://forexwizard.online/about/",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About ForexWizard | Forex & Gold Market Analysis",
+    title: "About Forex Wizard | Forex & Gold Market Analysis",
     description:
-      "Learn about ForexWizard, our approach to forex and gold market analysis, trading education and community updates.",
+      "Learn about Forex Wizard, our approach to forex and gold market analysis, trading education and community updates.",
     images: ["/og-image.jpg"],
   },
 };
@@ -197,7 +197,7 @@ export default function AboutPage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -247,23 +247,23 @@ export default function AboutPage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-green">
                 <span className="w-2 h-2 bg-trading-green rounded-full animate-pulse" />
-                About ForexWizard
+                About Forex Wizard
               </span>
             </FadeIn>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
               <span className="text-foreground">About </span>
-              <span className="text-trading-green text-glow-green">ForexWizard</span>
+              <span className="text-trading-green text-glow-green">Forex Wizard</span>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              ForexWizard is an online resource focused on forex market analysis,
+              Forex Wizard is an online resource focused on forex market analysis,
               gold and XAUUSD insights, trading education, and community updates.
               Explore our content and join the Telegram community to follow along.
             </p>
 
             <FadeIn delay={0.5}>
-              <TelegramCTA text="Join ForexWizard Telegram" variant="primary" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="primary" />
             </FadeIn>
           </HeroAnimation>
         </section>
@@ -274,20 +274,20 @@ export default function AboutPage() {
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">Who Is </span>
-                <span className="text-trading-green text-glow-green">ForexWizard?</span>
+                <span className="text-trading-green text-glow-green">Forex Wizard?</span>
               </h2>
             </div>
 
             <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                ForexWizard is an online resource focused on forex and gold market
+                Forex Wizard is an online resource focused on forex and gold market
                 analysis, trading education, and market-related insights. The
                 website provides educational content about forex and XAUUSD
                 trading, including analysis frameworks, risk management concepts,
                 and information about how traders may approach the market.
               </p>
               <p>
-                In addition to the website, ForexWizard operates a free Telegram
+                In addition to the website, Forex Wizard operates a free Telegram
                 community where members can follow market updates, analysis
                 discussions, and trading-related insights. The Telegram
                 community is an extension of the educational content available on
@@ -295,7 +295,7 @@ export default function AboutPage() {
                 developments together.
               </p>
               <p>
-                ForexWizard does not claim to be a registered financial advisory
+                Forex Wizard does not claim to be a registered financial advisory
                 service, a licensed brokerage, or a regulated investment firm. The
                 content on this website and in the Telegram community is for
                 educational and informational purposes only. Visitors should
@@ -315,7 +315,7 @@ export default function AboutPage() {
                 <span className="text-trading-gold text-glow-gold">Cover</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                The main topics and resources available through ForexWizard.
+                The main topics and resources available through Forex Wizard.
               </p>
             </div>
 
@@ -357,7 +357,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 The types of analysis and considerations that may inform the
-                market insights shared through ForexWizard.
+                market insights shared through Forex Wizard.
               </p>
             </div>
 
@@ -402,7 +402,7 @@ export default function AboutPage() {
                 <span className="text-trading-gold text-glow-gold">First</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                ForexWizard believes that traders benefit most when they
+                Forex Wizard believes that traders benefit most when they
                 understand the reasoning behind market analysis rather than
                 blindly following trade directions.
               </p>
@@ -437,11 +437,11 @@ export default function AboutPage() {
                 <MessageCircle className="w-8 h-8 text-trading-green" />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
-                <span className="text-foreground">ForexWizard </span>
+                <span className="text-foreground">Forex Wizard </span>
                 <span className="text-trading-green text-glow-green">Telegram Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
-                ForexWizard also has a free Telegram community where members
+                Forex Wizard also has a free Telegram community where members
                 can follow market updates, analysis discussions, and trading
                 insights. The community is an extension of the educational
                 content on this website and provides a space to stay connected
@@ -449,7 +449,7 @@ export default function AboutPage() {
               </p>
               <PulsingGlow className="inline-block rounded-xl">
                 <TelegramCTA
-                  text="Join ForexWizard on Telegram"
+                  text="Join Forex Wizard on Telegram"
                   variant="primary"
                   className="text-lg md:text-xl px-10 py-5"
                 />
@@ -499,7 +499,7 @@ export default function AboutPage() {
 
             <div className="glass-strong rounded-2xl p-6 md:p-8 text-center border border-trading-red/20">
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                ForexWizard provides market-related information and educational
+                Forex Wizard provides market-related information and educational
                 content for informational purposes only. Forex and gold trading
                 involve significant risk, and past performance does not guarantee
                 future results. Nothing on this website should be considered
@@ -514,7 +514,7 @@ export default function AboutPage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -569,7 +569,7 @@ export default function AboutPage() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );

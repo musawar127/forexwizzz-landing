@@ -44,13 +44,13 @@ export const metadata: Metadata = {
       "Learn an XAUUSD trading strategy using market structure, price action, key levels, trade planning and risk management in a practical step-by-step framework.",
     type: "website",
     url: "https://forexwizard.online/xauusd-trading-strategy/",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
@@ -360,7 +360,7 @@ const continueLearningCards = [
     href: "/gold-signals/",
     icon: <BarChart3 className="w-7 h-7 text-trading-green" />,
     title: "Gold Trading Signals",
-    desc: "Gold signals, XAUUSD trade ideas, and market updates from the ForexWizard community.",
+    desc: "Gold signals, XAUUSD trade ideas, and market updates from the Forex Wizard community.",
     gradient: "from-trading-green/10 to-transparent",
   },
   {
@@ -373,8 +373,8 @@ const continueLearningCards = [
   {
     href: "/about/",
     icon: <BookOpen className="w-7 h-7 text-trading-gold" />,
-    title: "About ForexWizard",
-    desc: "Learn about the ForexWizard community, our approach, and what to expect.",
+    title: "About Forex Wizard",
+    desc: "Learn about the Forex Wizard community, our approach, and what to expect.",
     gradient: "from-trading-gold/10 to-trading-green/10",
   },
 ];
@@ -431,7 +431,7 @@ export default function XauusdTradingStrategyPage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -496,7 +496,7 @@ export default function XauusdTradingStrategyPage() {
             </p>
 
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link
                 href="/xauusd-analysis/"
                 className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-gold border border-white/10 hover:border-trading-gold/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95"
@@ -1020,7 +1020,7 @@ export default function XauusdTradingStrategyPage() {
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 Gold and forex trading involves significant risk and may not be
                 suitable for all investors. Past performance does not guarantee
-                future results. Information provided by ForexWizard is for
+                future results. Information provided by Forex Wizard is for
                 educational and informational purposes only and should not be
                 considered financial advice.
               </p>
@@ -1106,7 +1106,7 @@ export default function XauusdTradingStrategyPage() {
                 <span className="text-trading-gold text-glow-gold">Learning</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                Explore the rest of the ForexWizard XAUUSD education cluster to
+                Explore the rest of the Forex Wizard XAUUSD education cluster to
                 build a well-rounded understanding of gold trading.
               </p>
             </div>
@@ -1147,18 +1147,18 @@ export default function XauusdTradingStrategyPage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                 <span className="text-foreground">Join the </span>
                 <span className="text-trading-gold text-glow-gold">
-                  ForexWizard
+                  Forex Wizard
                 </span>
                 <br />
                 <span className="text-foreground">Trading Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
                 Follow XAUUSD market analysis, trading discussions and
-                educational content through the ForexWizard Telegram community.
+                educational content through the Forex Wizard Telegram community.
               </p>
               <PulsingGlow className="inline-block rounded-xl">
                 <TelegramCTA
-                  text="Join ForexWizard Telegram"
+                  text="Join Forex Wizard Telegram"
                   variant="gold"
                   className="text-lg md:text-xl px-10 py-5"
                 />
@@ -1206,7 +1206,7 @@ export default function XauusdTradingStrategyPage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -1243,7 +1243,7 @@ export default function XauusdTradingStrategyPage() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );

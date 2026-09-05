@@ -42,13 +42,13 @@ export const metadata: Metadata = {
       "Explore gold trading signals and XAUUSD market analysis with trade ideas, key levels, market context and responsible risk management.",
     type: "website",
     url: "https://forexwizard.online/gold-signals/",
-    siteName: "ForexWizzz",
+    siteName: "Forex Wizard",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ForexWizzz - Free Forex & Gold Trading Telegram Community",
+        alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community",
       },
     ],
   },
@@ -89,8 +89,8 @@ const faqs = [
     a: "Gold signals and XAUUSD analysis serve different purposes for traders. A gold signal is a specific trade idea that typically includes a direction, entry area, stop-loss, and take-profit levels for a potential trade. XAUUSD analysis, on the other hand, is a broader study of the gold market that examines trends, key levels, market structure, and macroeconomic factors without necessarily issuing a specific trade recommendation. Analysis provides the context and reasoning that informs signals. Traders benefit from both: analysis helps build understanding of the gold market, while signals offer concrete trade ideas to consider within that analytical framework.",
   },
   {
-    q: "Where can I get ForexWizard gold updates?",
-    a: "You can join the ForexWizard Telegram community to follow gold and XAUUSD market updates, trading insights, and analysis discussions. The community is free to join and provides regular market commentary, potential gold trading setups, and educational content designed for gold traders at all experience levels. You can find the community by searching for ForexWizzz on Telegram or by visiting the ForexWizard website and clicking the Telegram link.",
+    q: "Where can I get Forex Wizard gold updates?",
+    a: "You can join the Forex Wizard Telegram community to follow gold and XAUUSD market updates, trading insights, and analysis discussions. The community is free to join and provides regular market commentary, potential gold trading setups, and educational content designed for gold traders at all experience levels. You can find the community by searching for Forex Wizard on Telegram or by visiting the Forex Wizard website and clicking the Telegram link.",
   },
 ];
 
@@ -365,7 +365,7 @@ export default function GoldSignalsPage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
-            ForexWizzz
+            Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">
             <Link
@@ -415,7 +415,7 @@ export default function GoldSignalsPage() {
             <FadeIn delay={0.2} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <span className="w-2 h-2 bg-trading-gold rounded-full animate-pulse" />
-                ForexWizard Gold Trading Community
+                Forex Wizard Gold Trading Community
               </span>
             </FadeIn>
 
@@ -427,13 +427,13 @@ export default function GoldSignalsPage() {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              ForexWizard provides gold and XAUUSD market analysis, trading
+              Forex Wizard provides gold and XAUUSD market analysis, trading
               insights, and educational information for gold traders. Join our
               Telegram community to follow market updates and discussions.
             </p>
 
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <TelegramCTA text="Join ForexWizard Telegram" variant="gold" />
+              <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
               <Link
                 href="/forex-signals/"
                 className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-foreground hover:text-trading-green border border-white/10 hover:border-trading-green/30 transition-all duration-300 no-underline select-none hover:scale-105 active:scale-95"
@@ -717,7 +717,7 @@ export default function GoldSignalsPage() {
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">
                 Gold and forex trading involves significant risk and may not be
                 suitable for all investors. Past performance does not guarantee
-                future results. Information provided by ForexWizard is for
+                future results. Information provided by Forex Wizard is for
                 educational and informational purposes only and should not be
                 considered financial advice.
               </p>
@@ -731,10 +731,10 @@ export default function GoldSignalsPage() {
             <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">Why Follow </span>
-                <span className="text-trading-gold text-glow-gold">ForexWizard for Gold?</span>
+                <span className="text-trading-gold text-glow-gold">Forex Wizard for Gold?</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                ForexWizard offers a focused space for gold traders who want to
+                Forex Wizard offers a focused space for gold traders who want to
                 follow XAUUSD market analysis and trading community discussions.
               </p>
             </div>
@@ -767,18 +767,18 @@ export default function GoldSignalsPage() {
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                 <span className="text-foreground">Join the </span>
                 <span className="text-trading-gold text-glow-gold">
-                  ForexWizard
+                  Forex Wizard
                 </span>
                 <br />
                 <span className="text-foreground">Gold Trading Community</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
                 Follow gold and XAUUSD market updates, analysis and trading
-                insights through the ForexWizard Telegram community.
+                insights through the Forex Wizard Telegram community.
               </p>
               <PulsingGlow className="inline-block rounded-xl">
                 <TelegramCTA
-                  text="Join ForexWizard Telegram"
+                  text="Join Forex Wizard Telegram"
                   variant="gold"
                   className="text-lg md:text-xl px-10 py-5"
                 />
@@ -799,7 +799,7 @@ export default function GoldSignalsPage() {
                 <span className="text-trading-gold text-glow-gold">Learning</span>
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-                Explore more of ForexWizard to deepen your gold trading
+                Explore more of Forex Wizard to deepen your gold trading
                 knowledge and market understanding.
               </p>
             </div>
@@ -895,10 +895,10 @@ export default function GoldSignalsPage() {
                       <BookOpen className="w-7 h-7 text-trading-gold" />
                     </div>
                     <h3 className="text-base font-bold text-foreground">
-                      About ForexWizard
+                      About Forex Wizard
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Learn about the ForexWizard community, our approach to
+                      Learn about the Forex Wizard community, our approach to
                       market education, and what to expect.
                     </p>
                   </div>
@@ -944,7 +944,7 @@ export default function GoldSignalsPage() {
         <footer className="py-10 px-4 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              ForexWizzz &mdash; Free Forex &amp; Gold Trading Signals Community
+              Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
             </p>
             <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
               Risk Disclaimer: Forex and other financial markets involve
@@ -981,7 +981,7 @@ export default function GoldSignalsPage() {
 
       <StickyTelegramButton
         href={TELEGRAM_LINK}
-        label="Join ForexWizzz on Telegram"
+        label="Join Forex Wizard on Telegram"
       />
     </>
   );
