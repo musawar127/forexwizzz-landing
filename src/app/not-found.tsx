@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, MessageCircle, TrendingUp, BarChart3, LineChart, BookOpen, Info } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Page Not Found | ForexWizzz",
+  description: "The page you are looking for may have moved or no longer exists. Return to ForexWizzz for free Forex and Gold trading signals.",
+  robots: { index: false, follow: false },
+};
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
 
