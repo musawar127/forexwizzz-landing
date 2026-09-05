@@ -123,8 +123,13 @@ export default function PrivacyPolicyPage() {
                 a fully static website. This means that every page is
                 pre-rendered and served as plain HTML, CSS, and JavaScript
                 without any server-side processing or dynamic data collection.
-                We do not collect personal information from visitors, and this
-                policy reflects that reality honestly and completely.
+                We do not directly collect personal information through user
+                accounts, forms, analytics tools, advertising trackers, newsletter
+                signups, or similar features on this website. This policy reflects
+                that reality honestly and completely. However, basic technical
+                information may still be processed automatically by hosting, network,
+                or security infrastructure when you access the website, as described
+                in Section 2.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 By using our website, you agree to the practices described in
@@ -133,6 +138,19 @@ export default function PrivacyPolicyPage() {
                 you to read this policy in its entirety so that you fully
                 understand how your information is &mdash; and is not &mdash;
                 handled when you visit Forex Wizard.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                When this policy states that Forex Wizard does not collect
+                personal information, it means that Forex Wizard does not actively
+                or directly collect personal information through website features
+                such as user accounts, forms, analytics tools, advertising
+                trackers, newsletter signups, or similar mechanisms. This does not
+                mean that no technical data is ever processed by the hosting,
+                network, or security infrastructure that delivers the website to
+                your browser. Basic technical information such as IP addresses,
+                browser information, requested pages, timestamps, and referring
+                URLs may be processed automatically by infrastructure as described
+                in Section 2.
               </p>
             </div>
           </FadeSection>
@@ -144,11 +162,14 @@ export default function PrivacyPolicyPage() {
                 2. Information We May Receive
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Forex Wizard does not collect personal information from its
-                visitors. Our website has no user registration, no login system,
-                no forms, no newsletter sign-ups, no email collection, and no
-                account creation of any kind. You can browse every page of our
-                website without providing any personal data whatsoever.
+                Forex Wizard does not directly collect personal information from
+                its visitors through website features. Our website has no user
+                registration, no login system, no forms, no newsletter sign-ups, no
+                email collection, and no account creation of any kind. You can
+                browse every page of our website without providing any personal data
+                through any website feature. Basic technical information may still be
+                processed automatically by hosting, network, or security
+                infrastructure, as described below.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 We want to be fully transparent: our hosting provider may record
@@ -184,13 +205,17 @@ export default function PrivacyPolicyPage() {
                 collection of static files served directly to your browser.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Because the site is entirely static, no data is transmitted to
-                our servers by the website itself. Your browser downloads the
-                pre-built HTML, CSS, JavaScript, images, and font files, and
-                renders the page locally. There is no communication back to our
-                servers after the initial page load. No user behavior, scroll
-                events, click events, or any other interaction data is sent from
-                your browser to any server.
+                Because the site is entirely static, no data is actively
+                transmitted to our servers by the website itself. Your browser
+                downloads the pre-built HTML, CSS, JavaScript, images, and font
+                files, and renders the page locally. There is no communication back
+                to our servers after the initial page load. No user behavior,
+                scroll events, click events, or any other interaction data is sent
+                from your browser to any server. However, basic technical
+                information may still be processed automatically by hosting,
+                network, or security infrastructure when you access the website.
+                This can include information such as IP address, browser
+                information, requested pages, timestamps, and referring URLs.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 This architectural decision was intentional. By making Forex
@@ -366,11 +391,12 @@ export default function PrivacyPolicyPage() {
                 8. How Information Is Used
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Since Forex Wizard does not collect personal information from
-                visitors, there is no personal data to use, analyze, share, sell,
-                or distribute. We do not build user profiles, track browsing
-                patterns, create audience segments, or engage in any form of
-                data-driven decision making based on visitor information.
+                Since Forex Wizard does not directly collect personal information
+                from visitors through website features, there is no personal data
+                collected by the website to use, analyze, share, sell, or
+                distribute. We do not build user profiles, track browsing patterns,
+                create audience segments, or engage in any form of data-driven
+                decision making based on visitor information.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 The website exists solely to provide free educational content
@@ -386,7 +412,7 @@ export default function PrivacyPolicyPage() {
                 should be accessible to everyone without requiring visitors to
                 trade their personal data for access. This philosophy is
                 reflected in every aspect of our website&apos;s design, from its
-                static architecture to its complete absence of data collection
+                static architecture to its absence of direct data collection
                 mechanisms. Your privacy is not a feature we added &mdash; it is
                 the default state of our website.
               </p>
@@ -400,9 +426,10 @@ export default function PrivacyPolicyPage() {
                 9. Data Security
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Because the Forex Wizard website does not collect or store
-                personal information, the risk of a data breach involving visitor
-                data through the website itself is minimal. There are no
+                Because the Forex Wizard website does not directly collect or
+                store personal information through website features, the risk of a
+                data breach involving visitor data through the website itself is
+                minimal. There are no
                 databases to compromise, no user accounts to hack, no personal
                 data to leak, and no server-side processing that could be
                 exploited to extract visitor information.
@@ -412,8 +439,8 @@ export default function PrivacyPolicyPage() {
                 processing. This means there are no API endpoints that could be
                 attacked, no database connections that could be compromised, and
                 no server-side sessions that could be hijacked. The attack
-                surface for visitor data is essentially zero because there is no
-                visitor data to attack.
+                surface for visitor data collected by the website is minimal because
+                the website itself does not collect visitor data to attack.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 While no system connected to the internet can be considered
@@ -434,26 +461,30 @@ export default function PrivacyPolicyPage() {
                 10. Data Retention
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Forex Wizard does not collect or store personal information, so
-                there is no data retention to describe. We have no databases
+                Forex Wizard does not directly collect or store personal
+                information through website features, so there is no data retention
+                of directly collected information to describe. We have no databases
                 storing visitor details, no logs that we access or retain for
-                analysis, and no records of individual visits to our website.
+                analysis, and no records of individual visits that we maintain.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 There are no retention periods, data deletion policies, or data
-                subject access procedures because there is no personal data to
-                retain, delete, or provide access to. You cannot request a copy
-                of your data, request data deletion, or exercise any data
-                subject rights because we simply do not have any personal data
-                about you.
+                subject access procedures for data collected by the website because
+                the website does not directly collect personal data to retain,
+                delete, or provide access to. You cannot request a copy of your
+                data from the website, request data deletion, or exercise data
+                subject rights regarding website-collected data because the website
+                simply does not collect personal data about you through its
+                features.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 This is a fundamental advantage of our privacy-by-design
-                approach. Rather than collecting data and then managing its
-                retention, access, and deletion, we avoid collecting data
-                entirely. This eliminates the entire data lifecycle management
-                problem and ensures that visitor privacy is maintained at every
-                stage.
+                approach. Rather than collecting data through website features and
+                then managing its retention, access, and deletion, we avoid
+                collecting data through the website entirely. This eliminates the
+                data lifecycle management problem for website-collected data and
+                ensures that visitor privacy is maintained with respect to
+                information the website directly gathers.
               </p>
             </div>
           </FadeSection>
@@ -472,17 +503,18 @@ export default function PrivacyPolicyPage() {
                 are not appropriate activities for minors.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                We do not knowingly collect information from children under 18.
-                Since no personal information is collected from any visitor
-                regardless of age, no special protections for children&apos;s
-                data are needed. There are no age gates, parental consent
-                mechanisms, or children&apos;s privacy features because the
-                website does not collect any data from anyone.
+                We do not knowingly collect information from children under 18
+                through website features. Since no personal information is directly
+                collected from any visitor regardless of age through the website, no
+                special protections for children&apos;s data are needed on our end.
+                There are no age gates, parental consent mechanisms, or
+                children&apos;s privacy features because the website does not
+                directly collect personal data from anyone through its features.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Parents and guardians should be aware that our website is freely
-                accessible without age verification, as it does not collect any
-                personal information. However, the content discusses financial
+                accessible without age verification, as it does not directly
+                collect any personal information through its features. However, the content discusses financial
                 markets and trading strategies that are intended for an adult
                 audience. If you are a parent or guardian and have concerns about
                 your child accessing financial market content, we recommend using
@@ -498,8 +530,9 @@ export default function PrivacyPolicyPage() {
                 12. Your Choices
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Because Forex Wizard does not collect personal information or use
-                tracking technologies, there are no cookies to manage, no
+                Because Forex Wizard does not directly collect personal information
+                through website features or use tracking technologies, there are no
+                cookies to manage, no
                 tracking preferences to set, no opt-out mechanisms needed, and no
                 privacy settings to configure. You do not need to take any action
                 to protect your privacy when using our website because your
@@ -546,8 +579,9 @@ export default function PrivacyPolicyPage() {
                 constitutes your acceptance of the revised Privacy Policy.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Given that our website is static and does not collect personal
-                information, significant changes to this policy are unlikely.
+                Given that our website is static and does not directly collect
+                personal information through website features, significant changes
+                to this policy are unlikely.
                 However, if we ever add features that involve data collection,
                 we will update this policy before or at the time those features
                 are implemented, and we will clearly describe any new data
@@ -595,14 +629,25 @@ export default function PrivacyPolicyPage() {
                   </a>
                 </li>
               </ul>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                If you choose to contact us by email at
+                forexwizardy@gmail.com, please be aware that your email message
+                is transmitted using email infrastructure operated by Google/Gmail
+                and may be subject to Google&apos;s privacy practices. Forex Wizard
+                does not control Google&apos;s handling of email data. We encourage
+                you to review Google&apos;s privacy policy if you have concerns about
+                how your email communication may be processed by their services.
+              </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 We will make every effort to respond to your inquiry in a
                 timely manner. Please note that while we are happy to answer
                 questions about our privacy practices, the simplest assurance we
-                can provide is that our website does not collect personal
-                information. If you have questions about a specific aspect of
-                this policy, we encourage you to reach out and we will provide a
-                clear and honest response.
+                can provide is that our website does not directly collect personal
+                information through user accounts, forms, analytics tools,
+                advertising trackers, newsletter signups, or similar features. If
+                you have questions about a specific aspect of this policy, we
+                encourage you to reach out and we will provide a clear and honest
+                response.
               </p>
             </div>
           </FadeSection>
