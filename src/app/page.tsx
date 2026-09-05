@@ -11,6 +11,10 @@ import {
   ArrowRight,
   MessageCircle,
   ShieldCheck,
+  BookOpen,
+  Target,
+  Calculator,
+  Hash,
 } from "lucide-react";
 import {
   FadeSection,
@@ -145,6 +149,57 @@ const earningImages = [
   { src: "earning-3.jpg", alt: "XAUUSD trade screenshot from a member of the Forex Wizard trading community", width: 591, height: 1280 },
   { src: "earning-4.jpg", alt: "Forex trade activity screenshot submitted by a Forex Wizard community member", width: 1080, height: 1042 },
   { src: "earning-5.jpg", alt: "Gold trade screenshot shared in the Forex Wizard free Telegram signals group", width: 589, height: 1280 },
+];
+
+const learningGuides = [
+  {
+    icon: <BarChart3 className="w-6 h-6 text-trading-gold" />,
+    title: "XAUUSD Analysis",
+    desc: "Learn how market structure, technical context, and key factors can be analyzed for gold trading decisions.",
+    href: "/xauusd-analysis/",
+  },
+  {
+    icon: <GraduationCap className="w-6 h-6 text-trading-green" />,
+    title: "How to Trade XAUUSD",
+    desc: "Beginner overview of the complete trading process from analysis to execution and risk management.",
+    href: "/how-to-trade-xauusd/",
+  },
+  {
+    icon: <Target className="w-6 h-6 text-trading-gold" />,
+    title: "XAUUSD Trading Strategy",
+    desc: "Learn how to structure a repeatable trading framework with clear entry, exit, and risk rules.",
+    href: "/xauusd-trading-strategy/",
+  },
+  {
+    icon: <BookOpen className="w-6 h-6 text-trading-green" />,
+    title: "How to Read XAUUSD Price Action",
+    desc: "Interpret candles, momentum, market structure, and confirmation signals on gold charts.",
+    href: "/how-to-read-xauusd-price-action/",
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6 text-trading-gold" />,
+    title: "XAUUSD Support and Resistance",
+    desc: "Learn how to identify important price levels and zones where gold may react or reverse.",
+    href: "/xauusd-support-resistance/",
+  },
+  {
+    icon: <Clock className="w-6 h-6 text-trading-green" />,
+    title: "Best Time to Trade XAUUSD",
+    desc: "Understand major trading sessions, timing, liquidity, and volatility patterns for gold.",
+    href: "/best-time-to-trade-xauusd/",
+  },
+  {
+    icon: <Calculator className="w-6 h-6 text-trading-gold" />,
+    title: "XAUUSD Lot Size",
+    desc: "Understand position sizing, contract size, leverage, and how to manage risk per trade.",
+    href: "/xauusd-lot-size/",
+  },
+  {
+    icon: <Hash className="w-6 h-6 text-trading-green" />,
+    title: "XAUUSD Pip Value",
+    desc: "Understand pips, points, tick size, tick value, and how gold price movement translates to profit or loss.",
+    href: "/xauusd-pip-value/",
+  },
 ];
 
 const telegramFeatures = [
@@ -524,6 +579,47 @@ export default function Home() {
 
             <div className="text-center">
               <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
+            </div>
+          </div>
+        </FadeSection>
+
+        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">LEARNING </span>
+                <span className="text-trading-green text-glow-green">CENTER</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Explore practical Forex Wizard guides covering XAUUSD analysis, trading
+                strategy, price action, support and resistance, trading sessions, lot
+                size, and pip value.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+              {learningGuides.map((guide, i) => (
+                <FadeIn key={i} delay={i * 0.08}>
+                  <Link
+                    href={guide.href}
+                    className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 group h-full no-underline"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-trading-gold/10 flex items-center justify-center group-hover:from-trading-green/20 group-hover:to-trading-gold/20 transition-colors duration-300">
+                      {guide.icon}
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">
+                      {guide.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                      {guide.desc}
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-trading-green group-hover:text-trading-green/80 transition-colors mt-auto">
+                      Read Guide
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                </FadeIn>
+              ))}
             </div>
           </div>
         </FadeSection>

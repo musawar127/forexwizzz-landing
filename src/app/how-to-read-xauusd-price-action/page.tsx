@@ -721,7 +721,14 @@ export default function HowToReadXauusdPriceActionPage() {
                 has historically been strong enough to halt a decline. A
                 resistance level is where selling pressure has historically
                 been sufficient to stop an advance. These levels are identified
-                by looking at where price has reversed or paused in the past.
+                by looking at where price has reversed or paused in the past — a
+                process covered in detail in our guide to{" "}
+                <Link
+                  href="/xauusd-support-resistance/"
+                  className="text-trading-gold hover:text-trading-gold/80 underline underline-offset-2 transition-colors"
+                >
+                  identifying XAUUSD support and resistance levels
+                </Link>{" "}.
               </p>
               <p>
                 <span className="text-foreground font-semibold">Previous swing highs</span> serve
@@ -1019,8 +1026,14 @@ export default function HowToReadXauusdPriceActionPage() {
                 to global macroeconomic conditions, and major economic events can
                 cause rapid and substantial price movements that override
                 technical patterns. Understanding these factors helps traders
-                interpret why gold is moving the way it is and when to exercise
-                additional caution.
+                interpret why gold is moving the way it is, choose the{" "}
+                <Link
+                  href="/best-time-to-trade-xauusd/"
+                  className="text-trading-gold hover:text-trading-gold/80 underline underline-offset-2 transition-colors"
+                >
+                  best time to trade XAUUSD
+                </Link>{" "},
+                and know when to exercise additional caution.
               </p>
             </div>
 

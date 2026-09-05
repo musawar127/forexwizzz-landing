@@ -485,7 +485,9 @@ export default function GoldSignalsPage() {
                 trading plan, account size, and risk tolerance. Risk management
                 including the use of stop-losses and appropriate position sizing
                 remains the trader's own responsibility, regardless of any signal
-                they choose to follow.
+                they choose to follow. Understanding{" "}
+                <Link href="/xauusd-lot-size/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">how XAUUSD lot size works</Link>{" "}
+                is essential for calculating the correct trade size from any signal.
               </p>
             </div>
           </div>
@@ -647,7 +649,9 @@ export default function GoldSignalsPage() {
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Gold can experience different levels of volatility and liquidity
                 during various market sessions and around major economic events.
-                Understanding these patterns can help traders make more informed
+                Understanding the{" "}
+                <Link href="/best-time-to-trade-xauusd/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">best time to trade XAUUSD</Link>{" "}
+                can help traders make more informed
                 decisions about when to pay closer attention to the gold market.
               </p>
             </div>

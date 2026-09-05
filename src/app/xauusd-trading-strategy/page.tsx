@@ -753,7 +753,9 @@ export default function XauusdTradingStrategyPage() {
                 Timeframe selection is a practical decision that affects how a
                 trader interacts with the XAUUSD market. There is no single
                 best timeframe for trading gold. The right choice depends on the
-                trader's schedule, their strategy's requirements, and their
+                trader's schedule (finding the{' '}
+                <Link href="/best-time-to-trade-xauusd/">best time to trade XAUUSD</Link>{' '}
+                can help), their strategy's requirements, and their
                 personal tolerance for screen time and rapid decision-making.
                 Understanding how different timeframes serve different purposes
                 within a strategy is more useful than searching for an ideal
@@ -1073,7 +1075,9 @@ export default function XauusdTradingStrategyPage() {
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
                 Knowing when to stay out of the market is an underrated part of
-                any XAUUSD trading strategy. Standing aside is a valid and often
+                any XAUUSD trading strategy (see the{' '}
+                <Link href="/how-to-trade-xauusd/">beginner guide to trading XAUUSD</Link>{' '}
+                if you are just starting out). Standing aside is a valid and often
                 the correct decision.
               </p>
             </div>

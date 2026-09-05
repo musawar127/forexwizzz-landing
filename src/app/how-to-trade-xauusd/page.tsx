@@ -161,7 +161,7 @@ const requirements = [
   {
     title: "Understanding Contract Specifications",
     icon: <Scale className="w-6 h-6 text-trading-green" />,
-    desc: "Every XAUUSD contract has specific details: the lot size, the pip value, the typical spread, and the margin requirements. These vary between brokers. A standard lot of XAUUSD is typically 100 troy ounces, but many brokers also offer mini and micro lots. Knowing your broker’s specifications helps you understand exactly what each trade involves.",
+    desc: (<>Every XAUUSD contract has specific details: the <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">lot size</Link>, the pip value, the typical spread, and the margin requirements. These vary between brokers. A standard lot of XAUUSD is typically 100 troy ounces, but many brokers also offer mini and micro lots. Knowing your broker’s specifications helps you understand exactly what each trade involves.</>),
   },
   {
     title: "Understanding Spread and Fees",
@@ -963,7 +963,13 @@ export default function HowToTradeXauusdPage() {
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                 Understanding which events can move gold prices helps traders
                 avoid being caught off guard. This is about awareness, not
-                prediction — no event guarantees a specific direction.
+                prediction — no event guarantees a specific direction.{" "}
+                Knowing the{" "}
+                <Link href="/best-time-to-trade-xauusd/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">
+                  best time to trade XAUUSD
+                </Link>{" "}
+                can help you anticipate when these events are most likely to
+                cause significant price moves.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

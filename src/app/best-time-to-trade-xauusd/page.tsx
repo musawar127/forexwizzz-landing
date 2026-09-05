@@ -267,7 +267,7 @@ const faqStructuredData = {
               ))}
             </div>
             <div className="mt-8 glass rounded-2xl p-5 border border-trading-gold/20">
-              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Important:</span> Session times can shift relative to your local clock because of daylight-saving changes. Broker-specific XAUUSD trading hours may also differ. The UTC ranges above are approximate and should be verified against your broker&rsquo;s schedule and your local time zone. Times are not guaranteed to be precise on any given day.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Important:</span> Session times can shift relative to your local clock because of daylight-saving changes. Broker-specific XAUUSD trading hours may also differ. The UTC ranges above are approximate and should be verified against your broker&rsquo;s schedule and your local time zone. Times are not guaranteed to be precise on any given day. Since pip value and spread costs vary across sessions, understanding <Link href="/xauusd-pip-value/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD pip value</Link> for each session helps you compare trading costs more accurately.</p>
             </div>
           </div>
         </FadeSection>        {/* 8. WHAT TIME IS BEST FOR BEGINNERS? */}
