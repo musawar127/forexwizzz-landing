@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forex Wizard - Free Forex & Gold Trading Signals | Telegram Community",
+  title: "Forex Wizard | Forex Signals, Gold Signals & XAUUSD Analysis",
   description:
-    "Join Forex Wizard, a free Telegram trading community for daily Forex and Gold signals, XAUUSD analysis, market breakdowns, trading setups, and educational content. Learn and follow market discussions — 100% free to join.",
+    "Forex Wizard is an educational trading community covering forex signals, gold signals, XAUUSD analysis, price action, trading strategies, and risk management.",
   keywords: [
     "forex signals",
     "gold signals",
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Forex Wizard - Free Forex & Gold Trading Signals",
+    title: "Forex Wizard | Forex Signals, Gold Signals & XAUUSD Analysis",
     description:
-      "Join Forex Wizard on Telegram for daily Forex and Gold trading signals, XAUUSD analysis, and market discussions. Free to join.",
+      "Explore Forex Wizard educational content on forex signals, gold signals, XAUUSD analysis, price action, trading strategies, and market risk management.",
     type: "website",
     url: "https://forexwizard.online",
     siteName: "Forex Wizard",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Forex Wizard - Free Forex & Gold Trading Signals",
+    title: "Forex Wizard | Forex Signals, Gold Signals & XAUUSD Analysis",
     description:
-      "Join Forex Wizard on Telegram for daily Forex and Gold trading signals, XAUUSD analysis, and market discussions. Free to join.",
+      "Explore Forex Wizard educational content on forex signals, gold signals, XAUUSD analysis, price action, trading strategies, and market risk management.",
     images: ["/og-image.jpg"],
   },
 };
@@ -77,6 +77,7 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Forex Wizard",
+      alternateName: ["ForexWizard", "ForexWizard.online"],
       url: "https://forexwizard.online",
       description:
         "Free Forex and Gold trading signals and market analysis Telegram community",
@@ -85,6 +86,7 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": "Organization",
       name: "Forex Wizard",
+      alternateName: "ForexWizard",
       url: "https://forexwizard.online",
       sameAs: ["https://t.me/ForexWizzz"],
     },

@@ -28,17 +28,22 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Forex Signals | Free Forex Trading Signals & Market Analysis",
+  title: "Free Forex Signals & Market Analysis | Forex Wizard",
   description:
-    "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
+    "Educational forex signals, currency-pair analysis, entry zones, stop-loss and take-profit planning, market context, and risk management from Forex Wizard.",
+  authors: [{ name: "Forex Wizard", url: "https://forexwizard.online/about/" }],
+  creator: "Forex Wizard",
+  publisher: "Forex Wizard",
   alternates: {
     canonical: "https://forexwizard.online/forex-signals/",
   },
   openGraph: {
-    title: "Forex Signals | Free Forex Trading Signals & Market Analysis",
+    title: "Free Forex Signals & Market Analysis | Forex Wizard",
     description:
-      "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
+      "Educational forex signals, currency-pair analysis, entry zones, stop-loss and take-profit planning, market context, and risk management from Forex Wizard.",
     type: "article",
+    publishedTime: "2026-08-19T09:00:00+05:00",
+    modifiedTime: "2026-09-11T19:00:00+05:00",
     url: "https://forexwizard.online/forex-signals/",
     siteName: "Forex Wizard",
     images: [
@@ -52,10 +57,31 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Forex Signals | Free Forex Trading Signals & Market Analysis",
+    title: "Free Forex Signals & Market Analysis | Forex Wizard",
     description:
-      "Explore forex trading signals, currency pair analysis, entry ideas, stop-loss and take-profit concepts, market context and risk management.",
+      "Educational forex signals, currency-pair analysis, entry zones, stop-loss and take-profit planning, market context, and risk management from Forex Wizard.",
     images: ["/og-image.jpg"],
+  },
+};
+
+const articleStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Free Forex Signals & Market Analysis",
+  description: "Educational forex signals, currency-pair analysis, entry zones, stop-loss and take-profit planning, market context, and risk management from Forex Wizard.",
+  image: ["https://forexwizard.online/og-image.jpg"],
+  datePublished: "2026-08-19T09:00:00+05:00",
+  dateModified: "2026-09-11T19:00:00+05:00",
+  mainEntityOfPage: "https://forexwizard.online/forex-signals/",
+  author: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/about/",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/",
   },
 };
 
@@ -229,6 +255,10 @@ export default function ForexSignalsPage() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
 
@@ -299,8 +329,17 @@ export default function ForexSignalsPage() {
             </FadeIn>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              <span className="text-trading-green text-glow-green">Forex Signals</span>
+              <span className="text-trading-green text-glow-green">Free Forex Signals</span>
+              <br />
+              <span className="text-foreground">&amp; Market Analysis</span>
             </h1>
+
+            <p className="text-xs sm:text-sm text-muted-foreground/80 mb-6">
+              Last updated: September 11, 2026 · Educational content by{" "}
+              <Link href="/about/" className="text-foreground/80 hover:text-trading-green no-underline">
+                Forex Wizard
+              </Link>
+            </p>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Forex Wizard provides forex market analysis, trading insights, and
@@ -478,14 +517,28 @@ export default function ForexSignalsPage() {
                 >
                   XAUUSD analysis
                 </Link>{" "}
-                page or explore{" "}
+                page, explore{" "}
                 <Link
                   href="/gold-signals/"
                   className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
                 >
                   Gold trading signals
-                </Link>{" "}
-                coverage.
+                </Link>
+                , learn our{" "}
+                <Link
+                  href="/xauusd-trading-strategy/"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
+                >
+                  XAUUSD trading strategy
+                </Link>
+                , or study{" "}
+                <Link
+                  href="/how-to-read-xauusd-price-action/"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
+                >
+                  XAUUSD price action
+                </Link>
+                .
               </p>
             </div>
           </div>

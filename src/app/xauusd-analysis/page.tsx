@@ -31,17 +31,22 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "XAUUSD Analysis | Gold Price & Market Analysis",
+  title: "XAUUSD Analysis: Gold Price Action Guide | Forex Wizard",
   description:
-    "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
+    "Learn XAUUSD analysis step by step using gold price action, market structure, support and resistance, economic drivers, and responsible risk management.",
+  authors: [{ name: "Forex Wizard", url: "https://forexwizard.online/about/" }],
+  creator: "Forex Wizard",
+  publisher: "Forex Wizard",
   alternates: {
     canonical: "https://forexwizard.online/xauusd-analysis/",
   },
   openGraph: {
-    title: "XAUUSD Analysis | Gold Price & Market Analysis",
+    title: "XAUUSD Analysis: Gold Price Action Guide | Forex Wizard",
     description:
-      "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
-    type: "website",
+      "Learn XAUUSD analysis step by step using gold price action, market structure, support and resistance, economic drivers, and responsible risk management.",
+    type: "article",
+    publishedTime: "2026-08-19T09:00:00+05:00",
+    modifiedTime: "2026-09-11T19:00:00+05:00",
     url: "https://forexwizard.online/xauusd-analysis/",
     siteName: "Forex Wizard",
     images: [
@@ -55,10 +60,31 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "XAUUSD Analysis | Gold Price & Market Analysis",
+    title: "XAUUSD Analysis: Gold Price Action Guide | Forex Wizard",
     description:
-      "Learn how to analyze XAUUSD and gold markets using price action, market structure, key levels, economic factors and risk management.",
+      "Learn XAUUSD analysis step by step using gold price action, market structure, support and resistance, economic drivers, and responsible risk management.",
     images: ["/og-image.jpg"],
+  },
+};
+
+const articleStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "XAUUSD Analysis: Gold Price Action & Key Levels",
+  description: "Learn XAUUSD analysis step by step using gold price action, market structure, support and resistance, economic drivers, and responsible risk management.",
+  image: ["https://forexwizard.online/og-image.jpg"],
+  datePublished: "2026-08-19T09:00:00+05:00",
+  dateModified: "2026-09-11T19:00:00+05:00",
+  mainEntityOfPage: "https://forexwizard.online/xauusd-analysis/",
+  author: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/about/",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/",
   },
 };
 
@@ -292,6 +318,10 @@ export default function XauusdAnalysisPage() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <header className="relative z-20">
@@ -356,7 +386,16 @@ export default function XauusdAnalysisPage() {
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
               <span className="text-trading-gold text-glow-gold">XAUUSD Analysis</span>
+              <br />
+              <span className="text-foreground">Gold Price Action &amp; Key Levels</span>
             </h1>
+
+            <p className="text-xs sm:text-sm text-muted-foreground/80 mb-6">
+              Last updated: September 11, 2026 · Educational content by{" "}
+              <Link href="/about/" className="text-foreground/80 hover:text-trading-green no-underline">
+                Forex Wizard
+              </Link>
+            </p>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Explore educational XAUUSD analysis covering price action, market

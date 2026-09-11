@@ -33,17 +33,22 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "How to Read XAUUSD Price Action | Gold Trading Guide",
+  title: "How to Read XAUUSD Price Action | Forex Wizard",
   description:
-    "Learn how to read XAUUSD price action using market structure, candlesticks, support and resistance, trends, momentum and multiple timeframe analysis.",
+    "Learn how to read XAUUSD price action using market structure, candlesticks, support and resistance, momentum, breakouts, and multiple-timeframe analysis.",
+  authors: [{ name: "Forex Wizard", url: "https://forexwizard.online/about/" }],
+  creator: "Forex Wizard",
+  publisher: "Forex Wizard",
   alternates: {
     canonical: "https://forexwizard.online/how-to-read-xauusd-price-action/",
   },
   openGraph: {
-    title: "How to Read XAUUSD Price Action | Gold Trading Guide",
+    title: "How to Read XAUUSD Price Action | Forex Wizard",
     description:
       "A practical educational guide to reading gold/XAUUSD price action using market structure, candlestick analysis, support and resistance, and multiple timeframe analysis.",
     type: "article",
+    publishedTime: "2026-08-20T09:00:00+05:00",
+    modifiedTime: "2026-09-11T19:00:00+05:00",
     url: "https://forexwizard.online/how-to-read-xauusd-price-action/",
     siteName: "Forex Wizard",
     images: [
@@ -57,10 +62,31 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "How to Read XAUUSD Price Action | Gold Trading Guide",
+    title: "How to Read XAUUSD Price Action | Forex Wizard",
     description:
       "A practical educational guide to reading gold/XAUUSD price action using market structure, candlestick analysis, support and resistance, and multiple timeframe analysis.",
     images: ["/og-image.jpg"],
+  },
+};
+
+const articleStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "How to Read XAUUSD Price Action",
+  description: "Learn how to read XAUUSD price action using market structure, candlesticks, support and resistance, momentum, breakouts, and multiple-timeframe analysis.",
+  image: ["https://forexwizard.online/og-image.jpg"],
+  datePublished: "2026-08-20T09:00:00+05:00",
+  dateModified: "2026-09-11T19:00:00+05:00",
+  mainEntityOfPage: "https://forexwizard.online/how-to-read-xauusd-price-action/",
+  author: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/about/",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/",
   },
 };
 
@@ -415,6 +441,10 @@ export default function HowToReadXauusdPriceActionPage() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
       <header className="relative z-20">
@@ -481,6 +511,13 @@ export default function HowToReadXauusdPriceActionPage() {
               <span className="text-foreground">How to Read </span>
               <span className="text-trading-gold text-glow-gold">XAUUSD Price Action</span>
             </h1>
+
+            <p className="text-xs sm:text-sm text-muted-foreground/80 mb-6">
+              Last updated: September 11, 2026 · Educational content by{" "}
+              <Link href="/about/" className="text-foreground/80 hover:text-trading-green no-underline">
+                Forex Wizard
+              </Link>
+            </p>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Price action analysis is the study of raw price movement on a
