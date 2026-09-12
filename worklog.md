@@ -164,3 +164,34 @@ Stage Summary:
 - No design/SEO/Pages/GitHub-Pages/domain/nav changes made — only repo reconciliation + baseline verification, per instructions.
 - Ready to receive specific change requests. Awaiting user instructions for WHAT to change.
 - NOTE for push step: pushing to GitHub needs auth. No GitHub token currently visible in env/credentials/gh CLI. User stated auth is provided separately via environment/secrets — will need it available at push time.
+
+---
+Task ID: blog-article-sep14
+Agent: Main Agent
+Task: Add the supplied XAUUSD Weekly Outlook (Sep 14-18, 2026) article to the existing ForexWizard site as a new blog article, create the blog section, match design, add SEO + BlogPosting schema, update sitemap, add internal links, create an original OG image, build, commit, push to main.
+
+Work Log:
+- Read the full 983-line instruction file at /home/z/my-project/upload/Pasted Content_1789248613696.txt.
+- Inspected existing design pattern from src/app/gold-signals/page.tsx (metadata, Article schema, TelegramCTA, FadeSection/HeroAnimation/CandlestickBackground/SiteFooter/StickyTelegramButton, glass-strong/gradient-border cards, details/summary FAQ).
+- Created reusable blog metadata: src/data/blog-posts.ts (BlogPost interface + blogPosts array + helpers). Single source of truth for slug/title/description/dates/author/image/alt/tags/readingTime.
+- Created original lightweight image via scripts/create-weekly-outlook-og.js (sharp rasterizes a self-contained SVG -> JPG). Output: public/blog/xauusd-weekly-outlook-sep-14-18-2026.svg (8.3KB, crisp in-page hero) + .jpg (48.9KB, 1200x630, OG-compatible). Dark brand theme, key levels (4300 support / 4400 resistance / Fed Decision Sep 16), NO buy/sell/guaranteed-profit language.
+- Created blog index: src/app/blog/page.tsx (header with Blog active, hero, article cards from blogPosts data, Telegram CTA, Continue Learning, SiteFooter, StickyTelegramButton). Reusable for future posts.
+- Created article: src/app/blog/xauusd-weekly-outlook-september-14-18-2026/page.tsx. Exact supplied article content transcribed into JSX with proper typography (curly quotes/apostrophes, en/em dashes). Sections: intro, at-a-glance key-level grid, last week, bullish/bearish, support levels (3 cards), resistance levels (3 cards), bullish/bearish scenario cards, Fed event (ET/BST callout cards), economic calendar (Tue/Wed/Thu), London session, NY session, avoid predicting Fed (blockquote), risk management, breakeven, checklist (17 items), final view, Follow ForexWizard (Gold Signals/Forex Signals/About/Telegram internal links), visible FAQ (5 questions, <details> accordion), Risk Disclaimer, Market Data Note, Telegram CTA, Continue Learning.
+- SEO metadata: title "XAUUSD Weekly Outlook: Gold Trading Plan Sep 14-18", meta description, canonical https://forexwizard.online/blog/<slug>/, OG (type article, publishedTime 2026-09-13T09:00:00+05:00, modifiedTime same, image 1200x630 + alt, authors), Twitter summary_large_image.
+- BlogPosting JSON-LD (NOT Article, NOT FAQPage): headline, description, image (full URL), datePublished, dateModified, mainEntityOfPage, author (Organization: ForexWizard Editorial Team, /about/), publisher (Organization: Forex Wizard, /, logo: apple-touch-icon.png). FAQ remains visible but NO FAQPage schema (verified 0).
+- Internal links in article: /gold-signals/, /forex-signals/, /about/ (Follow section), /xauusd-analysis/ + /xauusd-support-resistance/ (in-prose contextual), / (brand/homepage), /blog/ (nav+footer), t.me/ForexWizzz.
+- Updated public/sitemap.xml: added /blog/ (priority 0.9) and /blog/xauusd-weekly-outlook-september-14-18-2026/ (priority 0.8), both lastmod 2026-09-13. Kept all 16 existing entries. Total 18 URLs. Verified in out/sitemap.xml.
+- Created reusable src/components/latest-article-banner.tsx (server component, reads newest blogPosts[0], slim contextual pill). Inserted after hero on gold-signals and xauusd-analysis pages (2 contextual backlinks to the new article, descriptive anchor text, not spammy).
+- Added Blog link to SiteFooter (site-wide crawlability) and homepage header nav (primary entry discoverability).
+- Lint: removed unused eslint-disable directives in blog pages; added /* eslint-disable @typescript-eslint/no-require-imports */ to my new script AND to the 3 pre-existing scripts (create-favicons.js, create-og-image.js, optimize-images.js) so the whole repo lints clean (0 errors, 0 warnings).
+- Production build: bun run build -> Compiled successfully in 7.7s, 20/20 static pages generated (added /blog and /blog/xauusd-weekly-outlook-september-14-18-2026). Verified built HTML: title, canonical (no www dup), OG tags + image dimensions, Twitter card, exactly 1 H1, BlogPosting schema present (1), FAQPage schema absent (0), all internal links, hero img alt exact, sitemap 18 URLs, robots.txt allows all, viewport meta present, no overflow classes, 5 FAQ questions visible, exact article text spot-checks all present.
+- Dev server smoke test: all 5 key pages (/, /blog/, article, /gold-signals/, /xauusd-analysis/) returned HTTP 200 with correct H1s; no runtime errors.
+- Committed locally: git commit -m "Add Sep 14-18 XAUUSD weekly outlook" -> 397b31e249a10fe906da87f9c4f6ada92183c7b9 (15 files, 2387 insertions). Staged exactly the intended files; excluded the uploaded instruction .txt.
+
+Stage Summary:
+- Article URL (once deployed): https://forexwizard.online/blog/xauusd-weekly-outlook-september-14-18-2026/
+- Blog URL (once deployed): https://forexwizard.online/blog/
+- Build: PASSING. All SEO/quality checks verified on built static HTML.
+- Commit: 397b31e on main, ready to push.
+- PUSH BLOCKED: git push origin main failed with "Invalid username or token. Password authentication is not supported." Exhaustive auth sweep found NO GitHub token in env, NO gh CLI, NO ~/.git-credentials, NO ~/.netrc, NO ~/.gitconfig credential, NO SSH keys, NO credential helper. The "environment/secrets" GitHub auth the user referenced is not present in this sandbox.
+- To complete the push: a GitHub Personal Access Token (classic, with `repo` + `workflow` scope, or fine-grained with Contents:write on musawar127/forexwizzz-landing) must be made available (e.g. as GITHUB_TOKEN env var). It will be used ONLY for the push and never printed/committed.
