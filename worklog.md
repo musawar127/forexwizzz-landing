@@ -141,3 +141,26 @@ Stage Summary:
 - Cannibalization avoided: distinct from how-to-trade (beginner process), strategy (framework), best-time (sessions)
 - All examples hypothetical, broker specs repeatedly noted as variable
 - FAQ schema matches visible FAQ (8 questions, single source of truth)
+---
+Task ID: setup-inspection
+Agent: Main Agent
+Task: Clone/open the existing musawar127/forexwizzz-landing repository, inspect it, and reconcile the sandbox working directory to the user's actual project (no new project/repo). Preserve existing design, SEO, GitHub Pages deployment, domain, navigation, and pages.
+
+Work Log:
+- Cloned https://github.com/musawar127/forexwizzz-landing.git (public) to /home/z/forexwizzz-landing for inspection. Only `main` branch exists (no gh-pages branch).
+- Inspected repo: Next.js 16 App Router + TypeScript + Tailwind 4 + shadcn/ui. `next.config.ts` uses `output: "export"`, `trailingSlash: true`, no basePath (custom domain forexwizard.online), images.unoptimized, ignoreBuildErrors true.
+- Deployment: `.github/workflows/deploy.yml` triggers on push to `main` + workflow_dispatch. Builds with Bun, uploads `./out` as GitHub Pages artifact. So the branch used by the live site = `main`.
+- 16 routes confirmed: /, /forex-signals, /gold-signals, /xauusd-analysis, /xauusd-trading-strategy, /how-to-trade-xauusd, /how-to-read-xauusd-price-action, /best-time-to-trade-xauusd, /xauusd-lot-size, /xauusd-pip-value, /xauusd-support-resistance, /about, /contact, /privacy-policy, /terms-of-use, /risk-disclosure, + custom 404 (not-found.tsx).
+- SEO config intact: layout.tsx metadata (title/desc/keywords/metadataBase/canonical/icons/openGraph/twitter), JSON-LD WebSite + Organization schema in <head>, public/sitemap.xml (15 URLs), public/robots.txt, per-page Article schema. Telegram = https://t.me/ForexWizzz. Brand = "Forex Wizard".
+- Navigation: homepage <header> nav (Forex Signals, Gold Signals, XAUUSD Analysis, About, Join on Telegram) + shared SiteFooter (Home, Forex Signals, Gold Signals, XAUUSD Analysis, About, Privacy Policy, Terms of Use, Risk Disclosure, Contact, t.me/ForexWizzz).
+- Reconciled /home/z/my-project: removed the empty scaffold (Initial-commit git), copied the user's full repo incl. .git (history + remote origin -> musawar127/forexwizzz-landing) and all project files, preserved node_modules (same bun.lock) and the `upload` FUSE mount (restored tracked photos via `git checkout -- upload/`).
+- Set git safe.directory. `git status` is now clean and on `main`, tracking origin/main at 881a889.
+- .env contains only DATABASE_URL (local SQLite path), no secrets. .env IS tracked in repo despite .gitignore `.env*` rule (pre-existing). No GitHub token anywhere in repo/source.
+- Ran `bun run build` as baseline: ✓ Compiled successfully in 7.6s, all 18 static pages generated into ./out. Verified homepage title/canonical/H1/JSON-LD/sitemap/robots in built HTML. Spot-checked /forex-signals title. Build artifacts gitignored.
+- Verified sandbox constraint: background processes (dev server, sleep) are killed when a bash tool call returns, even with nohup+setsid+disown. The platform bootstraps the dev server separately at sandbox boot. Live preview strategy: build static export + inspect HTML pre-deploy; Agent Browser against https://forexwizard.online post-deploy.
+
+Stage Summary:
+- Working directory /home/z/my-project now IS the ForexWizard repo, on `main`, clean, remote wired to musawar127/forexwizzz-landing, build passing.
+- No design/SEO/Pages/GitHub-Pages/domain/nav changes made — only repo reconciliation + baseline verification, per instructions.
+- Ready to receive specific change requests. Awaiting user instructions for WHAT to change.
+- NOTE for push step: pushing to GitHub needs auth. No GitHub token currently visible in env/credentials/gh CLI. User stated auth is provided separately via environment/secrets — will need it available at push time.
