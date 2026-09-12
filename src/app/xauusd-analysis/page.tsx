@@ -29,6 +29,7 @@ import {
 } from "@/components/fade-section";
 import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
+import { LatestArticleBanner } from "@/components/latest-article-banner";
 
 export const metadata: Metadata = {
   title: "XAUUSD Analysis: Gold Price Action Guide | Forex Wizard",
@@ -416,6 +417,8 @@ export default function XauusdAnalysisPage() {
             </FadeIn>
           </HeroAnimation>
         </section>
+
+        <LatestArticleBanner />
 
         {/* WHAT IS XAUUSD? */}
         <FadeSection className="py-20 md:py-28 px-4">

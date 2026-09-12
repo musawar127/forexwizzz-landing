@@ -260,6 +260,12 @@ export default function Home() {
               XAUUSD Analysis
             </Link>
             <Link
+              href="/blog/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
+            >
+              Blog
+            </Link>
+            <Link
               href="/about/"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden lg:block"
             >

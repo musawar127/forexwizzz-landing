@@ -29,6 +29,7 @@ import {
 } from "@/components/fade-section";
 import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
+import { LatestArticleBanner } from "@/components/latest-article-banner";
 
 export const metadata: Metadata = {
   title: "Gold Signals & XAUUSD Market Analysis | Forex Wizard",
@@ -481,6 +482,8 @@ export default function GoldSignalsPage() {
             </FadeIn>
           </HeroAnimation>
         </section>
+
+        <LatestArticleBanner />
 
         {/* SECTION 1: WHAT ARE GOLD TRADING SIGNALS? */}
         <FadeSection className="py-20 md:py-28 px-4">
