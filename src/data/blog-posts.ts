@@ -48,7 +48,7 @@ export const blogPosts: BlogPost[] = [
     slug: "xauusd-weekly-outlook-september-14-18-2026",
     title: "XAUUSD Weekly Outlook: Gold Trading Plan Sep 14–18",
     description:
-      "XAUUSD weekly outlook for Sep 14–18, 2026, covering key gold levels, the Fed decision, US retail sales, and bullish and bearish scenarios for traders.",
+      "XAUUSD weekly outlook for Sep 14–18, 2026, covering key gold levels, the Fed decision, US retail sales, and bullish and bearish scenarios.",
     cardDescription:
       "Key gold support and resistance levels, the September 16 Federal Reserve decision, US retail sales, and bullish/bearish scenarios for the September 14–18 trading week.",
     displayDate: "September 13, 2026",
