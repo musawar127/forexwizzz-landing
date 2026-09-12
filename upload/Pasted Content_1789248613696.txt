@@ -1,0 +1,982 @@
+You are working on my EXISTING website and GitHub repository.
+
+Website:
+https://forexwizard.online
+
+GitHub repository:
+musawar127/forexwizzz-landing
+
+IMPORTANT:
+
+Do NOT create a new project.
+Do NOT redesign my website.
+Do NOT replace existing pages.
+Do NOT rewrite the article below with another AI-generated article.
+
+Use the exact finished article content supplied below, making only minor formatting changes needed for Next.js/React.
+
+Your job is to:
+
+1. Add this article to my existing ForexWizard website.
+2. Create or update the blog section.
+3. Match the existing website design perfectly.
+4. Add proper SEO metadata.
+5. Add BlogPosting structured data.
+6. Update the sitemap.
+7. Add useful contextual internal links.
+8. Create an original lightweight article/OG image using the existing site design.
+9. Run the production build.
+10. Fix all errors.
+11. Commit the changes.
+12. Push directly to the GitHub branch currently serving the live website.
+
+---
+
+## PAGE INFORMATION
+
+Preferred page URL:
+
+https://forexwizard.online/blog/xauusd-weekly-outlook-september-14-18-2026/
+
+Slug:
+
+xauusd-weekly-outlook-september-14-18-2026
+
+Display publication date:
+
+September 13, 2026
+
+Author:
+
+ForexWizard Editorial Team
+
+Author/About URL:
+
+https://forexwizard.online/about/
+
+SEO TITLE:
+
+XAUUSD Weekly Outlook: Gold Trading Plan Sep 14–18
+
+META DESCRIPTION:
+
+XAUUSD weekly outlook for Sep 14–18, 2026, covering key gold levels, the Fed decision, US retail sales, and bullish and bearish scenarios for traders.
+
+PRIMARY KEYWORD:
+
+XAUUSD weekly outlook
+
+SECONDARY KEYWORDS:
+
+gold weekly outlook
+
+gold analysis this week
+
+XAUUSD analysis
+
+gold price outlook
+
+gold technical analysis
+
+XAUUSD support and resistance
+
+gold trading outlook
+
+gold forecast this week
+
+London session gold
+
+New York session gold
+
+Do NOT keyword-stuff these phrases.
+
+Use them only where they fit naturally.
+
+---
+
+# ARTICLE CONTENT
+
+# XAUUSD Weekly Outlook: Gold Trading Plan for September 14–18, 2026
+
+Gold enters the new trading week at an important technical and fundamental point.
+
+XAU/USD recovered strongly from the $4,290–$4,300 area on Friday and finished the week around $4,350, but the rebound did not completely erase the pressure seen throughout the previous sessions.
+
+Gold still finished the week lower, while rising Treasury yields, persistent inflation concerns and changing expectations for Federal Reserve policy continued to influence the market.
+
+For traders watching gold this week, Wednesday's Federal Reserve decision is likely to be the main event.
+
+Instead of trying to predict exactly where XAU/USD will move, this weekly outlook focuses on the levels, market structure and scenarios worth watching between September 14 and September 18.
+
+This analysis is educational only. The levels discussed below are areas to monitor, not guaranteed trade entries or predictions.
+
+## XAUUSD Weekly Outlook at a Glance
+
+The short-term gold structure remains cautious while price stays below the major resistance area around $4,443–$4,450.
+
+Important areas for the coming week include:
+
+**Immediate support:** $4,300–$4,320
+
+**Secondary support:** $4,280–$4,290
+
+**Deeper support:** approximately $4,230
+
+**Immediate resistance:** $4,385–$4,400
+
+**Major resistance:** $4,443–$4,450
+
+**Higher resistance:** approximately $4,507–$4,537
+
+The biggest scheduled catalyst is the Federal Reserve decision on Wednesday, September 16.
+
+That means traders should be prepared for conditions to change quickly, especially during the New York session.
+
+## What Happened to Gold Last Week?
+
+Gold entered last week under pressure after stronger US employment data increased expectations that the Federal Reserve could tighten monetary policy again.
+
+The market continued to react to rising Treasury yields, a stronger US dollar and sharply higher energy prices.
+
+Inflation became an even bigger focus after US producer-price data showed persistent price pressure.
+
+Gold then dropped toward the psychologically important $4,300 area.
+
+Friday brought another important event: US consumer inflation.
+
+Gold initially entered the CPI session under heavy pressure, but buyers appeared around the $4,290–$4,300 region.
+
+That produced a strong intraday recovery and helped XAU/USD finish Friday around $4,350.
+
+However, the broader weekly picture remained weaker.
+
+This leaves traders with an interesting setup for the new week.
+
+Buyers have defended an important support area, but they have not yet recovered the resistance zones needed to confirm a stronger bullish reversal.
+
+## Is Gold Bullish or Bearish This Week?
+
+The cleanest answer is that gold begins the week in a transitional structure.
+
+The Friday rebound showed that buyers are still willing to defend the $4,300 region.
+
+At the same time, price remains below several important resistance areas.
+
+Because of this, it may be better to avoid treating gold as automatically bullish or bearish.
+
+The market can provide confirmation.
+
+For the bullish structure to strengthen, buyers would ideally need to reclaim $4,400 and then break the $4,443–$4,450 region.
+
+For bearish continuation to become clearer, sellers would need to break the support structure around $4,300 and the recent lows below it.
+
+Until one of these happens, traders should be prepared for volatility and possible range conditions.
+
+## Key XAUUSD Support Levels
+
+### $4,300–$4,320 Support Zone
+
+The $4,300 region is one of the most important areas to watch this week.
+
+Gold attracted significant buying interest near this region on Friday after falling sharply during the previous session.
+
+It is also psychologically important because $4,300 is a large round number that traders can easily identify.
+
+As long as the market continues holding this area, buyers may continue trying to recover the higher resistance zones.
+
+A touch of support alone, however, does not confirm a buy.
+
+Traders should watch how price behaves when the area is tested.
+
+Signs such as rejection, a higher low or a break of short-term bearish structure may provide more useful information than simply entering because price reaches the zone.
+
+### $4,280–$4,290 Support
+
+Below $4,300 sits another important structural area around $4,280–$4,290.
+
+This region is close to the recent swing lows.
+
+If gold briefly trades below $4,300 but quickly recovers, traders should pay attention to whether this lower area produces another reaction.
+
+A sustained breakdown beneath the recent lows would weaken the short-term bullish recovery.
+
+### $4,230 Area
+
+If sellers gain stronger control and the recent swing-low structure fails, approximately $4,230 becomes another important area on the chart.
+
+This is a deeper support zone and would represent a much larger correction from current prices.
+
+It should therefore be treated as a scenario rather than an expectation.
+
+## Key XAUUSD Resistance Levels
+
+### $4,385–$4,400 Resistance
+
+The first major challenge for buyers is the area between approximately $4,385 and $4,400.
+
+Gold moved toward this region during Friday's recovery.
+
+A move above $4,400 would be constructive for buyers, but traders should watch whether price can remain above it instead of producing another false breakout.
+
+Acceptance above resistance is generally more meaningful than a quick spike through it.
+
+### $4,443–$4,450 Major Resistance
+
+The $4,443–$4,450 area is one of the most important technical levels for the week.
+
+This region is close to last week's upper trading range and represents an area buyers would likely need to recover before the short-term outlook becomes more convincingly bullish.
+
+If gold reaches this area and rejects strongly, sellers may attempt to regain control.
+
+If price breaks above it and successfully holds or retests the zone, attention could shift toward higher resistance.
+
+### $4,507–$4,537 Higher Resistance
+
+Above $4,450, the next important technical area sits around $4,507–$4,537.
+
+This is not a prediction that gold will reach this level.
+
+Instead, it represents the next resistance area that could become relevant if buyers successfully recover the lower resistance zones.
+
+## Bullish XAUUSD Scenario
+
+The bullish scenario starts with buyers continuing to defend approximately $4,300–$4,320.
+
+The structure would become more interesting if gold then forms higher lows and begins reclaiming $4,385–$4,400.
+
+A clean move above $4,400 would put the $4,443–$4,450 resistance area back into focus.
+
+For a stronger bullish continuation signal, traders may want to see price break above that resistance and remain above it.
+
+A successful breakout and retest could then bring the $4,507–$4,537 area into view as the next major resistance zone.
+
+The important point is confirmation.
+
+Buying directly into major resistance simply because gold has bounced from support can create poor risk-to-reward conditions.
+
+## Bearish XAUUSD Scenario
+
+The bearish scenario could develop in two ways.
+
+The first would be a strong rejection from the $4,385–$4,400 region or the larger $4,443–$4,450 resistance zone.
+
+If sellers begin producing lower highs after such a rejection, the market may return toward $4,320–$4,300.
+
+The second and stronger bearish signal would be a confirmed breakdown below the recent $4,290–$4,300 support structure.
+
+If price breaks the area and later retests it from underneath, former support could potentially begin acting as resistance.
+
+That would place the deeper $4,230 region back into focus.
+
+Again, these are scenarios rather than trade instructions.
+
+The market should confirm the idea first.
+
+## The Federal Reserve Is the Biggest Event This Week
+
+Wednesday, September 16 could be the most important trading session of the week.
+
+The Federal Reserve concludes its September 15–16 monetary-policy meeting and releases its decision at:
+
+**2:00 PM Eastern Time**
+
+**7:00 PM British Summer Time**
+
+The press conference follows at:
+
+**2:30 PM Eastern Time**
+
+**7:30 PM British Summer Time**
+
+This meeting is especially important because updated economic projections are also scheduled.
+
+Going into the meeting, markets have been pricing a high probability of another interest-rate increase following stronger employment and inflation data.
+
+Gold traders should remember the basic relationship.
+
+Higher interest-rate expectations can increase Treasury yields and support the US dollar.
+
+Because gold does not pay interest, higher yields can make holding gold relatively less attractive.
+
+That does not mean a rate increase automatically makes gold fall.
+
+Markets often move based on the difference between what was expected and what actually happens.
+
+If a rate increase is already heavily priced in, traders may pay even more attention to the Fed's language, economic projections and guidance about future policy.
+
+The first reaction can also reverse during the press conference.
+
+For that reason, this is a session where patience can be particularly valuable.
+
+## Important Economic Events for Gold Traders
+
+This week contains several events worth monitoring.
+
+### Tuesday, September 15
+
+UK labour-market data is scheduled for 7:00 AM BST.
+
+US traders will also be watching regional manufacturing data during the New York morning.
+
+While these releases may not have the same impact as the Fed decision, they can influence currencies, bond yields and overall market sentiment.
+
+### Wednesday, September 16
+
+This is the key day.
+
+UK consumer inflation data is scheduled for 7:00 AM BST.
+
+US retail-sales data is scheduled for:
+
+**8:30 AM ET / 1:30 PM BST**
+
+US import and export price data is also scheduled for the same time.
+
+The Federal Reserve decision follows later at:
+
+**2:00 PM ET / 7:00 PM BST**
+
+The Fed press conference begins approximately 30 minutes later.
+
+Because several important releases arrive on the same day, XAU/USD traders should be prepared for increased volatility.
+
+### Thursday, September 17
+
+US housing-start and building-permit data is scheduled for:
+
+**8:30 AM ET / 1:30 PM BST**
+
+UK traders will also be watching the Bank of England's September monetary-policy announcement at approximately:
+
+**12:00 PM BST**
+
+Although US interest-rate expectations normally have a more direct relationship with dollar-denominated gold, major global central-bank decisions can still influence yields, currencies and risk sentiment.
+
+## London Session Gold Outlook
+
+For traders in the United Kingdom and Europe, the London session can provide the first important clue about daily market structure.
+
+Watch how gold behaves around the previous day's high and low and around the major weekly zones.
+
+If London breaks an overnight range, avoid automatically assuming that the breakout will continue.
+
+Gold frequently produces liquidity sweeps and false breaks.
+
+A more patient approach is to watch whether price can hold beyond the level or whether it quickly returns inside the previous range.
+
+On Wednesday in particular, London-session traders should remember that much larger US events arrive later in the day.
+
+A good setup before the Fed can still be invalidated when New York volatility increases.
+
+## New York Session Gold Outlook
+
+The New York session will be especially important this week because most of the major US catalysts occur during US trading hours.
+
+Watch the relationship between:
+
+* XAU/USD
+* US Treasury yields
+* The US dollar
+* Market expectations for Federal Reserve policy
+
+When yields and the dollar rise sharply together, gold can face additional pressure.
+
+When yields fall and the dollar weakens, gold may receive support.
+
+These relationships are not guaranteed on every session, but they provide useful context.
+
+The Wednesday New York session deserves particular caution because retail sales arrive before the Fed decision.
+
+Traders may therefore see multiple changes in direction throughout the day.
+
+## Why Traders Should Avoid Predicting the Fed Reaction
+
+A common mistake before major central-bank decisions is becoming emotionally attached to one outcome.
+
+For example:
+
+“Fed hikes, therefore gold must fall.”
+
+Financial markets are rarely that simple.
+
+If traders already expect the Fed to increase rates, the actual decision may produce a very different reaction from what appears logical.
+
+The market may focus on:
+
+* Whether the decision matched expectations
+* Changes to economic projections
+* Inflation forecasts
+* Growth forecasts
+* The expected path of future interest rates
+* The tone of the press conference
+* Comments about future meetings
+
+The better approach is to prepare scenarios and react to market structure after the information becomes available.
+
+## Risk Management During a High-Volatility Week
+
+This week's calendar makes risk management particularly important.
+
+Major economic events can produce:
+
+* Sudden price spikes
+* Wider spreads
+* Slippage
+* False breakouts
+* Rapid reversals
+
+Traders should know their invalidation point before entering.
+
+Position size should also reflect the distance between the entry and stop loss.
+
+Increasing risk simply because a setup looks attractive can turn one losing trade into an unnecessarily large loss.
+
+No technical level is guaranteed to hold.
+
+## When Should Traders Consider Breakeven?
+
+Moving a stop to breakeven can help protect a position after the market has moved favourably, but moving it too early can also close a good trade during a normal retracement.
+
+Instead of using breakeven automatically, traders can look for structural reasons.
+
+Examples may include:
+
+* Price breaking an important intraday level
+* A first objective being reached
+* A meaningful move away from the entry
+* New structure forming in the trade direction
+* Approaching high-impact economic news
+
+The purpose of breakeven is risk management, not fear management.
+
+## XAUUSD Trading Checklist for September 14–18
+
+Before trading gold this week, consider checking:
+
+* Previous week's high and low
+* $4,300–$4,320 support
+* $4,280–$4,290 lower support
+* $4,385–$4,400 resistance
+* $4,443–$4,450 major resistance
+* Daily and four-hour market structure
+* London-session high and low
+* New York-session structure
+* US retail-sales release
+* Federal Reserve decision
+* Fed press conference
+* Treasury-yield direction
+* US dollar direction
+* Your stop-loss location
+* Position size
+* Risk-to-reward
+* Whether the setup has actually been confirmed
+
+Having a plan before price reaches an important level can make decision-making easier when volatility increases.
+
+## XAUUSD Weekly Outlook: Final View
+
+Gold begins the September 14–18 trading week after buyers successfully defended the $4,290–$4,300 region, but the market still has important resistance overhead.
+
+That creates two clear areas of interest.
+
+Bulls will want to see gold maintain support, recover $4,400 and eventually break through approximately $4,443–$4,450.
+
+Bears will be watching for rejection from resistance or a confirmed breakdown beneath the recent $4,290–$4,300 lows.
+
+Wednesday's Federal Reserve decision could determine which side gains control.
+
+Until then, patience may be more valuable than prediction.
+
+Instead of trying to forecast every candle, identify your important areas and wait for price to show how buyers and sellers react around them.
+
+## Follow ForexWizard XAU/USD Updates
+
+ForexWizard shares educational XAU/USD market structure, key levels, technical observations and trading-related education.
+
+Readers who want to follow our regular gold market updates can join the ForexWizzz Telegram community:
+
+https://t.me/ForexWizzz
+
+Follow ForexWizzz for XAU/USD market structure, important zones and educational trading updates.
+
+For more educational market content, explore our **Gold Signals** section for XAU/USD-focused analysis and our **Forex Signals** section for broader forex market updates.
+
+You can also learn more about ForexWizard, our educational approach and the community on the **About ForexWizard** page.
+
+IMPORTANT FOR GLM-5:
+
+Make the phrases above clickable using these existing internal URLs:
+
+Gold Signals:
+https://forexwizard.online/gold-signals/
+
+Forex Signals:
+https://forexwizard.online/forex-signals/
+
+About ForexWizard:
+https://forexwizard.online/about/
+
+Do not display these raw URLs visibly in the finished article unless required by the site's current design.
+
+Use natural contextual anchor text.
+
+## Frequently Asked Questions
+
+### What is the XAUUSD outlook for this week?
+
+Gold begins the September 14–18 week in a transitional structure. Buyers defended approximately $4,290–$4,300, but major resistance remains around $4,400 and $4,443–$4,450. The September 16 Federal Reserve decision could become the main catalyst for the next larger move.
+
+### What are the main XAUUSD support levels this week?
+
+The first important support area is approximately $4,300–$4,320. Below it, traders can monitor the recent swing-low region around $4,280–$4,290, followed by deeper support near $4,230.
+
+### What are the main gold resistance levels this week?
+
+Immediate resistance sits around $4,385–$4,400. A larger resistance area is located around $4,443–$4,450. If buyers recover those areas, approximately $4,507–$4,537 may become the next region to watch.
+
+### When is the Federal Reserve decision this week?
+
+The Federal Reserve is scheduled to release its monetary-policy decision on Wednesday, September 16, 2026 at 2:00 PM Eastern Time, which is 7:00 PM British Summer Time. The press conference is scheduled approximately 30 minutes later.
+
+### Does a Federal Reserve rate increase automatically make gold fall?
+
+No. Gold can react to interest rates, Treasury yields and the US dollar, but markets also react to expectations.
+
+If an interest-rate decision is already priced in, traders may focus more heavily on future guidance, economic projections and the tone of the press conference.
+
+## Risk Disclaimer
+
+Trading forex, gold and CFDs involves significant risk and may not be suitable for everyone.
+
+This content is provided for educational and informational purposes only and should not be considered financial advice, investment advice or a recommendation to buy or sell any financial instrument.
+
+Market conditions can change quickly.
+
+Always perform your own analysis and use appropriate risk management.
+
+## Market Data Note
+
+Spot gold is traded across multiple liquidity providers, so exact XAU/USD highs, lows and closing prices can differ slightly between brokers and data feeds.
+
+The levels in this article should therefore be treated as approximate technical zones rather than exact guaranteed prices.
+
+Research for this article is based on publicly available information from the Federal Reserve, US Bureau of Labor Statistics, US Census Bureau, UK Office for National Statistics, Bank of England and established financial-market reporting available before publication.
+
+---
+
+# SEO IMPLEMENTATION
+
+Implement proper Next.js metadata for this page.
+
+Title:
+
+XAUUSD Weekly Outlook: Gold Trading Plan Sep 14–18
+
+Description:
+
+XAUUSD weekly outlook for Sep 14–18, 2026, covering key gold levels, the Fed decision, US retail sales, and bullish and bearish scenarios for traders.
+
+Canonical:
+
+https://forexwizard.online/blog/xauusd-weekly-outlook-september-14-18-2026/
+
+Add:
+
+* Open Graph title
+* Open Graph description
+* Open Graph URL
+* Open Graph image
+* Twitter/X card metadata where supported
+* datePublished
+* dateModified
+* author
+* publisher
+
+Use Article or BlogPosting structured data.
+
+The structured data must accurately represent the visible article.
+
+Do NOT add FAQPage structured data.
+
+The FAQ should remain visible for readers, but do not add FAQ schema.
+
+---
+
+# ORIGINAL ARTICLE IMAGE
+
+Create an original lightweight visual specifically for this article.
+
+Do NOT download copyrighted charts or financial-news images.
+
+Create the asset locally using SVG/CSS or another lightweight approach consistent with the current website.
+
+It should visually communicate:
+
+XAUUSD WEEKLY OUTLOOK
+
+SEP 14–18, 2026
+
+Key Levels:
+
+4300 Support
+
+4400 Resistance
+
+Fed Decision — Sep 16
+
+Use the existing ForexWizard dark design and brand style.
+
+Do not make the graphic look like a guaranteed trading signal.
+
+Do not include:
+
+BUY NOW
+
+SELL NOW
+
+Guaranteed profit
+
+Guaranteed signals
+
+Pips earned
+
+100% win rate
+
+or similar claims.
+
+Use the graphic as:
+
+* Article hero image
+* Open Graph image where technically appropriate
+* Social-sharing preview
+
+Use descriptive alt text:
+
+“XAUUSD weekly outlook September 14–18 2026 showing key gold support and resistance levels”
+
+Optimize the image so it does not unnecessarily increase page load time.
+
+---
+
+# BLOG PAGE
+
+Check whether the site already has:
+
+/blog/
+
+If it already exists:
+
+Add this article as the newest article.
+
+If it does not exist:
+
+Create:
+
+https://forexwizard.online/blog/
+
+Make it a professional SEO-friendly blog index that matches the current ForexWizard website.
+
+Include:
+
+* Blog heading
+* Short useful introductory description
+* Article cards
+* Publication date
+* Article title
+* Short description
+* Read Article button/link
+
+Design the blog structure so future ForexWizard articles can easily be added.
+
+Do NOT hard-code the layout in a way that makes adding future posts difficult.
+
+If appropriate for the existing architecture, create a reusable article metadata/data structure.
+
+---
+
+# INTERNAL LINKING
+
+Within the article, create natural contextual links to these existing pages:
+
+Homepage:
+https://forexwizard.online/
+
+Gold Signals:
+https://forexwizard.online/gold-signals/
+
+Forex Signals:
+https://forexwizard.online/forex-signals/
+
+About ForexWizard:
+https://forexwizard.online/about/
+
+The links should appear naturally within relevant sentences.
+
+Do NOT simply display a list of raw URLs.
+
+Use descriptive anchor text such as:
+
+Gold Signals
+
+Forex Signals
+
+About ForexWizard
+
+XAUUSD weekly outlook
+
+this week's gold market outlook
+
+Also inspect the existing website.
+
+Where it makes sense and does NOT damage existing content, add one or two contextual links FROM existing relevant pages TO the new weekly outlook article.
+
+For example, the Gold Signals page could naturally contain a small contextual link to the latest XAUUSD weekly outlook.
+
+Do not spam the same article link across every page.
+
+Do not use generic anchor text such as “click here” where descriptive wording is possible.
+
+---
+
+# USA + UK SEO
+
+The main target audiences are:
+
+United States
+
+United Kingdom
+
+Do NOT artificially repeat:
+
+USA
+
+United States
+
+UK
+
+United Kingdom
+
+throughout the article.
+
+Do not keyword-stuff regional terms.
+
+Instead, make the content genuinely useful to both audiences.
+
+Preserve useful event-time conversions:
+
+ET for US readers
+
+BST for UK readers
+
+Use natural English that works for readers in both countries.
+
+Do not create duplicate US and UK versions of the same article.
+
+Do not create unnecessary hreflang pages.
+
+Use one strong English article.
+
+---
+
+# SITE-WIDE SEO
+
+Make sure:
+
+* There is exactly one H1.
+* Headings follow a logical H2/H3 hierarchy.
+* Canonical points to forexwizard.online.
+* No www duplicate is introduced.
+* The article is indexable.
+* robots.txt does not block it.
+* Internal links are crawlable.
+* Metadata renders server-side.
+* Structured data is valid JSON-LD.
+* Article publication date is visible.
+* Author is visible.
+* Author/About link is visible.
+* Hero image has useful alt text.
+* Page is responsive.
+* Article typography is comfortable on mobile.
+* Article content width is readable.
+* Links use descriptive anchor text.
+* Existing SEO implementation is not damaged.
+
+Do NOT put the article content behind JavaScript that prevents search-engine crawlers from reading it.
+
+---
+
+# SITEMAP
+
+Update the existing sitemap system.
+
+Include:
+
+https://forexwizard.online/blog/
+
+and:
+
+https://forexwizard.online/blog/xauusd-weekly-outlook-september-14-18-2026/
+
+Do not remove existing sitemap entries.
+
+If the website dynamically generates sitemap.xml, integrate the new URLs into the existing generation system instead of creating a conflicting second sitemap.
+
+---
+
+# PERFORMANCE
+
+Do not add unnecessary libraries.
+
+Do not install a large JavaScript package just for this article.
+
+Keep the article mostly server-rendered/static where appropriate.
+
+Optimize the hero/OG asset.
+
+Preserve the website's existing Core Web Vitals and performance as much as possible.
+
+---
+
+# MOBILE
+
+Pay particular attention to mobile because many Telegram visitors will arrive from phones.
+
+Check:
+
+* Heading wrapping
+* Article width
+* Support/resistance displays
+* Economic calendar section
+* Long price numbers
+* CTA buttons
+* Navigation
+* Hero image
+* FAQ
+* Footer
+
+Nothing should overflow horizontally.
+
+Keep paragraphs readable and avoid oversized blocks of text on mobile.
+
+---
+
+# TELEGRAM CTA
+
+Keep the Telegram CTA professional and educational.
+
+Telegram:
+
+https://t.me/ForexWizzz
+
+Use wording focused on:
+
+* XAU/USD market structure
+* Educational analysis
+* Important zones
+* Market observations
+* Trading education
+
+Do NOT use language such as:
+
+Guaranteed profit
+
+Guaranteed signals
+
+100% winning
+
+Easy money
+
+Daily guaranteed income
+
+Guaranteed pips
+
+The CTA should remain educational and trust-focused.
+
+---
+
+# QUALITY CHECK
+
+Before committing anything:
+
+1. Run the production build.
+2. Fix every TypeScript error.
+3. Fix broken imports.
+4. Fix routing errors.
+5. Check the article URL.
+6. Check the blog page.
+7. Check the homepage.
+8. Check Gold Signals.
+9. Check Forex Signals.
+10. Check About page.
+11. Validate metadata.
+12. Validate BlogPosting/Article JSON-LD.
+13. Confirm there is no FAQPage JSON-LD.
+14. Check the sitemap.
+15. Check robots.txt.
+16. Test mobile responsiveness.
+17. Check all internal links.
+18. Check the Telegram link.
+19. Check the hero image.
+20. Check the Open Graph image.
+21. Confirm the article contains exactly one H1.
+22. Make sure no existing page was accidentally removed or broken.
+23. Make sure there are no duplicate canonical URLs.
+24. Make sure the article is crawlable and indexable.
+
+Do not push a broken production build.
+
+---
+
+# GITHUB
+
+After the production build passes:
+
+Commit all necessary changes.
+
+Use this commit message:
+
+Add Sep 14-18 XAUUSD weekly outlook
+
+Push to the SAME branch currently used for the live ForexWizard website.
+
+Repository:
+
+musawar127/forexwizzz-landing
+
+Do not merely show me code.
+
+Do not stop after explaining what needs to be done.
+
+Actually edit the existing repository, create the article page, create/update the blog, update SEO, update internal links, update the sitemap, run the production build, commit everything and push it to GitHub.
+
+Do not create a new repository.
+
+Do not create a separate demo project.
+
+Do not stop before pushing unless there is an actual authentication or GitHub permission problem.
+
+---
+
+# FINAL REPORT
+
+When finished, give me:
+
+1. Article URL
+2. Blog URL
+3. Files created
+4. Files modified
+5. SEO title
+6. Meta description
+7. Canonical URL
+8. BlogPosting/Article schema status
+9. Sitemap status
+10. Internal links added
+11. Hero/OG image path
+12. Production build result
+13. Git commit hash
+14. Git branch
+15. Confirmation that the GitHub push succeeded
+
+Also mention any issue that could prevent the live website from automatically updating after the GitHub push.
+
+Do not rewrite or replace the finished article unless a tiny technical formatting adjustment is necessary.
