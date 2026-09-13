@@ -539,7 +539,7 @@ export default function XauusdAnalysisPage() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/60 mt-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mt-8 max-w-lg mx-auto">
               No single factor guarantees a particular price movement. Gold is
               influenced by the interaction of multiple forces at any given time.
             </p>
@@ -760,7 +760,7 @@ export default function XauusdAnalysisPage() {
               </FadeIn>
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/60 mt-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mt-8 max-w-lg mx-auto">
               The examples above describe general concepts. Specific levels
               change as the market moves and should always be identified on
               current charts.
@@ -987,7 +987,7 @@ export default function XauusdAnalysisPage() {
                   className="text-lg md:text-xl px-10 py-5"
                 />
               </PulsingGlow>
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk
               </p>
             </div>

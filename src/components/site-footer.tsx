@@ -22,7 +22,7 @@ export function SiteFooter() {
         <p className="text-sm text-muted-foreground mb-2">
           Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community
         </p>
-        <p className="text-xs text-muted-foreground/50 max-w-lg mx-auto leading-relaxed">
+        <p className="text-xs text-muted-foreground/80 max-w-lg mx-auto leading-relaxed">
           Risk Disclaimer: Forex and other financial markets involve
           significant risk of loss and are not suitable for all investors.
           Past performance does not guarantee future results. The content
@@ -34,7 +34,7 @@ export function SiteFooter() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+              className="text-xs text-muted-foreground/80 hover:text-trading-green transition-colors no-underline"
             >
               {link.label}
             </Link>
@@ -43,7 +43,7 @@ export function SiteFooter() {
             href={TELEGRAM_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-muted-foreground/40 hover:text-trading-green transition-colors no-underline"
+            className="text-xs text-muted-foreground/80 hover:text-trading-green transition-colors no-underline"
           >
             t.me/ForexWizzz
           </a>

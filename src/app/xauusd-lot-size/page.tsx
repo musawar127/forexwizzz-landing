@@ -660,7 +660,7 @@ export default function XauusdLotSizePage() {
                   <div className="glass rounded-2xl p-5 flex items-start gap-4">
                     <div className="flex-shrink-0 mt-0.5">
                       <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center ${i < 9 ? 'border-trading-gold/40' : 'border-muted-foreground/20'}`}>
-                        <ListChecks className={`w-3.5 h-3.5 ${i < 9 ? 'text-trading-gold/60' : 'text-muted-foreground/30'}`} />
+                        <ListChecks className={`w-3.5 h-3.5 ${i < 9 ? 'text-trading-gold/60' : 'text-muted-foreground/80'}`} />
                       </div>
                     </div>
                     <div>
@@ -714,7 +714,7 @@ export default function XauusdLotSizePage() {
                 educational content through the Forex Wizard Telegram community.
               </p>
               <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" className="text-lg md:text-xl px-10 py-5" />
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk
               </p>
             </div>

@@ -31,6 +31,11 @@ const post = getBlogPost("xauusd-weekly-outlook-september-14-18-2026")!;
 
 const CANONICAL = `https://forexwizard.online/blog/${post.slug}/`;
 const IMAGE_URL = `https://forexwizard.online${post.image}`;
+const IMAGE_BASE = post.image.replace(/\.jpg$/, "");
+// Responsive WebP srcset for the in-page hero (LCP candidate). Mobile loads a
+// ~16-25KB WebP instead of the 49KB JPG fallback.
+const HERO_WEBP_SRCSET = `${IMAGE_BASE}-640.webp 640w, ${IMAGE_BASE}-960.webp 960w, ${IMAGE_BASE}-1200.webp 1200w`;
+const HERO_SIZES = "(max-width: 768px) 100vw, 768px";
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
 
 export const metadata: Metadata = {
@@ -366,17 +371,25 @@ export default function WeeklyOutlookPage() {
               · {post.readingTime}
             </p>
 
-            {/* Hero image */}
+            {/* Hero image (LCP candidate: responsive WebP + fetchPriority high) */}
             <FadeIn delay={0.3} className="mb-8">
               <div className="glass-strong rounded-2xl overflow-hidden gradient-border">
-                <img
-                  src={post.image}
-                  alt={post.imageAlt}
-                  width={1200}
-                  height={630}
-                  className="w-full h-auto block"
-                  loading="eager"
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcSet={HERO_WEBP_SRCSET}
+                    sizes={HERO_SIZES}
+                  />
+                  <img
+                    src={post.image}
+                    alt={post.imageAlt}
+                    width={1200}
+                    height={630}
+                    className="w-full h-auto block"
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </picture>
               </div>
             </FadeIn>
 
@@ -441,7 +454,7 @@ export default function WeeklyOutlookPage() {
               {atAGlanceLevels.map((level, i) => (
                 <FadeIn key={level.label} delay={i * 0.05}>
                   <div className="glass-strong rounded-2xl p-5 gradient-border h-full flex flex-col gap-2">
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/70">
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/80">
                       {level.label}
                     </span>
                     <span
@@ -1530,7 +1543,7 @@ export default function WeeklyOutlookPage() {
                   className="text-lg md:text-xl px-10 py-5"
                 />
               </PulsingGlow>
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk &middot; Not
                 financial advice
               </p>

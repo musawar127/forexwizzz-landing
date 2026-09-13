@@ -721,7 +721,7 @@ export default function XauusdPipValuePage() {
                 educational content through the Forex Wizard Telegram community.
               </p>
               <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" className="text-lg md:text-xl px-10 py-5" />
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk
               </p>
             </div>

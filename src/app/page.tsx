@@ -411,7 +411,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mb-8 max-w-lg mx-auto">
               Results vary. Trading involves risk. Past performance does not
               guarantee future results.
             </p>
@@ -454,6 +454,7 @@ export default function Home() {
                         height={img.height}
                         className="w-full h-auto rounded-xl object-cover"
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   </div>
@@ -461,7 +462,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/70 mb-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mb-8 max-w-lg mx-auto">
               Results vary. Trading involves risk. Past performance does not
               guarantee future results. These are real screenshots shared by community members.
             </p>
@@ -501,6 +502,8 @@ export default function Home() {
                       width={640}
                       height={640}
                       className="w-full h-auto rounded-xl object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -682,7 +685,7 @@ export default function Home() {
                 />
               </PulsingGlow>
 
-              <p className="mt-6 text-xs text-muted-foreground/60 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+              <p className="mt-6 text-xs text-muted-foreground/80 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
                 <span className="flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3 text-trading-green" />
                   Free to join

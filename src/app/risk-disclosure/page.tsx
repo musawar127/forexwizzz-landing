@@ -605,7 +605,7 @@ export default function RiskDisclosurePage() {
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
-                    <span className="text-muted-foreground/60">Email:</span>{" "}
+                    <span className="text-muted-foreground/80">Email:</span>{" "}
                     <a
                       href="mailto:forexwizardy@gmail.com"
                       className="text-trading-green hover:text-trading-green/80 transition-colors no-underline"
@@ -614,7 +614,7 @@ export default function RiskDisclosurePage() {
                     </a>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="text-muted-foreground/60">Telegram:</span>{" "}
+                    <span className="text-muted-foreground/80">Telegram:</span>{" "}
                     <a
                       href="https://t.me/ForexWizzz"
                       target="_blank"

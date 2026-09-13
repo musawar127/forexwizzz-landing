@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
               Privacy Policy
             </h1>
-            <p className="text-xs text-muted-foreground/60">
+            <p className="text-xs text-muted-foreground/80">
               Last updated: September 5, 2026
             </p>
           </FadeSection>

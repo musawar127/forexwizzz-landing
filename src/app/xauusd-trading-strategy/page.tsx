@@ -996,7 +996,7 @@ export default function XauusdTradingStrategyPage() {
               </FadeIn>
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/60 mt-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mt-8 max-w-lg mx-auto">
               These examples are hypothetical and for educational purposes only.
               They do not represent real trades, and similar setups in the future
               may produce different results.
@@ -1207,7 +1207,7 @@ export default function XauusdTradingStrategyPage() {
                   className="text-lg md:text-xl px-10 py-5"
                 />
               </PulsingGlow>
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk
               </p>
             </div>

@@ -82,7 +82,7 @@ export default function NotFound() {
               The page you are looking for may have moved, been removed, or the
               URL may be incorrect.
             </p>
-            <p className="text-muted-foreground/70 text-sm leading-relaxed mb-10">
+            <p className="text-muted-foreground/80 text-sm leading-relaxed mb-10">
               You can return to Forex Wizard or continue learning with one of our
               trading guides.
             </p>
@@ -100,7 +100,7 @@ export default function NotFound() {
 
         {/* Explore links section */}
         <section className="relative z-10 max-w-2xl mx-auto px-4 pb-20">
-          <p className="text-xs font-medium text-muted-foreground/50 tracking-widest uppercase text-center mb-6">
+          <p className="text-xs font-medium text-muted-foreground/80 tracking-widest uppercase text-center mb-6">
             Explore Forex Wizard
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

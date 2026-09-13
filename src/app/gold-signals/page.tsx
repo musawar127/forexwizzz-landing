@@ -670,7 +670,7 @@ export default function GoldSignalsPage() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/60 mt-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mt-8 max-w-lg mx-auto">
               No strategy guarantees profits. Traders should backtest and
               demo-trade before committing real capital.
             </p>
@@ -713,7 +713,7 @@ export default function GoldSignalsPage() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/60 mt-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mt-8 max-w-lg mx-auto">
               There is no single "best" time to trade gold. Traders should
               consider their own schedule, strategy, and risk tolerance when
               deciding when to participate in the market.
@@ -827,7 +827,7 @@ export default function GoldSignalsPage() {
                   className="text-lg md:text-xl px-10 py-5"
                 />
               </PulsingGlow>
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk
               </p>
             </div>

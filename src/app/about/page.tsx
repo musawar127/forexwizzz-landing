@@ -455,7 +455,7 @@ export default function AboutPage() {
                   className="text-lg md:text-xl px-10 py-5"
                 />
               </PulsingGlow>
-              <p className="mt-6 text-xs text-muted-foreground/60">
+              <p className="mt-6 text-xs text-muted-foreground/80">
                 Free to join &middot; Trading involves risk
               </p>
             </div>

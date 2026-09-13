@@ -144,6 +144,22 @@ async function create() {
     .toFile(JPG_OUT);
   const jpgSize = fs.statSync(JPG_OUT).size;
   console.log(`JPG saved: ${JPG_OUT} (${(jpgSize / 1024).toFixed(1)} KB)`);
+
+  // 3. Responsive WebP variants for <picture> srcset so mobile loads a
+  //    smaller image (the article hero is the LCP candidate on the article page).
+  const webpWidths = [640, 960, 1200];
+  for (const w of webpWidths) {
+    const out = path.join(
+      PUBLIC_BLOG_DIR,
+      `xauusd-weekly-outlook-sep-14-18-2026-${w}.webp`
+    );
+    await sharp(Buffer.from(svg.trim()))
+      .resize({ width: w })
+      .webp({ quality: 82 })
+      .toFile(out);
+    const size = fs.statSync(out).size;
+    console.log(`WebP ${w}w saved: ${out} (${(size / 1024).toFixed(1)} KB)`);
+  }
 }
 
 create().catch((e) => {
