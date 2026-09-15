@@ -45,6 +45,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-support-and-resistance",
+    title: "XAUUSD Support and Resistance: How to Mark Key Levels",
+    description:
+      "Learn how to identify XAUUSD support and resistance, mark key gold levels, avoid false breakouts, and use market structure for better trade planning.",
+    cardDescription:
+      "Learn how to identify important support and resistance zones on XAUUSD and combine them with market structure, breakouts and retests.",
+    displayDate: "September 15, 2026",
+    publishedAt: "2026-09-15T09:00:00+05:00",
+    modifiedAt: "2026-09-15T09:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-support-and-resistance.jpg",
+    imageAlt:
+      "XAUUSD support and resistance educational chart showing key gold trading zones",
+    tags: ["XAUUSD", "Gold", "Support & Resistance", "Technical Analysis"],
+    readingTime: "9 min read",
+  },
+  {
     slug: "xauusd-weekly-outlook-september-14-18-2026",
     title: "XAUUSD Weekly Outlook: Gold Trading Plan Sep 14–18",
     description:

@@ -15,6 +15,7 @@ import {
   BookOpen,
   Newspaper,
   LineChart,
+  Layers,
 } from "lucide-react";
 import {
   FadeSection,
@@ -244,6 +245,13 @@ const economicEvents = [
 ];
 
 const continueLearning = [
+  {
+    href: "/blog/xauusd-support-and-resistance/",
+    title: "XAUUSD Support and Resistance",
+    desc: "Learn how to identify important support and resistance zones, mark key gold levels, avoid false breakouts and combine levels with market structure.",
+    icon: <Layers className="w-7 h-7 text-trading-gold" />,
+    accent: "from-trading-gold/10 to-transparent",
+  },
   {
     href: "/gold-signals/",
     title: "Gold Signals",
