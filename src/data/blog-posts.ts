@@ -45,6 +45,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-volatility-trading-sessions",
+    title: "Why XAUUSD Volatility Changes by Trading Session",
+    description:
+      "Learn why XAUUSD volatility changes across Asian, London and New York sessions, and how liquidity, overlap and US data shape gold price action.",
+    cardDescription:
+      "Gold does not behave the same way throughout the day. Learn how liquidity, market participation and economic events change XAUUSD volatility across major trading sessions.",
+    displayDate: "September 18, 2026",
+    publishedAt: "2026-09-18T09:00:00+05:00",
+    modifiedAt: "2026-09-18T09:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-volatility-trading-sessions.jpg",
+    imageAlt:
+      "XAUUSD volatility across Asian, London and New York trading sessions",
+    tags: ["XAUUSD", "Gold", "Trading Sessions", "Volatility"],
+    readingTime: "11 min read",
+  },
+  {
     slug: "xauusd-support-and-resistance",
     title: "XAUUSD Support and Resistance: How to Mark Key Levels",
     description:

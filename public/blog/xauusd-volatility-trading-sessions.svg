@@ -1,0 +1,95 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="55%" style="stop-color:#0d0f16"/>
+      <stop offset="100%" style="stop-color:#0a0a0f"/>
+    </linearGradient>
+    <linearGradient id="greenGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e676"/>
+      <stop offset="100%" style="stop-color:#ffd740"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative glows -->
+  <circle cx="980" cy="120" r="220" fill="#00e676" opacity="0.05"/>
+  <circle cx="180" cy="540" r="180" fill="#ffd740" opacity="0.05"/>
+
+  <!-- Session chart panel (right side) -->
+  <g transform="translate(620, 170)">
+    <rect x="0" y="0" width="500" height="380" rx="16" fill="#ffffff" opacity="0.03" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+
+    <!-- Session band labels (top) -->
+    <text x="85" y="34" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#9ca3af" text-anchor="middle" letter-spacing="1">ASIA</text>
+    <text x="215" y="34" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#ffd740" text-anchor="middle" letter-spacing="1">LONDON</text>
+    <text x="360" y="34" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#00e676" text-anchor="middle" letter-spacing="1">NEW YORK</text>
+
+    <!-- Session band separators -->
+    <line x1="150" y1="50" x2="150" y2="350" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="3 4"/>
+    <line x1="280" y1="50" x2="280" y2="350" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" stroke-dasharray="3 4"/>
+
+    <!-- London/NY overlap highlight band -->
+    <rect x="280" y="50" width="80" height="300" fill="#ffffff" opacity="0.04"/>
+    <text x="320" y="346" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600" fill="#ffffff" opacity="0.6" text-anchor="middle">overlap</text>
+
+    <!-- Candlesticks: Asia (small, contained), London (larger), NY (largest + event) -->
+    <line x1="33" y1="190.99829946844994" x2="33" y2="207.838184585048" stroke="#9ca3af" stroke-width="1.5" opacity="0.5"/><rect x="25.72" y="194.2707437414266" width="14.560000000000002" height="10.29499657064472" fill="#9ca3af" opacity="0.7" rx="1"/><line x1="59" y1="192.5801521776406" x2="59" y2="207.42329003772292" stroke="#9ca3af" stroke-width="1.5" opacity="0.5"/><rect x="51.72" y="197.00172110768176" width="14.560000000000002" height="6" fill="#9ca3af" opacity="0.7" rx="1"/><line x1="85" y1="195.9324078360768" x2="85" y2="208.859391718107" stroke="#9ca3af" stroke-width="1.5" opacity="0.5"/><rect x="77.72" y="199.3958997770919" width="14.560000000000002" height="6" fill="#9ca3af" opacity="0.7" rx="1"/><line x1="111" y1="190.87849065500686" x2="111" y2="206.7057814643347" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="103.72" y="195.79213605967078" width="14.560000000000002" height="6" fill="#ff7043" opacity="0.7" rx="1"/><line x1="137" y1="190.45829603909465" x2="137" y2="207.34231695816186" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="129.72" y="194.6198315329218" width="14.560000000000002" height="8.560949931412894" fill="#ff7043" opacity="0.7" rx="1"/>
+    <line x1="167.5" y1="182.59523919753087" x2="167.5" y2="208.3915663580247" stroke="#ffd740" stroke-width="1.5" opacity="0.5"/><rect x="160.5" y="186.62503858024692" width="14.000000000000002" height="17.73672839506173" fill="#ffd740" opacity="0.7" rx="1"/><line x1="192.5" y1="182.26877314814814" x2="192.5" y2="202.18315586419752" stroke="#ffd740" stroke-width="1.5" opacity="0.5"/><rect x="185.5" y="185.69006944444445" width="14.000000000000002" height="13.07179012345679" fill="#ffd740" opacity="0.7" rx="1"/><line x1="217.5" y1="181.9052700617284" x2="217.5" y2="204.604375" stroke="#ffd740" stroke-width="1.5" opacity="0.5"/><rect x="210.5" y="185.70324845679013" width="14.000000000000002" height="15.103148148148147" fill="#ffd740" opacity="0.7" rx="1"/><line x1="242.5" y1="183.12695216049383" x2="242.5" y2="208.47744598765433" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="235.5" y="187.97568672839506" width="14.000000000000002" height="15.653024691358025" fill="#ff7043" opacity="0.7" rx="1"/><line x1="267.5" y1="182.92270833333333" x2="267.5" y2="202.59125771604937" stroke="#ffd740" stroke-width="1.5" opacity="0.5"/><rect x="260.5" y="188.95182870370368" width="14.000000000000002" height="7.610308641975309" fill="#ffd740" opacity="0.7" rx="1"/>
+    <line x1="297.5" y1="174.6369384430727" x2="297.5" y2="197.5097307956104" stroke="#00e676" stroke-width="1.5" opacity="0.5"/><rect x="290.5" y="182.67411479766804" width="14.000000000000002" height="6.79843964334705" fill="#00e676" opacity="0.7" rx="1"/><line x1="322.5" y1="172.6017232510288" x2="322.5" y2="194.9440372085048" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="315.5" y="178.11937371399176" width="14.000000000000002" height="11.307013031550069" fill="#ff7043" opacity="0.7" rx="1"/><line x1="347.5" y1="179.100844478738" x2="347.5" y2="202.2596450617284" stroke="#00e676" stroke-width="1.5" opacity="0.5"/><rect x="340.5" y="187.6802447702332" width="14.000000000000002" height="6" fill="#00e676" opacity="0.7" rx="1"/><line x1="372.5" y1="167.15783607681757" x2="372.5" y2="199.82808213305898" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="365.5" y="176.17038537379975" width="14.000000000000002" height="14.645147462277093" fill="#ff7043" opacity="0.7" rx="1"/><line x1="397.5" y1="172.09792952674897" x2="397.5" y2="202.01547496570643" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="390.5" y="182.04774305555554" width="14.000000000000002" height="10.017918381344305" fill="#ff7043" opacity="0.7" rx="1"/><line x1="422.5" y1="163.37547153635117" x2="422.5" y2="207.57735339506175" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="415.5" y="173.68641760973938" width="14.000000000000002" height="23.579989711934157" fill="#ff7043" opacity="0.7" rx="1"/><line x1="447.5" y1="169.9102151920439" x2="447.5" y2="188.21124828532237" stroke="#ff7043" stroke-width="1.5" opacity="0.5"/><rect x="440.5" y="173.7407300240055" width="14.000000000000002" height="10.64000342935528" fill="#ff7043" opacity="0.7" rx="1"/>
+  </g>
+
+  <!-- Brand row -->
+  <g>
+    <circle cx="80" cy="70" r="9" fill="#00e676" filter="url(#softGlow)"/>
+    <text x="100" y="78" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800" fill="#f0f0f0" letter-spacing="-0.5">
+      Forex <tspan fill="#00e676">Wizard</tspan>
+    </text>
+  </g>
+
+  <!-- Eyebrow / section label -->
+  <rect x="80" y="150" width="220" height="40" rx="20" fill="#00e676" opacity="0.08" stroke="#00e676" stroke-opacity="0.35" stroke-width="1"/>
+  <text x="190" y="176" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#00e676" text-anchor="middle" letter-spacing="1.5">
+    TRADING SESSIONS GUIDE
+  </text>
+
+  <!-- Main title -->
+  <text x="80" y="258" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="50" font-weight="900" fill="#f0f0f0" letter-spacing="-1.5">
+    XAUUSD Volatility
+  </text>
+  <text x="80" y="316" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="50" font-weight="900" letter-spacing="-1.5">
+    <tspan fill="#f0f0f0">by Trading </tspan><tspan fill="#ffd740">Session</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="366" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="600" fill="#9ca3af">
+    Asian, London &amp; New York sessions explained
+  </text>
+
+  <!-- Session chips -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <rect x="80" y="406" width="120" height="44" rx="22" fill="#ffffff" opacity="0.04" stroke="#9ca3af" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="140" y="434" font-size="14" font-weight="700" fill="#9ca3af" text-anchor="middle">Asia</text>
+
+    <rect x="212" y="406" width="120" height="44" rx="22" fill="#ffffff" opacity="0.04" stroke="#ffd740" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="272" y="434" font-size="14" font-weight="700" fill="#ffd740" text-anchor="middle">London</text>
+
+    <rect x="344" y="406" width="120" height="44" rx="22" fill="#ffffff" opacity="0.04" stroke="#00e676" stroke-opacity="0.3" stroke-width="1"/>
+    <text x="404" y="434" font-size="14" font-weight="700" fill="#00e676" text-anchor="middle">New York</text>
+  </g>
+
+  <!-- Footer accent + disclaimer -->
+  <rect x="80" y="600" width="1040" height="2" rx="1" fill="url(#greenGold)" opacity="0.4"/>
+  <text x="80" y="624" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" fill="#6b7280">
+    Educational market analysis · forexwizard.online · Not financial advice
+  </text>
+</svg>
