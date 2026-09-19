@@ -15,7 +15,6 @@ import {
   BookOpen,
   Newspaper,
   LineChart,
-  Layers,
 } from "lucide-react";
 import {
   FadeSection,
@@ -28,13 +27,12 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
 import { getBlogPost } from "@/data/blog-posts";
 
-const post = getBlogPost("xauusd-weekly-outlook-september-14-18-2026")!;
+const post = getBlogPost("xauusd-weekly-outlook-september-21-25-2026")!;
 
 const CANONICAL = `https://forexwizard.online/blog/${post.slug}/`;
 const IMAGE_URL = `https://forexwizard.online${post.image}`;
 const IMAGE_BASE = post.image.replace(/\.jpg$/, "");
-// Responsive WebP srcset for the in-page hero (LCP candidate). Mobile loads a
-// ~16-25KB WebP instead of the 49KB JPG fallback.
+// Responsive WebP srcset for the in-page hero (LCP candidate).
 const HERO_WEBP_SRCSET = `${IMAGE_BASE}-640.webp 640w, ${IMAGE_BASE}-960.webp 960w, ${IMAGE_BASE}-1200.webp 1200w`;
 const HERO_SIZES = "(max-width: 768px) 100vw, 768px";
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
@@ -138,138 +136,126 @@ function TelegramCTA({
 /*  ARTICLE DATA                                                       */
 /* ------------------------------------------------------------------ */
 const atAGlanceLevels = [
+  { label: "Immediate support", value: "$4,340–$4,350", tone: "gold" as const },
+  { label: "Secondary support", value: "$4,300–$4,320", tone: "gold" as const },
   {
-    label: "Immediate support",
-    value: "$4,300–$4,320",
-    tone: "gold" as const,
-  },
-  {
-    label: "Secondary support",
-    value: "$4,280–$4,290",
-    tone: "gold" as const,
-  },
-  {
-    label: "Deeper support",
-    value: "approx. $4,230",
+    label: "Major support",
+    value: "approx. $4,235–$4,260",
     tone: "gold" as const,
   },
   {
     label: "Immediate resistance",
-    value: "$4,385–$4,400",
+    value: "approx. $4,395–$4,410",
     tone: "green" as const,
   },
   {
     label: "Major resistance",
-    value: "$4,443–$4,450",
+    value: "approx. $4,430–$4,465",
     tone: "green" as const,
   },
   {
     label: "Higher resistance",
-    value: "approx. $4,507–$4,537",
+    value: "approx. $4,500–$4,520",
     tone: "green" as const,
   },
 ];
 
-const faqs = [
+const economicEvents = [
   {
-    q: "What is the XAUUSD outlook for this week?",
-    a: "Gold begins the September 14–18 week in a transitional structure. Buyers defended approximately $4,290–$4,300, but major resistance remains around $4,400 and $4,443–$4,450. The September 16 Federal Reserve decision could become the main catalyst for the next larger move.",
+    day: "Wednesday, September 23",
+    points: [
+      "S&P Global releases its Flash US Manufacturing and Services PMI.",
+      "The standard flash-US-PMI release is scheduled for approximately 9:45 AM ET.",
+      "PMI data can influence expectations for US growth, inflation and Federal Reserve policy.",
+      "Whether the result is strong or weak cannot be known in advance, so traders can monitor how the market reacts rather than predicting the print.",
+    ],
   },
   {
-    q: "What are the main XAUUSD support levels this week?",
-    a: "The first important support area is approximately $4,300–$4,320. Below it, traders can monitor the recent swing-low region around $4,280–$4,290, followed by deeper support near $4,230.",
+    day: "Thursday, September 24",
+    points: [
+      "US New Residential Sales (New Home Sales) is scheduled for approximately 10:00 AM ET.",
+      "Traders will also continue monitoring Federal Reserve speakers and post-FOMC commentary, which can shift rate-path expectations.",
+    ],
   },
   {
-    q: "What are the main gold resistance levels this week?",
-    a: "Immediate resistance sits around $4,385–$4,400. A larger resistance area is located around $4,443–$4,450. If buyers recover those areas, approximately $4,507–$4,537 may become the next region to watch.",
-  },
-  {
-    q: "When is the Federal Reserve decision this week?",
-    a: "The Federal Reserve is scheduled to release its monetary-policy decision on Wednesday, September 16, 2026 at 2:00 PM Eastern Time, which is 7:00 PM British Summer Time. The press conference is scheduled approximately 30 minutes later.",
-  },
-  {
-    q: "Does a Federal Reserve rate increase automatically make gold fall?",
-    a: "No. Gold can react to interest rates, Treasury yields and the US dollar, but markets also react to expectations. If an interest-rate decision is already priced in, traders may focus more heavily on future guidance, economic projections and the tone of the press conference.",
+    day: "Friday, September 25",
+    points: [
+      "US Durable Goods Orders for August is scheduled for approximately 8:30 AM ET.",
+      "The University of Michigan final September Consumer Sentiment is scheduled for 10:00 AM ET.",
+      "The preliminary September consumer-sentiment index was 47.8. The final survey and its inflation expectations may receive attention because inflation remains important for Fed expectations.",
+      "Note: PCE and GDP are not scheduled for September 25. Those major BEA releases are currently scheduled for September 30.",
+    ],
   },
 ];
 
 const checklistItems = [
   "Previous week’s high and low",
-  "$4,300–$4,320 support",
-  "$4,280–$4,290 lower support",
-  "$4,385–$4,400 resistance",
-  "$4,443–$4,450 major resistance",
+  "$4,340–$4,350 immediate support",
+  "$4,300–$4,320 secondary support",
+  "$4,235–$4,260 major support",
+  "$4,395–$4,410 immediate resistance",
+  "$4,430–$4,465 major resistance",
+  "$4,500–$4,520 higher resistance",
   "Daily and four-hour market structure",
   "London-session high and low",
   "New York-session structure",
-  "US retail-sales release",
-  "Federal Reserve decision",
-  "Fed press conference",
+  "Flash PMI (Wednesday)",
+  "New Home Sales (Thursday)",
+  "Durable Goods Orders (Friday)",
+  "University of Michigan final sentiment",
+  "Fed speakers and post-FOMC commentary",
   "Treasury-yield direction",
   "US dollar direction",
+  "Crude-oil direction",
   "Your stop-loss location",
   "Position size",
   "Risk-to-reward",
   "Whether the setup has actually been confirmed",
 ];
 
-const economicEvents = [
+const faqs = [
   {
-    day: "Tuesday, September 15",
-    points: [
-      "UK labour-market data is scheduled for 7:00 AM BST.",
-      "US traders will also be watching regional manufacturing data during the New York morning.",
-      "While these releases may not have the same impact as the Fed decision, they can influence currencies, bond yields and overall market sentiment.",
-    ],
+    q: "What is the XAUUSD outlook for this week?",
+    a: "Gold begins the September 21–25 week in a neutral-to-transitional structure with improving short-term momentum after recovering from the post-Fed lows. Buyers defended the approximately $4,235–$4,260 region, but major resistance remains around $4,395–$4,410 and $4,430–$4,465. How gold behaves around those areas, and around this week’s US data, could shape the next larger move.",
   },
   {
-    day: "Wednesday, September 16",
-    points: [
-      "This is the key day.",
-      "UK consumer inflation data is scheduled for 7:00 AM BST.",
-      "US retail-sales data is scheduled for 8:30 AM ET / 1:30 PM BST.",
-      "US import and export price data is also scheduled for the same time.",
-      "The Federal Reserve decision follows later at 2:00 PM ET / 7:00 PM BST.",
-      "The Fed press conference begins approximately 30 minutes later.",
-      "Because several important releases arrive on the same day, XAU/USD traders should be prepared for increased volatility.",
-    ],
+    q: "What are the main XAUUSD support levels this week?",
+    a: "The first important support area is approximately $4,340–$4,350. Below it, traders can monitor $4,300–$4,320, followed by the deeper major support region around $4,235–$4,260 that held during the post-Fed selloff.",
   },
   {
-    day: "Thursday, September 17",
-    points: [
-      "US housing-start and building-permit data is scheduled for 8:30 AM ET / 1:30 PM BST.",
-      "UK traders will also be watching the Bank of England’s September monetary-policy announcement at approximately 12:00 PM BST.",
-      "Although US interest-rate expectations normally have a more direct relationship with dollar-denominated gold, major global central-bank decisions can still influence yields, currencies and risk sentiment.",
-    ],
+    q: "What are the main gold resistance levels this week?",
+    a: "Immediate resistance sits around $4,395–$4,410. A larger resistance region is located around $4,430–$4,465. If buyers recover those areas, approximately $4,500–$4,520 may become the next region to watch.",
+  },
+  {
+    q: "What changed after the September Federal Reserve meeting?",
+    a: "On September 16, 2026, the Federal Reserve raised the federal-funds target range by 25 basis points to 3.75%–4.00% and stated that inflation remains elevated. Gold dropped sharply around the decision before recovering later in the week. The market is now trying to determine whether further tightening could occur.",
+  },
+  {
+    q: "What economic events could affect gold this week?",
+    a: "Key releases include S&P Global Flash US PMI on September 23, US New Home Sales on September 24, and US Durable Goods Orders plus the final University of Michigan Consumer Sentiment on September 25. Traders will also monitor Federal Reserve speakers and post-FOMC commentary.",
+  },
+  {
+    q: "Is $4,400 an important level for XAUUSD?",
+    a: "The $4,400 region is psychologically important and also sits close to this week’s immediate resistance around $4,395–$4,410. Whether gold can reclaim and accept above it, rather than just spiking through it, may provide useful information about the strength of the recovery.",
+  },
+  {
+    q: "Do higher interest rates automatically make gold fall?",
+    a: "No. Higher expected interest rates and Treasury yields can create a headwind for non-yielding gold, and a stronger US dollar can pressure dollar-denominated gold. However, the relationship is not mechanical. Positioning, inflation expectations, geopolitical uncertainty, safe-haven demand, central-bank demand and already-priced expectations can all affect how gold reacts.",
   },
 ];
 
 const continueLearning = [
   {
-    href: "/blog/xauusd-weekly-outlook-september-21-25-2026/",
-    title: "XAUUSD Weekly Outlook: Sep 21–25",
-    desc: "Read the latest XAUUSD Weekly Outlook for September 21–25, 2026 — the post-Fed recovery test, key gold levels and scenarios for the new trading week.",
-    icon: <Newspaper className="w-7 h-7 text-trading-green" />,
-    accent: "from-trading-green/10 to-transparent",
-  },
-  {
-    href: "/blog/xauusd-support-and-resistance/",
-    title: "XAUUSD Support and Resistance",
-    desc: "Learn how to identify important support and resistance zones, mark key gold levels, avoid false breakouts and combine levels with market structure.",
-    icon: <Layers className="w-7 h-7 text-trading-gold" />,
+    href: "/blog/xauusd-weekly-outlook-september-14-18-2026/",
+    title: "XAUUSD Weekly Outlook: Sep 14–18",
+    desc: "Last week’s XAUUSD weekly outlook — the Fed decision, key levels entering the week and the post-Fed recovery context that set up this week’s structure.",
+    icon: <Newspaper className="w-7 h-7 text-trading-gold" />,
     accent: "from-trading-gold/10 to-transparent",
   },
   {
     href: "/gold-signals/",
     title: "Gold Signals",
     desc: "Educational gold signals and XAUUSD market analysis covering price action, key levels, trading sessions and risk management.",
-    icon: <Newspaper className="w-7 h-7 text-trading-gold" />,
-    accent: "from-trading-gold/10 to-transparent",
-  },
-  {
-    href: "/forex-signals/",
-    title: "Forex Signals",
-    desc: "Broader forex trading signals covering major and minor currency pairs beyond gold and XAUUSD.",
     icon: <Newspaper className="w-7 h-7 text-trading-green" />,
     accent: "from-trading-green/10 to-transparent",
   },
@@ -292,7 +278,7 @@ const continueLearning = [
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                               */
 /* ------------------------------------------------------------------ */
-export default function WeeklyOutlookPage() {
+export default function WeeklyOutlookSep2125Page() {
   return (
     <>
       <script
@@ -361,16 +347,34 @@ export default function WeeklyOutlookPage() {
           <CandlestickBackground />
 
           <HeroAnimation className="relative z-10 max-w-3xl mx-auto">
+            {/* Breadcrumb: Home → Blog → Article */}
+            <nav
+              aria-label="Breadcrumb"
+              className="flex items-center gap-2 text-xs text-muted-foreground/80 mb-6 flex-wrap"
+            >
+              <Link href="/" className="hover:text-trading-green transition-colors no-underline">
+                Home
+              </Link>
+              <span className="text-muted-foreground/40">/</span>
+              <Link href="/blog/" className="hover:text-trading-green transition-colors no-underline">
+                Blog
+              </Link>
+              <span className="text-muted-foreground/40">/</span>
+              <span className="text-foreground/80">
+                XAUUSD Weekly Outlook: Gold Trading Plan for September 21–25, 2026
+              </span>
+            </nav>
+
             <FadeIn delay={0.15} className="inline-flex">
               <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-gold">
                 <Calendar className="w-4 h-4" />
-                XAUUSD Weekly Outlook · Sep 14–18, 2026
+                XAUUSD Weekly Outlook · Sep 21–25, 2026
               </span>
             </FadeIn>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
               <span className="text-foreground">
-                XAUUSD Weekly Outlook: Gold Trading Plan for September 14–18,
+                XAUUSD Weekly Outlook: Gold Trading Plan for September 21–25,
                 2026
               </span>
             </h1>
@@ -410,28 +414,27 @@ export default function WeeklyOutlookPage() {
 
             <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Gold enters the new trading week at an important technical and
-                fundamental point.
+                This XAUUSD weekly outlook covers the September 21–25, 2026
+                trading week and the key gold levels worth watching after a
+                volatile Federal Reserve meeting.
               </p>
               <p>
-                XAU/USD recovered strongly from the $4,290–$4,300 area on Friday
-                and finished the week around $4,350, but the rebound did not
-                completely erase the pressure seen throughout the previous
-                sessions.
+                Gold enters the new week recovering from an aggressive post-Fed
+                selloff. The September 16 rate increase pushed XAU/USD toward
+                the $4,235–$4,260 region, but buyers responded with a strong
+                recovery that reached approximately the $4,400 area on Friday.
               </p>
               <p>
-                Gold still finished the week lower, while rising Treasury
-                yields, persistent inflation concerns and changing expectations
-                for Federal Reserve policy continued to influence the market.
+                That recovery produced gold&apos;s first positive week after
+                three consecutive weekly declines. It also leaves the market at
+                an important technical checkpoint: buyers have defended deeper
+                support, but they still need to clear overhead resistance to
+                confirm that the move is more than a short-covering rebound.
               </p>
               <p>
-                For traders watching gold this week, Wednesday&apos;s Federal
-                Reserve decision is likely to be the main event.
-              </p>
-              <p>
-                Instead of trying to predict exactly where XAU/USD will move,
-                this weekly outlook focuses on the levels, market structure and
-                scenarios worth watching between September 14 and September 18.
+                Rather than predicting where gold will go, this outlook focuses
+                on the levels, market structure and scenarios worth monitoring
+                between September 21 and September 25.
               </p>
               <p className="text-foreground/90 font-medium">
                 This analysis is educational only. The levels discussed below
@@ -458,9 +461,10 @@ export default function WeeklyOutlookPage() {
 
             <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed mb-10">
               <p>
-                The short-term gold structure remains cautious while price
-                stays below the major resistance area around
-                $4,443–$4,450.
+                Gold begins the September 21–25 week in a neutral-to-transitional
+                structure with improving short-term momentum. The recovery from
+                the post-Fed lows is real, but it still needs confirmation above
+                important resistance.
               </p>
               <p>Important areas for the coming week include:</p>
             </div>
@@ -488,12 +492,16 @@ export default function WeeklyOutlookPage() {
 
             <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                The biggest scheduled catalyst is the Federal Reserve decision
-                on Wednesday, September 16.
+                The biggest scheduled catalysts this week are lighter than last
+                week&apos;s FOMC-heavy calendar, but S&P Global Flash PMI
+                (Wednesday), New Home Sales (Thursday) and Durable Goods plus
+                final University of Michigan sentiment (Friday) can still shift
+                the dollar, Treasury yields and XAUUSD.
               </p>
               <p>
-                That means traders should be prepared for conditions to change
-                quickly, especially during the New York session.
+                Traders should be prepared for conditions to change quickly,
+                especially around those releases and during the New York
+                session.
               </p>
             </div>
           </div>
@@ -510,44 +518,89 @@ export default function WeeklyOutlookPage() {
             </h2>
             <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Gold entered last week under pressure after stronger US
-                employment data increased expectations that the Federal Reserve
-                could tighten monetary policy again.
+                Gold started the September 14–18 week under pressure. The
+                Federal Reserve&apos;s Wednesday rate increase produced
+                significant volatility, and gold traded toward approximately
+                $4,235–$4,260 during the post-decision selloff.
               </p>
               <p>
-                The market continued to react to rising Treasury yields, a
-                stronger US dollar and sharply higher energy prices.
+                The market then recovered sharply on Thursday and Friday. By
+                Friday, gold had tested approximately the $4,400 area, with
+                reference prices around $4,380–$4,390 depending on the data
+                feed.
               </p>
               <p>
-                Inflation became an even bigger focus after US producer-price
-                data showed persistent price pressure.
+                The recovery was supported partly by easing crude-oil prices,
+                which helped calm inflation concerns during the second half of
+                the week. Pullbacks in Treasury yields and periods of US-dollar
+                weakness also helped gold recover after the Fed-driven selloff.
               </p>
               <p>
-                Gold then dropped toward the psychologically important $4,300
-                area.
+                The result was gold&apos;s first weekly gain following three
+                declining weeks. This creates an interesting setup: buyers
+                successfully defended the deeper support region, but they still
+                need to clear important overhead resistance to confirm that the
+                recovery is more than a short-covering rebound.
               </p>
               <p>
-                Friday brought another important event: US consumer inflation.
+                You can read the full context of that week in{" "}
+                <Link
+                  href="/blog/xauusd-weekly-outlook-september-14-18-2026/"
+                  className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
+                >
+                  last week&apos;s XAUUSD weekly outlook
+                </Link>
+                .
               </p>
-              <p>
-                Gold initially entered the CPI session under heavy pressure, but
-                buyers appeared around the $4,290–$4,300 region.
-              </p>
-              <p>
-                That produced a strong intraday recovery and helped XAU/USD
-                finish Friday around $4,350.
-              </p>
-              <p>
-                However, the broader weekly picture remained weaker.
-              </p>
-              <p>
-                This leaves traders with an interesting setup for the new week.
-              </p>
-              <p>
-                Buyers have defended an important support area, but they have
-                not yet recovered the resistance zones needed to confirm a
-                stronger bullish reversal.
-              </p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* WHAT DID THE FED RATE HIKE CHANGE */}
+        <FadeSection className="py-16 md:py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
+                <span className="text-foreground">
+                  What Did the September Fed Rate Hike{" "}
+                </span>
+                <span className="text-trading-gold text-glow-gold">
+                  Change?
+                </span>
+              </h2>
+              <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  On September 16, 2026, the Federal Reserve raised the
+                  federal-funds target range by 25 basis points to 3.75%–4.00%.
+                  The Fed stated that inflation remains elevated.
+                </p>
+                <p>
+                  The market is now trying to determine whether further
+                  tightening could occur. Another rate increase is not certain.
+                  Much depends on incoming inflation, employment and growth
+                  data, plus the tone of post-meeting Fed commentary.
+                </p>
+                <p>
+                  The basic relationship matters for gold. Higher expected
+                  interest rates and higher Treasury yields can create a
+                  headwind for non-yielding gold. A stronger US dollar can also
+                  pressure dollar-denominated gold.
+                </p>
+                <p>
+                  However, these relationships are not mechanical. Gold can rise
+                  even when rates are high because positioning, inflation
+                  expectations, geopolitical uncertainty, safe-haven demand,
+                  central-bank demand and already-priced expectations can all
+                  affect the reaction.
+                </p>
+                <p>
+                  That is why the immediate post-Fed drop did not simply
+                  continue — gold recovered as the dollar and yields pulled
+                  back and as oil eased. The same principle applies this week:
+                  the data and the market&apos;s reaction to it matter more than
+                  the rate-hike label alone.
+                </p>
+              </div>
             </div>
           </div>
         </FadeSection>
@@ -563,24 +616,29 @@ export default function WeeklyOutlookPage() {
             </h2>
             <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                The cleanest answer is that gold begins the week in a
-                transitional structure.
+                The cleanest description is neutral-to-transitional with
+                improving short-term momentum.
               </p>
               <p>
-                The Friday rebound showed that buyers are still willing to
-                defend the $4,300 region.
+                Holding above roughly $4,340–$4,350 would keep the short-term
+                recovery structure constructive. A clean recovery and acceptance
+                above approximately $4,400–$4,410 would strengthen the recovery
+                case.
               </p>
               <p>
-                At the same time, price remains below several important
-                resistance areas.
+                Approximately $4,430–$4,465 is a more important resistance
+                region. If that area is recovered and successfully held or
+                retested, approximately $4,500–$4,520 can become relevant.
               </p>
               <p>
-                Because of this, it may be better to avoid treating gold as
-                automatically bullish or bearish.
+                Conversely, failure around $4,400 or $4,430–$4,465 could produce
+                renewed selling pressure. A break back beneath $4,340 may expose
+                $4,300–$4,320 again, and a decisive breakdown below $4,300 would
+                weaken the recovery significantly and could bring approximately
+                $4,235–$4,260 back into focus.
               </p>
               <p>
-                The market can provide confirmation. For more on reading
-                current structure, see our broader{" "}
+                For a broader framework on reading these transitions, see our{" "}
                 <Link
                   href="/xauusd-analysis/"
                   className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
@@ -588,19 +646,6 @@ export default function WeeklyOutlookPage() {
                   XAUUSD analysis
                 </Link>{" "}
                 coverage.
-              </p>
-              <p>
-                For the bullish structure to strengthen, buyers would ideally
-                need to reclaim $4,400 and then break the $4,443–$4,450 region.
-              </p>
-              <p>
-                For bearish continuation to become clearer, sellers would need
-                to break the support structure around $4,300 and the recent lows
-                below it.
-              </p>
-              <p>
-                Until one of these happens, traders should be prepared for
-                volatility and possible range conditions.
               </p>
             </div>
           </div>
@@ -616,8 +661,10 @@ export default function WeeklyOutlookPage() {
               </span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
-              The areas below are important structural zones to monitor. Read
-              more about how to use these zones in our guide to{" "}
+              The areas below are important structural zones to monitor. Treating
+              them as zones rather than exact prices is more useful because
+              different feeds can show slightly different highs and lows. Read
+              more about how to use these areas in our guide to{" "}
               <Link
                 href="/xauusd-support-resistance/"
                 className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
@@ -630,82 +677,60 @@ export default function WeeklyOutlookPage() {
             <div className="space-y-8">
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
                 <h3 className="text-lg md:text-xl font-bold text-trading-gold mb-4">
-                  $4,300–$4,320 Support Zone
+                  $4,340–$4,350 Support
                 </h3>
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    The $4,300 region is one of the most important areas to
-                    watch this week.
+                    This is the first area to watch on any pullback. If buyers
+                    continue defending roughly $4,340–$4,350, the short-term
+                    recovery structure remains constructive and attention can
+                    stay on the overhead resistance zones.
                   </p>
                   <p>
-                    Gold attracted significant buying interest near this region
-                    on Friday after falling sharply during the previous session.
-                  </p>
-                  <p>
-                    It is also psychologically important because $4,300 is a
-                    large round number that traders can easily identify.
-                  </p>
-                  <p>
-                    As long as the market continues holding this area, buyers
-                    may continue trying to recover the higher resistance zones.
-                  </p>
-                  <p>
-                    A touch of support alone, however, does not confirm a buy.
-                  </p>
-                  <p>
-                    Traders should watch how price behaves when the area is
-                    tested.
-                  </p>
-                  <p>
-                    Signs such as rejection, a higher low or a break of
-                    short-term bearish structure may provide more useful
-                    information than simply entering because price reaches the
-                    zone.
+                    A touch of support alone does not confirm a buy. Traders can
+                    watch how price behaves when the area is tested — signs such
+                    as rejection, a higher low or a break of short-term bearish
+                    structure may provide more useful information than simply
+                    entering because price reaches the zone.
                   </p>
                 </div>
               </div>
 
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
                 <h3 className="text-lg md:text-xl font-bold text-trading-gold mb-4">
-                  $4,280–$4,290 Support
+                  $4,300–$4,320 Support
                 </h3>
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Below $4,300 sits another important structural area around
-                    $4,280–$4,290.
+                    Below $4,340, the next important structural area sits around
+                    $4,300–$4,320. The $4,300 region is also psychologically
+                    important as a large round number.
                   </p>
                   <p>
-                    This region is close to the recent swing lows.
-                  </p>
-                  <p>
-                    If gold briefly trades below $4,300 but quickly recovers,
-                    traders should pay attention to whether this lower area
-                    produces another reaction.
-                  </p>
-                  <p>
-                    A sustained breakdown beneath the recent lows would weaken
-                    the short-term bullish recovery.
+                    If gold briefly trades below $4,340 but quickly recovers,
+                    traders can pay attention to whether this lower area produces
+                    another reaction. A sustained breakdown beneath $4,300 would
+                    weaken the short-term recovery.
                   </p>
                 </div>
               </div>
 
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
                 <h3 className="text-lg md:text-xl font-bold text-trading-gold mb-4">
-                  $4,230 Area
+                  $4,235–$4,260 Major Support
                 </h3>
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    If sellers gain stronger control and the recent swing-low
-                    structure fails, approximately $4,230 becomes another
-                    important area on the chart.
+                    This is the deeper major-support region that held during the
+                    post-Fed selloff. If sellers regain control and the
+                    short-term recovery structure fails, this area may become
+                    relevant again.
                   </p>
                   <p>
-                    This is a deeper support zone and would represent a much
-                    larger correction from current prices.
-                  </p>
-                  <p>
-                    It should therefore be treated as a scenario rather than an
-                    expectation.
+                    It should be treated as a scenario rather than an
+                    expectation. The fact that buyers defended it last week does
+                    not guarantee it will hold again, but it is the most
+                    important structural floor beneath the current market.
                   </p>
                 </div>
               </div>
@@ -726,70 +751,56 @@ export default function WeeklyOutlookPage() {
             <div className="space-y-8">
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
                 <h3 className="text-lg md:text-xl font-bold text-trading-green mb-4">
-                  $4,385–$4,400 Resistance
+                  $4,395–$4,410 Resistance
                 </h3>
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    The first major challenge for buyers is the area between
-                    approximately $4,385 and $4,400.
+                    This is the first major challenge for buyers. The $4,400
+                    region is both psychologically important and close to where
+                    gold stalled on Friday.
                   </p>
                   <p>
-                    Gold moved toward this region during Friday&apos;s recovery.
-                  </p>
-                  <p>
-                    A move above $4,400 would be constructive for buyers, but
-                    traders should watch whether price can remain above it
-                    instead of producing another false breakout.
-                  </p>
-                  <p>
-                    Acceptance above resistance is generally more meaningful
-                    than a quick spike through it.
+                    A move above $4,410 would be constructive, but traders can
+                    watch whether price can remain above it instead of producing
+                    another false breakout. Acceptance above resistance is
+                    generally more meaningful than a quick spike through it.
                   </p>
                 </div>
               </div>
 
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
                 <h3 className="text-lg md:text-xl font-bold text-trading-green mb-4">
-                  $4,443–$4,450 Major Resistance
+                  $4,430–$4,465 Major Resistance
                 </h3>
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    The $4,443–$4,450 area is one of the most important
-                    technical levels for the week.
-                  </p>
-                  <p>
-                    This region is close to last week&apos;s upper trading range
-                    and represents an area buyers would likely need to recover
-                    before the short-term outlook becomes more convincingly
-                    bullish.
+                    This is the most important technical resistance region for
+                    the week. Recovering it would represent a stronger
+                    confirmation that the post-Fed recovery has legs.
                   </p>
                   <p>
                     If gold reaches this area and rejects strongly, sellers may
-                    attempt to regain control.
-                  </p>
-                  <p>
-                    If price breaks above it and successfully holds or retests
-                    the zone, attention could shift toward higher resistance.
+                    attempt to regain control. If price breaks above it and
+                    successfully holds or retests the zone, attention could
+                    shift toward higher resistance.
                   </p>
                 </div>
               </div>
 
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
                 <h3 className="text-lg md:text-xl font-bold text-trading-green mb-4">
-                  $4,507–$4,537 Higher Resistance
+                  $4,500–$4,520 Higher Resistance
                 </h3>
                 <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Above $4,450, the next important technical area sits around
-                    $4,507–$4,537.
+                    Above $4,465, the next important technical and psychological
+                    area sits around $4,500–$4,520. This is not a prediction that
+                    gold will reach this level.
                   </p>
                   <p>
-                    This is not a prediction that gold will reach this level.
-                  </p>
-                  <p>
-                    Instead, it represents the next resistance area that could
-                    become relevant if buyers successfully recover the lower
-                    resistance zones.
+                    It represents the next resistance area that could become
+                    relevant only if buyers successfully recover the lower
+                    resistance zones first.
                   </p>
                 </div>
               </div>
@@ -814,33 +825,26 @@ export default function WeeklyOutlookPage() {
               </div>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  The bullish scenario starts with buyers continuing to defend
-                  approximately $4,300–$4,320.
+                  The bullish scenario starts with gold maintaining approximately
+                  $4,340–$4,350 and continuing to form higher lows.
                 </p>
                 <p>
-                  The structure would become more interesting if gold then forms
-                  higher lows and begins reclaiming $4,385–$4,400.
+                  If buyers reclaim approximately $4,395–$4,410 and accept above
+                  it, attention shifts toward the $4,430–$4,465 major resistance
+                  region.
                 </p>
                 <p>
-                  A clean move above $4,400 would put the $4,443–$4,450
-                  resistance area back into focus.
+                  A confirmed break and successful retest of that larger zone
+                  could then bring the $4,500–$4,520 region into view as the
+                  next area to monitor.
                 </p>
                 <p>
-                  For a stronger bullish continuation signal, traders may want
-                  to see price break above that resistance and remain above it.
-                </p>
-                <p>
-                  A successful breakout and retest could then bring the
-                  $4,507–$4,537 area into view as the next major resistance
-                  zone.
-                </p>
-                <p>
-                  The important point is confirmation.
-                </p>
-                <p>
-                  Buying directly into major resistance simply because gold has
-                  bounced from support can create poor risk-to-reward
-                  conditions.
+                  The important point is confirmation. Buying directly into
+                  major resistance simply because gold has bounced from support
+                  can create poor risk-to-reward conditions. Traders can look
+                  for evidence — a decisive close, follow-through, a clean
+                  retest — rather than assuming resistance will automatically
+                  break.
                 </p>
               </div>
             </div>
@@ -867,140 +871,22 @@ export default function WeeklyOutlookPage() {
                   The bearish scenario could develop in two ways.
                 </p>
                 <p>
-                  The first would be a strong rejection from the $4,385–$4,400
-                  region or the larger $4,443–$4,450 resistance zone.
-                </p>
-                <p>
-                  If sellers begin producing lower highs after such a rejection,
-                  the market may return toward $4,320–$4,300.
+                  The first is a strong rejection from $4,395–$4,410 or the
+                  larger $4,430–$4,465 resistance zone, followed by lower-high
+                  formation. If sellers begin producing lower highs after such a
+                  rejection, the market may return toward $4,340–$4,300.
                 </p>
                 <p>
                   The second and stronger bearish signal would be a confirmed
-                  breakdown below the recent $4,290–$4,300 support structure.
+                  loss of support. If $4,340 fails, $4,300–$4,320 may become
+                  relevant. A decisive breakdown beneath the $4,300 structure
+                  could return attention toward approximately $4,235–$4,260.
                 </p>
                 <p>
-                  If price breaks the area and later retests it from underneath,
-                  former support could potentially begin acting as resistance.
-                </p>
-                <p>
-                  That would place the deeper $4,230 region back into focus.
-                </p>
-                <p>
-                  Again, these are scenarios rather than trade instructions.
-                </p>
-                <p>
-                  The market should confirm the idea first.
+                  Again, these are scenarios rather than trade instructions. The
+                  market should confirm the idea first.
                 </p>
               </div>
-            </div>
-          </div>
-        </FadeSection>
-
-        {/* FED IS BIGGEST EVENT */}
-        <FadeSection className="py-16 md:py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
-              <span className="text-foreground">
-                The Federal Reserve Is the Biggest Event{" "}
-              </span>
-              <span className="text-trading-gold text-glow-gold">
-                This Week
-              </span>
-            </h2>
-            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
-              <p>
-                Wednesday, September 16 could be the most important trading
-                session of the week.
-              </p>
-              <p>
-                The Federal Reserve concludes its September 15–16 monetary-policy
-                meeting and releases its decision at:
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              <div className="glass-strong rounded-2xl p-5 gradient-border">
-                <div className="flex items-center gap-2 mb-2 text-trading-green">
-                  <Globe className="w-5 h-5" />
-                  <span className="text-xs font-semibold uppercase tracking-wider">
-                    Eastern Time (US)
-                  </span>
-                </div>
-                <p className="text-lg font-bold text-foreground">
-                  2:00 PM ET
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Fed decision
-                </p>
-                <p className="text-lg font-bold text-foreground mt-3">
-                  2:30 PM ET
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Press conference
-                </p>
-              </div>
-              <div className="glass-strong rounded-2xl p-5 gradient-border">
-                <div className="flex items-center gap-2 mb-2 text-trading-gold">
-                  <Globe className="w-5 h-5" />
-                  <span className="text-xs font-semibold uppercase tracking-wider">
-                    British Summer Time (UK)
-                  </span>
-                </div>
-                <p className="text-lg font-bold text-foreground">
-                  7:00 PM BST
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Fed decision
-                </p>
-                <p className="text-lg font-bold text-foreground mt-3">
-                  7:30 PM BST
-                </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Press conference
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
-              <p>
-                This meeting is especially important because updated economic
-                projections are also scheduled.
-              </p>
-              <p>
-                Going into the meeting, markets have been pricing a high
-                probability of another interest-rate increase following stronger
-                employment and inflation data.
-              </p>
-              <p>
-                Gold traders should remember the basic relationship.
-              </p>
-              <p>
-                Higher interest-rate expectations can increase Treasury yields
-                and support the US dollar.
-              </p>
-              <p>
-                Because gold does not pay interest, higher yields can make
-                holding gold relatively less attractive.
-              </p>
-              <p>
-                That does not mean a rate increase automatically makes gold fall.
-              </p>
-              <p>
-                Markets often move based on the difference between what was
-                expected and what actually happens.
-              </p>
-              <p>
-                If a rate increase is already heavily priced in, traders may pay
-                even more attention to the Fed&apos;s language, economic
-                projections and guidance about future policy.
-              </p>
-              <p>
-                The first reaction can also reverse during the press conference.
-              </p>
-              <p>
-                For that reason, this is a session where patience can be
-                particularly valuable.
-              </p>
             </div>
           </div>
         </FadeSection>
@@ -1017,7 +903,9 @@ export default function WeeklyOutlookPage() {
               </span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
-              This week contains several events worth monitoring.
+              This week is lighter than last week&apos;s FOMC-heavy calendar, but
+              several releases can still influence the US dollar, Treasury
+              yields and XAUUSD.
             </p>
 
             <div className="space-y-5">
@@ -1058,33 +946,23 @@ export default function WeeklyOutlookPage() {
               </div>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  For traders in the United Kingdom and Europe, the London
-                  session can provide the first important clue about daily market
-                  structure.
-                </p>
-                <p>
-                  Watch how gold behaves around the previous day&apos;s high and
-                  low and around the major weekly zones.
+                  The London session can provide the first important clue about
+                  daily market structure. Watch how gold behaves around the
+                  previous day&apos;s high and low and around the major weekly
+                  zones.
                 </p>
                 <p>
                   If London breaks an overnight range, avoid automatically
-                  assuming that the breakout will continue.
-                </p>
-                <p>
-                  Gold frequently produces liquidity sweeps and false breaks.
+                  assuming the breakout will continue. Gold frequently produces
+                  liquidity sweeps and false breaks, particularly after a
+                  volatile week.
                 </p>
                 <p>
                   A more patient approach is to watch whether price can hold
-                  beyond the level or whether it quickly returns inside the
-                  previous range.
-                </p>
-                <p>
-                  On Wednesday in particular, London-session traders should
-                  remember that much larger US events arrive later in the day.
-                </p>
-                <p>
-                  A good setup before the Fed can still be invalidated when New
-                  York volatility increases.
+                  beyond a level or whether it quickly returns inside the
+                  previous range. This is especially relevant on Wednesday and
+                  Friday, when US data arrives later in the day and can
+                  invalidate a London setup.
                 </p>
               </div>
             </div>
@@ -1110,9 +988,10 @@ export default function WeeklyOutlookPage() {
               </div>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  The New York session will be especially important this week
-                  because most of the major US catalysts occur during US trading
-                  hours.
+                  The New York session will be important again this week because
+                  most of the major US catalysts occur during US trading hours —
+                  Flash PMI on Wednesday, New Home Sales on Thursday, and
+                  Durable Goods plus final Michigan sentiment on Friday.
                 </p>
                 <p>Watch the relationship between:</p>
                 <ul className="list-disc list-inside space-y-1 pl-2">
@@ -1122,73 +1001,76 @@ export default function WeeklyOutlookPage() {
                   <li>Market expectations for Federal Reserve policy</li>
                 </ul>
                 <p>
-                  When yields and the dollar rise sharply together, gold can face
-                  additional pressure.
-                </p>
-                <p>
-                  When yields fall and the dollar weakens, gold may receive
-                  support.
-                </p>
-                <p>
-                  These relationships are not guaranteed on every session, but
-                  they provide useful context.
-                </p>
-                <p>
-                  The Wednesday New York session deserves particular caution
-                  because retail sales arrive before the Fed decision.
-                </p>
-                <p>
-                  Traders may therefore see multiple changes in direction
-                  throughout the day.
+                  When yields and the dollar rise sharply together, gold can
+                  face additional pressure. When yields fall and the dollar
+                  weakens, gold may receive support. These relationships are not
+                  guaranteed on every session, but they provide useful context.
                 </p>
               </div>
             </div>
           </div>
         </FadeSection>
 
-        {/* AVOID PREDICTING FED */}
+        {/* TREASURY YIELDS & USD */}
         <FadeSection className="py-16 md:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
               <span className="text-foreground">
-                Why Traders Should Avoid Predicting the{" "}
+                What Treasury Yields and the US Dollar Could Mean for{" "}
+              </span>
+              <span className="text-trading-gold text-glow-gold">Gold</span>
+            </h2>
+            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>
+                After the Fed&apos;s 25 basis-point hike to a 3.75%–4.00% target
+                range, the market is sensitive to any signal about whether
+                further tightening could occur. That keeps Treasury yields and
+                the dollar central to gold&apos;s near-term direction.
+              </p>
+              <p>
+                Higher expected rates and higher yields can create a headwind for
+                non-yielding gold. A stronger dollar can pressure
+                dollar-denominated gold. But last week showed the limits of
+                treating that relationship mechanically — gold fell hard on the
+                decision, then recovered as yields and the dollar pulled back.
+              </p>
+              <p>
+                This week, traders can monitor whether yields continue to ease or
+                push back higher, and whether the dollar holds its recent
+                pullback. Those moves may matter as much as the data itself.
+              </p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* OIL */}
+        <FadeSection className="py-16 md:py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
+              <span className="text-foreground">Why Oil Still Matters for{" "}
               </span>
               <span className="text-trading-gold text-glow-gold">
-                Fed Reaction
+                Gold After the Fed
               </span>
             </h2>
-            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                A common mistake before major central-bank decisions is becoming
-                emotionally attached to one outcome.
+                Crude-oil prices fell during the second half of last week, which
+                helped ease inflation concerns and supported gold&apos;s
+                recovery. That link is worth watching again this week.
               </p>
-              <p>For example:</p>
-            </div>
-            <blockquote className="glass rounded-xl border-l-2 border-trading-gold/50 px-6 py-4 mb-6 italic text-foreground/90 text-base md:text-lg">
-              “Fed hikes, therefore gold must fall.”
-            </blockquote>
-            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-              <p>Financial markets are rarely that simple.</p>
               <p>
-                If traders already expect the Fed to increase rates, the actual
-                decision may produce a very different reaction from what appears
-                logical.
+                Oil is not a direct gold driver, but it influences inflation
+                expectations, which in turn influence Fed expectations, which
+                influence yields and the dollar. Falling oil can soften the
+                macro headwinds for gold; rising oil can re-introduce them.
               </p>
-              <p>The market may focus on:</p>
+              <p>
+                Traders can treat oil as context rather than a primary signal.
+                The most relevant drivers for XAUUSD this week remain yields,
+                the dollar and the scheduled US data.
+              </p>
             </div>
-            <ul className="list-disc list-inside space-y-1 pl-2 mb-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-              <li>Whether the decision matched expectations</li>
-              <li>Changes to economic projections</li>
-              <li>Inflation forecasts</li>
-              <li>Growth forecasts</li>
-              <li>The expected path of future interest rates</li>
-              <li>The tone of the press conference</li>
-              <li>Comments about future meetings</li>
-            </ul>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              The better approach is to prepare scenarios and react to market
-              structure after the information becomes available.
-            </p>
           </div>
         </FadeSection>
 
@@ -1202,19 +1084,18 @@ export default function WeeklyOutlookPage() {
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold">
                   <span className="text-foreground">
-                    Risk Management During a{" "}
+                    Risk Management During{" "}
                   </span>
                   <span className="text-trading-gold text-glow-gold">
-                    High-Volatility Week
+                    Volatile Gold Sessions
                   </span>
                 </h2>
               </div>
               <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                 <p>
-                  This week&apos;s calendar makes risk management particularly
-                  important.
+                  Even on a lighter calendar week, gold can move quickly around
+                  US data and Fed-speaker commentary. Major events can produce:
                 </p>
-                <p>Major economic events can produce:</p>
               </div>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
                 {[
@@ -1236,64 +1117,17 @@ export default function WeeklyOutlookPage() {
               <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
                   Traders should know their invalidation point before entering.
-                </p>
-                <p>
-                  Position size should also reflect the distance between the
-                  entry and stop loss.
+                  Position size should reflect the distance between entry and
+                  stop loss — and after a volatile week, stops may need more
+                  room than usual.
                 </p>
                 <p>
                   Increasing risk simply because a setup looks attractive can
-                  turn one losing trade into an unnecessarily large loss.
+                  turn one losing trade into an unnecessarily large loss. No
+                  technical level is guaranteed to hold.
                 </p>
-                <p>No technical level is guaranteed to hold.</p>
               </div>
             </div>
-          </div>
-        </FadeSection>
-
-        {/* BREAKEVEN */}
-        <FadeSection className="py-16 md:py-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
-              <span className="text-foreground">
-                When Should Traders Consider{" "}
-              </span>
-              <span className="text-trading-gold text-glow-gold">
-                Breakeven?
-              </span>
-            </h2>
-            <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-              <p>
-                Moving a stop to breakeven can help protect a position after the
-                market has moved favourably, but moving it too early can also
-                close a good trade during a normal retracement.
-              </p>
-              <p>
-                Instead of using breakeven automatically, traders can look for
-                structural reasons.
-              </p>
-              <p>Examples may include:</p>
-            </div>
-            <ul className="space-y-2 mb-6">
-              {[
-                "Price breaking an important intraday level",
-                "A first objective being reached",
-                "A meaningful move away from the entry",
-                "New structure forming in the trade direction",
-                "Approaching high-impact economic news",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-2 text-base md:text-lg text-muted-foreground"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-trading-green shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              The purpose of breakeven is risk management, not fear management.
-            </p>
           </div>
         </FadeSection>
 
@@ -1310,7 +1144,7 @@ export default function WeeklyOutlookPage() {
                     XAUUSD Trading Checklist for{" "}
                   </span>
                   <span className="text-trading-green text-glow-green">
-                    September 14–18
+                    September 21–25
                   </span>
                 </h2>
               </div>
@@ -1340,8 +1174,7 @@ export default function WeeklyOutlookPage() {
         <FadeSection className="py-16 md:py-20 px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
-              <span className="text-foreground">
-                XAUUSD Weekly Outlook:{" "}
+              <span className="text-foreground">XAUUSD Weekly Outlook:{" "}
               </span>
               <span className="text-trading-gold text-glow-gold">
                 Final View
@@ -1349,30 +1182,30 @@ export default function WeeklyOutlookPage() {
             </h2>
             <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                Gold begins the September 14–18 trading week after buyers
-                successfully defended the $4,290–$4,300 region, but the market
-                still has important resistance overhead.
+                Gold begins the September 21–25 week after an aggressive recovery
+                from the post-Fed lows, but the recovery still needs confirmation
+                above important resistance.
               </p>
               <p>That creates two clear areas of interest.</p>
               <p>
-                Bulls will want to see gold maintain support, recover $4,400 and
-                eventually break through approximately $4,443–$4,450.
+                Bulls will want to see gold maintain $4,340–$4,350, reclaim
+                approximately $4,395–$4,410, and eventually break through the
+                $4,430–$4,465 region.
               </p>
               <p>
                 Bears will be watching for rejection from resistance or a
-                confirmed breakdown beneath the recent $4,290–$4,300 lows.
+                confirmed breakdown beneath $4,340, with $4,300–$4,320 and then
+                approximately $4,235–$4,260 as deeper supports.
               </p>
               <p>
-                Wednesday&apos;s Federal Reserve decision could determine which
-                side gains control.
+                This week&apos;s US data — Flash PMI, New Home Sales, Durable
+                Goods and final Michigan sentiment — and the tone of Fed
+                speakers could shape which side gains control.
               </p>
               <p>
                 Until then, patience may be more valuable than prediction.
-              </p>
-              <p>
-                Instead of trying to forecast every candle, identify your
-                important areas and wait for price to show how buyers and sellers
-                react around them.
+                Identify your important areas and wait for price to show how
+                buyers and sellers react around them.
               </p>
             </div>
           </div>
@@ -1411,10 +1244,7 @@ export default function WeeklyOutlookPage() {
                 </p>
                 <p>
                   Follow ForexWizzz for XAU/USD market structure, important zones
-                  and educational trading updates.
-                </p>
-                <p>
-                  For more educational market content, explore our{" "}
+                  and educational trading updates. For more, explore our{" "}
                   <Link
                     href="/gold-signals/"
                     className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
@@ -1498,9 +1328,9 @@ export default function WeeklyOutlookPage() {
                   This content is provided for educational and informational
                   purposes only and should not be considered financial advice,
                   investment advice or a recommendation to buy or sell any
-                  financial instrument.
+                  financial instrument. Technical levels can fail and market
+                  conditions can change quickly.
                 </p>
-                <p>Market conditions can change quickly.</p>
                 <p>
                   Always perform your own analysis and use appropriate risk
                   management.
@@ -1527,8 +1357,8 @@ export default function WeeklyOutlookPage() {
                 <p>
                   Research for this article is based on publicly available
                   information from the Federal Reserve, US Bureau of Labor
-                  Statistics, US Census Bureau, UK Office for National
-                  Statistics, Bank of England and established financial-market
+                  Statistics, US Census Bureau, US Bureau of Economic Analysis,
+                  University of Michigan and established financial-market
                   reporting available before publication.
                 </p>
               </div>

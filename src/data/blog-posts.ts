@@ -45,6 +45,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-outlook-september-21-25-2026",
+    title: "XAUUSD Weekly Outlook: Gold Trading Plan Sep 21–25",
+    description:
+      "XAUUSD weekly outlook for September 21–25, 2026. Key gold support and resistance levels, market structure, economic events and trading scenarios.",
+    cardDescription:
+      "Key gold support and resistance zones, post-Fed market structure, PMI, new home sales and durable goods, plus bullish and bearish scenarios for the September 21–25 trading week.",
+    displayDate: "September 20, 2026",
+    publishedAt: "2026-09-20T09:00:00+05:00",
+    modifiedAt: "2026-09-20T09:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-outlook-sep-21-25-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly outlook September 21–25 2026 showing key gold support and resistance levels",
+    tags: ["XAUUSD", "Gold", "Weekly Outlook", "Federal Reserve"],
+    readingTime: "9 min read",
+  },
+  {
     slug: "xauusd-volatility-trading-sessions",
     title: "Why XAUUSD Volatility Changes by Trading Session",
     description:
