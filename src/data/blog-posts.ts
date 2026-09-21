@@ -45,6 +45,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-fundamental-analysis",
+    title: "XAUUSD Fundamental Analysis: What Moves Gold Prices?",
+    description:
+      "Learn XAUUSD fundamental analysis and how Fed policy, Treasury yields, the US dollar, inflation, jobs data and risk sentiment can influence gold prices.",
+    cardDescription:
+      "A deep evergreen guide to the macroeconomic forces behind gold — Federal Reserve policy, real yields, the US dollar, inflation, jobs data, geopolitics and how to combine fundamentals with technical analysis.",
+    displayDate: "September 22, 2026",
+    publishedAt: "2026-09-22T09:00:00+05:00",
+    modifiedAt: "2026-09-22T09:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-fundamental-analysis.jpg",
+    imageAlt:
+      "XAUUSD fundamental analysis showing Federal Reserve, US dollar and Treasury yield factors affecting gold",
+    tags: ["XAUUSD", "Gold", "Fundamental Analysis", "Macroeconomics"],
+    readingTime: "14 min read",
+  },
+  {
     slug: "xauusd-weekly-outlook-september-21-25-2026",
     title: "XAUUSD Weekly Outlook: Gold Trading Plan Sep 21–25",
     description:

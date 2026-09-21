@@ -1037,7 +1037,15 @@ export default function WeeklyOutlookSep2125Page() {
               <p>
                 This week, traders can monitor whether yields continue to ease or
                 push back higher, and whether the dollar holds its recent
-                pullback. Those moves may matter as much as the data itself.
+                pullback. Those moves may matter as much as the data itself. For
+                a deeper explanation of{" "}
+                <Link
+                  href="/blog/xauusd-fundamental-analysis/"
+                  className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
+                >
+                  how fundamental drivers affect XAUUSD
+                </Link>
+                , read our complete fundamental analysis guide.
               </p>
             </div>
           </div>

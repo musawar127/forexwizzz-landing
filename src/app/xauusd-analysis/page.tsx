@@ -543,6 +543,17 @@ export default function XauusdAnalysisPage() {
               No single factor guarantees a particular price movement. Gold is
               influenced by the interaction of multiple forces at any given time.
             </p>
+
+            <p className="text-center text-sm text-muted-foreground mt-4 max-w-2xl mx-auto">
+              For a deeper explanation of these macro drivers, read our complete{" "}
+              <Link
+                href="/blog/xauusd-fundamental-analysis/"
+                className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
+              >
+                XAUUSD fundamental analysis
+              </Link>{" "}
+              guide.
+            </p>
           </div>
         </FadeSection>
 
