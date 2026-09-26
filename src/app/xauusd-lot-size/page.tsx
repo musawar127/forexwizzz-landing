@@ -647,6 +647,29 @@ export default function XauusdLotSizePage() {
           </div>
         </FadeSection>
 
+        {/* FINANCIAL PLATFORMS / RISK CONTROLS CONTEXTUAL NOTE */}
+        <FadeSection className="py-16 md:py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Financial platforms can also help traders understand risk by
+                making position size, leverage, estimated loss and exposure
+                clearer before a decision is made. For another perspective on
+                this topic, see this guide to{" "}
+                <a
+                  href="https://zapdigits.com/blog/financial-risk-controls-what-tools-should-show-before-users-act"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium"
+                >
+                  financial risk controls in trading tools
+                </a>{" "}
+                from ZapDigits.
+              </p>
+            </div>
+          </div>
+        </FadeSection>
+
         {/* 18. RISK MANAGEMENT CHECKLIST BEFORE PLACING AN XAUUSD TRADE */}
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">
