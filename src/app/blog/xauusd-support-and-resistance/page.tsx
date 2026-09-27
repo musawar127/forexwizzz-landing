@@ -1896,12 +1896,12 @@ export default function SupportResistancePage() {
               <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
                   For a practical example of how these concepts apply to the
-                  current market, read our latest{" "}
+                  current market, read our{" "}
                   <Link
-                    href="/blog/xauusd-weekly-outlook-september-14-18-2026/"
+                    href="/blog/xauusd-weekly-forecast-september-28-october-2-2026/"
                     className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
                   >
-                    XAUUSD Weekly Outlook
+                    latest XAUUSD weekly forecast
                   </Link>
                   , where we map important gold levels and discuss possible
                   bullish and bearish scenarios for the trading week.

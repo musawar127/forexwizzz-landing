@@ -45,6 +45,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-september-28-october-2-2026",
+    title: "XAUUSD Weekly Forecast Sep 28–Oct 2: Gold Key Levels",
+    description:
+      "XAUUSD weekly forecast for Sep 28–Oct 2, 2026 with gold key levels, support and resistance, PCE, ISM and Nonfarm Payrolls scenarios.",
+    cardDescription:
+      "Gold enters a major US data week below $4,300. See XAUUSD support and resistance plus PCE, ISM and Nonfarm Payrolls scenarios.",
+    displayDate: "September 27, 2026",
+    publishedAt: "2026-09-27T09:00:00+05:00",
+    modifiedAt: "2026-09-27T09:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-sep-28-oct-2-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast September 28 to October 2 2026 showing gold key support resistance and US economic events",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "Nonfarm Payrolls"],
+    readingTime: "10 min read",
+  },
+  {
     slug: "xauusd-fundamental-analysis",
     title: "XAUUSD Fundamental Analysis: What Moves Gold Prices?",
     description:
