@@ -404,6 +404,17 @@ export default function ForexSignalsPage() {
                 stop-losses and appropriate position sizing — remains the
                 trader's responsibility regardless of any signal they follow.
               </p>
+              <p>
+                New to trading signals? Read our step-by-step guide on{" "}
+                <Link
+                  href="/blog/how-to-read-forex-signals/"
+                  className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors font-medium"
+                >
+                  how to read forex signals
+                </Link>
+                , including entry ranges, Stop Loss, Take Profit and
+                break-even instructions.
+              </p>
             </div>
           </div>
         </FadeSection>

@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-read-forex-signals",
+    title: "How to Read Forex Signals: Entry, SL, TP & BE Explained",
+    description:
+      "Learn how to read forex signals step by step, including Buy/Sell, entry ranges, stop loss, TP1–TP4, break-even, late entries and common signal abbreviations.",
+    cardDescription:
+      "Learn how to read a forex signal step by step, including entry ranges, Stop Loss, TP1–TP4, break-even, late entries and common trading abbreviations.",
+    displayDate: "September 27, 2026",
+    publishedAt: "2026-09-27T10:00:00+05:00",
+    modifiedAt: "2026-09-27T10:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/how-to-read-forex-signals.jpg",
+    imageAlt:
+      "How to read forex signals showing entry stop loss take profit and break-even terminology",
+    tags: ["Forex Signals", "Beginner", "Education", "Risk Management"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-september-28-october-2-2026",
     title: "XAUUSD Weekly Forecast Sep 28–Oct 2: Gold Key Levels",
     description:
