@@ -187,7 +187,7 @@ export default function BlogIndexPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {blogPosts.map((post, i) => (
+                {blogPosts.filter((post) => !post.hidden).map((post, i) => (
                   <FadeIn key={post.slug} delay={i * 0.07}>
                     <article className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
                       <Link

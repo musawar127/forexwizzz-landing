@@ -23,6 +23,7 @@ import {
   Clock,
   Gauge,
   RotateCcw,
+  CheckCircle2,
 } from "lucide-react";
 import {
   FadeSection,
@@ -34,16 +35,16 @@ import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "XAUUSD Support and Resistance | How to Identify Key Levels",
+  title: "XAUUSD Support and Resistance: How to Find Key Gold Levels",
   description:
-    "Learn how to identify XAUUSD support and resistance, key price levels, zones, breakouts, role reversals and price action around important levels.",
+    "Learn how to identify XAUUSD support and resistance, mark key gold levels, understand breakouts and retests, and combine levels with market structure.",
   alternates: {
     canonical: "https://forexwizard.online/xauusd-support-resistance/",
   },
   openGraph: {
-    title: "XAUUSD Support and Resistance | How to Identify Key Levels",
+    title: "XAUUSD Support and Resistance: How to Find Key Gold Levels",
     description:
-      "Learn how to identify XAUUSD support and resistance zones, key price levels, breakouts, role reversals and price action around important levels.",
+      "Learn how to identify XAUUSD support and resistance, mark key gold levels, understand breakouts and retests, and combine levels with market structure.",
     type: "article",
     url: "https://forexwizard.online/xauusd-support-resistance/",
     siteName: "Forex Wizard",
@@ -58,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "XAUUSD Support and Resistance | How to Identify Key Levels",
+    title: "XAUUSD Support and Resistance: How to Find Key Gold Levels",
     description:
-      "Learn how to identify XAUUSD support and resistance zones, key price levels, breakouts, role reversals and price action around important levels.",
+      "Learn how to identify XAUUSD support and resistance, mark key gold levels, understand breakouts and retests, and combine levels with market structure.",
     images: ["/og-image.jpg"],
   },
 };
@@ -377,29 +378,12 @@ const faqs = [
   },
 ];
 
-const faqStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.q,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.a,
-    },
-  })),
-};
-
 /* ------------------------------------------------------------------ */
 /*  PAGE                                                              */
 /* ------------------------------------------------------------------ */
 export default function XauusdSupportResistancePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link
@@ -1190,6 +1174,342 @@ export default function XauusdSupportResistancePage() {
                 should always check the economic calendar and consider adjusting
                 their approach around high-impact events.
               </p>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* PREVIOUS DAY / WEEK HIGHS AND LOWS */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">Previous Day and Week </span>
+                <span className="text-trading-gold text-glow-gold">Highs and Lows</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Beyond swing points, the previous day and previous week highs
+                and lows are among the most practical reference levels for
+                intraday XAUUSD trading.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="w-6 h-6 text-trading-gold" />
+                  <h3 className="text-lg font-bold text-foreground">Previous Day High and Low</h3>
+                </div>
+                <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <p>
+                    The previous day&apos;s high and low can act as areas of
+                    liquidity, breakout interest, rejection, stop placement and
+                    short-term support or resistance.
+                  </p>
+                  <p>
+                    Price does not have to reverse from these levels. Sometimes
+                    the market breaks directly through them. What matters is how
+                    price responds. A brief move above the previous day&apos;s
+                    high that fails to hold provides very different information
+                    from a clean breakout that holds above it.
+                  </p>
+                </div>
+              </div>
+
+              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="w-6 h-6 text-trading-green" />
+                  <h3 className="text-lg font-bold text-foreground">Previous Week High and Low</h3>
+                </div>
+                <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <p>
+                    The previous week&apos;s high and low are also important
+                    reference areas. Weekly levels can remain relevant even when
+                    intraday structure changes several times.
+                  </p>
+                  <p>
+                    If gold is trading near the previous week&apos;s high,
+                    traders may watch whether buyers can break through or whether
+                    sellers begin defending the area. If price is near the
+                    previous week&apos;s low, the focus may shift to whether
+                    support holds or the broader bearish structure continues.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* LONDON AND NEW YORK SESSION CONTEXT */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">London and New York Session{" "}
+                </span>
+                <span className="text-trading-gold text-glow-gold">Context</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Support and resistance levels do not behave identically in every
+                session. Liquidity and participation change the way price
+                interacts with key zones.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <Globe className="w-6 h-6 text-trading-green" />
+                  <h3 className="text-lg font-bold text-foreground">London Session</h3>
+                </div>
+                <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <p>
+                    The London session often brings increased liquidity to gold.
+                    A narrow Asian range may begin expanding, an overnight
+                    support or resistance zone may be tested, and a previous-day
+                    high or low may come back into focus.
+                  </p>
+                  <p>
+                    If London breaks an overnight range, do not automatically
+                    assume continuation. Gold frequently produces liquidity
+                    sweeps and false breaks. A more patient approach is to watch
+                    whether price can hold beyond a level or quickly returns
+                    inside the previous range.
+                  </p>
+                </div>
+              </div>
+
+              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+                <div className="flex items-center gap-3 mb-4">
+                  <Clock className="w-6 h-6 text-trading-gold" />
+                  <h3 className="text-lg font-bold text-foreground">New York Session</h3>
+                </div>
+                <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <p>
+                    The New York session can create significant XAUUSD
+                    volatility. US economic releases, Treasury yields, Federal
+                    Reserve expectations and US dollar movement can all affect
+                    gold.
+                  </p>
+                  <p>
+                    A technical level that held during quieter conditions may
+                    experience much stronger pressure when New York liquidity
+                    enters. During major news, gold can move through several
+                    levels very quickly, so risk management becomes even more
+                    important.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* AVOID ENTERING DIRECTLY INTO OPPOSING STRUCTURE */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-red/10 to-transparent flex items-center justify-center">
+                  <Crosshair className="w-7 h-7 text-trading-red" />
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
+                  <span className="text-foreground">Avoid Entering Directly Into{" "}
+                  </span>
+                  <span className="text-trading-gold text-glow-gold">Opposing Structure</span>
+                </h2>
+              </div>
+              <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  One of the most useful reasons for marking support and
+                  resistance is to avoid poor entries.
+                </p>
+                <p>
+                  Imagine gold has already moved sharply higher and is now
+                  approaching a major daily resistance zone. Buying directly
+                  below that resistance may provide limited room for price to
+                  move before encountering sellers. Likewise, selling directly
+                  into major support can create poor conditions.
+                </p>
+                <p>Before entering, ask:</p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <Crosshair className="w-5 h-5 text-trading-red shrink-0 mt-0.5" />
+                    <span>Where is the next important opposing level?</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Crosshair className="w-5 h-5 text-trading-red shrink-0 mt-0.5" />
+                    <span>Is there enough room for the trade idea to develop?</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Crosshair className="w-5 h-5 text-trading-red shrink-0 mt-0.5" />
+                    <span>Would I be entering directly into support or resistance?</span>
+                  </li>
+                </ul>
+                <p>
+                  This can help improve trade selection and avoid low
+                  risk-to-reward entries.
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* STOP-LOSS PLACEMENT AROUND KEY LEVELS */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-red/10 to-transparent flex items-center justify-center">
+                  <ShieldCheck className="w-7 h-7 text-trading-red" />
+                </div>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
+                  <span className="text-foreground">Stop-Loss Placement Around{" "}
+                  </span>
+                  <span className="text-trading-gold text-glow-gold">Key Levels</span>
+                </h2>
+              </div>
+              <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  Support and resistance can also help define where a trade idea
+                  becomes invalid.
+                </p>
+                <p>
+                  Suppose a trader considers a bullish setup because an important
+                  support zone has held. If price later breaks decisively through
+                  that support and the bullish structure fails, the original
+                  reason for the trade may no longer exist. A stop loss should
+                  generally relate to the invalidation of the setup rather than
+                  an arbitrary number of points.
+                </p>
+                <p>However, stop placement depends on:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {[
+                    "Market volatility",
+                    "Timeframe",
+                    "Position size",
+                    "Entry type",
+                    "Individual risk tolerance",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-2 text-base md:text-lg text-muted-foreground"
+                    >
+                      <AlertTriangle className="w-4 h-4 text-trading-red shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <p>
+                  No support or resistance level is guaranteed to hold. Stops
+                  placed too tight may be triggered by normal fluctuations,
+                  while stops placed too loose may increase monetary risk beyond
+                  acceptable limits.
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* STEP-BY-STEP PROCESS */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">How to Mark XAUUSD Support and{" "}
+                </span>
+                <span className="text-trading-gold text-glow-gold">Resistance Step by Step</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                A simple, repeatable process for identifying key gold levels.
+              </p>
+            </div>
+
+            <div className="space-y-5">
+              {[
+                {
+                  step: "Step 1",
+                  title: "Open the Daily Chart",
+                  points: [
+                    "Identify the clearest swing highs and swing lows.",
+                    "Mark major areas where price reversed strongly.",
+                  ],
+                },
+                {
+                  step: "Step 2",
+                  title: "Check the Four-Hour Chart",
+                  points: [
+                    "Refine those areas and identify the current structure.",
+                    "Avoid adding every small reaction.",
+                  ],
+                },
+                {
+                  step: "Step 3",
+                  title: "Mark Previous Highs and Lows",
+                  points: [
+                    "Previous day high and low",
+                    "Previous week high and low",
+                    "Only where they are useful to your trading approach.",
+                  ],
+                },
+                {
+                  step: "Step 4",
+                  title: "Identify the Current Range",
+                  points: [
+                    "Determine whether gold is trending higher, trending lower, or consolidating.",
+                  ],
+                },
+                {
+                  step: "Step 5",
+                  title: "Wait for Price to Reach a Relevant Area",
+                  points: [
+                    "Do not force a trade in the middle of nowhere.",
+                    "Let price come toward a level that actually matters.",
+                  ],
+                },
+                {
+                  step: "Step 6",
+                  title: "Watch the Reaction",
+                  points: [
+                    "Look for confirmation through price action and structure.",
+                  ],
+                },
+                {
+                  step: "Step 7",
+                  title: "Define Invalidation",
+                  points: [
+                    "Know where your idea is wrong before entering.",
+                    "This makes support and resistance part of a complete trading plan rather than a guessing tool.",
+                  ],
+                },
+              ].map((item, i) => (
+                <FadeIn key={item.step} delay={i * 0.05}>
+                  <div className="glass-strong rounded-2xl p-6 gradient-border flex gap-5">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-gold/15 to-trading-green/10 flex items-center justify-center">
+                      <span className="text-lg font-extrabold text-trading-gold">
+                        {i + 1}
+                      </span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] font-semibold uppercase tracking-wider text-trading-green/80 mb-1">
+                        {item.step}
+                      </p>
+                      <h3 className="text-lg font-bold text-foreground mb-3">
+                        {item.title}
+                      </h3>
+                      <ul className="space-y-1">
+                        {item.points.map((pt) => (
+                          <li
+                            key={pt}
+                            className="text-sm md:text-base text-muted-foreground flex items-start gap-2"
+                          >
+                            <CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-0.5" />
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
             </div>
           </div>
         </FadeSection>

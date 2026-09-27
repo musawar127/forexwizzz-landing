@@ -225,7 +225,7 @@ const continueLearning = [
     accent: "from-trading-gold/10 to-transparent",
   },
   {
-    href: "/blog/xauusd-support-and-resistance/",
+    href: "/xauusd-support-resistance/",
     title: "XAUUSD Support and Resistance",
     desc: "How to mark key gold levels, treat them as zones and combine them with market structure for clearer trade planning.",
     icon: <Layers className="w-7 h-7 text-trading-gold" />,
@@ -718,7 +718,7 @@ export default function VolatilitySessionsPage() {
                   gives later price action a structure against which to be
                   measured. Learn more about marking these areas in our guide to{" "}
                   <Link
-                    href="/blog/xauusd-support-and-resistance/"
+                    href="/xauusd-support-resistance/"
                     className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
                   >
                     XAUUSD support and resistance

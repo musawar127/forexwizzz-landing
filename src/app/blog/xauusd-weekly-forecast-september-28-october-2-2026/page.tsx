@@ -249,7 +249,7 @@ const faqs = [
 
 const continueLearning = [
   {
-    href: "/blog/xauusd-support-and-resistance/",
+    href: "/xauusd-support-resistance/",
     title: "XAUUSD Support and Resistance",
     desc: "How to identify important gold support and resistance zones, mark key levels and combine them with market structure for clearer trade planning.",
     icon: <Layers className="w-7 h-7 text-trading-gold" />,
@@ -1424,7 +1424,7 @@ export default function WeeklyForecastSep28Oct2Page() {
                   For a deeper explanation of how important gold zones are
                   identified, read our{" "}
                   <Link
-                    href="/blog/xauusd-support-and-resistance/"
+                    href="/xauusd-support-resistance/"
                     className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors"
                   >
                     XAUUSD Support and Resistance

@@ -13,7 +13,9 @@ import { blogPosts } from "@/data/blog-posts";
  * Server component — no client JS, no impact on Core Web Vitals.
  */
 export function LatestArticleBanner() {
-  const latest = blogPosts[0];
+  // Skip hidden (consolidated) posts so the banner always features the newest
+  // visible article.
+  const latest = blogPosts.find((post) => !post.hidden);
   if (!latest) return null;
 
   return (

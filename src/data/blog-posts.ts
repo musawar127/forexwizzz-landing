@@ -41,6 +41,12 @@ export interface BlogPost {
   tags: string[];
   /** Approximate reading time label, e.g. "8 min read". */
   readingTime: string;
+  /**
+   * When true, this post is consolidated into another authoritative page and
+   * should be hidden from the blog index/listing. The page itself stays live
+   * (static export) but its canonical points to the authoritative URL.
+   */
+  hidden?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -143,6 +149,9 @@ export const blogPosts: BlogPost[] = [
       "XAUUSD support and resistance educational chart showing key gold trading zones",
     tags: ["XAUUSD", "Gold", "Support & Resistance", "Technical Analysis"],
     readingTime: "9 min read",
+    // Consolidated into the authoritative /xauusd-support-resistance/ page.
+    // Hidden from the blog index; canonical on the page points to the primary URL.
+    hidden: true,
   },
   {
     slug: "xauusd-weekly-outlook-september-14-18-2026",

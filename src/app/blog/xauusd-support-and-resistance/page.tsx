@@ -31,7 +31,11 @@ import { getBlogPost } from "@/data/blog-posts";
 
 const post = getBlogPost("xauusd-support-and-resistance")!;
 
-const CANONICAL = `https://forexwizard.online/blog/${post.slug}/`;
+// This blog article has been consolidated into the authoritative evergreen page
+// at /xauusd-support-resistance/. The canonical now points there to eliminate
+// keyword cannibalization. The page itself remains live (static export) but is
+// no longer the canonical/indexable version for this topic.
+const CANONICAL = `https://forexwizard.online/xauusd-support-resistance/`;
 const IMAGE_URL = `https://forexwizard.online${post.image}`;
 const IMAGE_BASE = post.image.replace(/\.jpg$/, "");
 // Responsive WebP srcset for the in-page hero (LCP candidate).
