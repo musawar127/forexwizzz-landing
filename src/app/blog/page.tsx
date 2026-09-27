@@ -90,6 +90,15 @@ export default function BlogIndexPage() {
             href="/"
             className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors"
           >
+            <img
+              src="/brand/forexwizard-logo.webp"
+              alt="ForexWizard logo"
+              width={44}
+              height={44}
+              loading="eager"
+              decoding="async"
+              className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-lg object-cover"
+            />
             Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">

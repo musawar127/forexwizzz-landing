@@ -88,6 +88,7 @@ export default function RootLayout({
       name: "Forex Wizard",
       alternateName: "ForexWizard",
       url: "https://forexwizard.online",
+      logo: "https://forexwizard.online/brand/forexwizard-logo.webp",
       sameAs: ["https://t.me/ForexWizzz"],
     },
   ];

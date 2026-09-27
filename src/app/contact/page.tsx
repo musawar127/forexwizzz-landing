@@ -51,8 +51,17 @@ export default function ContactPage() {
         <div className="max-w-6xl mx-auto flex items-center justify-between h-14 px-4">
           <Link
             href="/"
-            className="text-lg font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+            className="text-lg font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline flex items-center gap-2"
           >
+            <img
+              src="/brand/forexwizard-logo.webp"
+              alt="ForexWizard logo"
+              width={44}
+              height={44}
+              loading="eager"
+              decoding="async"
+              className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-lg object-cover"
+            />
             Forex Wizard
           </Link>
           <nav className="flex items-center gap-6">

@@ -245,8 +245,19 @@ export default function Home() {
     <>
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <span className="text-lg font-bold text-foreground tracking-tight">
-            Forex Wizard
+          <span className="flex items-center gap-2">
+            <img
+              src="/brand/forexwizard-logo.webp"
+              alt="ForexWizard logo"
+              width={44}
+              height={44}
+              loading="eager"
+              decoding="async"
+              className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-lg object-cover"
+            />
+            <span className="text-lg font-bold text-foreground tracking-tight">
+              Forex Wizard
+            </span>
           </span>
           <nav className="flex items-center gap-6">
             <Link
@@ -604,15 +615,6 @@ export default function Home() {
         <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
-              <img
-                src="/brand/forexwizard-logo.webp"
-                alt="ForexWizard market analysis logo"
-                width={64}
-                height={64}
-                loading="lazy"
-                decoding="async"
-                className="w-16 h-16 md:w-16 md:h-16 mx-auto mb-6 rounded-2xl object-cover"
-              />
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">LATEST </span>
                 <span className="text-trading-gold text-glow-gold">

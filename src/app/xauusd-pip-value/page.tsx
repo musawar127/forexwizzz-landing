@@ -182,7 +182,16 @@ export default function XauusdPipValuePage() {
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="text-lg font-extrabold text-trading-gold tracking-tight no-underline">
+          <Link href="/" className="text-lg font-extrabold text-trading-gold tracking-tight no-underline flex items-center gap-2">
+            <img
+              src="/brand/forexwizard-logo.webp"
+              alt="ForexWizard logo"
+              width={44}
+              height={44}
+              loading="eager"
+              decoding="async"
+              className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-lg object-cover"
+            />
             Forex Wizard
           </Link>
           <nav className="hidden md:flex items-center gap-6">
