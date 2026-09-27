@@ -604,6 +604,15 @@ export default function Home() {
         <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
+              <img
+                src="/brand/forexwizard-logo.webp"
+                alt="ForexWizard market analysis logo"
+                width={64}
+                height={64}
+                loading="lazy"
+                decoding="async"
+                className="w-16 h-16 md:w-16 md:h-16 mx-auto mb-6 rounded-2xl object-cover"
+              />
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">LATEST </span>
                 <span className="text-trading-gold text-glow-gold">
