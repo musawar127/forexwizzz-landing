@@ -58,8 +58,8 @@ export const blogPosts: BlogPost[] = [
     cardDescription:
       "Learn when to enter, when to skip and how to manage entry ranges, late forex signals, Stop Loss, Take Profit and signal updates.",
     displayDate: "September 27, 2026",
-    publishedAt: "2026-09-27T10:30:00+05:00",
-    modifiedAt: "2026-09-27T10:30:00+05:00",
+    publishedAt: "2026-09-27T09:00:00+05:00",
+    modifiedAt: "2026-09-27T09:00:00+05:00",
     author: {
       name: "ForexWizard Editorial Team",
       url: "https://forexwizard.online/about/",

@@ -415,6 +415,17 @@ export default function ForexSignalsPage() {
                 , including entry ranges, Stop Loss, Take Profit and
                 break-even instructions.
               </p>
+              <p>
+                After understanding the signal format, learn{" "}
+                <Link
+                  href="/blog/how-to-follow-forex-signals/"
+                  className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors font-medium"
+                >
+                  how to follow forex signals
+                </Link>{" "}
+                when price moves away from the original entry or the provider
+                issues an update.
+              </p>
             </div>
           </div>
         </FadeSection>

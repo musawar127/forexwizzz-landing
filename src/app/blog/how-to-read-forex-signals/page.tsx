@@ -1089,6 +1089,17 @@ export default function HowToReadForexSignalsPage() {
                   If the original entry has been missed materially, skipping the
                   trade may be more sensible than chasing price.
                 </p>
+                <p>
+                  Once you understand the terminology, our guide on{" "}
+                  <Link
+                    href="/blog/how-to-follow-forex-signals/"
+                    className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors font-medium"
+                  >
+                    how to follow forex signals
+                  </Link>{" "}
+                  explains entry timing, missed entries, signal updates and when
+                  a setup may be better skipped.
+                </p>
               </div>
             </div>
           </div>
