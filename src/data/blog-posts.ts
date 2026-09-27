@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-follow-forex-signals",
+    title: "How to Follow Forex Signals: Entry Timing & Risk Guide",
+    description:
+      "Learn how to follow forex signals correctly, including entry ranges, late entries, stop loss, take profit, signal updates and when to skip a trade.",
+    cardDescription:
+      "Learn when to enter, when to skip and how to manage entry ranges, late forex signals, Stop Loss, Take Profit and signal updates.",
+    displayDate: "September 27, 2026",
+    publishedAt: "2026-09-27T10:30:00+05:00",
+    modifiedAt: "2026-09-27T10:30:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/how-to-follow-forex-signals.jpg",
+    imageAlt:
+      "How to follow forex signals showing an entry range stop loss target and late-entry example",
+    tags: ["Forex Signals", "Execution", "Risk Management", "Education"],
+    readingTime: "11 min read",
+  },
+  {
     slug: "how-to-read-forex-signals",
     title: "How to Read Forex Signals: Entry, SL, TP & BE Explained",
     description:
