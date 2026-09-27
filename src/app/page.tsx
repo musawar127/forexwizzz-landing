@@ -28,8 +28,16 @@ import {
 } from "@/components/fade-section";
 import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
+import { blogPosts } from "@/data/blog-posts";
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
+
+// Newest visible blog posts for the homepage "Latest Market Analysis" section.
+// Dynamically sourced so new articles appear automatically without editing
+// the homepage. Hidden (consolidated) posts are excluded.
+const latestAnalysisPosts = blogPosts
+  .filter((post) => !post.hidden)
+  .slice(0, 3);
 
 /* ------------------------------------------------------------------ */
 /*  REUSABLE CTA BUTTON (server-rendered, no motion dependency)       */
@@ -588,6 +596,98 @@ export default function Home() {
 
             <div className="text-center">
               <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* LATEST MARKET ANALYSIS — dynamic, sourced from blogPosts */}
+        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">LATEST </span>
+                <span className="text-trading-gold text-glow-gold">
+                  MARKET ANALYSIS
+                </span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Stay updated with our latest XAUUSD forecasts, technical
+                analysis and educational market research.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {latestAnalysisPosts.map((post, i) => (
+                <FadeIn key={post.slug} delay={i * 0.07}>
+                  <article className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                    <Link
+                      href={`/blog/${post.slug}/`}
+                      className="block no-underline group"
+                    >
+                      <img
+                        src={post.image}
+                        alt={post.imageAlt}
+                        width={1200}
+                        height={630}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full aspect-[1200/630] object-cover"
+                      />
+                    </Link>
+                    <div className="p-6 flex flex-col gap-4 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        {post.tags.slice(0, 2).map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] font-semibold uppercase tracking-wider text-trading-green/80 bg-trading-green/5 border border-trading-green/20 rounded-full px-3 py-1"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex flex-col gap-2">
+                        <h3 className="text-base sm:text-lg font-bold text-foreground leading-snug">
+                          <Link
+                            href={`/blog/${post.slug}/`}
+                            className="no-underline hover:text-trading-gold transition-colors"
+                          >
+                            {post.title}
+                          </Link>
+                        </h3>
+                        <p className="text-xs text-muted-foreground/80">
+                          {post.displayDate} &middot; {post.readingTime}
+                        </p>
+                      </div>
+
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                        {post.cardDescription}
+                      </p>
+
+                      <div className="pt-1">
+                        <Link
+                          href={`/blog/${post.slug}/`}
+                          className="inline-flex items-center gap-2 text-sm font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+                        >
+                          <BookOpen className="w-4 h-4" />
+                          Read Analysis
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                </FadeIn>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Link
+                href="/blog/"
+                className="inline-flex items-center gap-2 text-sm font-bold text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
+              >
+                View All Analysis
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </FadeSection>
