@@ -803,6 +803,17 @@ export default function HowToFollowForexSignalsPage() {
               </ul>
               <p>Do not automatically copy another trader&apos;s position size. The same lot size can represent dramatically different account risk for two people.</p>
               <p>Your position size should be considered using your own account and the actual stop distance from your entry.</p>
+              <p>
+                For a deeper explanation of position sizing, stop distance,
+                leverage and combined account exposure, read our{" "}
+                <Link
+                  href="/blog/forex-risk-management-for-beginners/"
+                  className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors font-medium"
+                >
+                  forex risk management for beginners
+                </Link>{" "}
+                guide.
+              </p>
             </div>
           </div>
         </FadeSection>

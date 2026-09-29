@@ -591,6 +591,16 @@ export default function ForexSignalsPage() {
                 participating in the forex market. These are the core principles
                 that every trader should follow.
               </p>
+              <p className="text-sm text-muted-foreground mt-4 max-w-2xl mx-auto">
+                Before following any setup, understand how{" "}
+                <Link
+                  href="/blog/forex-risk-management-for-beginners/"
+                  className="text-trading-red underline underline-offset-2 hover:text-trading-red/80 transition-colors font-medium"
+                >
+                  forex risk management
+                </Link>{" "}
+                connects Stop Loss, lot size and total account exposure.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

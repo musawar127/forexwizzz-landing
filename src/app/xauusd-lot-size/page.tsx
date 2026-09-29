@@ -315,6 +315,7 @@ export default function XauusdLotSizePage() {
             </div>
             <div className="mt-10 glass-strong rounded-2xl p-6 md:p-8 border border-trading-red/10">
               <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto">An oversized position can create excessive risk that goes beyond what your risk management plan allows. Even a well-analyzed trade can move against you, and a position that is too large amplifies that loss. The goal of proper position sizing is to ensure that no single trade can cause disproportionate damage to your account.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto mt-4">For the broader account-risk framework covering leverage, multiple positions and total exposure, see our <Link href="/blog/forex-risk-management-for-beginners/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors font-medium">forex risk management guide</Link>.</p>
             </div>
           </div>
         </FadeSection>

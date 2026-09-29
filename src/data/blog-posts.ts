@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "forex-risk-management-for-beginners",
+    title: "Forex Risk Management for Beginners: Lot Size & Stop Loss",
+    description:
+      "Learn forex risk management for beginners, including position sizing, lot size, stop loss, leverage, margin, total exposure and practical risk examples.",
+    cardDescription:
+      "Learn how lot size, stop-loss distance, leverage, margin and total open exposure work together in a practical forex risk-management plan.",
+    displayDate: "September 29, 2026",
+    publishedAt: "2026-09-29",
+    modifiedAt: "2026-09-29",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/forex-risk-management-for-beginners.jpg",
+    imageAlt:
+      "Forex risk management for beginners showing lot size stop loss and position risk",
+    tags: ["Forex", "Risk Management", "Position Sizing", "Beginner"],
+    readingTime: "13 min read",
+  },
+  {
     slug: "how-to-follow-forex-signals",
     title: "How to Follow Forex Signals: Entry Timing & Risk Guide",
     description:
