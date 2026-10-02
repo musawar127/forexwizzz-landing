@@ -61,11 +61,17 @@ const activeTools = [
     icon: <Calculator className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/tools/forex-market-hours/",
+    title: "Forex Market Hours & Live Session Clock",
+    desc: "See live forex market hours in your local time. Track Sydney, Tokyo, London and New York sessions with countdowns, overlaps and DST-aware timezone conversion.",
+    icon: <Clock className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
   { title: "Pip Value Calculator", desc: "Calculate the monetary value of a single pip movement for any currency pair.", icon: <Percent className="w-6 h-6 text-muted-foreground/50" /> },
-  { title: "Forex Session Time Converter", desc: "Convert forex session times between UTC, EST, GMT and your local timezone.", icon: <Clock className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Risk/Reward Calculator", desc: "Evaluate the risk-to-reward ratio of a planned trade setup.", icon: <TrendingDown className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Margin Calculator", desc: "Estimate the required margin for a position based on leverage and contract size.", icon: <DollarSign className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Drawdown Calculator", desc: "Calculate how much gain is needed to recover from a given percentage drawdown.", icon: <ShieldCheck className="w-6 h-6 text-muted-foreground/50" /> },

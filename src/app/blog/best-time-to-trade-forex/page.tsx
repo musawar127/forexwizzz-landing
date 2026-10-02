@@ -1147,6 +1147,36 @@ export default function BestTimeToTradeForexPage() {
           </div>
         </FadeSection>
 
+        {/* LIVE MARKET HOURS LINK */}
+        <FadeSection className="py-16 md:py-20 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                Check Live Forex Market Hours in Your Timezone
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
+                Want to see exactly which sessions are open right now? Use our
+                free{" "}
+                <Link
+                  href="/tools/forex-market-hours/"
+                  className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors font-medium"
+                >
+                  live Forex market hours clock
+                </Link>{" "}
+                with automatic timezone detection, session countdowns, and
+                DST-aware conversions for Pakistan, UAE, Saudi Arabia and more.
+              </p>
+              <Link
+                href="/tools/forex-market-hours/"
+                className="inline-flex items-center gap-2 text-sm font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+              >
+                Open Live Session Clock
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </FadeSection>
+
         {/* FAQ (visible, NO FAQPage schema) */}
         <FadeSection className="py-16 md:py-20 px-4">
           <div className="max-w-4xl mx-auto">
