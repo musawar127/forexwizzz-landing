@@ -92,6 +92,8 @@ export function validateInputs(inputs: CalculatorInputs): string | null {
     volumeStep,
     accountCurrency,
     conversionRate,
+    commissionPerLot,
+    slippagePerOunce,
   } = inputs;
 
   if (!isFinite(equity) || equity <= 0) {
@@ -153,6 +155,16 @@ export function validateInputs(inputs: CalculatorInputs): string | null {
     return "Volume step must be a positive number.";
   }
 
+  // Explicitly reject negative commission
+  if (commissionPerLot != null && isFinite(commissionPerLot) && commissionPerLot < 0) {
+    return "Commission per lot cannot be negative. Enter 0 if no commission applies.";
+  }
+
+  // Explicitly reject negative slippage allowance
+  if (slippagePerOunce != null && isFinite(slippagePerOunce) && slippagePerOunce < 0) {
+    return "Slippage allowance cannot be negative. Enter 0 if no slippage allowance is needed.";
+  }
+
   // Non-USD accounts require a conversion rate
   if (accountCurrency !== "USD") {
     if (conversionRate == null || !isFinite(conversionRate) || conversionRate <= 0) {
@@ -165,13 +177,20 @@ export function validateInputs(inputs: CalculatorInputs): string | null {
 
 /**
  * Rounds a volume down to the nearest broker-permitted volume step.
- * Never rounds upward.
+ * Never rounds upward. Uses integer arithmetic internally to avoid
+ * floating-point precision issues (e.g. 0.3 / 0.1 !== 3 in JS).
  */
 export function roundToVolumeStep(volume: number, step: number): number {
   if (step <= 0 || !isFinite(step)) return volume;
   if (!isFinite(volume) || volume <= 0) return 0;
-  const steps = Math.floor(volume / step);
-  return Math.round(steps * step * 1e8) / 1e8;
+  // Use integer arithmetic: scale both to integers, divide, then scale back.
+  // This avoids the classic 0.3 / 0.1 = 2.9999... problem.
+  const scale = 1e8;
+  const scaledVolume = Math.round(volume * scale);
+  const scaledStep = Math.round(step * scale);
+  if (scaledStep === 0) return 0;
+  const scaledResult = Math.floor(scaledVolume / scaledStep) * scaledStep;
+  return scaledResult / scale;
 }
 
 /**
@@ -223,7 +242,7 @@ export function calculateLotSize(inputs: CalculatorInputs): CalculatorResult {
     conversionRate,
   } = inputs;
 
-  const commissionPerLot = inputs.commissionPerLot ?? 0;
+  const commissionPerLotInput = inputs.commissionPerLot ?? 0;
   const slippagePerOunce = inputs.slippagePerOunce ?? 0;
 
   // 1. Risk budget in account currency
@@ -238,15 +257,17 @@ export function calculateLotSize(inputs: CalculatorInputs): CalculatorResult {
   // 4. Slippage per lot in USD (slippage per ounce × contract size)
   const slippagePerLotUSD = slippagePerOunce * contractSize;
 
-  // 5. Total estimated risk per lot in USD
-  const estimatedRiskPerLotUSD = priceRiskPerLotUSD + commissionPerLot + slippagePerLotUSD;
-
-  // 6. Convert to account currency if non-USD
+  // 5. Convert USD-based risks to account currency
   const convRate = accountCurrency === "USD" ? 1 : (conversionRate ?? 1);
-  const estimatedRiskPerLot = estimatedRiskPerLotUSD * convRate;
   const priceRiskPerLot = priceRiskPerLotUSD * convRate;
   const slippagePerLot = slippagePerLotUSD * convRate;
-  const commissionConverted = commissionPerLot * convRate;
+
+  // 6. Commission is supplied in account currency — add it AFTER conversion,
+  //    not before, to avoid mixing USD and account-currency amounts.
+  const commissionPerLot = commissionPerLotInput; // already in account currency
+
+  // 7. Total estimated risk per lot in account currency
+  const estimatedRiskPerLot = priceRiskPerLot + commissionPerLot + slippagePerLot;
 
   // 7. Raw volume
   const rawVolume = estimatedRiskPerLot > 0 ? riskBudget / estimatedRiskPerLot : 0;
@@ -287,11 +308,13 @@ export function calculateLotSize(inputs: CalculatorInputs): CalculatorResult {
     riskBudget: safeRound(riskBudget, 2),
     stopDistance: safeRound(stopDistance, 2),
     priceRiskPerLot: safeRound(priceRiskPerLot, 2),
-    commissionPerLot: safeRound(commissionConverted, 2),
+    commissionPerLot: safeRound(commissionPerLot, 2),
     slippagePerLot: safeRound(slippagePerLot, 2),
     estimatedRiskPerLot: safeRound(estimatedRiskPerLot, 2),
-    rawVolume: safeRound(rawVolume, 6),
-    calculatedVolume: safeRound(calculatedVolume, 2),
+    rawVolume: safeRound(rawVolume, 8),
+    // Preserve broker volume-step precision — do NOT round to 2 decimals,
+    // which would destroy valid increments like 0.001.
+    calculatedVolume: calculatedVolume,
     actualEstimatedRisk: safeRound(actualEstimatedRisk, 2),
     contractExposureOunces: safeRound(contractExposureOunces, 2),
     estimatedReward: estimatedReward != null ? safeRound(estimatedReward, 2) : undefined,
