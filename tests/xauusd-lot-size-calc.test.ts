@@ -395,4 +395,194 @@ describe("XAUUSD Lot Size Calculator", () => {
     expect(result.commissionPerLot).toBe(0);
     expect(result.slippagePerLot).toBe(0);
   });
+
+  // === AUDIT: EDGE CASE 1 — Risk-budget invariant ===
+  test("AUDIT: actualEstimatedRisk never exceeds riskBudget (fuzz test)", () => {
+    // Test many combinations of equity, risk %, entry, stop, contract, step
+    const equities = [100, 500, 1000, 5000, 50000];
+    const riskPcts = [0.1, 0.25, 0.5, 1, 2, 5];
+    const entries = [4200, 4300, 4400, 4500];
+    const stops = [4195, 4290, 4295, 4300, 4395];
+    const contractSizes = [10, 50, 100, 1000];
+    const steps = [0.001, 0.01, 0.1, 1];
+    const commissions = [0, 1, 5, 7, 10];
+    const slippages = [0, 0.1, 0.5, 1];
+
+    let tested = 0;
+    for (const eq of equities) {
+      for (const rp of riskPcts) {
+        for (const entry of entries) {
+          for (const stop of stops) {
+            if (entry === stop) continue;
+            for (const cs of contractSizes) {
+              for (const step of steps) {
+                for (const comm of commissions) {
+                  for (const slip of slippages) {
+                    const result = calculateLotSize(makeInputs({
+                      equity: eq,
+                      riskPercentage: rp,
+                      entryPrice: entry,
+                      stopLossPrice: stop,
+                      contractSize: cs,
+                      volumeStep: step,
+                      minVolume: step,
+                      commissionPerLot: comm,
+                      slippagePerOunce: slip,
+                    }));
+                    if (result.valid && result.calculatedVolume > 0) {
+                      tested++;
+                      // The invariant: actual risk must never exceed budget
+                      // (with a small float tolerance for the safeRound display)
+                      expect(result.actualEstimatedRisk).toBeLessThanOrEqual(
+                        result.riskBudget + 0.01
+                      );
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    // Ensure we actually tested a meaningful number of combinations
+    expect(tested).toBeGreaterThan(100);
+  });
+
+  test("AUDIT: volume infinitesimally below step boundary does not exceed budget", () => {
+    // Construct a case where rawVolume is just barely above a step boundary
+    // Equity=501, risk=1%, entry=4300, stop=4295, contract=100, step=0.01
+    // Budget = 5.01, risk per lot = 500, rawVolume = 5.01/500 = 0.01002
+    // roundToVolumeStep(0.01002, 0.01) = 0.01
+    // actualRisk = 0.01 * 500 = 5.00 <= 5.01 ✓
+    const result = calculateLotSize(makeInputs({ equity: 501, riskPercentage: 1 }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.actualEstimatedRisk).toBeLessThanOrEqual(result.riskBudget);
+  });
+
+  test("AUDIT: with commission, actual risk still does not exceed budget", () => {
+    // Budget = 5, risk per lot = 507 (500+7), rawVolume = 5/507 = 0.009862...
+    // roundToVolumeStep = 0.00, belowMinimum
+    // But let's test with a larger budget where we get a valid volume
+    // Budget = 50, risk per lot = 507, rawVolume = 50/507 = 0.0986...
+    // roundToVolumeStep = 0.09, actualRisk = 0.09 * 507 = 45.63 <= 50 ✓
+    const result = calculateLotSize(makeInputs({
+      equity: 5000,
+      riskPercentage: 1,
+      commissionPerLot: 7,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.actualEstimatedRisk).toBeLessThanOrEqual(result.riskBudget);
+  });
+
+  // === AUDIT: EDGE CASE 2 — Min-volume/step alignment ===
+  test("AUDIT: minVolume not aligned with volumeStep — belowMinimum correctly true", () => {
+    // Broker: minVolume=0.02, volumeStep=0.01
+    // Budget = 5, risk per lot = 500, rawVolume = 0.01
+    // roundToVolumeStep(0.01, 0.01) = 0.01
+    // 0.01 < 0.02 (minVolume) → belowMinimum = true
+    const result = calculateLotSize(makeInputs({
+      minVolume: 0.02,
+      volumeStep: 0.01,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.belowMinimum).toBe(true);
+  });
+
+  test("AUDIT: minVolume equals volumeStep — correctly not below minimum", () => {
+    const result = calculateLotSize(makeInputs({
+      minVolume: 0.01,
+      volumeStep: 0.01,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.belowMinimum).toBe(false);
+  });
+
+  test("AUDIT: minVolume larger than calculated but budget permits it — do NOT auto-increase", () => {
+    // Budget = 5, risk per lot = 500, rawVolume = 0.01
+    // minVolume = 0.02 → 0.01 < 0.02, belowMinimum = true
+    // We must NOT auto-increase to 0.02 (that would exceed budget: 0.02*500=10 > 5)
+    const result = calculateLotSize(makeInputs({
+      minVolume: 0.02,
+      volumeStep: 0.01,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.01); // NOT increased to 0.02
+    expect(result.belowMinimum).toBe(true);
+    // Verify the auto-increase would have exceeded budget
+    expect(0.02 * result.estimatedRiskPerLot).toBeGreaterThan(result.riskBudget);
+  });
+
+  test("AUDIT: minVolume with non-standard step (0.005)", () => {
+    const result = calculateLotSize(makeInputs({
+      minVolume: 0.005,
+      volumeStep: 0.005,
+    }));
+    expect(result.valid).toBe(true);
+    // Budget = 5, risk per lot = 500, rawVolume = 0.01
+    // roundToVolumeStep(0.01, 0.005) = 0.01
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.belowMinimum).toBe(false);
+  });
+
+  // === AUDIT: EDGE CASE 3 — Non-finite optional inputs ===
+  test("AUDIT: NaN commission is rejected", () => {
+    const result = calculateLotSize(makeInputs({ commissionPerLot: NaN }));
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
+  });
+
+  test("AUDIT: Infinity commission is rejected", () => {
+    const result = calculateLotSize(makeInputs({ commissionPerLot: Infinity }));
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
+  });
+
+  test("AUDIT: NaN slippage is rejected", () => {
+    const result = calculateLotSize(makeInputs({ slippagePerOunce: NaN }));
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
+  });
+
+  test("AUDIT: Infinity slippage is rejected", () => {
+    const result = calculateLotSize(makeInputs({ slippagePerOunce: Infinity }));
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
+  });
+
+  test("AUDIT: NaN conversion rate is rejected for non-USD", () => {
+    const result = calculateLotSize(makeInputs({
+      accountCurrency: "EUR",
+      conversionRate: NaN,
+    }));
+    expect(result.valid).toBe(false);
+  });
+
+  test("AUDIT: Infinity conversion rate is rejected for non-USD", () => {
+    const result = calculateLotSize(makeInputs({
+      accountCurrency: "EUR",
+      conversionRate: Infinity,
+    }));
+    expect(result.valid).toBe(false);
+  });
+
+  test("AUDIT: NaN take-profit is ignored (treated as not provided)", () => {
+    const result = calculateLotSize(makeInputs({ takeProfitPrice: NaN }));
+    // NaN TP should be treated as "not provided" — not an error
+    expect(result.valid).toBe(true);
+    expect(result.estimatedReward).toBeUndefined();
+  });
+
+  // === AUDIT: Default example still works ===
+  test("AUDIT: default $500/1% example still returns 0.01 lot", () => {
+    const result = calculateLotSize(makeInputs());
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.actualEstimatedRisk).toBe(5);
+    expect(result.riskBudget).toBe(5);
+    expect(result.belowMinimum).toBe(false);
+  });
 });

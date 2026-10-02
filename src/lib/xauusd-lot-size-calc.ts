@@ -155,17 +155,27 @@ export function validateInputs(inputs: CalculatorInputs): string | null {
     return "Volume step must be a positive number.";
   }
 
-  // Explicitly reject negative commission
-  if (commissionPerLot != null && isFinite(commissionPerLot) && commissionPerLot < 0) {
-    return "Commission per lot cannot be negative. Enter 0 if no commission applies.";
+  // Explicitly reject negative or non-finite commission
+  if (commissionPerLot != null) {
+    if (!isFinite(commissionPerLot)) {
+      return "Commission per lot must be a finite number. Enter 0 if no commission applies.";
+    }
+    if (commissionPerLot < 0) {
+      return "Commission per lot cannot be negative. Enter 0 if no commission applies.";
+    }
   }
 
-  // Explicitly reject negative slippage allowance
-  if (slippagePerOunce != null && isFinite(slippagePerOunce) && slippagePerOunce < 0) {
-    return "Slippage allowance cannot be negative. Enter 0 if no slippage allowance is needed.";
+  // Explicitly reject negative or non-finite slippage allowance
+  if (slippagePerOunce != null) {
+    if (!isFinite(slippagePerOunce)) {
+      return "Slippage allowance must be a finite number. Enter 0 if no slippage allowance is needed.";
+    }
+    if (slippagePerOunce < 0) {
+      return "Slippage allowance cannot be negative. Enter 0 if no slippage allowance is needed.";
+    }
   }
 
-  // Non-USD accounts require a conversion rate
+  // Non-USD accounts require a valid finite positive conversion rate
   if (accountCurrency !== "USD") {
     if (conversionRate == null || !isFinite(conversionRate) || conversionRate <= 0) {
       return `A valid USD-to-${accountCurrency} conversion rate is required for non-USD accounts.`;
@@ -280,7 +290,26 @@ export function calculateLotSize(inputs: CalculatorInputs): CalculatorResult {
     calculatedVolume = roundToVolumeStep(maxVolume, volumeStep);
   }
 
-  // 10. Check if below minimum
+  // 10. Risk-budget invariant: ensure the rounded volume's estimated monetary
+  //     risk NEVER exceeds the selected risk budget. Due to floating-point
+  //     representation, the scaled-integer rounding could produce a volume
+  //     whose unrounded risk is infinitesimally above the budget. If so,
+  //     step down by one volumeStep until the invariant holds.
+  while (calculatedVolume > 0) {
+    const checkRisk = calculatedVolume * estimatedRiskPerLot;
+    if (checkRisk <= riskBudget + 1e-9) break; // tolerance for float comparison
+    calculatedVolume = roundToVolumeStep(calculatedVolume - volumeStep, volumeStep);
+    if (calculatedVolume <= 0) break;
+  }
+
+  // 11. Min-volume / volume-step alignment: some brokers define permitted
+  //     volumes as minVolume, minVolume + step, minVolume + 2*step, ...
+  //     rather than 0, step, 2*step, ... If minVolume is not a multiple of
+  //     volumeStep, the rounded volume may be below minVolume even though it
+  //     is a valid step from zero. In that case, belowMinimum is true.
+  //     If the calculated volume is below minVolume but the trader's risk
+  //     budget would permit minVolume, we do NOT auto-increase — we show
+  //     the warning and let the trader decide.
   const belowMinimum = calculatedVolume < minVolume;
 
   // 11. Actual estimated risk at calculated volume
