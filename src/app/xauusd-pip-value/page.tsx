@@ -14,28 +14,51 @@ import {
 } from "@/components/fade-section";
 import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
+import { PipValueCalculator } from "@/components/tools/pip-value-calculator";
 
 export const metadata: Metadata = {
-  title: "XAUUSD Pip Value | How to Calculate Gold Pips",
-  description: "Learn how XAUUSD pip value works, how to calculate gold pips, and understand the difference between pips, points, ticks, contract size and lot size.",
+  title: "XAUUSD Pip Value Calculator | Gold Pips & Lot Value",
+  description: "Calculate XAUUSD pip value for 0.01, 0.10 and 1.00 lots. Compare gold pip conventions, calculate price distance and check pip values for forex pairs.",
   alternates: { canonical: "https://forexwizard.online/xauusd-pip-value/" },
   openGraph: {
-    title: "XAUUSD Pip Value | How to Calculate Gold Pips",
-    description: "Learn how XAUUSD pip value works, how to calculate gold pips, and understand the difference between pips, points, ticks, contract size and lot size.",
-    type: "article",
+    title: "XAUUSD Pip Value Calculator | Gold Pips & Lot Value",
+    description: "Calculate XAUUSD pip value for 0.01, 0.10 and 1.00 lots. Compare gold pip conventions, calculate price distance and check pip values for forex pairs.",
+    type: "website",
     url: "https://forexwizard.online/xauusd-pip-value/",
     siteName: "Forex Wizard",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Forex Wizard - Free Forex &amp; Gold Trading Telegram Community" }],
+    images: [{ url: "/og-pip-value.jpg", width: 1200, height: 630, alt: "XAUUSD Pip Value Calculator showing gold pip values for different lot sizes" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "XAUUSD Pip Value | How to Calculate Gold Pips",
-    description: "Learn how XAUUSD pip value works, how to calculate gold pips, and understand the difference between pips, points, ticks, contract size and lot size.",
-    images: ["/og-image.jpg"],
+    title: "XAUUSD Pip Value Calculator | Gold Pips & Lot Value",
+    description: "Calculate XAUUSD pip value for 0.01, 0.10 and 1.00 lots. Compare gold pip conventions, calculate price distance and check pip values for forex pairs.",
+    images: ["/og-pip-value.jpg"],
   },
 };
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
+
+const webAppStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Forex Wizard XAUUSD & Forex Pip Value Calculator",
+  description: "Free XAUUSD and forex pip value calculator. Calculate gold pip values, compare pip conventions, and convert pip values to your account currency.",
+  url: "https://forexwizard.online/xauusd-pip-value/",
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  publisher: { "@type": "Organization", name: "Forex Wizard", url: "https://forexwizard.online/", logo: { "@type": "ImageObject", url: "https://forexwizard.online/brand/forexwizard-logo.webp" } },
+};
+
+const breadcrumbStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://forexwizard.online/" },
+    { "@type": "ListItem", position: 2, name: "Trading Tools", item: "https://forexwizard.online/tools/" },
+    { "@type": "ListItem", position: 3, name: "XAUUSD Pip Value Calculator", item: "https://forexwizard.online/xauusd-pip-value/" },
+  ],
+};
 
 function TelegramCTA({ text, variant = "primary", className = "" }: { text: string; variant?: "primary" | "secondary" | "gold"; className?: string }) {
   const base = "inline-flex items-center justify-center gap-2 font-bold text-base md:text-lg rounded-xl px-6 py-3.5 md:px-8 md:py-4 transition-all duration-300 cursor-pointer no-underline select-none";
@@ -135,11 +158,11 @@ const simpleChecklist = [
 
 const faqs = [
   { q: "What is a pip in XAUUSD?", a: "A pip in XAUUSD is a term used to describe a small unit of price movement in gold trading. Unlike forex major currency pairs where a pip is standardized (typically the fourth decimal place), gold does not have a universally agreed-upon retail pip definition. Different brokers, platforms, and traders may define a gold pip as $0.01, $0.10, or another increment. The most reliable approach is to check your broker’s instrument specification for tick size and tick value, and clarify what convention your platform or community uses." },
-  { q: "How much is 1 pip worth in gold?", a: "The monetary value of 1 gold pip depends on several variables: what price increment you define as a pip, the contract size, your trade volume (lot size), and your account currency. For example, if a pip is defined as $0.01 and the contract size is 100 troy ounces, then one pip on 1.00 lot would represent a $1.00 price movement per ounce, yielding a $100.00 monetary difference. But if the pip definition, contract size, or volume is different, the value changes. There is no single universal gold pip value." },
+  { q: "How much is 1 pip worth in gold?", a: "The monetary value of 1 gold pip depends on several variables: what price increment you define as a pip, the contract size, your trade volume (lot size), and your account currency. For example, if a pip is defined as $0.01 and the contract size is 100 troy ounces, then one pip on 1.00 lot equals $1.00 (1.00 lot × 100 ounces × $0.01 = $1.00). If a pip is defined as $0.10 instead, one pip on 1.00 lot equals $10.00. If the pip definition, contract size, or volume is different, the value changes. There is no single universal gold pip value." },
   { q: "Is one XAUUSD pip always $0.01?", a: "No. While some brokers, platforms, and traders treat a $0.01 gold price movement as one pip, this is not a universal standard. Other environments may use $0.10 as the relevant increment, or use different terminology entirely (points, ticks). The only way to know what a pip means in your specific context is to check your broker’s symbol specification and clarify the convention being used. Assuming $0.01 without verification can lead to incorrect risk calculations." },
   { q: "What is the difference between a pip and a point in XAUUSD?", a: "The difference depends on the platform and context. In some environments, “pip” and “point” are used interchangeably. In others (such as MetaTrader platforms), “point” specifically refers to the minimum price step (tick size) defined by the broker, while “pip” may refer to a different, larger increment. The key is not to assume the terms mean the same thing everywhere. Always verify what each term refers to on your specific platform." },
   { q: "How do I calculate XAUUSD pips?", a: "To count pips in XAUUSD, first calculate the absolute price difference between two points (entry and exit, for example). Then, divide that difference by the price increment that your broker or platform defines as one pip. For instance, if the price moves from a hypothetical 2350.00 to 2350.25, the absolute movement is $0.25. If your convention defines $0.01 as one pip, that is 25 pips. If your convention defines $0.10 as one pip, that same movement is 2.5 pips. The convention must be established before the calculation is meaningful." },
-  { q: "Does lot size change XAUUSD pip value?", a: "Yes. The monetary value of a gold pip scales with trade volume. If you increase your lot size, the same price movement produces a proportionally larger profit or loss. For example, if one pip (under your convention) is worth $1.00 on 0.01 lots, it would be worth $100.00 on 1.00 lot (assuming the same contract size and pip definition). The number of pips in a price movement does not change with lot size, but the monetary impact does." },
+  { q: "Does lot size change XAUUSD pip value?", a: "Yes. The monetary value of a gold pip scales with trade volume. If you increase your lot size, the same price movement produces a proportionally larger profit or loss. For example, if one pip (under the $0.01 convention with a 100-ounce contract) is worth $0.01 on 0.01 lots, it would be worth $1.00 on 1.00 lot. The number of pips in a price movement does not change with lot size, but the monetary impact does." },
   { q: "What is tick value in XAUUSD?", a: "Tick value is the monetary amount that one tick (the minimum price increment) is worth for a defined volume, typically one standard lot. It is specified by the broker in the instrument’s contract details. For example, if the tick size is 0.01 and the tick value for one lot is $1.00, that means each $0.01 of price movement on one lot equals $1.00 of profit or loss. Tick value is a concrete, broker-defined number that is more reliable for calculations than the often-ambiguous term “pip.”" },
   { q: "Why do different gold pip calculators give different answers?", a: "Different calculators may use different assumptions about what constitutes a pip for XAUUSD, what contract size to apply, what lot size to reference, and what account currency to convert to. Some calculators might assume a $0.01 pip, others a $0.10 pip. Some may use a 100-ounce contract, others a different size. The disagreement between calculators is a direct result of the lack of universal gold pip standardization. The most accurate calculation always uses your own broker’s actual specifications." },
   { q: "How can I check my broker’s XAUUSD pip value?", a: "Open your trading platform and look for the instrument specification or contract specification for XAUUSD. Key fields to find are: contract size (ounces per lot), tick size (minimum price increment), and tick value (monetary value of one tick per lot). You should also note the number of displayed digits and your account currency. With these specifications, you can determine both the price increment convention and the monetary value of any given price movement at your specific broker." },
@@ -174,10 +197,8 @@ const continueLearningCards = [
 export default function XauusdPipValuePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppStructuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }} />
 
       {/* HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
@@ -218,12 +239,15 @@ export default function XauusdPipValuePage() {
               </span>
             </FadeIn>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              <span className="text-trading-gold text-glow-gold">XAUUSD Pip Value</span>
+              <span className="text-trading-gold text-glow-gold">XAUUSD Pip Value Calculator</span>
+              <br />
+              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl">&amp; Gold Pip Guide</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Learn what a pip means in gold trading, why definitions vary
-              between brokers, and how to calculate XAUUSD price movement
-              accurately for your specific setup.
+              Use our free XAUUSD pip value calculator to find the monetary value
+              of gold pips for any lot size, compare pip conventions, calculate
+              price distance, and check pip values for forex pairs &mdash; then read
+              the complete educational guide below.
             </p>
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
@@ -233,6 +257,30 @@ export default function XauusdPipValuePage() {
             </FadeIn>
           </HeroAnimation>
         </section>
+
+        {/* INTERACTIVE CALCULATOR */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">XAUUSD &amp; Forex Pip Value </span>
+                <span className="text-trading-green text-glow-green">Calculator</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Calculate pip values for gold and forex pairs. Compare pip
+                conventions, convert to your account currency, and measure price
+                distance.
+              </p>
+            </div>
+            <PipValueCalculator />
+            <p className="text-xs text-muted-foreground/60 text-center mt-6 max-w-2xl mx-auto">
+              This calculator provides educational estimates only. Actual trading
+              outcomes can differ due to spreads, slippage, commissions, financing,
+              and execution conditions. Always verify pip definitions and contract
+              specifications with your broker.
+            </p>
+          </div>
+        </FadeSection>
 
         {/* 1. WHAT IS A PIP IN XAUUSD? */}
         <FadeSection className="py-20 md:py-28 px-4">

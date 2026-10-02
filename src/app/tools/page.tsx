@@ -68,10 +68,16 @@ const activeTools = [
     icon: <Clock className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/xauusd-pip-value/",
+    title: "XAUUSD & Forex Pip Value Calculator",
+    desc: "Calculate pip values for gold and forex pairs. Compare pip conventions, convert to your account currency, and measure price distance between two prices.",
+    icon: <Percent className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
-  { title: "Pip Value Calculator", desc: "Calculate the monetary value of a single pip movement for any currency pair.", icon: <Percent className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Risk/Reward Calculator", desc: "Evaluate the risk-to-reward ratio of a planned trade setup.", icon: <TrendingDown className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Margin Calculator", desc: "Estimate the required margin for a position based on leverage and contract size.", icon: <DollarSign className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Drawdown Calculator", desc: "Calculate how much gain is needed to recover from a given percentage drawdown.", icon: <ShieldCheck className="w-6 h-6 text-muted-foreground/50" /> },
