@@ -597,6 +597,18 @@ export default function ForexRiskManagementForBeginnersPage() {
               <p>In words: divide the money you are willing to lose by the money you would lose per lot if price reaches the stop. The result is the lot size that keeps the potential loss inside your risk.</p>
               <p>The exact money-per-lot value depends on the currency pair, the contract specifications of your broker, the account currency, and how the stop distance is measured. Always confirm the contract specification on your own platform before relying on a position-sizing calculation.</p>
               <p className="text-sm text-muted-foreground/80">This formula is a conceptual teaching tool. It is not a recommendation for any specific risk amount, lot size, or instrument.</p>
+              <p>
+                For a practical tool that automates this calculation for gold,
+                try our free{" "}
+                <Link
+                  href="/xauusd-lot-size/"
+                  className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors font-medium"
+                >
+                  XAUUSD Lot Size Calculator
+                </Link>{" "}
+                &mdash; it handles contract size, commission, slippage and
+                multi-currency conversion automatically.
+              </p>
             </div>
           </div>
         </FadeSection>

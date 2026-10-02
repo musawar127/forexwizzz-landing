@@ -44,6 +44,15 @@ export const metadata: Metadata = {
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
 
+const breadcrumbStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://forexwizard.online/" },
+    { "@type": "ListItem", position: 2, name: "Trading Tools", item: "https://forexwizard.online/tools/" },
+  ],
+};
+
 const activeTools = [
   {
     href: "/xauusd-lot-size/",
@@ -72,6 +81,7 @@ const relatedGuides = [
 export default function ToolsPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }} />
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-lg font-bold text-foreground tracking-tight no-underline hover:text-trading-green transition-colors flex items-center gap-2">
@@ -99,10 +109,16 @@ export default function ToolsPage() {
               <span className="text-trading-green text-glow-green">Trading Tools</span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Practical, free-to-use forex and gold trading calculators. Plan
-              your position sizes, understand your risk, and make more informed
-              trading decisions &mdash; all directly in your browser, no
-              registration required.
+              Free forex and gold trading calculators from Forex Wizard. Our
+              XAUUSD Lot Size &amp; Risk Calculator helps you estimate gold
+              position size from your account equity, risk percentage, entry
+              price, stop loss and broker specifications &mdash; all directly in
+              your browser, no registration or login required.
+            </p>
+            <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
+              All results are educational estimates. Actual trading losses can
+              differ due to spreads, slippage, gaps, commissions and execution
+              conditions. Always verify broker specifications before trading.
             </p>
           </HeroAnimation>
         </section>

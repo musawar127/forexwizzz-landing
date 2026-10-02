@@ -737,6 +737,37 @@ export default function XauusdPipValuePage() {
           </div>
         </FadeSection>
 
+        {/* LOT SIZE CALCULATOR LINK */}
+        <FadeSection className="py-16 md:py-20 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3">
+                Need to Calculate Your Gold Lot Size?
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
+                Understanding pip value is only part of risk management. Use our
+                free{" "}
+                <Link
+                  href="/xauusd-lot-size/"
+                  className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors font-medium"
+                >
+                  XAUUSD Lot Size Calculator
+                </Link>{" "}
+                to estimate the correct position size from your account equity,
+                risk percentage, entry price, stop loss and broker
+                specifications.
+              </p>
+              <Link
+                href="/xauusd-lot-size/"
+                className="inline-flex items-center gap-2 text-sm font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+              >
+                Use the Calculator
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </FadeSection>
+
         {/* FAQ */}
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">

@@ -16,26 +16,53 @@ import { SiteFooter } from "@/components/site-footer";
 import { XauusdLotSizeCalculator } from "@/components/tools/xauusd-lot-size-calculator";
 
 export const metadata: Metadata = {
-  title: "XAUUSD Lot Size | How to Calculate Gold Position Size",
-  description: "Learn how XAUUSD lot size works, how to calculate gold position size, understand contract size, leverage, stop distance and risk before placing a trade.",
+  title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard",
+  description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications.",
   alternates: { canonical: "https://forexwizard.online/xauusd-lot-size/" },
   openGraph: {
-    title: "XAUUSD Lot Size | How to Calculate Gold Position Size",
-    description: "Learn how XAUUSD lot size works, how to calculate gold position size, understand contract size, leverage, stop distance and risk before placing a trade.",
-    type: "article",
+    title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard",
+    description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications.",
+    type: "website",
     url: "https://forexwizard.online/xauusd-lot-size/",
     siteName: "Forex Wizard",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Forex Wizard - Free Forex & Gold Trading Telegram Community" }],
+    images: [{ url: "/og-xauusd-calculator.jpg", width: 1200, height: 630, alt: "XAUUSD Lot Size Calculator showing gold position sizing and risk estimation" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "XAUUSD Lot Size | How to Calculate Gold Position Size",
-    description: "Learn how XAUUSD lot size works, how to calculate gold position size, understand contract size, leverage, stop distance and risk before placing a trade.",
-    images: ["/og-image.jpg"],
+    title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard",
+    description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications.",
+    images: ["/og-xauusd-calculator.jpg"],
   },
 };
 
 const TELEGRAM_LINK = "https://t.me/ForexWizzz";
+
+const webAppStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "XAUUSD Lot Size & Risk Calculator",
+  description: "Free XAUUSD lot size calculator that estimates gold position size from account equity, risk percentage, entry price, stop loss and broker specifications.",
+  url: "https://forexwizard.online/xauusd-lot-size/",
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  publisher: {
+    "@type": "Organization",
+    name: "Forex Wizard",
+    url: "https://forexwizard.online/",
+    logo: { "@type": "ImageObject", url: "https://forexwizard.online/brand/forexwizard-logo.webp" },
+  },
+};
+
+const breadcrumbStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://forexwizard.online/" },
+    { "@type": "ListItem", position: 2, name: "Trading Tools", item: "https://forexwizard.online/tools/" },
+    { "@type": "ListItem", position: 3, name: "XAUUSD Lot Size Calculator", item: "https://forexwizard.online/xauusd-lot-size/" },
+  ],
+};
 
 function TelegramCTA({ text, variant = "primary", className = "" }: { text: string; variant?: "primary" | "secondary" | "gold"; className?: string }) {
   const base = "inline-flex items-center justify-center gap-2 font-bold text-base md:text-lg rounded-xl px-6 py-3.5 md:px-8 md:py-4 transition-all duration-300 cursor-pointer no-underline select-none";
@@ -179,7 +206,8 @@ const faqStructuredData = {
 export default function XauusdLotSizePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppStructuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }} />
 
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -208,12 +236,15 @@ export default function XauusdLotSizePage() {
               </span>
             </FadeIn>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-              <span className="text-trading-gold text-glow-gold">XAUUSD Lot Size</span>
+              <span className="text-trading-gold text-glow-gold">XAUUSD Lot Size Calculator</span>
+              <br />
+              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl">&amp; Gold Risk Guide</span>
             </h1>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Understand how lot size works in gold trading, learn what you need
-              to calculate position size, and see why broker specifications
-              matter for every XAUUSD trade you place.
+              Use our free XAUUSD lot size calculator to estimate gold position
+              size from your account equity, risk percentage, entry price, stop
+              loss and broker specifications &mdash; then read the complete
+              educational guide below.
             </p>
             <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <TelegramCTA text="Join Forex Wizard Telegram" variant="gold" />
@@ -262,6 +293,47 @@ export default function XauusdLotSizePage() {
               execution conditions. Always verify contract specifications with
               your broker.
             </p>
+
+            {/* Formula explanation */}
+            <div className="mt-10 glass rounded-2xl p-6 md:p-8 border border-trading-gold/20 max-w-3xl mx-auto">
+              <h3 className="text-base md:text-lg font-bold text-trading-gold mb-4">How the XAUUSD Lot Size Calculator Works</h3>
+              <div className="space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>
+                  The calculator follows a risk-first approach: it determines
+                  your monetary risk budget first, then works backward to find
+                  the position size that fits.
+                </p>
+                <div className="glass rounded-xl p-4 font-mono text-sm text-foreground space-y-1">
+                  <p><strong className="text-trading-green">1.</strong> Risk Budget = Account Equity &times; Risk %</p>
+                  <p><strong className="text-trading-green">2.</strong> Stop Distance = |Entry Price &minus; Stop Loss Price|</p>
+                  <p><strong className="text-trading-green">3.</strong> Risk per Lot = Stop Distance &times; Contract Size + Commission + Slippage</p>
+                  <p><strong className="text-trading-green">4.</strong> Position Size = Risk Budget &divide; Risk per Lot</p>
+                  <p><strong className="text-trading-green">5.</strong> Volume is rounded DOWN to the broker&rsquo;s permitted grid</p>
+                </div>
+                <p>
+                  <strong className="text-foreground">Broker assumptions:</strong> The
+                  contract size, minimum volume, maximum volume and volume step
+                  are all editable fields. Defaults (100 ounces, 0.01 min, 0.01
+                  step) are examples only &mdash; always verify your
+                  broker&rsquo;s actual specifications.
+                </p>
+                <p>
+                  <strong className="text-foreground">Non-USD accounts:</strong> If
+                  your account is denominated in a currency other than USD, you
+                  must supply a positive USD-to-account-currency conversion
+                  rate. The calculator converts USD-based price risk to your
+                  account currency before adding commission (which is entered
+                  in account currency).
+                </p>
+                <p>
+                  <strong className="text-foreground">Estimation limitations:</strong> The
+                  calculated loss is an estimate. Actual losses can differ due
+                  to market gaps, spread expansion, slippage during fast
+                  conditions, commission rounding, and stop-loss execution at
+                  prices different from the requested level.
+                </p>
+              </div>
+            </div>
           </div>
         </FadeSection>
 

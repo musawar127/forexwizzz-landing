@@ -1,0 +1,105 @@
+/**
+ * Generates a dedicated OG image for the XAUUSD Lot Size Calculator page.
+ * Dark ForexWizard brand theme with calculator visual. Uses sharp.
+ */
+/* eslint-disable @typescript-eslint/no-require-imports */
+
+const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
+
+const PUBLIC_DIR = "/home/z/my-project/public";
+const SVG_OUT = path.join(PUBLIC_DIR, "og-xauusd-calculator.svg");
+const JPG_OUT = path.join(PUBLIC_DIR, "og-xauusd-calculator.jpg");
+
+const WIDTH = 1200;
+const HEIGHT = 630;
+
+const svg = `
+<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="55%" style="stop-color:#0d0f16"/>
+      <stop offset="100%" style="stop-color:#0a0a0f"/>
+    </linearGradient>
+    <linearGradient id="greenGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00e676"/>
+      <stop offset="100%" style="stop-color:#ffd740"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)"/>
+  <circle cx="980" cy="120" r="220" fill="#ffd740" opacity="0.05"/>
+  <circle cx="180" cy="540" r="180" fill="#00e676" opacity="0.05"/>
+
+  <!-- Calculator visual (right side) -->
+  <g transform="translate(700, 160)" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+    <rect x="0" y="0" width="420" height="380" rx="20" fill="#ffffff" opacity="0.03" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+
+    <!-- Input rows -->
+    <rect x="30" y="30" width="360" height="40" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="50" y="55" font-size="11" font-weight="600" fill="#9ca3af">ACCOUNT EQUITY</text>
+    <text x="370" y="55" font-size="14" font-weight="700" fill="#f0f0f0" text-anchor="end">$500</text>
+
+    <rect x="30" y="80" width="360" height="40" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="50" y="105" font-size="11" font-weight="600" fill="#9ca3af">RISK %</text>
+    <text x="370" y="105" font-size="14" font-weight="700" fill="#f0f0f0" text-anchor="end">1%</text>
+
+    <rect x="30" y="130" width="360" height="40" rx="8" fill="#ffffff" opacity="0.04"/>
+    <text x="50" y="155" font-size="11" font-weight="600" fill="#9ca3af">ENTRY / STOP</text>
+    <text x="370" y="155" font-size="14" font-weight="700" fill="#f0f0f0" text-anchor="end">4300 / 4295</text>
+
+    <!-- Result row -->
+    <rect x="30" y="190" width="360" height="60" rx="10" fill="#00e676" opacity="0.08"/>
+    <text x="50" y="218" font-size="11" font-weight="700" fill="#00e676" letter-spacing="1">CALCULATED LOT SIZE</text>
+    <text x="370" y="228" font-size="28" font-weight="900" fill="#00e676" text-anchor="end" filter="url(#softGlow)">0.01</text>
+
+    <!-- Risk -->
+    <rect x="30" y="270" width="170" height="50" rx="8" fill="#ffffff" opacity="0.03"/>
+    <text x="50" y="295" font-size="10" font-weight="600" fill="#9ca3af">RISK BUDGET</text>
+    <text x="50" y="312" font-size="16" font-weight="800" fill="#ff7043">$5.00</text>
+
+    <rect x="220" y="270" width="170" height="50" rx="8" fill="#ffffff" opacity="0.03"/>
+    <text x="240" y="295" font-size="10" font-weight="600" fill="#9ca3af">EXPOSURE</text>
+    <text x="240" y="312" font-size="16" font-weight="800" fill="#ffd740">1 oz</text>
+
+    <text x="210" y="355" font-size="10" fill="#6b7280" text-anchor="middle">Educational estimate only</text>
+  </g>
+
+  <!-- Brand -->
+  <g>
+    <circle cx="80" cy="70" r="9" fill="#00e676" filter="url(#softGlow)"/>
+    <text x="100" y="78" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800" fill="#f0f0f0" letter-spacing="-0.5">Forex <tspan fill="#00e676">Wizard</tspan></text>
+  </g>
+
+  <!-- Eyebrow -->
+  <rect x="80" y="150" width="220" height="40" rx="20" fill="#00e676" opacity="0.08" stroke="#00e676" stroke-opacity="0.35" stroke-width="1"/>
+  <text x="190" y="176" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#00e676" text-anchor="middle" letter-spacing="1.5">FREE CALCULATOR</text>
+
+  <!-- Title -->
+  <text x="80" y="258" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="48" font-weight="900" fill="#f0f0f0" letter-spacing="-1.5">XAUUSD Lot Size</text>
+  <text x="80" y="318" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="48" font-weight="900" fill="#ffd740" letter-spacing="-1.5">Calculator</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="372" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" fill="#9ca3af">Gold Position Size &amp; Risk Calculator</text>
+
+  <!-- Footer -->
+  <rect x="80" y="600" width="1040" height="2" rx="1" fill="url(#greenGold)" opacity="0.4"/>
+  <text x="80" y="624" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="500" fill="#6b7280">forexwizard.online &#183; Not financial advice</text>
+</svg>
+`;
+
+async function create() {
+  if (!fs.existsSync(PUBLIC_DIR)) fs.mkdirSync(PUBLIC_DIR, { recursive: true });
+  fs.writeFileSync(SVG_OUT, svg.trim(), "utf8");
+  console.log(`SVG: ${(fs.statSync(SVG_OUT).size / 1024).toFixed(1)} KB`);
+  await sharp(Buffer.from(svg.trim())).flatten({ background: "#0a0a0f" }).jpeg({ quality: 85, mozjpeg: true }).toFile(JPG_OUT);
+  console.log(`JPG: ${(fs.statSync(JPG_OUT).size / 1024).toFixed(1)} KB`);
+}
+
+create().catch((e) => { console.error(e); process.exit(1); });
