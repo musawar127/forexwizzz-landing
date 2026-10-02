@@ -3,6 +3,7 @@ import {
   calculateLotSize,
   validateInputs,
   roundToVolumeStep,
+  roundToBrokerGrid,
   safeRound,
   DEFAULT_INPUTS,
   type CalculatorInputs,
@@ -136,11 +137,13 @@ describe("XAUUSD Lot Size Calculator", () => {
     expect(result.calculatedVolume).toBe(0.02);
   });
 
-  test("volume step 0.1: rounds down to nearest 0.1", () => {
+  test("volume step 0.1: rounds down to broker grid (minVolume=0.01, step=0.1)", () => {
     const result = calculateLotSize(makeInputs({ equity: 1000, riskPercentage: 1, volumeStep: 0.1 }));
-    // Budget = 10, risk per lot = 500, raw volume = 0.02 → rounds to 0.0 → belowMinimum
-    expect(result.calculatedVolume).toBe(0);
-    expect(result.belowMinimum).toBe(true);
+    // Budget = 10, risk per lot = 500, raw volume = 0.02
+    // Broker grid: min=0.01, step=0.1 → permitted: 0.01, 0.11, 0.21...
+    // 0.02 ≥ 0.01, floor((0.02-0.01)/0.1) = 0 → result = 0.01
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.belowMinimum).toBe(false);
   });
 
   // === MINIMUM VOLUME REJECTION ===
@@ -480,14 +483,14 @@ describe("XAUUSD Lot Size Calculator", () => {
   test("AUDIT: minVolume not aligned with volumeStep — belowMinimum correctly true", () => {
     // Broker: minVolume=0.02, volumeStep=0.01
     // Budget = 5, risk per lot = 500, rawVolume = 0.01
-    // roundToVolumeStep(0.01, 0.01) = 0.01
-    // 0.01 < 0.02 (minVolume) → belowMinimum = true
+    // Broker grid anchored at 0.02: 0.01 < 0.02 → not tradable → volume=0
+    // belowMinimum = true (0 < 0.02)
     const result = calculateLotSize(makeInputs({
       minVolume: 0.02,
       volumeStep: 0.01,
     }));
     expect(result.valid).toBe(true);
-    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.calculatedVolume).toBe(0); // below broker min → no tradable volume
     expect(result.belowMinimum).toBe(true);
   });
 
@@ -501,16 +504,16 @@ describe("XAUUSD Lot Size Calculator", () => {
     expect(result.belowMinimum).toBe(false);
   });
 
-  test("AUDIT: minVolume larger than calculated but budget permits it — do NOT auto-increase", () => {
+  test("AUDIT: minVolume larger than calculated — do NOT auto-increase", () => {
     // Budget = 5, risk per lot = 500, rawVolume = 0.01
-    // minVolume = 0.02 → 0.01 < 0.02, belowMinimum = true
+    // minVolume = 0.02 → 0.01 < 0.02, broker grid returns 0
     // We must NOT auto-increase to 0.02 (that would exceed budget: 0.02*500=10 > 5)
     const result = calculateLotSize(makeInputs({
       minVolume: 0.02,
       volumeStep: 0.01,
     }));
     expect(result.valid).toBe(true);
-    expect(result.calculatedVolume).toBe(0.01); // NOT increased to 0.02
+    expect(result.calculatedVolume).toBe(0); // NOT increased to 0.02
     expect(result.belowMinimum).toBe(true);
     // Verify the auto-increase would have exceeded budget
     expect(0.02 * result.estimatedRiskPerLot).toBeGreaterThan(result.riskBudget);
@@ -569,11 +572,11 @@ describe("XAUUSD Lot Size Calculator", () => {
     expect(result.valid).toBe(false);
   });
 
-  test("AUDIT: NaN take-profit is ignored (treated as not provided)", () => {
+  test("AUDIT: NaN take-profit is now explicitly rejected (updated)", () => {
     const result = calculateLotSize(makeInputs({ takeProfitPrice: NaN }));
-    // NaN TP should be treated as "not provided" — not an error
-    expect(result.valid).toBe(true);
-    expect(result.estimatedReward).toBeUndefined();
+    // NaN TP is now rejected per the final fix, not silently ignored
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
   });
 
   // === AUDIT: Default example still works ===
@@ -584,5 +587,147 @@ describe("XAUUSD Lot Size Calculator", () => {
     expect(result.actualEstimatedRisk).toBe(5);
     expect(result.riskBudget).toBe(5);
     expect(result.belowMinimum).toBe(false);
+  });
+
+  // === FINAL FIX: Broker grid anchored at minVolume ===
+  test("FINAL: roundToBrokerGrid — min=0.03, step=0.02, permitted: 0.03, 0.05, 0.07...", () => {
+    expect(roundToBrokerGrid(0.03, 0.03, 0.02)).toBe(0.03);
+    expect(roundToBrokerGrid(0.04, 0.03, 0.02)).toBe(0.03); // 0.04 NOT on grid
+    expect(roundToBrokerGrid(0.05, 0.03, 0.02)).toBe(0.05);
+    expect(roundToBrokerGrid(0.06, 0.03, 0.02)).toBe(0.05); // 0.06 NOT on grid
+    expect(roundToBrokerGrid(0.07, 0.03, 0.02)).toBe(0.07);
+    expect(roundToBrokerGrid(0.09, 0.03, 0.02)).toBe(0.09);
+    expect(roundToBrokerGrid(0.02, 0.03, 0.02)).toBe(0);    // below min → 0
+    expect(roundToBrokerGrid(0.01, 0.03, 0.02)).toBe(0);    // below min → 0
+    expect(roundToBrokerGrid(0, 0.03, 0.02)).toBe(0);
+  });
+
+  test("FINAL: calculateLotSize with min=0.03, step=0.02, raw volume=0.05 → 0.05", () => {
+    // Construct inputs so rawVolume = 0.05
+    // Budget / riskPerLot = 0.05 → need Budget=25, riskPerLot=500
+    // Equity=2500, risk=1% → Budget=25
+    // Entry=4300, stop=4295, contract=100 → riskPerLot=500
+    // rawVolume = 25/500 = 0.05
+    const result = calculateLotSize(makeInputs({
+      equity: 2500,
+      riskPercentage: 1,
+      entryPrice: 4300,
+      stopLossPrice: 4295,
+      contractSize: 100,
+      minVolume: 0.03,
+      volumeStep: 0.02,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.05); // 0.05 is on the grid: 0.03, 0.05, 0.07
+    expect(result.belowMinimum).toBe(false);
+    expect(result.actualEstimatedRisk).toBeLessThanOrEqual(result.riskBudget);
+  });
+
+  test("FINAL: calculateLotSize with min=0.03, step=0.02, raw volume=0.04 → 0.03 (not 0.04)", () => {
+    // rawVolume = 0.04 would round to 0.04 on a zero-anchored grid,
+    // but 0.04 is NOT on the broker grid (0.03, 0.05, 0.07...).
+    // Should snap down to 0.03.
+    // Budget / riskPerLot = 0.04 → need Budget=20, riskPerLot=500
+    // Equity=2000, risk=1% → Budget=20
+    const result = calculateLotSize(makeInputs({
+      equity: 2000,
+      riskPercentage: 1,
+      entryPrice: 4300,
+      stopLossPrice: 4295,
+      contractSize: 100,
+      minVolume: 0.03,
+      volumeStep: 0.02,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.03); // NOT 0.04
+    expect(result.belowMinimum).toBe(false);
+    expect(result.actualEstimatedRisk).toBeLessThanOrEqual(result.riskBudget);
+  });
+
+  test("FINAL: calculateLotSize with min=0.03, step=0.02, budget too small for min → belowMinimum", () => {
+    // Budget=5, riskPerLot=500, rawVolume=0.01
+    // 0.01 < 0.03 (minVolume) → belowMinimum, calculatedVolume=0
+    const result = calculateLotSize(makeInputs({
+      equity: 500,
+      riskPercentage: 1,
+      entryPrice: 4300,
+      stopLossPrice: 4295,
+      contractSize: 100,
+      minVolume: 0.03,
+      volumeStep: 0.02,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0); // can't trade — below min
+    expect(result.belowMinimum).toBe(true);
+  });
+
+  test("FINAL: calculateLotSize with min=0.03, step=0.02, raw volume=0.06 → 0.05", () => {
+    // rawVolume=0.06 → zero-anchored would give 0.06, but 0.06 is NOT on grid.
+    // Broker grid: 0.03, 0.05, 0.07 → 0.06 snaps down to 0.05
+    // Budget=30, riskPerLot=500 → rawVolume=0.06
+    const result = calculateLotSize(makeInputs({
+      equity: 3000,
+      riskPercentage: 1,
+      entryPrice: 4300,
+      stopLossPrice: 4295,
+      contractSize: 100,
+      minVolume: 0.03,
+      volumeStep: 0.02,
+    }));
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.05); // NOT 0.06
+    expect(result.belowMinimum).toBe(false);
+    expect(result.actualEstimatedRisk).toBeLessThanOrEqual(result.riskBudget);
+  });
+
+  test("FINAL: risk-budget invariant holds with broker grid (min=0.03, step=0.02)", () => {
+    // Test several equity levels
+    for (const eq of [500, 1000, 2500, 5000, 10000, 50000]) {
+      const result = calculateLotSize(makeInputs({
+        equity: eq,
+        riskPercentage: 1,
+        entryPrice: 4300,
+        stopLossPrice: 4295,
+        contractSize: 100,
+        minVolume: 0.03,
+        volumeStep: 0.02,
+      }));
+      if (result.valid && result.calculatedVolume > 0) {
+        expect(result.actualEstimatedRisk).toBeLessThanOrEqual(result.riskBudget + 0.01);
+      }
+    }
+  });
+
+  test("FINAL: default example (min=0.01, step=0.01) still works with broker grid", () => {
+    const result = calculateLotSize(makeInputs());
+    expect(result.valid).toBe(true);
+    expect(result.calculatedVolume).toBe(0.01);
+    expect(result.belowMinimum).toBe(false);
+  });
+
+  // === FINAL FIX: Non-finite TP explicitly rejected ===
+  test("FINAL: NaN take-profit is explicitly rejected (not silently ignored)", () => {
+    const result = calculateLotSize(makeInputs({ takeProfitPrice: NaN }));
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
+  });
+
+  test("FINAL: Infinity take-profit is explicitly rejected", () => {
+    const result = calculateLotSize(makeInputs({ takeProfitPrice: Infinity }));
+    expect(result.valid).toBe(false);
+    expect(result.error).toContain("finite");
+  });
+
+  test("FINAL: null take-profit is accepted (no TP)", () => {
+    const result = calculateLotSize(makeInputs({ takeProfitPrice: null }));
+    expect(result.valid).toBe(true);
+    expect(result.estimatedReward).toBeUndefined();
+  });
+
+  test("FINAL: valid take-profit still works correctly", () => {
+    const result = calculateLotSize(makeInputs({ takeProfitPrice: 4310 }));
+    expect(result.valid).toBe(true);
+    expect(result.estimatedReward).toBe(10);
+    expect(result.riskRewardRatio).toBe(2);
   });
 });

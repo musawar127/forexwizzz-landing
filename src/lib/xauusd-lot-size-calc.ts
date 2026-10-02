@@ -125,13 +125,18 @@ export function validateInputs(inputs: CalculatorInputs): string | null {
     return "For a SELL trade, the stop loss must be above the entry price.";
   }
 
-  // Validate optional take-profit
-  if (takeProfitPrice != null && isFinite(takeProfitPrice) && takeProfitPrice > 0) {
-    if (direction === "BUY" && takeProfitPrice <= entryPrice) {
-      return "For a BUY trade, the take-profit must be above the entry price.";
+  // Validate optional take-profit — explicitly reject non-finite values
+  if (takeProfitPrice != null) {
+    if (!isFinite(takeProfitPrice)) {
+      return "Take-profit price must be a finite number. Leave empty if no take-profit is planned.";
     }
-    if (direction === "SELL" && takeProfitPrice >= entryPrice) {
-      return "For a SELL trade, the take-profit must be below the entry price.";
+    if (takeProfitPrice > 0) {
+      if (direction === "BUY" && takeProfitPrice <= entryPrice) {
+        return "For a BUY trade, the take-profit must be above the entry price.";
+      }
+      if (direction === "SELL" && takeProfitPrice >= entryPrice) {
+        return "For a SELL trade, the take-profit must be below the entry price.";
+      }
     }
   }
 
@@ -189,6 +194,10 @@ export function validateInputs(inputs: CalculatorInputs): string | null {
  * Rounds a volume down to the nearest broker-permitted volume step.
  * Never rounds upward. Uses integer arithmetic internally to avoid
  * floating-point precision issues (e.g. 0.3 / 0.1 !== 3 in JS).
+ *
+ * This function uses a zero-anchored grid: 0, step, 2*step, 3*step, ...
+ * For brokers whose grid starts at minVolume (e.g. 0.03, 0.05, 0.07...),
+ * use `roundToBrokerGrid` instead.
  */
 export function roundToVolumeStep(volume: number, step: number): number {
   if (step <= 0 || !isFinite(step)) return volume;
@@ -200,6 +209,39 @@ export function roundToVolumeStep(volume: number, step: number): number {
   const scaledStep = Math.round(step * scale);
   if (scaledStep === 0) return 0;
   const scaledResult = Math.floor(scaledVolume / scaledStep) * scaledStep;
+  return scaledResult / scale;
+}
+
+/**
+ * Rounds a volume down to the nearest value on a broker's permitted volume
+ * grid anchored at minVolume: minVolume, minVolume+step, minVolume+2*step, ...
+ *
+ * This handles brokers where minVolume is not a multiple of volumeStep
+ * (e.g. minVolume=0.03, volumeStep=0.02 → permitted: 0.03, 0.05, 0.07...).
+ *
+ * Never rounds upward. Returns 0 if the volume is below minVolume.
+ */
+export function roundToBrokerGrid(
+  volume: number,
+  minVolume: number,
+  step: number
+): number {
+  if (step <= 0 || !isFinite(step)) return volume;
+  if (!isFinite(volume) || volume <= 0) return 0;
+  if (!isFinite(minVolume) || minVolume <= 0) return roundToVolumeStep(volume, step);
+
+  const scale = 1e8;
+  const scaledVolume = Math.round(volume * scale);
+  const scaledMin = Math.round(minVolume * scale);
+  const scaledStep = Math.round(step * scale);
+  if (scaledStep === 0) return 0;
+
+  // If volume is below minVolume, return 0 (not tradable on this grid)
+  if (scaledVolume < scaledMin) return 0;
+
+  // How many steps above minVolume?
+  const stepsAboveMin = Math.floor((scaledVolume - scaledMin) / scaledStep);
+  const scaledResult = scaledMin + stepsAboveMin * scaledStep;
   return scaledResult / scale;
 }
 
@@ -282,12 +324,14 @@ export function calculateLotSize(inputs: CalculatorInputs): CalculatorResult {
   // 7. Raw volume
   const rawVolume = estimatedRiskPerLot > 0 ? riskBudget / estimatedRiskPerLot : 0;
 
-  // 8. Round down to broker volume step
-  let calculatedVolume = roundToVolumeStep(rawVolume, volumeStep);
+  // 8. Round down to the broker's permitted volume grid.
+  //    Brokers may anchor their grid at minVolume (e.g. 0.03, 0.05, 0.07...)
+  //    rather than at zero (0, 0.02, 0.04...). roundToBrokerGrid handles both.
+  let calculatedVolume = roundToBrokerGrid(rawVolume, minVolume, volumeStep);
 
-  // 9. Clamp to max volume
+  // 9. Clamp to max volume (also on the broker grid)
   if (calculatedVolume > maxVolume) {
-    calculatedVolume = roundToVolumeStep(maxVolume, volumeStep);
+    calculatedVolume = roundToBrokerGrid(maxVolume, minVolume, volumeStep);
   }
 
   // 10. Risk-budget invariant: ensure the rounded volume's estimated monetary
@@ -298,18 +342,22 @@ export function calculateLotSize(inputs: CalculatorInputs): CalculatorResult {
   while (calculatedVolume > 0) {
     const checkRisk = calculatedVolume * estimatedRiskPerLot;
     if (checkRisk <= riskBudget + 1e-9) break; // tolerance for float comparison
-    calculatedVolume = roundToVolumeStep(calculatedVolume - volumeStep, volumeStep);
-    if (calculatedVolume <= 0) break;
+    // Step down on the broker grid
+    const steppedDown = roundToBrokerGrid(
+      calculatedVolume - volumeStep,
+      minVolume,
+      volumeStep
+    );
+    if (steppedDown >= calculatedVolume || steppedDown <= 0) {
+      calculatedVolume = 0;
+      break;
+    }
+    calculatedVolume = steppedDown;
   }
 
-  // 11. Min-volume / volume-step alignment: some brokers define permitted
-  //     volumes as minVolume, minVolume + step, minVolume + 2*step, ...
-  //     rather than 0, step, 2*step, ... If minVolume is not a multiple of
-  //     volumeStep, the rounded volume may be below minVolume even though it
-  //     is a valid step from zero. In that case, belowMinimum is true.
-  //     If the calculated volume is below minVolume but the trader's risk
-  //     budget would permit minVolume, we do NOT auto-increase — we show
-  //     the warning and let the trader decide.
+  // 11. If the calculated volume is 0 (below minVolume or risk budget too small),
+  //     check whether the risk budget can support the minimum trade size.
+  //     We do NOT auto-increase. belowMinimum tells the UI to show the warning.
   const belowMinimum = calculatedVolume < minVolume;
 
   // 11. Actual estimated risk at calculated volume
