@@ -13,6 +13,7 @@ import {
 } from "@/components/fade-section";
 import { CandlestickBackground } from "@/components/candlestick-background";
 import { SiteFooter } from "@/components/site-footer";
+import { XauusdLotSizeCalculator } from "@/components/tools/xauusd-lot-size-calculator";
 
 export const metadata: Metadata = {
   title: "XAUUSD Lot Size | How to Calculate Gold Position Size",
@@ -237,6 +238,30 @@ export default function XauusdLotSizePage() {
                 <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Key principle:</span> Lot size directly affects profit/loss sensitivity. Before choosing a lot size, you should understand your broker&rsquo;s contract specifications, your stop distance, and the maximum amount you are willing to risk on the trade.</p>
               </div>
             </div>
+          </div>
+        </FadeSection>
+
+        {/* INTERACTIVE CALCULATOR */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">XAUUSD Lot Size &amp; Risk </span>
+                <span className="text-trading-green text-glow-green">Calculator</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Enter your account details, trade parameters and broker
+                specifications to calculate the appropriate XAUUSD position size
+                for your planned risk.
+              </p>
+            </div>
+            <XauusdLotSizeCalculator />
+            <p className="text-xs text-muted-foreground/60 text-center mt-6 max-w-2xl mx-auto">
+              This calculator provides educational estimates only. Actual losses
+              can differ due to gaps, slippage, spreads, commissions and
+              execution conditions. Always verify contract specifications with
+              your broker.
+            </p>
           </div>
         </FadeSection>
 

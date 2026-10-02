@@ -7,6 +7,7 @@ const footerLinks = [
   { href: "/forex-signals/", label: "Forex Signals" },
   { href: "/gold-signals/", label: "Gold Signals" },
   { href: "/xauusd-analysis/", label: "XAUUSD Analysis" },
+  { href: "/tools/", label: "Trading Tools" },
   { href: "/blog/", label: "Blog" },
   { href: "/about/", label: "About" },
   { href: "/privacy-policy/", label: "Privacy Policy" },
