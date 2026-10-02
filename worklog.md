@@ -195,3 +195,30 @@ Stage Summary:
 - Commit: 397b31e on main, ready to push.
 - PUSH BLOCKED: git push origin main failed with "Invalid username or token. Password authentication is not supported." Exhaustive auth sweep found NO GitHub token in env, NO gh CLI, NO ~/.git-credentials, NO ~/.netrc, NO ~/.gitconfig credential, NO SSH keys, NO credential helper. The "environment/secrets" GitHub auth the user referenced is not present in this sandbox.
 - To complete the push: a GitHub Personal Access Token (classic, with `repo` + `workflow` scope, or fine-grained with Contents:write on musawar127/forexwizzz-landing) must be made available (e.g. as GITHUB_TOKEN env var). It will be used ONLY for the push and never printed/committed.
+
+---
+Task ID: 4
+Agent: Main Agent
+Task: Build PipValueCalculator React component (XAUUSD + FOREX pip value calculator)
+
+Work Log:
+- Read worklog.md, src/lib/pip-value-calc.ts (calc module API), and src/components/tools/xauusd-lot-size-calculator.tsx (styling reference) before writing any code
+- Created src/components/tools/pip-value-calculator.tsx — a "use client" component with named export `PipValueCalculator` (also default export)
+- Two instrument modes via top toggle: XAUUSD (gold accent) and FOREX (green accent). Mode switch resets contract/lot defaults + clears conversion rate
+- XAUUSD inputs: lot size, contract size (default 100), pip convention selector ($0.01 / $0.10 / custom with manual input), account currency dropdown (ACCOUNT_CURRENCIES), conditional conversion rate (shown only when account != USD)
+- FOREX inputs: pair dropdown (FOREX_PAIR_PRESETS + "Custom" option revealing a 6-letter text input with live validation), lot size, contract size (default 100000), pip size auto/custom toggle (auto uses getDefaultForexPipSize), account currency dropdown, conditional conversion rate with dynamic label based on base/quote/third-currency case
+- Price distance section: collapsible toggle (ON/OFF badge), start/end price + direction BUY/SELL
+- All calculations live via useMemo — no submit button. Results panel: LIVE badge with pulsing dot, instrument summary card, headline pip value (green glow), pip-values-at-scale grid (1/10/50/100/500 + per standard lot), quote-vs-account currency breakdown, conversion description card, optional price-distance result card
+- Used formatMoney() from calc module for ALL monetary displays; StatRow helper for consistent stat cards
+- Reset button restores initial form state; account currency / pair / mode changes all clear conversion rate as required
+- Styling matches reference: glass-strong, gradient-border, text-trading-green/gold/red, bg-white/5, border-white/10, two-column desktop (sticky results) / stacked mobile
+- JSX rules: no {" "} at end of heading spans (used ml-1 classes for inline spacing), HTML entities (&mdash; &apos;) used only in JSX text content, unicode escapes (\u2014 \u2192) used inside string expressions where entities wouldn't decode
+- Fixed two entity-in-string bugs: &mdash; in fieldDescription template literal and &rarr; in ternary string both replaced with unicode escapes since they render via {expression} (entities only decode in JSX text, not string values)
+- Created agent-ctx/4-pip-value-calculator.md work record
+- Lint: bun run lint passes cleanly (0 errors, 0 warnings)
+
+Stage Summary:
+- Deliverable: /home/z/my-project/src/components/tools/pip-value-calculator.tsx
+- Named export PipValueCalculator ready for import into any page (e.g. xauusd-pip-value tool page)
+- Pure calc module untouched; component is a thin presentation layer
+- All design requirements met: mode toggle, conditional conversion fields, live useMemo calc, reset, LIVE badge, disclaimer, responsive two-column layout
