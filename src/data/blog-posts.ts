@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "best-time-to-trade-forex",
+    title: "Best Time to Trade Forex: Sessions, Overlaps & Pairs",
+    description:
+      "Learn the best time to trade Forex, major market sessions, London–New York overlap, active currency pairs and trading hours in Pakistan.",
+    cardDescription:
+      "Understand Forex trading sessions (Sydney, Tokyo, London, New York), session overlaps, active currency pairs by session, PKT trading hours and how to plan your trading day.",
+    displayDate: "October 2, 2026",
+    publishedAt: "2026-10-02",
+    modifiedAt: "2026-10-02",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/best-time-to-trade-forex.jpg",
+    imageAlt:
+      "Best time to trade Forex showing major trading sessions Sydney Tokyo London New York and session overlaps",
+    tags: ["Forex", "Trading Sessions", "Education", "Beginner"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "forex-risk-management-for-beginners",
     title: "Forex Risk Management for Beginners: Lot Size & Stop Loss",
     description:
