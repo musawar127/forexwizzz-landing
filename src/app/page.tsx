@@ -733,47 +733,64 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="max-w-2xl mx-auto">
-              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.01] transition-transform duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
-                    <Calculator className="w-7 h-7 text-trading-green" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3 className="text-lg md:text-xl font-bold text-foreground">
-                        XAUUSD Lot Size &amp; Risk Calculator
-                      </h3>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
-                        LIVE
-                      </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {/* Tool 1: XAUUSD Calculator */}
+              <Link href="/xauusd-lot-size/" className="block no-underline group">
+                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                      <Calculator className="w-6 h-6 text-trading-green" />
                     </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      Calculate the correct XAUUSD position size based on your
-                      account equity, risk percentage, entry price, stop loss and
-                      broker specifications. Includes commission, slippage and
-                      multi-currency support.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      <Link
-                        href="/xauusd-lot-size/"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline"
-                      >
-                        <Calculator className="w-4 h-4" />
-                        Use Calculator
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      <Link
-                        href="/tools/"
-                        className="inline-flex items-center gap-2 text-sm font-bold text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
-                      >
-                        Explore All Tools
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+                      LIVE
+                    </span>
                   </div>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+                    XAUUSD Lot Size &amp; Risk Calculator
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Calculate gold position size from your equity, risk
+                    percentage, entry, stop loss and broker specifications.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+                    Use Calculator <ArrowRight className="w-4 h-4" />
+                  </span>
                 </div>
-              </div>
+              </Link>
+
+              {/* Tool 2: Forex Market Hours */}
+              <Link href="/tools/forex-market-hours/" className="block no-underline group">
+                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-trading-green" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+                      LIVE
+                    </span>
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+                    Forex Market Hours &amp; Live Session Clock
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Track Sydney, Tokyo, London and New York sessions with live
+                    countdowns, overlaps and DST-aware timezone conversion.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+                    Open Live Clock <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+            </div>
+
+            <div className="text-center mt-8">
+              <Link
+                href="/tools/"
+                className="inline-flex items-center gap-2 text-sm font-bold text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
+              >
+                Explore All Tools
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </FadeSection>

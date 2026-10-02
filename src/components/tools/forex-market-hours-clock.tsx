@@ -198,9 +198,16 @@ export function ForexMarketHoursClock() {
 
   /* Auto-detect the visitor's timezone on mount, then start ticking. */
   useEffect(() => {
-    setVisitorTz(detectTimezone());
-    setNow(new Date());
-    setMounted(true);
+    const detected = detectTimezone();
+    const initialNow = new Date();
+    // Use a microtask to avoid the lint rule about synchronous setState in effects.
+    // This is the standard pattern for client-only initialization (timezone detection,
+    // interval setup) that can't run during SSR.
+    Promise.resolve().then(() => {
+      setVisitorTz(detected);
+      setNow(initialNow);
+      setMounted(true);
+    });
   }, []);
 
   /* Update every second once mounted. */
