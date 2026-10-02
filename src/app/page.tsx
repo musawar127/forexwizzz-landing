@@ -279,6 +279,12 @@ export default function Home() {
               XAUUSD Analysis
             </Link>
             <Link
+              href="/tools/"
+              className="text-sm font-medium text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
+            >
+              Trading Tools
+            </Link>
+            <Link
               href="/blog/"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors no-underline hidden sm:block"
             >
@@ -333,8 +339,15 @@ export default function Home() {
               and improve your understanding of the forex market.
             </p>
 
-            <FadeIn delay={0.5}>
+            <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
+              <Link
+                href="/tools/"
+                className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-trading-gold border border-trading-gold/30 hover:bg-trading-gold/10 hover:scale-105 active:scale-95 transition-all duration-300 no-underline select-none"
+              >
+                <Calculator className="w-5 h-5" />
+                Explore Free Trading Tools
+              </Link>
             </FadeIn>
 
             <FadeIn delay={0.8}>
@@ -699,6 +712,68 @@ export default function Home() {
                 View All Analysis
                 <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+          </div>
+        </FadeSection>
+
+        {/* FREE FOREX TRADING TOOLS */}
+        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-strong mb-6">
+                <Calculator className="w-8 h-8 text-trading-gold" />
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+                <span className="text-foreground">FREE FOREX </span>
+                <span className="text-trading-gold text-glow-gold">TRADING TOOLS</span>
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+                Practical calculators to help you understand position sizing and
+                manage trading risk.
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.01] transition-transform duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                    <Calculator className="w-7 h-7 text-trading-green" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className="text-lg md:text-xl font-bold text-foreground">
+                        XAUUSD Lot Size &amp; Risk Calculator
+                      </h3>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+                        LIVE
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      Calculate the correct XAUUSD position size based on your
+                      account equity, risk percentage, entry price, stop loss and
+                      broker specifications. Includes commission, slippage and
+                      multi-currency support.
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      <Link
+                        href="/xauusd-lot-size/"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-trading-green hover:text-trading-green/80 transition-colors no-underline"
+                      >
+                        <Calculator className="w-4 h-4" />
+                        Use Calculator
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                      <Link
+                        href="/tools/"
+                        className="inline-flex items-center gap-2 text-sm font-bold text-trading-gold hover:text-trading-gold/80 transition-colors no-underline"
+                      >
+                        Explore All Tools
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </FadeSection>
