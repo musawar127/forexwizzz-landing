@@ -124,15 +124,25 @@ export function validateInputs(inputs: PipValueInputs): string | null {
     }
   }
 
-  // Validate optional prices
-  if (inputs.startPrice != null && isFinite(inputs.startPrice) && inputs.startPrice <= 0) {
-    return "Starting price must be a positive number.";
+  // Validate optional prices.
+  // Explicitly reject non-finite values (NaN, +/-Infinity) rather than
+  // silently skipping the price-distance calculation. A non-finite price
+  // is a caller error and must surface as a validation failure.
+  if (inputs.startPrice != null) {
+    if (!isFinite(inputs.startPrice)) {
+      return "Starting price must be a finite number.";
+    }
+    if (inputs.startPrice <= 0) {
+      return "Starting price must be a positive number.";
+    }
   }
-  if (inputs.endPrice != null && isFinite(inputs.endPrice) && inputs.endPrice <= 0) {
-    return "Ending price must be a positive number.";
-  }
-  if (conversionRate != null && !isFinite(conversionRate)) {
-    return "Conversion rate must be a finite number.";
+  if (inputs.endPrice != null) {
+    if (!isFinite(inputs.endPrice)) {
+      return "Ending price must be a finite number.";
+    }
+    if (inputs.endPrice <= 0) {
+      return "Ending price must be a positive number.";
+    }
   }
 
   return null;

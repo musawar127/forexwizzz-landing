@@ -222,3 +222,35 @@ Stage Summary:
 - Named export PipValueCalculator ready for import into any page (e.g. xauusd-pip-value tool page)
 - Pure calc module untouched; component is a thin presentation layer
 - All design requirements met: mode toggle, conditional conversion fields, live useMemo calc, reset, LIVE badge, disclaimer, responsive two-column layout
+
+---
+Task ID: pip-value-nonfinite-fix
+Agent: Main Agent
+Task: Targeted correction at commit 94161c9 — in src/lib/pip-value-calc.ts explicitly reject non-finite (NaN/Infinity) optional startPrice/endPrice instead of silently ignoring the price-distance calculation; remove the redundant conversion-rate validation check if appropriate; add regression tests; preserve all existing calculations, UI and SEO; run tests + lint + build; commit and push only this targeted correction.
+
+Work Log:
+- Reviewed current state: repo at 614eb92 (1 commit ahead of origin/main). Read src/lib/pip-value-calc.ts and tests/pip-value-calc.test.ts in full.
+- Confirmed the bug: validateInputs used `inputs.startPrice != null && isFinite(inputs.startPrice) && inputs.startPrice <= 0`. When startPrice was NaN/Infinity, `isFinite()` short-circuited the whole `&&` to false, so NO error was returned; calculatePipValue then silently skipped the price-distance block (its own `isFinite` guard also failed) and returned valid:true with priceDistance undefined. Non-finite prices were silently ignored rather than rejected.
+- Confirmed the redundant check: lines 134-136 `if (conversionRate != null && !isFinite(conversionRate))` duplicated the `!isFinite(conversionRate)` check already performed at lines 118-121 inside the `conversionRate != null` block. Removed the duplicate.
+- Edited validateInputs in src/lib/pip-value-calc.ts:
+  * Kept the primary conversion-rate block (finite + positive checks) intact.
+  * Removed the redundant trailing `conversionRate != null && !isFinite(conversionRate)` block.
+  * Replaced the optional-price validation: now `if (inputs.startPrice != null)` first checks `!isFinite` -> "Starting price must be a finite number.", then `<= 0` -> "Starting price must be a positive number."; mirror logic for endPrice. Non-finite prices now surface as explicit validation failures.
+  * Left the calculation-block `isFinite/>0` guards in calculatePipValue untouched (defensive, harmless, and now always-true post-validation). All numeric outputs (absDiff, pipCount, monetaryValue, signedPL, pip values, conversion) are byte-for-byte unchanged for all valid inputs.
+- Verified UI safety: the React component's `toNumberOrNull` helper already coerces non-finite text input to `null` before calling the calc module, so end-user typing "abc" still becomes null (skipped) — UI behaviour unchanged. The hardening only affects direct/programmatic calls to the pure module (and tests).
+- Added 15 regression tests to tests/pip-value-calc.test.ts in three groups:
+  * NON-FINITE PRICE REJECTION (8 tests): NaN/Infinity/-Infinity/both-NaN for startPrice & endPrice, in both XAUUSD and FOREX modes, plus direct validateInputs assertions confirming the error contains "finite" and that priceDistance is undefined.
+  * NON-REGRESSION (3 tests): finite positive prices still produce priceDistance (absDiff=5, pipCount=500, monetaryValue=500 for the 4300->4305 gold case); single null price and both-null prices remain valid with no priceDistance.
+  * REDUNDANT CHECK REMOVED (3 tests): NaN, Infinity, and zero conversion rates are still rejected by the primary check (errors contain "finite"/"positive" respectively), proving the duplicate block was safely removable.
+- Ran targeted tests: bun test tests/pip-value-calc.test.ts -> 53 pass, 0 fail, 137 expect() calls (was 38 tests before; +15 new).
+- Ran full suite: bun test -> 169 pass, 0 fail, 35369 expect() calls across 3 files.
+- Ran lint: bun run lint -> 0 errors, 0 warnings.
+- Ran build: bun run build -> Compiled successfully in 8.6s; /xauusd-pip-value and all 28+ static pages generated; no errors/warnings.
+- No UI, SEO, page, metadata, schema, sitemap, or OG image files touched. Only src/lib/pip-value-calc.ts and tests/pip-value-calc.test.ts modified.
+
+Stage Summary:
+- Files changed: src/lib/pip-value-calc.ts (validateInputs: explicit non-finite price rejection + redundant conversion-rate check removed), tests/pip-value-calc.test.ts (+15 regression tests).
+- Behaviour change: a non-finite startPrice/endPrice passed to the pure calc module now returns valid:false with a clear "must be a finite number" error, instead of valid:true with priceDistance silently dropped. All valid calculations are identical.
+- UI/SEO preserved: the React component pre-coerces non-finite text to null, so end-user experience is unchanged; no page/metadata/schema/sitemap changes.
+- Quality gates: tests 169/169 pass, lint clean, build successful.
+- Ready to commit and push this single targeted correction.

@@ -302,4 +302,119 @@ describe("XAUUSD & Forex Pip Value Calculator", () => {
     expect(r.valid).toBe(true);
     expect(r.conversionDescription).toContain("No conversion");
   });
+
+  // === NON-FINITE PRICE REJECTION (regression) ===
+  // Previously, a non-finite startPrice/endPrice was silently ignored:
+  // validateInputs skipped it (the `isFinite()` guard short-circuited the
+  // whole condition) and calculatePipValue returned valid:true with
+  // priceDistance undefined. These tests lock in the new behaviour: a
+  // non-finite price is a caller error and must surface as a validation
+  // failure.
+  test("NaN startPrice -> invalid (not silently ignored)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: NaN, endPrice: 4305 }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Starting price");
+    expect(r.error).toContain("finite");
+    expect(r.priceDistance).toBeUndefined();
+  });
+
+  test("Infinity startPrice -> invalid (not silently ignored)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: Infinity, endPrice: 4305 }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Starting price");
+    expect(r.priceDistance).toBeUndefined();
+  });
+
+  test("NaN endPrice -> invalid (not silently ignored)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: 4300, endPrice: NaN }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Ending price");
+    expect(r.error).toContain("finite");
+    expect(r.priceDistance).toBeUndefined();
+  });
+
+  test("Infinity endPrice -> invalid (not silently ignored)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: 4300, endPrice: Infinity }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Ending price");
+    expect(r.priceDistance).toBeUndefined();
+  });
+
+  test("-Infinity startPrice -> invalid", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: -Infinity, endPrice: 4305 }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Starting price");
+  });
+
+  test("Both prices NaN -> invalid", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: NaN, endPrice: NaN }));
+    expect(r.valid).toBe(false);
+  });
+
+  test("validateInputs directly: NaN startPrice returns finite error", () => {
+    const err = validateInputs(makeXauInputs({ startPrice: NaN, endPrice: 4305 }));
+    expect(err).not.toBeNull();
+    expect(err).toContain("finite");
+  });
+
+  test("validateInputs directly: Infinity endPrice returns finite error", () => {
+    const err = validateInputs(makeXauInputs({ startPrice: 4300, endPrice: Infinity }));
+    expect(err).not.toBeNull();
+    expect(err).toContain("finite");
+  });
+
+  test("Forex mode: NaN startPrice -> invalid", () => {
+    const r = calculatePipValue(makeForexInputs({ startPrice: NaN, endPrice: 1.1 }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Starting price");
+  });
+
+  test("Forex mode: Infinity endPrice -> invalid", () => {
+    const r = calculatePipValue(makeForexInputs({ startPrice: 1.1, endPrice: Infinity }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("Ending price");
+  });
+
+  // === NON-REGRESSION: finite positive prices still work ===
+  test("Finite positive prices still produce priceDistance (no regression)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: 4300, endPrice: 4305 }));
+    expect(r.valid).toBe(true);
+    expect(r.priceDistance).toBeDefined();
+    expect(r.priceDistance!.absoluteDifference).toBe(5);
+    expect(r.priceDistance!.pipCount).toBe(500);
+    expect(r.priceDistance!.monetaryValue).toBe(500);
+  });
+
+  test("Single null price still valid with no priceDistance (no regression)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: 4300, endPrice: null }));
+    expect(r.valid).toBe(true);
+    expect(r.priceDistance).toBeUndefined();
+  });
+
+  test("Both prices null still valid with no priceDistance (no regression)", () => {
+    const r = calculatePipValue(makeXauInputs({ startPrice: null, endPrice: null }));
+    expect(r.valid).toBe(true);
+    expect(r.priceDistance).toBeUndefined();
+  });
+
+  // === REDUNDANT CONVERSION-RATE CHECK REMOVED ===
+  // The duplicate `!isFinite(conversionRate)` check was removed; the primary
+  // check above it still rejects non-finite conversion rates.
+  test("Conversion rate NaN still rejected after redundant-check removal", () => {
+    const r = calculatePipValue(makeXauInputs({ accountCurrency: "EUR", conversionRate: NaN }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("finite");
+  });
+
+  test("Conversion rate Infinity still rejected after redundant-check removal", () => {
+    const r = calculatePipValue(makeXauInputs({ accountCurrency: "EUR", conversionRate: Infinity }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("finite");
+  });
+
+  test("Conversion rate zero still rejected (positive check intact)", () => {
+    const r = calculatePipValue(makeXauInputs({ accountCurrency: "EUR", conversionRate: 0 }));
+    expect(r.valid).toBe(false);
+    expect(r.error).toContain("positive");
+  });
 });
