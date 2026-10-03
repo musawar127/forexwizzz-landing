@@ -10,12 +10,12 @@ const TELEGRAM_LINK = "https://t.me/ForexWizzz";
 export const metadata: Metadata = {
   title: "Privacy Policy | Forex Wizard",
   description:
-    "Privacy Policy for Forex Wizard. Learn about how Forex Wizard handles information, cookies, third-party links, and your privacy when using our website.",
+    "Privacy Policy for Forex Wizard. Learn how we handle information, Google AdSense advertising cookies, third-party advertising, the Google CMP consent system, and your privacy choices.",
   alternates: { canonical: "https://forexwizard.online/privacy-policy/" },
   openGraph: {
     title: "Privacy Policy | Forex Wizard",
     description:
-      "Privacy Policy for Forex Wizard. Learn about how Forex Wizard handles your privacy when using our website.",
+      "Privacy Policy for Forex Wizard. Learn how we handle Google AdSense advertising cookies, third-party advertising, the Google CMP consent system, and your privacy choices.",
     type: "article",
     url: "https://forexwizard.online/privacy-policy/",
     siteName: "Forex Wizard",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Privacy Policy | Forex Wizard",
     description:
-      "Privacy Policy for Forex Wizard. Learn about how Forex Wizard handles your privacy.",
+      "Privacy Policy for Forex Wizard. Learn how we handle Google AdSense advertising cookies, third-party advertising, the Google CMP consent system, and your privacy choices.",
     images: ["/og-image.jpg"],
   },
 };
@@ -101,7 +101,7 @@ export default function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p className="text-xs text-muted-foreground/80">
-              Last updated: September 5, 2026
+              Last updated: October 2, 2026
             </p>
           </FadeSection>
 
@@ -133,9 +133,12 @@ export default function PrivacyPolicyPage() {
                 pre-rendered and served as plain HTML, CSS, and JavaScript
                 without any server-side processing or dynamic data collection.
                 We do not directly collect personal information through user
-                accounts, forms, analytics tools, advertising trackers, newsletter
-                signups, or similar features on this website. This policy reflects
-                that reality honestly and completely. However, basic technical
+                accounts, forms, analytics tools, newsletter signups, or similar
+                first-party features on this website. We do, however, display
+                advertising through Google AdSense, which is a third-party
+                service that may set advertising cookies and process limited data
+                as described in Sections 4 and 7 below. This policy reflects
+                that reality honestly and completely. In addition, basic technical
                 information may still be processed automatically by hosting, network,
                 or security infrastructure when you access the website, as described
                 in Section 2.
@@ -149,17 +152,22 @@ export default function PrivacyPolicyPage() {
                 handled when you visit Forex Wizard.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                When this policy states that Forex Wizard does not collect
-                personal information, it means that Forex Wizard does not actively
-                or directly collect personal information through website features
-                such as user accounts, forms, analytics tools, advertising
-                trackers, newsletter signups, or similar mechanisms. This does not
-                mean that no technical data is ever processed by the hosting,
-                network, or security infrastructure that delivers the website to
-                your browser. Basic technical information such as IP addresses,
-                browser information, requested pages, timestamps, and referring
-                URLs may be processed automatically by infrastructure as described
-                in Section 2.
+                When this policy states that Forex Wizard does not directly
+                collect personal information, it means that Forex Wizard does not
+                actively or directly collect personal information through
+                first-party website features such as user accounts, forms,
+                analytics tools, newsletter signups, or similar mechanisms. This
+                does not mean that no data is ever processed in connection with
+                your visit. Third-party advertising services we use, in particular
+                Google AdSense, may process advertising cookies and limited device
+                or usage data to display and measure advertisements, subject to
+                the consent collected through Google&apos;s Consent Management
+                Platform (CMP), as described in Sections 4 and 7. In addition,
+                basic technical information such as IP addresses, browser
+                information, requested pages, timestamps, and referring URLs may
+                be processed automatically by the hosting, network, or security
+                infrastructure that delivers the website to your browser, as
+                described in Section 2.
               </p>
             </div>
           </FadeSection>
@@ -244,27 +252,74 @@ export default function PrivacyPolicyPage() {
                 4. Cookies and Similar Technologies
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                The Forex Wizard website does not use cookies of any kind. We do
-                not set first-party cookies, third-party cookies, session
-                cookies, persistent cookies, or any other type of cookie. There
-                are no tracking cookies, no analytics cookies, no preference
-                cookies, and no advertising cookies on our website.
+                Forex Wizard itself does not set first-party cookies, session
+                cookies, preference cookies, or analytics cookies for its own
+                purposes. We do not operate our own analytics, do not maintain
+                user accounts, and do not use first-party tracking on this
+                website.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                In addition to cookies, we also do not use localStorage,
-                sessionStorage, IndexedDB, Web SQL, or any other browser storage
-                mechanism. Our website does not store any data on your device
-                whatsoever. When you close your browser after visiting Forex
-                Wizard, no trace of your visit remains in your browser&apos;s
-                storage.
+                However, we display advertising through Google AdSense, and
+                Google and its advertising partners may set and read
+                <strong className="text-foreground"> advertising cookies</strong>{" "}
+                when advertisements are shown on this website. These advertising
+                cookies allow Google to serve, measure, and (where you have
+                consented) personalize advertisements based on your visits to
+                this site and other websites. Advertising cookies may include a
+                unique identifier and may persist on your device after you leave
+                this site, in accordance with Google&apos;s cookie and
+                advertising policies. For example, the DoubleClick cookie
+                (&ldquo;IDE&rdquo;) and related Google advertising cookies may be
+                used to serve and measure ads. Google may also use web storage
+                (such as local storage) and similar technologies for ad delivery
+                and measurement purposes.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                Consent for these advertising cookies is collected and managed
+                through <strong className="text-foreground">Google&apos;s
+                Consent Management Platform (CMP)</strong>, which presents
+                visitors with a consent choice regarding advertising cookies and
+                related ad personalization. Where the Google CMP is shown, you
+                may accept advertising cookies, reject them, or customize your
+                advertising preferences. Your consent choice is stored by Google
+                and governs whether personalized advertising is served. If you
+                reject advertising cookies, Google may still serve
+                non-personalized ads, which are not based on your interests and
+                are subject to more limited data use.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                Forex Wizard does not control and does not have access to the
+                cookies that Google and its advertising partners set on your
+                device. Those cookies are governed by Google&apos;s own privacy
+                and cookie policies. You can learn more about how Google uses
+                cookies for advertising and how to manage them at{" "}
+                <a
+                  className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                  href="https://policies.google.com/technologies/cookies"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  policies.google.com/technologies/cookies
+                </a>{" "}
+                and{" "}
+                <a
+                  className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                  href="https://policies.google.com/technologies/ads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  policies.google.com/technologies/ads
+                </a>
+                .
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Because no cookies or similar technologies are used, no cookie
-                consent banner or cookie management interface is required or
-                present on our website. You do not need to accept or reject
-                cookies because none are ever set. This is a direct result of our
-                privacy-first, static website architecture that has no need for
-                client-side data storage or tracking.
+                In addition to advertising cookies set by Google, basic technical
+                information may still be processed automatically by hosting,
+                network, or security infrastructure when you access the website,
+                as described in Sections 2 and 3. Outside of the advertising
+                cookies governed by Google&apos;s CMP, Forex Wizard itself does
+                not use localStorage, sessionStorage, IndexedDB, Web SQL, or any
+                other browser storage mechanism for its own purposes.
               </p>
             </div>
           </FadeSection>
@@ -354,41 +409,102 @@ export default function PrivacyPolicyPage() {
           <FadeSection>
             <div className="glass-strong rounded-2xl p-6 md:p-8 mb-6">
               <h2 className="text-xl font-bold text-foreground mb-4">
-                7. External Services
+                7. External Services &amp; Google AdSense
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Forex Wizard does not embed any third-party content on its
-                website. We do not use iframes, social media widgets, YouTube
-                embeds, Google Maps embeds, or any other embedded external
-                content. Every element you see on our website is hosted and
-                served directly from our own infrastructure.
+                Forex Wizard uses{" "}
+                <strong className="text-foreground">Google AdSense</strong>, a
+                third-party advertising service provided by Google LLC, to
+                display advertisements on this website. Google AdSense is the
+                only third-party advertising or tracking service used on this
+                site. Through Google AdSense, Google and its advertising partners
+                may serve, measure, and (where you have consented) personalize
+                advertisements. When ads are displayed, Google may set
+                advertising cookies, use web storage, and process limited device
+                or usage data, including your IP address, cookie identifiers,
+                and information about the pages you visit, in order to display
+                and measure advertisements and report on ad performance.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                All images used on the website are self-hosted, meaning they are
-                served from the same domain as the website itself and are not
-                loaded from any external CDN, image hosting service, or
-                third-party server. Similarly, all fonts (Geist and Geist Mono)
-                are self-hosted via Next.js at build time and are served from
-                our domain rather than being loaded from Google Fonts or any
-                other external font service.
+                We have published an{" "}
+                <strong className="text-foreground">ads.txt</strong>{" "}
+                (Authorized Digital Sellers) file at{" "}
+                <a
+                  className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                  href="https://forexwizard.online/ads.txt"
+                >
+                  https://forexwizard.online/ads.txt
+                </a>
+                . This file authorizes Google to sell advertising inventory on
+                this website and identifies our Google AdSense publisher ID
+                (<code className="text-foreground">pub-6688769451659099</code>)
+                as a direct seller. The ads.txt file is a plain-text industry
+                standard that helps prevent unauthorized sellers from
+                representing our inventory; it does not itself collect personal
+                data.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                We do not use Google Analytics, Google Tag Manager, Meta Pixel,
-                advertising networks, remarketing pixels, or any external
-                tracking or analytics services. There are no third-party scripts
-                running on our website that monitor your behavior, track your
-                visits, or collect data about you. The only structured data on
-                our site is JSON-LD markup for search engine optimization
-                purposes, which is static metadata embedded in the HTML and does
-                not involve any tracking or data collection.
+                Consent for advertising cookies and ad personalization is
+                collected and managed through{" "}
+                <strong className="text-foreground">Google&apos;s Consent
+                Management Platform (CMP)</strong>, which is provided by Google
+                as part of its advertising services. The Google CMP presents
+                visitors with a consent choice and stores that choice so that
+                Google can determine whether to serve personalized advertising.
+                Forex Wizard does not operate a separate consent banner of its
+                own; advertising consent is handled by Google&apos;s CMP. Your
+                consent decisions apply to the advertising cookies and ad
+                personalization described in Section 4.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                When Google AdSense is active, your browser may communicate with
+                Google&apos;s advertising servers (for example
+                doubleclick.net, google.com, and googlesyndication.com domains)
+                to load and display advertisements. These requests are governed
+                by Google&apos;s privacy and advertising policies. You can review
+                Google&apos;s privacy policy at{" "}
+                <a
+                  className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  policies.google.com/privacy
+                </a>{" "}
+                and Google&apos;s advertising technologies page at{" "}
+                <a
+                  className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                  href="https://policies.google.com/technologies/ads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  policies.google.com/technologies/ads
+                </a>
+                .
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                Outside of Google AdSense, Forex Wizard does not use Google
+                Analytics, Google Tag Manager, Meta Pixel, remarketing pixels, or
+                any other external analytics or tracking service. We do not embed
+                social media widgets, YouTube embeds, or Google Maps embeds. All
+                images used on the website are self-hosted (served from our own
+                domain and not loaded from any external CDN or image hosting
+                service). All fonts (Geist and Geist Mono) are self-hosted via
+                Next.js at build time and are served from our domain rather than
+                being loaded from Google Fonts or any other external font
+                service. The only other structured data on our site is JSON-LD
+                markup for search engine optimization purposes, which is static
+                metadata embedded in the HTML and does not involve any tracking
+                or data collection.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                This means that when you visit Forex Wizard, your browser only
-                communicates with our domain to load the page content. No
-                requests are made to external analytics, advertising, or
-                tracking servers. This design keeps your browsing activity
-                private and prevents third-party companies from monitoring your
-                visit to our website.
+                In summary, the only external service that may process data in
+                connection with your visit is Google AdSense (including
+                Google&apos;s CMP for consent). Forex Wizard does not control and
+                does not have access to the data that Google processes through
+                AdSense. For any questions about Google&apos;s advertising data
+                practices, please consult Google&apos;s policies referenced
+                above.
               </p>
             </div>
           </FadeSection>
@@ -401,11 +517,24 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 Since Forex Wizard does not directly collect personal information
-                from visitors through website features, there is no personal data
-                collected by the website to use, analyze, share, sell, or
-                distribute. We do not build user profiles, track browsing patterns,
-                create audience segments, or engage in any form of data-driven
-                decision making based on visitor information.
+                from visitors through first-party website features, there is no
+                personal data collected by the website itself to use, analyze,
+                share, sell, or distribute. We do not build user profiles, track
+                browsing patterns, create audience segments, or engage in any
+                form of data-driven decision making based on visitor information
+                on our own behalf.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                The exception is Google AdSense. As described in Section 7,
+                Google may use advertising cookies and limited device or usage
+                data (such as cookie identifiers and information about the pages
+                you visit) to display, measure, and &mdash; only where you have
+                consented through Google&apos;s CMP &mdash; personalize
+                advertisements. Any such processing is carried out by Google
+                under Google&apos;s privacy and advertising policies and is
+                subject to the consent you provide via Google&apos;s CMP. Forex
+                Wizard does not have access to the data Google processes through
+                AdSense and does not use it to build profiles of our visitors.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                 The website exists solely to provide free educational content
@@ -539,20 +668,77 @@ export default function PrivacyPolicyPage() {
                 12. Your Choices
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                Because Forex Wizard does not directly collect personal information
-                through website features or use tracking technologies, there are no
-                cookies to manage, no
-                tracking preferences to set, no opt-out mechanisms needed, and no
-                privacy settings to configure. You do not need to take any action
-                to protect your privacy when using our website because your
-                privacy is already fully protected by our site&apos;s design.
+                Because Forex Wizard does not directly collect personal
+                information through first-party website features, there are no
+                first-party cookies to manage, no first-party tracking
+                preferences to set, and no account-related privacy settings to
+                configure. You may freely browse the website without providing
+                any personal data, and there are no login walls, email gates, or
+                account requirements.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                You may freely browse the website without providing any personal
-                data. There are no login walls, no email gates, no cookie
-                consent banners, and no account requirements. Every page of
-                educational content is available to you without any conditions
-                or data exchanges.
+                However, because we display advertising through Google AdSense,
+                you do have choices regarding advertising cookies and ad
+                personalization. Advertising consent is handled by
+                <strong className="text-foreground"> Google&apos;s Consent
+                Management Platform (CMP)</strong>. When the Google CMP consent
+                choice is presented, you can accept advertising cookies, reject
+                them, or customize your advertising preferences. Your selection
+                is stored by Google and controls whether personalized
+                advertising is served on this website.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                You can also manage Google advertising and ad personalization
+                directly through Google&apos;s tools at any time:
+              </p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground leading-relaxed space-y-1 mb-3">
+                <li>
+                  Google Ads Settings:{" "}
+                  <a
+                    className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                    href="https://adssettings.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    adssettings.google.com
+                  </a>{" "}
+                  &mdash; manage whether ads are personalized using your Google
+                  activity.
+                </li>
+                <li>
+                  Google Ad Settings opt-out page:{" "}
+                  <a
+                    className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                    href="https://www.google.com/settings/ads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    google.com/settings/ads
+                  </a>{" "}
+                  &mdash; opt out of personalized advertising from Google.
+                </li>
+                <li>
+                  Digital Advertising Alliance opt-out:{" "}
+                  <a
+                    className="text-trading-green hover:text-trading-gold transition-colors no-underline"
+                    href="https://www.aboutads.info/choices/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    aboutads.info/choices
+                  </a>{" "}
+                  &mdash; opt out of interest-based advertising from
+                  participating companies.
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                In addition, standard browser controls let you block or delete
+                advertising cookies set by Google and other advertising
+                partners. Most browsers allow you to refuse third-party cookies
+                or to clear cookies already stored on your device. Note that
+                blocking advertising cookies does not remove advertisements
+                entirely; Google may still serve non-personalized ads that are
+                not based on your interests.
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 If you choose to visit our Telegram community by clicking the
@@ -653,10 +839,12 @@ export default function PrivacyPolicyPage() {
                 questions about our privacy practices, the simplest assurance we
                 can provide is that our website does not directly collect personal
                 information through user accounts, forms, analytics tools,
-                advertising trackers, newsletter signups, or similar features. If
-                you have questions about a specific aspect of this policy, we
-                encourage you to reach out and we will provide a clear and honest
-                response.
+                newsletter signups, or similar first-party features. The only
+                third-party data processing on this website is performed by
+                Google AdSense (and Google&apos;s CMP for consent), as described
+                in Sections 4 and 7. If you have questions about a specific
+                aspect of this policy, we encourage you to reach out and we will
+                provide a clear and honest response.
               </p>
             </div>
           </FadeSection>

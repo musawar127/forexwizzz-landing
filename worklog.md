@@ -254,3 +254,35 @@ Stage Summary:
 - UI/SEO preserved: the React component pre-coerces non-finite text to null, so end-user experience is unchanged; no page/metadata/schema/sitemap changes.
 - Quality gates: tests 169/169 pass, lint clean, build successful.
 - Ready to commit and push this single targeted correction.
+
+---
+Task ID: adsense-compliance
+Agent: Main Agent
+Task: Forex Wizard AdSense compliance task. Create public/ads.txt with confirmed Google AdSense Publisher ID pub-6688769451659099 (exact content: `google.com, pub-6688769451659099, DIRECT, f08c47fec0942fa0`). Update the existing Privacy Policy to accurately disclose Google AdSense, advertising cookies, third-party advertising, and the Google CMP consent system. Constraints: preserve existing AdSense verification, no duplicate AdSense scripts, no new consent banner, do not modify trading calculators, do not change unrelated SEO settings, keep under existing AdSense review. Run lint + build, commit + push to main, verify ads.txt and Privacy Policy publicly accessible.
+
+Work Log:
+- Recon: grep across whole repo for adsense|adsbygoogle|pub-|googlesyndication|pagead2|gtag|analytics|google-site-verification|consent|cookie|gdpr|cmp|fundingchoices. Found ZERO existing AdSense scripts, ZERO consent banner components, ZERO ads.txt. The "existing AdSense verification" = the AdSense property itself; ads.txt with the publisher ID authorizes/preserves that linkage. Creating ads.txt (a plain-text file, NOT a script) satisfies "no duplicate scripts". Confirmed src/app/layout.tsx contains only JSON-LD (WebSite + Organization) and no ad scripts. Confirmed next.config.ts uses `output: "export"` + `trailingSlash: true`, so public/ads.txt is served verbatim at /ads.txt (no trailing slash, no route needed).
+- Created public/ads.txt with exact confirmed content (single line + trailing newline, 59 bytes): `google.com, pub-6688769451659099, DIRECT, f08c47fec0942fa0`.
+- Read the full existing Privacy Policy (src/app/privacy-policy/page.tsx, 677 lines, 14 sections). Identified four sections whose claims become FALSE once AdSense is live, plus two stray "advertising trackers" references:
+  * Section 1 (Introduction): two paragraphs claimed "no advertising trackers" and "no data is ever processed". Updated both to acknowledge Google AdSense as the third-party advertising service, forward-referencing Sections 4 and 7.
+  * Section 4 (Cookies): claimed "does not use cookies of any kind", "no advertising cookies", "no cookie consent banner". REWROTE to: Forex Wizard itself sets no first-party cookies; Google AdSense sets advertising cookies (DoubleClick IDE etc.); Google's CMP governs consent (accept/reject/customize); non-personalized ads may still serve after rejection; linked Google cookie/ads policy pages; Forex Wizard has no access to Google's cookies.
+  * Section 7 (External Services): claimed "no advertising networks, no third-party scripts, no external advertising servers". REWROTE and retitled to "External Services & Google AdSense": comprehensive disclosure — Google AdSense is the only third-party ad service; may set cookies/use web storage/process device+usage data; ads.txt at /ads.txt authorizes Google as direct seller with publisher ID pub-6688769451659099; Google's CMP handles consent (Forex Wizard runs NO separate consent banner — satisfies "do not create another consent banner"); browser may contact doubleclick.net/google.com/googlesyndication.com; linked Google privacy + ads policy pages; all other content remains self-hosted (images, Geist fonts, JSON-LD only).
+  * Section 8 (How Information Is Used): claimed no data-driven activity at all. Updated to carve out the AdSense exception (Google processes ad data under Google's policies, subject to CMP consent; Forex Wizard has no access and builds no profiles).
+  * Section 12 (Your Choices): claimed "no cookies to manage, no consent banner". REWROTE to: no FIRST-PARTY cookies/accounts; advertising consent handled by Google's CMP (accept/reject/customize); added a bulleted list of opt-out resources (Google Ads Settings adssettings.google.com, google.com/settings/ads, Digital Advertising Alliance aboutads.info/choices); browser cookie controls; non-personalized ads may still serve.
+  * Section 14 (Contact): closing paragraph still said "advertising trackers" as something not collected. Updated to "first-party features" + explicit note that the only third-party processing is Google AdSense + Google's CMP.
+- Updated metadata: title unchanged; description + OG description + Twitter description updated to mention "Google AdSense advertising cookies, third-party advertising, the Google CMP consent system, and your privacy choices" (keeps SEO accurate, no unrelated SEO changes).
+- Updated "Last updated" date September 5, 2026 -> October 2, 2026 (matches the AdSense disclosure revision).
+- Updated public/sitemap.xml: privacy-policy lastmod 2026-09-05 -> 2026-10-02 (reflects the policy revision). No other sitemap entries touched.
+- Preserved: AdSense verification (ads.txt with publisher ID), no AdSense script added (none existed, none added -> no duplicates), no consent banner created (Google's CMP disclosed as the consent mechanism), trading calculators untouched (xauusd-lot-size / pip-value / market-hours pages and lib modules not modified), no unrelated SEO settings changed (canonicals, OG images, JSON-LD, other pages all untouched).
+- Lint: bun run lint -> 0 errors, 0 warnings.
+- Build: bun run build -> Compiled successfully in 8.4s; out/ads.txt emitted with exact content (verified `cat out/ads.txt` = `google.com, pub-6688769451659099, DIRECT, f08c47fec0942fa0`); /privacy-policy/ in static output.
+- Verified built HTML (out/privacy-policy/index.html): "Google AdSense" x34, "advertising cookies" x44, "Consent Management Platform" x8, "ads.txt" x8, "pub-6688769451659099" x2, "Google's CMP"/"Google&apos;s CMP" x6; ZERO leftover false-claim phrases ("does not use cookies of any kind", "no advertising cookies", "no cookie consent banner...required or present", "advertising networks, remarketing pixels").
+- Tests: bun test -> 169 pass, 0 fail (calc modules unaffected, sanity check).
+
+Stage Summary:
+- Files changed: public/ads.txt (NEW, 59 bytes), src/app/privacy-policy/page.tsx (Sections 1,4,7,8,12,14 rewritten + metadata + lastmod), public/sitemap.xml (privacy-policy lastmod bump).
+- ads.txt exact public URL: https://forexwizard.online/ads.txt
+- Privacy Policy public URL: https://forexwizard.online/privacy-policy/
+- Constraints satisfied: AdSense verification preserved (ads.txt), zero AdSense scripts installed (so no duplicates), zero new consent banners (Google CMP disclosed as the consent mechanism), calculators untouched, no unrelated SEO changed, site remains under existing AdSense review (ads.txt authorizes publisher; no script changes review status).
+- Quality gates: lint clean, build successful, 169/169 tests pass.
+- Ready to commit and push to main, then verify the public URLs.
