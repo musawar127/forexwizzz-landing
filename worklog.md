@@ -574,3 +574,20 @@ Stage Summary:
 - Files created: page.tsx, 5 image files, 1 og script. Files modified: blog-posts.ts, sitemap.xml, last-week article, worklog.md.
 - Quality gates: lint clean, 169/169 tests pass, build successful.
 - Ready to commit and push to main.
+
+---
+Task ID: editorial-polish-oct5-9
+Agent: Main Agent
+Task: Final editorial polish on the published October 5-9 XAUUSD forecast. (1) Make Sources references directly clickable with authoritative URLs. (2) Distinguish spot XAU/USD from COMEX futures in the secondary resistance explanation. (3) Verify publication timestamp reflects actual publication. Preserve layout, SEO metadata, images, calculators, AdSense settings. Do not rewrite whole article.
+
+Work Log:
+- Synced with origin/main (HEAD 012acec).
+- Correction 1 (timestamp): The article publishedAt was 2026-10-04T09:00:00+05:00 (9 AM PKT) but the actual publication happened late afternoon PKT (commit 012acec was created around 18:40 PKT). Updated src/data/blog-posts.ts publishedAt and modifiedAt to 2026-10-04T18:40:00+05:00 to reflect the real publication time. This propagates to OG article:published_time, article:modified_time, and BlogPosting datePublished/dateModified.
+- Correction 2 (spot vs futures): Found three places conflating the COMEX Dec'26 futures $4,259 intraday high with spot XAU/USD levels: (a) key levels table "Secondary resistance" row, (b) Resistance Levels section secondary resistance card, (c) Technical Analysis "Swing references" paragraph, and (d) FAQ "main gold resistance levels" answer. Rewrote each so the spot-gold anchor (Sep 25 close ~$4,287; Sep 29-30 recovery closes ~$4,182) is primary, and the $4,259 COMEX futures intraday high is explicitly labeled as a futures level / cross-market reference, with a note that futures and spot are correlated but not interchangeable (futures embed a term structure and settle separately). Did not change any price values, only the framing/labels.
+- Correction 3 (clickable sources): The Sources and Methodology section previously had 3 of 6 sources as plain text (Reuters, WSJ/TradingEconomics, Investing.com/CME). Made all 6 directly clickable with their authoritative URLs: BLS empsit_10022026.htm, Reuters gold-slips-before-us-payrolls-data article, federalreserve.gov October calendar, sca.isr.umich.edu, tradingeconomics.com US indicators, cmegroup.com gold markets page. Kept the same visual style (text-trading-green underline). Added brief cross-reference notes (WSJ for Treasury quotes, Investing.com for historical futures) where a secondary source was originally cited alongside the primary.
+- Preserved: layout, SEO metadata (title/description/canonical/OG/Twitter), all images (JPG/SVG/3xWebP), BlogPosting + BreadcrumbList schema, FAQ visible-only (no FAQPage schema), all internal links, calculators (src/lib and src/components/tools untouched), AdSense ads.txt, Privacy Policy, sitemap entries. Only 2 files changed: src/data/blog-posts.ts (timestamp) and src/app/blog/xauusd-weekly-forecast-october-5-9-2026/page.tsx (3 spot/futures rewrites + 3 source links).
+- Lint: 0 errors 0 warnings. Tests: 169 pass 0 fail. Build: Compiled 8.5s. Built HTML verified: 6 clickable source URLs, publishedTime 2026-10-04T18:40:00+05:00, spot/futures distinction present in 2 places, sitemap lastmod still 2026-10-04 (same date, accurate).
+
+Stage Summary:
+- Files changed: src/data/blog-posts.ts, src/app/blog/xauusd-weekly-forecast-october-5-9-2026/page.tsx, worklog.md.
+- All quality gates pass. Ready to commit and push.

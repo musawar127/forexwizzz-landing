@@ -150,7 +150,7 @@ const keyLevelsTable = [
   { area: "Secondary support", level: "$4,080–$4,100", why: "Round-number cluster just beneath the seven-week low", tone: "gold" as const },
   { area: "Major support", level: "$4,000–$4,040", why: "Psychological $4,000 + 2026 demand shelf", tone: "gold" as const },
   { area: "Immediate resistance", level: "$4,180–$4,200", why: "Sep 29–30 recovery closes (~$4,182) + round number", tone: "green" as const },
-  { area: "Secondary resistance", level: "$4,260–$4,290", why: "Oct 2 COMEX futures high ($4,259) + Sep 25 close (~$4,287)", tone: "green" as const },
+  { area: "Secondary resistance", level: "$4,260–$4,290", why: "Sep 25 spot close (~$4,287) + round-number shelf; COMEX Dec'26 futures printed $4,259 intraday on Oct 2 — a cross-market reference, not a spot level", tone: "green" as const },
   { area: "Major resistance", level: "$4,300–$4,320", why: "The $4,300 area gold lost; previous-week structure", tone: "green" as const },
 ];
 
@@ -228,7 +228,7 @@ const faqs = [
   },
   {
     q: "What are the main gold resistance levels this week?",
-    a: "Immediate resistance is approximately $4,180–$4,200, where gold recovered to on September 29–30. Above that, approximately $4,260–$4,290 becomes important (the October 2 COMEX futures intraday high and the September 25 pre-drop close), followed by broader resistance around $4,300–$4,320.",
+    a: "Immediate resistance is approximately $4,180–$4,200, where spot gold recovered to on September 29–30. Above that, approximately $4,260–$4,290 becomes important — anchored by the September 25 spot close near $4,287 (the October 2 COMEX futures intraday high of $4,259 is a related cross-market reference, not a spot level). Broader resistance sits around $4,300–$4,320.",
   },
   {
     q: "Is XAUUSD bullish or bearish this week?",
@@ -707,10 +707,13 @@ export default function WeeklyForecastOct5Oct9Page() {
                 </p>
                 <p>
                   <strong className="text-foreground/90">Swing references:</strong>{" "}
-                  The key swing low is $4,110.55 (Sep 28). The pre-drop swing
-                  high is approximately $4,287 (Sep 25 close). The recovery high
-                  cluster sits around $4,182–$4,260 (Sep 29–30 closes and the
-                  October 2 COMEX futures intraday high of $4,259).
+                  The key spot swing low is $4,110.55 (Sep 28). The pre-drop
+                  spot swing high is approximately $4,287 (Sep 25 close). The
+                  spot recovery high cluster sits around $4,180–$4,190 (Sep
+                  29–30 closes). Separately, the COMEX December 2026 futures
+                  contract printed an intraday high of $4,259 on October 2 —
+                  this is a futures level, not a spot XAU/USD level, and is
+                  included only as a cross-market reference.
                 </p>
                 <p>
                   <strong className="text-foreground/90">Momentum context:</strong>{" "}
@@ -830,10 +833,15 @@ export default function WeeklyForecastOct5Oct9Page() {
                 </div>
                 <p className="text-2xl font-extrabold text-trading-green mb-3">$4,260–$4,290</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  The October 2 COMEX December futures intraday high of $4,259
-                  and the September 25 pre-drop close near $4,287.25. This is
-                  where the selling pressure intensified last week, so it is
-                  the hardest resistance to clear.
+                  The spot-gold anchor here is the September 25 pre-drop close
+                  near $4,287.25, where selling pressure intensified last week.
+                  Note that the $4,259 figure sometimes cited is the October 2
+                  intraday high of the <em>COMEX December 2026 futures</em>{" "}
+                  contract, not a spot XAU/USD level — futures and spot are
+                  correlated but not interchangeable (futures embed a term
+                  structure and settle separately). Treat $4,260–$4,290 as a
+                  spot resistance shelf, with the futures high as a
+                  cross-market reference only.
                 </p>
               </div>
               <div className="glass-strong rounded-2xl p-6 gradient-border">
@@ -1434,7 +1442,8 @@ export default function WeeklyForecastOct5Oct9Page() {
                     <CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" />
                     <span>
                       Reuters — gold price reporting (Oct 2, 2026): spot gold
-                      $4,140.06 at 2:33 PM EDT (18:33 GMT), -3.4% on the week
+                      $4,140.06 at 2:33 PM EDT (18:33 GMT), -3.4% on the week:{" "}
+                      <a href="https://www.reuters.com/world/india/gold-slips-before-us-payrolls-data-set-second-weekly-loss-2026-10-02/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">reuters.com</a>
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
@@ -1456,15 +1465,20 @@ export default function WeeklyForecastOct5Oct9Page() {
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" />
                     <span>
-                      WSJ / TradingEconomics — 10-year Treasury yield (~5.28%)
-                      and US Dollar Index (DXY ~101.92) on Oct 2, 2026
+                      TradingEconomics — 10-year Treasury yield (~5.28%) and US
+                      Dollar Index (DXY ~101.92) on Oct 2, 2026:{" "}
+                      <a href="https://tradingeconomics.com/united-states/indicators" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">tradingeconomics.com</a>
+                      {" "}(WSJ Market Data Center cross-reference for Treasury
+                      quotes)
                     </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" />
                     <span>
-                      Investing.com / CME Group — COMEX December 2026 gold
-                      futures settlement ($4,162.30, -$30.20)
+                      CME Group — COMEX December 2026 gold futures settlement
+                      ($4,162.30, -$30.20) and intraday high ($4,259) on Oct 2:{" "}
+                      <a href="https://www.cmegroup.com/markets/metals/precious/gold.html" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">cmegroup.com</a>
+                      {" "}(Investing.com historical futures data cross-reference)
                     </span>
                   </li>
                 </ul>

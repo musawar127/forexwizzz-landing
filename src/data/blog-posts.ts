@@ -58,8 +58,8 @@ export const blogPosts: BlogPost[] = [
     cardDescription:
       "Gold enters October 5–9 near $4,140 after a 3.4% weekly drop and a weak +29K NFP. See XAUUSD support, resistance, FOMC minutes and conditional scenarios.",
     displayDate: "October 4, 2026",
-    publishedAt: "2026-10-04T09:00:00+05:00",
-    modifiedAt: "2026-10-04T09:00:00+05:00",
+    publishedAt: "2026-10-04T18:40:00+05:00",
+    modifiedAt: "2026-10-04T18:40:00+05:00",
     author: {
       name: "ForexWizard Editorial Team",
       url: "https://forexwizard.online/about/",
