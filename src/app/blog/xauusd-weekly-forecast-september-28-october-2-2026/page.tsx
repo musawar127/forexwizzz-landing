@@ -462,6 +462,37 @@ export default function WeeklyForecastSep28Oct2Page() {
           </HeroAnimation>
         </section>
 
+        {/* NEXT WEEK NAV */}
+        <FadeSection className="py-8 md:py-10 px-4">
+          <div className="max-w-4xl mx-auto">
+            <Link
+              href="/blog/xauusd-weekly-forecast-october-5-9-2026/"
+              className="block no-underline"
+            >
+              <div className="glass rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 hover:scale-[1.01] transition-transform duration-300">
+                <div className="w-11 h-11 rounded-xl bg-trading-green/10 flex items-center justify-center shrink-0">
+                  <ArrowRight className="w-6 h-6 text-trading-green" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs font-bold text-muted-foreground tracking-wider mb-1">NEXT WEEK&apos;S FORECAST IS NOW LIVE</p>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-1">
+                    XAUUSD Weekly Forecast: October 5–9, 2026
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Gold enters the new week near $4,140 after the October 2 NFP.
+                    Read the updated key levels, FOMC minutes preview and
+                    conditional scenarios.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green shrink-0">
+                  Read next week
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        </FadeSection>
+
         {/* QUICK ANSWER */}
         <FadeSection className="py-16 md:py-20 px-4">
           <div className="max-w-4xl mx-auto">

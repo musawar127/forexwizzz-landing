@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-october-5-9-2026",
+    title: "XAUUSD Weekly Forecast Oct 5–9, 2026: Gold Key Levels",
+    description:
+      "XAUUSD weekly forecast for Oct 5–9, 2026: gold support and resistance after NFP, ISM Services PMI, Fed minutes and key bullish or bearish scenarios.",
+    cardDescription:
+      "Gold enters October 5–9 near $4,140 after a 3.4% weekly drop and a weak +29K NFP. See XAUUSD support, resistance, FOMC minutes and conditional scenarios.",
+    displayDate: "October 4, 2026",
+    publishedAt: "2026-10-04T09:00:00+05:00",
+    modifiedAt: "2026-10-04T09:00:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-october-5-9-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast October 5 to 9 2026 showing gold key support resistance after NFP with FOMC minutes and ISM Services PMI catalysts",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "FOMC Minutes"],
+    readingTime: "11 min read",
+  },
+  {
     slug: "best-time-to-trade-forex",
     title: "Best Time to Trade Forex: Sessions, Overlaps & Pairs",
     description:
