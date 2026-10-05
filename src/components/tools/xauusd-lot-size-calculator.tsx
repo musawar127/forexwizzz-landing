@@ -540,7 +540,7 @@ export function XauusdLotSizeCalculator() {
                   />
                   <StatRow
                     label="Risk / Reward Ratio"
-                    value={`${fmtNumber(result.riskRewardRatio, 2)} : 1`}
+                    value={`1 : ${fmtNumber(result.riskRewardRatio, 2)}`}
                     accent="gold"
                   />
                 </div>

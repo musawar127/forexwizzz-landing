@@ -1082,7 +1082,10 @@ export default function ForexRiskManagementForBeginnersPage() {
               <div className="glass rounded-xl p-4 font-mono text-sm text-foreground">
                 <p>Risk-to-reward = Potential reward &divide; Potential risk</p>
               </div>
-              <p>For example, a trade with a 30-pip stop and a 60-pip target has a risk-to-reward of approximately 1:2 &mdash; the potential reward is twice the potential risk.</p>
+              <p>For example, a trade with a 30-pip stop and a 60-pip target has a risk-to-reward of approximately 1:2 &mdash; the potential reward is twice the potential risk. To calculate this ratio from your own entry, stop and target, use the{" "}
+                <Link href="/tools/risk-reward-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Risk Reward Calculator</Link>{" "}
+                — it also shows the theoretical break-even win rate and supports multiple take-profit targets.
+              </p>
               <p>Risk-to-reward is a planning tool. It describes the structure of a trade before it is taken. It does not predict whether the target will actually be reached.</p>
               <p className="text-sm text-muted-foreground/80">Hypothetical example. Do NOT treat any specific R:R number as a rule or guarantee.</p>
             </div>

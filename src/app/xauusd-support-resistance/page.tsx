@@ -536,7 +536,10 @@ export default function XauusdSupportResistancePage() {
                 had been buying at that level now close their positions or reverse.
                 This is why it is important not to assume that any support level
                 will hold, and why defining an invalidation point below support is
-                essential for risk management.
+                essential for risk management. Once you have identified an entry,
+                invalidation level and target, compare the distances with the{" "}
+                <Link href="/tools/risk-reward-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Risk Reward Calculator</Link>
+                .
               </p>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingDown, DollarSign, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, DollarSign, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -75,10 +75,16 @@ const activeTools = [
     icon: <Percent className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/tools/risk-reward-calculator/",
+    title: "Forex & XAUUSD Risk Reward Calculator",
+    desc: "Calculate risk-to-reward from entry, stop loss and target. See R multiple, break-even win rate, expectancy and advanced multiple take-profit planning.",
+    icon: <TrendingUp className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
-  { title: "Risk/Reward Calculator", desc: "Evaluate the risk-to-reward ratio of a planned trade setup.", icon: <TrendingDown className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Margin Calculator", desc: "Estimate the required margin for a position based on leverage and contract size.", icon: <DollarSign className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Drawdown Calculator", desc: "Calculate how much gain is needed to recover from a given percentage drawdown.", icon: <ShieldCheck className="w-6 h-6 text-muted-foreground/50" /> },
 ];
@@ -121,11 +127,12 @@ export default function ToolsPage() {
               <span className="text-trading-green text-glow-green">Trading Tools</span>
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Free forex and gold trading calculators from Forex Wizard. Our
-              XAUUSD Lot Size &amp; Risk Calculator helps you estimate gold
-              position size from your account equity, risk percentage, entry
-              price, stop loss and broker specifications &mdash; all directly in
-              your browser, no registration or login required.
+              Free forex and gold trading calculators from Forex Wizard. Plan
+              position sizing with the XAUUSD Lot Size Calculator, track session
+              timing with the Forex Market Hours Clock, measure movement value
+              with the Pip Value Calculator, and evaluate trade payoff geometry
+              with the Risk Reward Calculator &mdash; all directly in your
+              browser, no registration or login required.
             </p>
             <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
               All results are educational estimates. Actual trading losses can

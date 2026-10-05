@@ -591,3 +591,493 @@ Work Log:
 Stage Summary:
 - Files changed: src/data/blog-posts.ts, src/app/blog/xauusd-weekly-forecast-october-5-9-2026/page.tsx, worklog.md.
 - All quality gates pass. Ready to commit and push.
+
+---
+Task ID: EXPLORE-1
+Agent: Exploration subagent
+Task: Audit lot-size R:R terminology + map tools/homepage/pip-value/blog insertion points for adding a Risk Reward Calculator tool
+
+Work Log:
+- Read worklog.md (read-only) to understand prior context (ForexWizzz landing, gold-signals SEO, calculator pages, brand standardization, weekly forecasts, etc.).
+- Inspected src/lib/xauusd-lot-size-calc.ts (calc engine) for the R:R math definition.
+- Inspected src/components/tools/xauusd-lot-size-calculator.tsx for the R:R UI label/value rendering.
+- Grep + inspected src/app/xauusd-lot-size/page.tsx (880 lines) to confirm no other R:R display sites outside the component.
+- Inspected src/app/tools/page.tsx (active tools array, upcoming tools array, related guides, intro paragraph).
+- Inspected src/app/page.tsx homepage tool-cards section (lines 719-820).
+- Inspected src/app/xauusd-pip-value/page.tsx (metadata block, WebApplication + BreadcrumbList schema, header, footer, page function start).
+- Inspected scripts/create-pip-value-og.js (sharp/SVG/JPG pattern).
+- Grep + read contextual paragraphs in xauusd-lot-size/page.tsx, xauusd-pip-value/page.tsx, blog/forex-risk-management-for-beginners/page.tsx, xauusd-support-resistance/page.tsx for natural internal-link insertion points.
+- Compiled this report. No code files were modified.
+
+Stage Summary:
+
+================================================================
+SECTION 1 — LOT SIZE R:R TERMINOLOGY AUDIT
+================================================================
+
+1A. CALCULATION ENGINE PRODUCES REWARD/RISK (= R), NOT RISK/REWARD
+File: src/lib/xauusd-lot-size-calc.ts
+Line 71-72 (interface): the field is named `riskRewardRatio?: number;` but the math is reward/risk.
+Line 377-380 (the actual computation):
+
+  377    estimatedReward = calculatedVolume * rewardPerLot;
+  378    if (actualEstimatedRisk > 0) {
+  379      riskRewardRatio = estimatedReward / actualEstimatedRisk;
+  380    }
+
+So `riskRewardRatio` is mathematically = reward / risk = the "R multiple" (a.k.a. Reward Multiple R). A value of 2.00 means reward is 2x risk (i.e. a 2R trade). The variable NAME is misleading but the spec explicitly says DO NOT touch calc logic, so we leave the engine untouched.
+
+1B. THE ONLY UI DISPLAY OF R:R (the inconsistency site)
+File: src/components/tools/xauusd-lot-size-calculator.tsx
+Lines 541-545 (inside the `hasTP` block of the right-hand results panel):
+
+  541                  <StatRow
+  542                    label="Risk / Reward Ratio"
+  543                    value={`${fmtNumber(result.riskRewardRatio, 2)} : 1`}
+  544                    accent="gold"
+  545                  />
+
+This is the ONLY R:R display in the entire lot-size feature. Confirmed by grep — there are no other "Risk / Reward", "Reward Multiple", "R : 1", "2R", "1 : 2" strings in src/app/xauusd-lot-size/page.tsx (the page imports the calculator component; the page body itself does not re-render the ratio).
+
+1C. CURRENT TERMINOLOGY — INCONSISTENT
+- Current label text:  "Risk / Reward Ratio"
+- Current value format: `${riskRewardRatio} : 1`  →  renders as e.g. "2.00 : 1"
+- Underlying value: reward/risk = R (so 2.00 means reward is 2x risk)
+- Inconsistency: A label of "Risk / Reward" conventionally means risk:reward (1:2 for a 2R trade). But the value is computed as R = reward/risk and rendered as "R : 1" (e.g. "2 : 1"). So the displayed pair "Risk / Reward Ratio = 2 : 1" reads to a trader as "risk 2, reward 1" (a BAD trade), when in fact the trade is reward 2 / risk 1 (a GOOD 2R trade). The label and the displayed "X : 1" ordering are reversed relative to each other.
+
+1D. RECOMMENDED MINIMUM DISPLAY FIX (calc logic untouched)
+Forex Wizard standard per spec: "Risk : Reward = 1 : R".
+Two equally minimal options; Option A is preferred because it changes only ONE token and keeps the existing label semantically correct:
+
+  Option A (preferred, minimum change) — keep the existing label "Risk / Reward Ratio" (it is semantically correct: it IS a risk:reward ratio) and just reverse the displayed ratio ordering so it reads "1 : R" instead of "R : 1":
+
+    File: src/components/tools/xauusd-lot-size-calculator.tsx
+    Line 543 — change:
+        value={`${fmtNumber(result.riskRewardRatio, 2)} : 1`}
+      to:
+        value={`1 : ${fmtNumber(result.riskRewardRatio, 2)}`}
+
+    Effect: a 2R trade now renders as "Risk / Reward Ratio: 1 : 2.00" which matches the standard "Risk : Reward = 1 : R". The label and the value are now mutually consistent. No calc change. One-line edit.
+
+  Option B (alternative, also minimum) — keep the value as "R : 1" but rename the label so it no longer claims to be a risk:reward ratio:
+
+    Line 542 — change:
+        label="Risk / Reward Ratio"
+      to:
+        label="Reward Multiple (R)"
+    (and optionally also tweak line 543 to render as `${fmtNumber(result.riskRewardRatio, 2)}R` for clarity, e.g. "2.00R")
+
+  Recommend Option A: it aligns the page with the project-wide convention already used in src/app/blog/forex-risk-management-for-beginners/page.tsx (see Section 5: that guide states "risk-to-reward of approximately 1:2" — i.e. Risk : Reward = 1 : R), so a single one-token edit makes the calculator consistent with the blog.
+
+NOTE on safeRound precision in engine (line 398): `riskRewardRatio` is rounded to 4 decimals, then the component formats with `fmtNumber(..., 2)`. So the "R" value shown will always have exactly 2 decimals (e.g. "1 : 2.00"). This is fine; the spec's "1 : R" allows R to be a decimal.
+
+================================================================
+SECTION 2 — TOOLS HUB STRUCTURE (src/app/tools/page.tsx, 232 lines)
+================================================================
+
+2A. ACTIVE TOOLS SECTION
+- Lines 56-78: `activeTools` array (3 entries), rendered via `.map()` at lines 146-170.
+- Grid container at line 145: `<div className="grid grid-cols-1 md:grid-cols-2 gap-6">`
+- Each tool entry shape (object): `{ href, title, desc, icon, badge }`
+- Card JSX pattern (lines 148-168):
+
+    <Link href={tool.href} className="block h-full no-underline group">
+      <div className="glass-strong rounded-2xl p-6 md:p-8 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+        <div className="flex items-center justify-between">
+          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+            {tool.icon}
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-3 py-1">
+            {tool.badge}
+          </span>
+        </div>
+        <h3 className="text-lg md:text-xl font-bold text-foreground">
+          {tool.title}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+          {tool.desc}
+        </p>
+        <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+          Open Calculator <ArrowRight className="w-4 h-4" />
+        </span>
+      </div>
+    </Link>
+
+- Currently 3 active tools: XAUUSD Lot Size (/xauusd-lot-size/), Forex Market Hours (/tools/forex-market-hours/), Pip Value Calculator (/xauusd-pip-value/). All use badge: "LIVE".
+
+2B. COMING SOON SECTION
+- Lines 80-84: `upcomingTools` array (3 entries), rendered via `.map()` at lines 187-197.
+- Grid container at line 186: `<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">`
+- Each entry shape (object): `{ title, desc, icon }`  (no href, no badge — these are previews only, rendered as plain divs not Links)
+- Card JSX pattern (lines 189-195):
+
+    <div className="glass rounded-2xl p-6 flex flex-col gap-3 opacity-60">
+      <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
+        {tool.icon}
+      </div>
+      <h3 className="text-sm font-bold text-foreground">{tool.title}</h3>
+      <p className="text-xs text-muted-foreground leading-relaxed">{tool.desc}</p>
+    </div>
+
+- Current 3 upcoming tools (lines 81-83):
+    1. { title: "Risk/Reward Calculator", desc: "Evaluate the risk-to-reward ratio of a planned trade setup.", icon: <TrendingDown className="w-6 h-6 text-muted-foreground/50" /> }
+    2. { title: "Margin Calculator", desc: "Estimate the required margin for a position based on leverage and contract size.", icon: <DollarSign .../> }
+    3. { title: "Drawdown Calculator", desc: "Calculate how much gain is needed to recover from a given percentage drawdown.", icon: <ShieldCheck .../> }
+
+- CONFIRMED: "Risk/Reward Calculator" IS already present in the Coming Soon section at line 81. The spec says it should be there — it is. When promoting it to an active tool, the main agent should: (a) remove the line 81 entry from `upcomingTools`, (b) add a new entry to `activeTools` with href "/tools/risk-reward-calculator/", badge "LIVE", and a TradingDown/TrendingDown/Scale-style icon (already imported on line 3).
+
+2C. RELATED GUIDES SECTION
+- Lines 86-91: `relatedGuides` array (4 entries).
+- Optional — could add the risk-reward calculator page to this section too, but not required.
+
+2D. TOOLS PAGE INTRO TEXT (spec says to update to mention position sizing, market hours, pip value, risk/reward)
+- Lines 123-134 contain TWO intro paragraphs inside `<HeroAnimation>`:
+    Line 123-129 (primary intro):
+      <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+        Free forex and gold trading calculators from Forex Wizard. Our
+        XAUUSD Lot Size &amp; Risk Calculator helps you estimate gold
+        position size from your account equity, risk percentage, entry
+        price, stop loss and broker specifications &mdash; all directly in
+        your browser, no registration or login required.
+      </p>
+    Line 130-134 (secondary disclaimer):
+      <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
+        All results are educational estimates. Actual trading losses can
+        differ due to spreads, slippage, gaps, commissions and execution
+        conditions. Always verify broker specifications before trading.
+      </p>
+- The primary intro currently mentions only the Lot Size calculator. The spec wants it updated to mention position sizing, market hours, pip value, and risk/reward. The main agent can edit lines 124-128 to expand the list, e.g.:
+    "Free forex and gold trading calculators from Forex Wizard. Use our XAUUSD Lot Size & Risk Calculator to plan position sizing, the Forex Market Hours tool to track live sessions, the Pip Value Calculator to measure pip values, and the Risk Reward Calculator to evaluate trade setups — all directly in your browser, no registration or login required."
+
+2E. METADATA BLOCK (for reference)
+- Lines 13-43: `export const metadata: Metadata = {...}` with title, description, canonical (alternates), openGraph, twitter. Uses generic "/og-image.jpg". A new dedicated OG image (e.g. "/og-risk-reward.jpg") should be generated per Section 6 pattern.
+- Lines 47-54: `breadcrumbStructuredData` (BreadcrumbList with 2 items: Home, Trading Tools).
+
+================================================================
+SECTION 3 — HOMEPAGE TOOL CARDS STRUCTURE (src/app/page.tsx)
+================================================================
+
+3A. TOOL CARDS SECTION
+- Section start: line 719 (`{/* FREE FOREX TRADING TOOLS */}`), section end: line 820 (closing `</FadeSection>`).
+- Section heading at lines 726-729, intro paragraph at lines 730-733.
+- Cards are rendered INLINE (NOT via .map array) — three separate `<Link>` blocks, one per tool, each with its own `{/* Tool N: ... */}` comment marker.
+- Current 3 cards: Tool 1 = XAUUSD Lot Size Calculator (/xauusd-lot-size/), Tool 2 = Forex Market Hours (/tools/forex-market-hours/), Tool 3 = Pip Value Calculator (/xauusd-pip-value/).
+
+3B. GRID CLASSNAME (spec wants mobile 1 col / tablet 2 col / large desktop 4 col)
+- Line 736: `<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">`
+- Currently: 1 col on mobile, 3 cols on md+ (no 2-col tablet breakpoint, no 4-col large-desktop).
+- To match spec (1 / 2 / 4), change line 736 to:
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+  (Note: also bump `max-w-5xl` → `max-w-6xl` so 4 cards have horizontal breathing room. If keeping 3 cards + adding 1 = 4 total cards, lg:grid-cols-4 lays them out in one row on desktop. The main agent should also confirm the section heading "max-w-6xl" wrapper at line 721 already exists — it does.)
+
+3C. TOOL CARD JSX PATTERN (so a 4th card can be added consistently)
+- Each card follows this exact structure (example from Tool 1, lines 738-759):
+
+    <Link href="/xauusd-lot-size/" className="block no-underline group">
+      <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+            <Calculator className="w-6 h-6 text-trading-green" />
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+            LIVE
+          </span>
+        </div>
+        <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+          XAUUSD Lot Size &amp; Risk Calculator
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+          Calculate gold position size from your equity, risk
+          percentage, entry, stop loss and broker specifications.
+        </p>
+        <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+          Use Calculator <ArrowRight className="w-4 h-4" />
+        </span>
+      </div>
+    </Link>
+
+- For the 4th card (Risk Reward Calculator), insert AFTER line 807 (closing `</Link>` of Tool 3) and BEFORE line 808 (closing `</div>` of the grid). Use:
+    - href: "/tools/risk-reward-calculator/"
+    - icon: a suitable lucide icon already imported in page.tsx (verify Scale, TrendingDown, Target are imported — they are; Target and TrendingDown are imported per line 2-18 of page.tsx). Suggest `<TrendingDown className="w-6 h-6 text-trading-green" />` or `<Scale className="w-6 h-6 text-trading-green" />` (Scale is NOT currently imported in homepage; would need adding to the import list at lines 2-18).
+    - title: e.g. "Risk Reward Calculator"
+    - description: e.g. "Compare your stop-loss distance and target distance to evaluate the risk : reward ratio of a planned trade setup."
+    - CTA text: e.g. "Use Calculator" (matches Tool 1 and Tool 3 pattern) or "Open Calculator".
+
+3D. ICON IMPORT CHECK (src/app/page.tsx lines 1-18)
+- Currently imports: TrendingUp, BarChart3, Trophy, Smartphone, GraduationCap, Zap, Clock, Star, ArrowRight, MessageCircle, ShieldCheck, BookOpen, Target, Calculator, Hash.
+- NOT imported: Scale, TrendingDown, Percent. If the 4th card needs one of these, add it to the lucide-react import block.
+
+================================================================
+SECTION 4 — PIP-VALUE PAGE SCHEMA PATTERN (reference for new tool page)
+File: src/app/xauusd-pip-value/page.tsx (854 lines)
+================================================================
+
+4A. METADATA BLOCK (lines 19-37) — exact pattern:
+
+  19  export const metadata: Metadata = {
+  20    title: "XAUUSD Pip Value Calculator | Gold Pips & Lot Value",
+  21    description: "Calculate XAUUSD pip value for 0.01, 0.10 and 1.00 lots. Compare gold pip conventions, calculate price distance and check pip values for forex pairs.",
+  22    alternates: { canonical: "https://forexwizard.online/xauusd-pip-value/" },
+  23    openGraph: {
+  24      title: "XAUUSD Pip Value Calculator | Gold Pips & Lot Value",
+  25      description: "Calculate XAUUSD pip value for 0.01, 0.10 and 1.00 lots. Compare gold pip conventions, calculate price distance and check pip values for forex pairs.",
+  26      type: "website",
+  27      url: "https://forexwizard.online/xauusd-pip-value/",
+  28      siteName: "Forex Wizard",
+  29      images: [{ url: "/og-pip-value.jpg", width: 1200, height: 630, alt: "XAUUSD Pip Value Calculator showing gold pip values for different lot sizes" }],
+  30    },
+  31    twitter: {
+  32      card: "summary_large_image",
+  33      title: "XAUUSD Pip Value Calculator | Gold Pips & Lot Value",
+  34      description: "Calculate XAUUSD pip value for 0.01, 0.10 and 1.00 lots. Compare gold pip conventions, calculate price distance and check pip values for forex pairs.",
+  35      images: ["/og-pip-value.jpg"],
+  36    },
+  37  };
+
+4B. WebApplication JSON-LD (lines 41-51) — exact structure:
+
+  41  const webAppStructuredData = {
+  42    "@context": "https://schema.org",
+  43    "@type": "WebApplication",
+  44    name: "Forex Wizard XAUUSD & Forex Pip Value Calculator",
+  45    description: "Free XAUUSD and forex pip value calculator. Calculate gold pip values, compare pip conventions, and convert pip values to your account currency.",
+  46    url: "https://forexwizard.online/xauusd-pip-value/",
+  47    applicationCategory: "FinanceApplication",
+  48    operatingSystem: "Web",
+  49    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  50    publisher: { "@type": "Organization", name: "Forex Wizard", url: "https://forexwizard.online/", logo: { "@type": "ImageObject", url: "https://forexwizard.online/brand/forexwizard-logo.webp" } },
+  51  };
+
+4C. BreadcrumbList JSON-LD (lines 53-61) — exact structure:
+
+  53  const breadcrumbStructuredData = {
+  54    "@context": "https://schema.org",
+  55    "@type": "BreadcrumbList",
+  56    itemListElement: [
+  57      { "@type": "ListItem", position: 1, name: "Home", item: "https://forexwizard.online/" },
+  58      { "@type": "ListItem", position: 2, name: "Trading Tools", item: "https://forexwizard.online/tools/" },
+  59      { "@type": "ListItem", position: 3, name: "XAUUSD Pip Value Calculator", item: "https://forexwizard.online/xauusd-pip-value/" },
+  60    ],
+  61  };
+
+4D. PAGE FUNCTION START + JSON-LD INJECTION (lines 197-202) — exact pattern:
+
+  197  export default function XauusdPipValuePage() {
+  198    return (
+  199      <>
+  200        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppStructuredData) }} />
+  201        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }} />
+  202
+  203        {/* HEADER */}
+  204        <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+
+NOTE: pip-value page uses a FIXED header (`fixed top-0 left-0 right-0 z-50 glass border-b border-white/5`) — this differs from the lot-size page which uses a `relative z-20` header (non-fixed). The new Risk Reward Calculator page should follow the pip-value pattern (fixed header) for consistency with the most recent calculator pages. The fixed header requires a top padding on the hero/main content — pip-value handles this via `min-h-[70vh]` hero with `py-24 md:py-32`.
+
+4E. HEADER / NAV STRUCTURE (lines 204-226) — exact pattern:
+
+  204      <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
+  205        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+  206          <Link href="/" className="text-lg font-extrabold text-trading-gold tracking-tight no-underline flex items-center gap-2">
+  207            <img src="/brand/forexwizard-logo.webp" alt="ForexWizard logo" width={44} height={44} loading="eager" decoding="async" className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 rounded-lg object-cover" />
+  208            Forex Wizard
+  209          </Link>
+  210          <nav className="hidden md:flex items-center gap-6">
+  211            <Link href="/forex-signals/" className="text-sm font-medium text-muted-foreground hover:text-trading-green transition-colors no-underline">Forex Signals</Link>
+  212            <Link href="/gold-signals/" className="text-sm font-medium text-muted-foreground hover:text-trading-green transition-colors no-underline">Gold Signals</Link>
+  213            <Link href="/xauusd-analysis/" className="text-sm font-medium text-muted-foreground hover:text-trading-green transition-colors no-underline">XAUUSD Analysis</Link>
+  214            <Link href="/about/" className="text-sm font-medium text-muted-foreground hover:text-trading-green transition-colors no-underline">About</Link>
+  215            <a href={TELEGRAM_LINK} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-trading-green hover:text-trading-green/80 transition-colors no-underline">Join on Telegram</a>
+  216          </nav>
+  217        </div>
+  218      </header>
+  219
+  220      <main className="min-h-screen bg-trading-dark text-foreground overflow-x-hidden">
+
+4F. FOOTER PATTERN (lines 846-851) — exact pattern:
+
+  846        {/* FOOTER */}
+  847        <SiteFooter />
+  848      </main>
+  849
+  850      <StickyTelegramButton href={TELEGRAM_LINK} label="Join Forex Wizard on Telegram" />
+  851    </>
+  852  );
+  853  }
+
+================================================================
+SECTION 5 — INTERNAL LINK INSERTION POINTS (link to /tools/risk-reward-calculator/)
+For each file: the exact surrounding paragraph + suggested sentence to add.
+================================================================
+
+5A. src/app/xauusd-lot-size/page.tsx
+Natural insertion point: Section "16. How Lot Size Fits Into an XAUUSD Trading Plan".
+Current paragraph (line 698):
+
+  698  <p>Proper position sizing is one of the last steps before entering a trade. It should come only after you have analyzed the market, identified a setup, defined your entry and stop, and decided how much you are willing to lose. Calculating lot size before completing these steps is putting the cart before the horse.</p>
+
+Suggested edit: append a sentence to this paragraph (or insert a new paragraph immediately after line 698) — e.g.:
+
+  Once you have your entry, stop-loss and take-profit prices, use the <Link href="/tools/risk-reward-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">Risk Reward Calculator</Link> to evaluate whether the planned reward justifies the risk before sizing the position.
+
+Alternative (also natural): the `planSteps` array entries at lines 143-149 (especially step 4 "Define invalidation / stop-loss" line 147 and step 5 "Decide maximum acceptable loss" line 148). A sentence could be appended to step 5's desc text mentioning the Risk Reward Calculator. But the cleaner spot is the paragraph at line 698.
+
+5B. src/app/xauusd-pip-value/page.tsx
+Natural insertion point: Section "16. Stop Distance and Pips" — the paragraph at line 619 already chains to the support-resistance guide and to the lot-size guide; the perfect place to add a third cross-link to the Risk Reward Calculator.
+
+Current paragraph (line 619):
+
+  619  <p>Regardless of how you measure stop distance, the placement of the stop-loss should come from the <span className="text-foreground font-medium">trade setup and invalidation logic</span>, not from choosing an arbitrary number of pips. The stop should be placed where the trade idea is proven wrong &mdash; which might be below a support level, above a resistance level, or at another technically significant point. For more on identifying key levels, see the guide to <Link href="/xauusd-support-resistance/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD support and resistance</Link>.</p>
+
+Current paragraph (line 620):
+
+  620  <p>Once the stop level is determined by the market structure, the distance can be translated into a monetary risk figure. This is where understanding <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD lot size</Link> becomes critical: the combination of stop distance, contract size, and lot size determines how much capital is at risk on the trade.</p>
+
+Suggested edit: insert a new short paragraph between lines 620 and 621 (or append a sentence to line 620) — e.g.:
+
+  Once you have both the stop distance and a logical profit target, the <Link href="/tools/risk-reward-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">Risk Reward Calculator</Link> lets you compare the two distances as a clean risk : reward ratio before you commit to the position.
+
+5C. src/app/blog/forex-risk-management-for-beginners/page.tsx
+Natural insertion point: Section "WHAT IS RISK-TO-REWARD" — this is the most thematically direct fit (the section literally explains R:R).
+Current paragraphs (lines 1081-1087):
+
+  1081  <p>Risk-to-reward (often written as R:R) compares the potential loss on a trade with the potential gain.</p>
+  1082  <div className="glass rounded-xl p-4 font-mono text-sm text-foreground">
+  1083    <p>Risk-to-reward = Potential reward &divide; Potential risk</p>
+  1084  </div>
+  1085  <p>For example, a trade with a 30-pip stop and a 60-pip target has a risk-to-reward of approximately 1:2 &mdash; the potential reward is twice the potential risk.</p>
+  1086  <p>Risk-to-reward is a planning tool. It describes the structure of a trade before it is taken. It does not predict whether the target will actually be reached.</p>
+  1087  <p className="text-sm text-muted-foreground/80">Hypothetical example. Do NOT treat any specific R:R number as a rule or guarantee.</p>
+
+Suggested edit: insert a new sentence/paragraph after line 1086 (before the disclaimer at line 1087) — e.g.:
+
+  To evaluate the risk-to-reward of your own planned setup, try our free <Link href="/tools/risk-reward-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">Risk Reward Calculator</Link>.
+
+5D. src/app/xauusd-support-resistance/page.tsx
+Natural insertion point: the "Risk/Reward" entry in the risk-management principles array — this is the EXACT spot the spec example sentence was written for.
+Current object (lines 326-330):
+
+  326  {
+  327    title: "Risk/Reward",
+  328    icon: <BarChart3 className="w-6 h-6 text-blue-400" />,
+  329    desc: "Compare the distance to your stop-loss (risk) against the distance to a logical profit target (reward). On XAUUSD, clear support and resistance zones can help define both sides of this equation. A trade where the potential reward meaningfully exceeds the risk generally offers a better foundation than one where the risk is disproportionate to the potential gain.",
+  330  },
+
+This `desc` is a plain string in a data array — it can't contain JSX `<Link>` directly without converting the field to ReactNode. Two options for the main agent:
+  (i) Cheapest: append a plain-text sentence to the desc string and convert the whole desc to render via a small JSX wrapper. (Look at how the array is rendered — at the `.map` site, the main agent can wrap {item.desc} in a fragment and append a Link there.)
+  (ii) Cleaner: append a sentence inside the desc string saying "Use the Risk Reward Calculator to compare the distances." and render the array entry's title as a link, or add a separate "Read more: Risk Reward Calculator" link rendered beside the card.
+
+Suggested sentence (matches the spec example wording):
+  "Once you have identified an entry, invalidation level and target, compare the distances with the Risk Reward Calculator." — link "Risk Reward Calculator" to /tools/risk-reward-calculator/.
+
+Alternative natural insertion point: the paragraph at lines 531-540 which already talks about "defining an invalidation point below support" — the spec's example sentence was clearly modeled on this passage:
+
+  531  <p>
+  532    Support can and does fail. When selling pressure is sufficient to
+  533    push price through a support zone and close decisively below it,
+  534    the support is said to have broken. ...
+  537    This is why it is important not to assume that any support level
+  538    will hold, and why defining an invalidation point below support is
+  539    essential for risk management.
+  540  </p>
+
+This paragraph already contains JSX so it accepts a `<Link>` directly. Suggested addition as a new sentence at the end of this paragraph (after line 539, before closing `</p>`):
+
+  Once you have identified an entry, invalidation level and target, compare the distances with the <Link href="/tools/risk-reward-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">Risk Reward Calculator</Link>.
+
+This paragraph (531-540) is the BEST insertion point for support-resistance because it accepts JSX natively and matches the spec example wording verbatim.
+
+================================================================
+SECTION 6 — OG IMAGE SCRIPT PATTERN (scripts/create-pip-value-og.js, 44 lines)
+================================================================
+
+6A. STRUCTURE OVERVIEW
+- CommonJS script (run with `node scripts/create-pip-value-og.js`).
+- Uses `sharp` + `fs`. Output is a single JPG only (no WebP variant — the spec mentioned "JPG + WebP" but the existing pip-value script does NOT produce a WebP; if the main agent wants WebP they should add a second `.webp()` chain).
+- Single async `main()` function, error handler at the end.
+
+6B. KEY STRUCTURAL LINES (quoted)
+
+Line 1-4 — imports + output path:
+  1   /* eslint-disable @typescript-eslint/no-require-imports */
+  2   const sharp = require("sharp");
+  3   const fs = require("fs");
+  4   const OUT = "/home/z/my-project/public/og-pip-value.jpg";
+
+Line 5 — dimensions:
+  5   const W=1200,H=630;
+
+Lines 6-41 — single big SVG template string assigned to `const svg = \`<svg ...>\`:
+  6   const svg=`<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg">
+  7   <defs>
+  8   <linearGradient id="bg" ...>...#0a0a0f...#0d0f16...#0a0a0f...</linearGradient>
+  9   <linearGradient id="gg" ...>...#00e676...#ffd740...</linearGradient>
+  10  <filter id="glow"><feGaussianBlur stdDeviation="4" .../></filter>
+  11  </defs>
+  12  <rect width="${W}" height="${H}" fill="url(#bg)"/>
+  13  <circle cx="980" cy="120" r="220" fill="#ffd740" opacity="0.05"/>
+  14  <circle cx="180" cy="540" r="180" fill="#00e676" opacity="0.05"/>
+  15  <g transform="translate(700,160)" ...>  <!-- mock calculator panel -->
+  ...
+  41  </svg>`;
+
+Key visual elements inside the SVG (all hardcoded coordinates — new script should adjust to match the risk-reward tool's content):
+  - Background gradient (#0a0a0f dark)
+  - Two radial blur circles (gold top-right, green bottom-left) at low opacity for glow
+  - A mock "calculator panel" group at translate(700,160) showing LOT SIZE / PIP SIZE / CONTRACT rows + a green highlighted PIP VALUE row + two small currency boxes
+  - "Forex Wizard" logo text (top-left) with green "Wizard" tspan
+  - "FREE CALCULATOR" gold pill badge
+  - Big two-line title: line 1 white, line 2 gold ("XAUUSD Pip Value" / "Calculator")
+  - Subtitle line in muted gray
+  - Bottom gradient bar + footer text "forexwizard.online · Not financial advice"
+
+Line 42 — main() converts SVG buffer → JPG via sharp:
+  42  async function main(){await sharp(Buffer.from(svg.trim())).flatten({background:"#0a0a0f"}).jpeg({quality:85,mozjpeg:true}).toFile(OUT);console.log("JPG: "+(fs.statSync(OUT).size/1024).toFixed(1)+" KB");}
+
+Line 43-44 — invocation + error handler:
+  43  main().catch(e=>{console.error(e);process.exit(1);});
+
+6C. PATTERN FOR A NEW RISK-REWARD OG SCRIPT
+Create scripts/create-risk-reward-og.js following the same skeleton. Adjustments:
+  - Line 4: `const OUT = "/home/z/my-project/public/og-risk-reward.jpg";`
+  - SVG mock panel: replace LOT SIZE / PIP SIZE / CONTRACT rows with R:R-themed rows, e.g.:
+      ENTRY: 4300.00
+      STOP:  4295.00
+      TARGET: 4310.00
+      (highlighted green row) RISK : REWARD  1 : 2.00
+  - Title text (lines 36-37): "Risk Reward" / "Calculator" (or "Risk : Reward Calculator")
+  - Subtitle (line 38): e.g. "Trade Setup Evaluator"
+  - All other colors, gradients, glow filter, footer text: keep identical for brand consistency.
+  - Add JPG output to public/og-risk-reward.jpg and reference it in the new page's metadata openGraph.images and twitter.images (per Section 4A pattern).
+  - If WebP is also desired (spec mentioned JPG + WebP), add a second await chain: `await sharp(Buffer.from(svg.trim())).flatten({background:"#0a0a0f"}).webp({quality:85}).toFile(OUT.replace(/\.jpg$/, ".webp"));` — but the existing pip-value script does NOT do this, so adding WebP would be a deviation from the established pattern. Recommend: follow the existing pattern (JPG only) for consistency, unless the main agent explicitly wants WebP.
+
+================================================================
+END OF EXPLORE-1 REPORT
+================================================================
+
+---
+Task ID: tool4-risk-reward
+Agent: Main Agent
+Task: Implement Forex and XAUUSD Risk Reward Calculator (Tool #4) per final specification. Create pure calc module, tests, interactive component, full SEO page with content + schema, OG image, update tools hub + homepage + sitemap, add internal links, fix lot-size R:R terminology. Preserve AdSense, calculators, existing SEO.
+
+Work Log:
+- Synced with origin/main (HEAD 28867b9). Sitemap baseline 29 URLs. Launched exploration subagent (Task EXPLORE-1) which mapped: lot-size R:R terminology issue (line 543 component renders "R : 1" labelled as "Risk / Reward Ratio"), tools hub structure (activeTools array + upcomingTools with Risk/Reward already listed), homepage tool cards (3 cards, grid-cols-1 md:grid-cols-3), pip-value schema pattern (WebApplication + BreadcrumbList), internal link insertion points, OG image script pattern.
+- Created src/lib/risk-reward-calc.ts (pure module, ~520 lines): types (Direction, DisplayMode, CalculatorMode, inputs/results), getIncrementSize, roundTo/smartRound (float-safe), convertDistanceToIncrementUnits, computeDistances (directional validation, no abs silencing), calculateBreakEvenWinRate (1/(1+R)*100), calculateExpectancy (p*R-(1-p)), calculateTargetFromR, calculateStopFromR, calculateCostAdjustedMetrics (netR, adjustedBE, cost-adjusted expectancy), calculateMultiTargetPlan (1-4 targets, allocation total 100, ordering, weighted R), validateInputs, analyzeRiskReward (main entry), DEFAULT_INPUTS, R_PRESETS, BREAK_EVEN_TABLE, DISPLAY_MODE_LABELS. Multi-target explicitly returns null breakEvenWinRate/expectancy/costAdjusted per spec section 18.
+- Created tests/risk-reward-calc.test.ts (97 tests): LONG/SHORT 1R/2R/3R/0.5R/5R, forex decimals (EURUSD/GBPUSD/USDJPY/tiny), XAUUSD conventions ($0.01/$0.10/custom/invariant), find-target (long/short 1R/2R/3R/fractional/invalid), find-stop (long/short/fractional/invalid), break-even (1R/2R/3R/0.5R/5R + table), expectancy (50%+2R/25%+3R/40%+1R/boundaries), cost (zero/positive/exceeds/expectancy/single-target-only), multi-target (2/4 targets/ordering/allocation<100/>100/wrong-side/no-break-even/risk-amount), validation (geometry/non-finite/negative/zero/invalid-R/win-rate/cost/increment), floating-point safety, helpers, risk-amount, price-distance percentages. Fixed 6 initial test-expectation bugs (float strict equality + 2 arithmetic errors). All 97 pass.
+- Created scripts/create-risk-reward-og.js + ran it: public/og-risk-reward-calculator.jpg (44.5 KB, 1200x630, dark theme, gold+green, RISK REWARD CALCULATOR / FOREX + XAUUSD / ENTRY-STOP-TARGET, 1:2.00 / 2.00R / 33.33% metrics, trade-map ladder).
+- Created src/components/tools/risk-reward-calculator.tsx (client component, ~560 lines): 4 mode tabs (Analyze/Find Target/Find Stop/Multiple Targets), direction toggle, entry/stop/target/desiredR fields, R presets (1/1.5/2/2.5/3/4/5), display mode selector (Generic/XAUUSD $0.01/XAUUSD $0.10/Forex Standard/Forex JPY/Custom), advanced section (risk amount/win rate/trading cost), multi-target inputs (1-4 TPs with price+alloc), live useMemo calculation, results panel (headline 1:R, distances, solved price, break-even, multi-target table+notice, risk amount, expectancy, cost-adjusted, visual trade map with accessible aria-label), break-even reference table, reset button. All labels use Risk:Reward = 1:R convention.
+- Created src/app/tools/risk-reward-calculator/page.tsx (~580 lines): metadata (exact spec title/description/canonical/OG/Twitter), WebApplication + BreadcrumbList JSON-LD, fixed header, hero (breadcrumb, badge, H1 "Risk Reward Calculator for Forex & XAUUSD", intro + educational notice), calculator component, 10 content H2 sections (How to Use, How It's Calculated, What Does 1:2 Mean, Break-Even Table, XAUUSD Pip Conventions, Multiple Take Profits, R:R vs Lot Size/Pip Value, Spread/Commission/Slippage, Expectancy, Common Mistakes), 12-item FAQ (visible only, no FAQPage schema), risk disclaimer, Telegram CTA, footer. Internal links to /xauusd-lot-size/, /xauusd-pip-value/, /xauusd-support-resistance/, /blog/forex-risk-management-for-beginners/, /tools/forex-market-hours/, /tools/. ~1,300 words of original educational content.
+- Fixed lot-size R:R terminology: src/components/tools/xauusd-lot-size-calculator.tsx line 543 changed from `${riskRewardRatio} : 1` to `1 : ${riskRewardRatio}`. Calc logic untouched (git diff on src/lib/xauusd-lot-size-calc.ts empty).
+- Updated src/app/tools/page.tsx: added Risk/Reward to activeTools (4th card, LIVE badge), removed from upcomingTools (now only Margin + Drawdown), added TrendingUp import (replaced TrendingDown), updated intro paragraph to mention all 4 tools (position sizing, market hours, pip value, risk/reward).
+- Updated src/app/page.tsx: added Scale icon import, changed tool grid from md:grid-cols-3 max-w-5xl to sm:grid-cols-2 lg:grid-cols-4 max-w-6xl, added 4th card (Risk Reward Calculator, Scale icon, LIVE badge, "Use Calculator" CTA).
+- Updated public/sitemap.xml: added /tools/risk-reward-calculator/ (lastmod 2026-10-06, priority 0.9). Total 29 to 30 URLs. All existing preserved.
+- Added internal links to new tool from 4 existing pages: xauusd-support-resistance (invalidation point paragraph), xauusd-lot-size (trading plan paragraph), xauusd-pip-value (stop distance paragraph), blog/forex-risk-management-for-beginners (1:2 example paragraph). All contextual, varied anchor text, not spammy.
+- AdSense preserved: ads.txt untouched (pub-6688769451659099), Privacy Policy untouched, no ad scripts added. Calculator engines untouched: git diff on src/lib/xauusd-lot-size-calc.ts, pip-value-calc.ts, forex-sessions.ts and the 3 existing tool components = empty (only the one-line R:R display fix in lot-size component).
+- Lint: 0 errors 0 warnings. Tests: 266 pass 0 fail (169 baseline + 97 new). Build: Compiled 8.1s, 33 static pages (+1). git diff --check clean.
+- Built HTML verified: 1 H1, correct title/canonical, 1 WebApplication + 1 BreadcrumbList schema, correct OG image, 30 sitemap URLs, new tool on /tools/ index (4 active) and homepage (4 cards), all 6 required outbound internal links present, 4 inbound internal links from existing pages present, ads.txt intact.
+
+Stage Summary:
+- Tool URL: https://forexwizard.online/tools/risk-reward-calculator/
+- Files created: src/lib/risk-reward-calc.ts, tests/risk-reward-calc.test.ts, src/components/tools/risk-reward-calculator.tsx, src/app/tools/risk-reward-calculator/page.tsx, public/og-risk-reward-calculator.jpg, scripts/create-risk-reward-og.js.
+- Files modified: src/components/tools/xauusd-lot-size-calculator.tsx (R:R display), src/app/tools/page.tsx (4 active tools), src/app/page.tsx (4th card), public/sitemap.xml (30 URLs), src/app/xauusd-lot-size/page.tsx (internal link), src/app/xauusd-pip-value/page.tsx (internal link), src/app/xauusd-support-resistance/page.tsx (internal link), src/app/blog/forex-risk-management-for-beginners/page.tsx (internal link), worklog.md.
+- Quality gates: lint clean, 266/266 tests pass, build successful.
+- Ready to commit and push to main.

@@ -15,6 +15,7 @@ import {
   Target,
   Calculator,
   Hash,
+  Scale,
 } from "lucide-react";
 import {
   FadeSection,
@@ -733,7 +734,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {/* Tool 1: XAUUSD Calculator */}
               <Link href="/xauusd-lot-size/" className="block no-underline group">
                 <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
@@ -799,6 +800,30 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                     Calculate pip values for gold and forex pairs, compare pip
                     conventions, and measure price distance.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+                    Use Calculator <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Tool 4: Risk Reward Calculator */}
+              <Link href="/tools/risk-reward-calculator/" className="block no-underline group">
+                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                      <Scale className="w-6 h-6 text-trading-green" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+                      LIVE
+                    </span>
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+                    Risk Reward Calculator
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Compare entry, stop loss and target distances for Forex and
+                    XAUUSD, including R multiple and break-even win rate.
                   </p>
                   <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
                     Use Calculator <ArrowRight className="w-4 h-4" />
