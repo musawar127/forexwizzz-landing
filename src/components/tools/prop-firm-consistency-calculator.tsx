@@ -465,11 +465,17 @@ export function PropFirmConsistencyCalculator() {
                     Planning Outputs
                   </h4>
                   <div className="grid grid-cols-2 gap-3 text-sm">
-                    {result.repair.maxSafeSeparateDay != null && result.ruleBasis !== "PROFIT_TARGET" && (
+                    {result.repair.maxSeparateDay != null && result.ruleBasis !== "PROFIT_TARGET" && (
                       <Stat
-                        label="Max Separate Positive Day"
-                        value={result.repair.maxSafeSeparateDay > 0 ? fmtNum(result.repair.maxSafeSeparateDay) : "No safe positive day"}
-                        tone={result.repair.maxSafeSeparateDay > 0 ? "green" : "red"}
+                        label={result.repair.maxSeparateDay.noValidDay
+                          ? "Positive-Day Upper Boundary"
+                          : result.repair.maxSeparateDay.inclusive
+                            ? "Maximum Separate Positive Day"
+                            : "Positive-Day Upper Boundary"}
+                        value={result.repair.maxSeparateDay.noValidDay
+                          ? "No single positive day"
+                          : `${result.repair.maxSeparateDay.inclusive ? "≤" : "<"} ${fmtNum(result.repair.maxSeparateDay.boundary)}`}
+                        tone={result.repair.maxSeparateDay.noValidDay ? "red" : "green"}
                       />
                     )}
                     <Stat label="Min Even Days (illustrative)" value={String(result.repair.minEvenDays)} />
@@ -481,9 +487,13 @@ export function PropFirmConsistencyCalculator() {
                       />
                     )}
                   </div>
-                  {result.repair.maxSafeSeparateDay != null && result.ruleBasis !== "PROFIT_TARGET" && (
+                  {result.repair.maxSeparateDay != null && result.ruleBasis !== "PROFIT_TARGET" && (
                     <p className="text-xs text-muted-foreground/70 mt-2">
-                      Maximum Separate Positive Day Under This Simplified Model — consistency-rule arithmetic only. It does not account for other account rules, profit targets or drawdown limits.
+                      {result.repair.maxSeparateDay.noValidDay
+                        ? "No single positive day can bring the consistency ratio within the entered threshold under this one-day model. Multiple future days may still change the result."
+                        : result.repair.maxSeparateDay.inclusive
+                          ? "Maximum Separate Positive Day under this simplified model — equality at the boundary is allowed. Consistency-rule arithmetic only; it does not account for other account rules, profit targets or drawdown limits."
+                          : "Positive-Day Upper Boundary under this simplified model — equality at the boundary is NOT allowed under the strict rule. Any value below this boundary satisfies the rule. Consistency-rule arithmetic only; it does not account for other account rules, profit targets or drawdown limits."}
                     </p>
                   )}
                   {result.repair.minFutureDays != null && (

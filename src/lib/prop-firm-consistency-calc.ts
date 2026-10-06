@@ -76,13 +76,22 @@ export interface ConsistencyResult {
   repair?: RepairResult;
 }
 
+export interface MaxSeparateDayResult {
+  /** The mathematical boundary value tD/(1-t). Meaningful when noValidDay is false. */
+  boundary: number;
+  /** True when equality at the boundary satisfies the rule (AT_OR_BELOW). False when the boundary is exclusive (STRICTLY_BELOW). */
+  inclusive: boolean;
+  /** True when no single positive day can bring the ratio within the threshold under this one-day model. */
+  noValidDay: boolean;
+}
+
 export interface RepairResult {
   /** Additional profit needed (same as top-level for variable bases). */
   additionalProfitNeeded: number;
   /** Min future days if plannedFutureDay supplied (iterative solver). */
   minFutureDays: number | null;
-  /** Max safe separate positive day under this simplified model. */
-  maxSafeSeparateDay: number | null;
+  /** Max separate positive day result under this simplified model. Null for PROFIT_TARGET basis. */
+  maxSeparateDay: MaxSeparateDayResult | null;
   /** Min evenly-distributed positive days implied by threshold = ceil(1/t). */
   minEvenDays: number;
 }
@@ -517,23 +526,59 @@ export function calculateMaxSeparatePositiveDay(
   thresholdPercent: number,
   ruleBasis: RuleBasis,
   boundaryRule: BoundaryRule = "AT_OR_BELOW",
-): number | null {
+): MaxSeparateDayResult | null {
   if (ruleBasis === "PROFIT_TARGET") return null;
   if (!isFinite(currentDenominator) || !isFinite(currentBestDay)) return null;
   if (!isFinite(thresholdPercent) || thresholdPercent <= 0 || thresholdPercent >= 100) return null;
-  if (currentDenominator <= 0) return 0; // no profit base → any positive day → ratio > 100%
+  if (currentDenominator <= 0) {
+    // No profit base → any positive day produces a ratio > 100%
+    return { boundary: 0, inclusive: true, noValidDay: true };
+  }
 
   const t = thresholdPercent / 100;
-  const candidate = (t * currentDenominator) / (1 - t); // ceiling for x > B case
+  const candidate = (t * currentDenominator) / (1 - t); // mathematical boundary tD/(1-t)
+
+  // Three cases based on candidate vs current best day B:
+  //
+  // 1. candidate > B (strictly, beyond epsilon):
+  //    The new day can exceed B and enter new-best territory.
+  //    - AT_OR_BELOW: x = candidate gives ratio = t <= t ✓. Boundary is inclusive.
+  //    - STRICTLY_BELOW: x = candidate gives ratio = t, not < t. Boundary is exclusive
+  //      (any x < candidate satisfies; x = candidate does not).
+  //
+  // 2. candidate ≈ B (within epsilon, i.e., |candidate - B| <= EPSILON):
+  //    This means B/(D+B) = t exactly.
+  //    - AT_OR_BELOW: x = B gives ratio = t <= t ✓. Boundary is inclusive.
+  //    - STRICTLY_BELOW: x = B gives ratio = t, not < t. Fails.
+  //      x < B gives ratio = B/(D+x) > B/(D+B) = t. Fails.
+  //      x > B gives ratio = x/(D+x) > B/(D+B) = t. Fails.
+  //      → No single positive day can satisfy the strict rule.
+  //
+  // 3. candidate < B (beyond epsilon):
+  //    This means B/(D+B) > t.
+  //    - Both modes: no single positive day can satisfy the rule.
+  //      x <= B: ratio = B/(D+x) >= B/(D+B) > t. Fails.
+  //      x > B: ratio = x/(D+x) >= B/(D+B) > t. Fails.
+
+  if (candidate > currentBestDay + EPSILON) {
+    // Case 1: candidate strictly > B
+    if (boundaryRule === "STRICTLY_BELOW") {
+      return { boundary: candidate, inclusive: false, noValidDay: false };
+    }
+    return { boundary: candidate, inclusive: true, noValidDay: false };
+  }
 
   if (candidate >= currentBestDay - EPSILON) {
-    // candidate >= B: max safe is candidate (may be in new-best territory)
-    // For strict boundary, the max is just under candidate; we return candidate as the
-    // theoretical limit. The UI will note the boundary rule.
-    return Math.max(0, candidate);
+    // Case 2: candidate ≈ B (within epsilon)
+    if (boundaryRule === "STRICTLY_BELOW") {
+      // x = B gives ratio = t exactly; strict < t fails. No valid day.
+      return { boundary: 0, inclusive: true, noValidDay: true };
+    }
+    return { boundary: candidate, inclusive: true, noValidDay: false };
   }
-  // candidate < B: B/(D+B) > t, no safe positive day
-  return 0;
+
+  // Case 3: candidate < B — no valid day in either boundary mode
+  return { boundary: 0, inclusive: true, noValidDay: true };
 }
 
 /* ------------------------------------------------------------------ */
@@ -682,7 +727,7 @@ export function calculateConsistencyResult(inputs: ConsistencyInputs): Consisten
     repair = {
       additionalProfitNeeded,
       minFutureDays,
-      maxSafeSeparateDay,
+      maxSeparateDay: maxSafeSeparateDay,
       minEvenDays,
     };
   }

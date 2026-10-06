@@ -333,53 +333,151 @@ describe("Prop Firm Consistency Rule Calculator", () => {
   // MAX SEPARATE POSITIVE DAY TESTS
   // ============================================================
   describe("Max Separate Positive Day", () => {
-    test("30% threshold: D=4000, B=1500 → candidate = 0.3×4000/0.7 = 1714.29", () => {
-      // candidate > B(1500), so max = candidate
+    test("30% threshold: D=4000, B=1500 → boundary = 1714.29, inclusive (AT_OR_BELOW)", () => {
       const m = calculateMaxSeparatePositiveDay(4000, 1500, 30, "NET_PROFIT", "AT_OR_BELOW");
       expect(m).not.toBeNull();
-      expect(m!).toBeCloseTo(1714.2857, 2);
+      expect(m!.boundary).toBeCloseTo(1714.2857, 2);
+      expect(m!.inclusive).toBe(true);
+      expect(m!.noValidDay).toBe(false);
     });
-    test("40% threshold: D=3000, B=1500 → candidate = 0.4×3000/0.6 = 2000", () => {
-      // candidate(2000) > B(1500), so max = 2000
+    test("40% threshold: D=3000, B=1500 → boundary = 2000, inclusive (AT_OR_BELOW)", () => {
       const m = calculateMaxSeparatePositiveDay(3000, 1500, 40, "NET_PROFIT", "AT_OR_BELOW");
       expect(m).not.toBeNull();
-      expect(m!).toBeCloseTo(2000, 5);
+      expect(m!.boundary).toBeCloseTo(2000, 5);
+      expect(m!.inclusive).toBe(true);
+      expect(m!.noValidDay).toBe(false);
     });
-    test("50% threshold: D=3000, B=1500 → candidate = 0.5×3000/0.5 = 3000", () => {
+    test("50% threshold: D=3000, B=1500 → boundary = 3000, inclusive (AT_OR_BELOW)", () => {
       const m = calculateMaxSeparatePositiveDay(3000, 1500, 50, "NET_PROFIT", "AT_OR_BELOW");
       expect(m).not.toBeNull();
-      expect(m!).toBeCloseTo(3000, 5);
+      expect(m!.boundary).toBeCloseTo(3000, 5);
+      expect(m!.inclusive).toBe(true);
+      expect(m!.noValidDay).toBe(false);
     });
     test("Current ratio already passing (well within)", () => {
-      // D=10000, B=500, threshold=40% → current 5%. candidate = 0.4×10000/0.6 = 6666.67
       const m = calculateMaxSeparatePositiveDay(10000, 500, 40, "NET_PROFIT", "AT_OR_BELOW");
       expect(m).not.toBeNull();
-      expect(m!).toBeCloseTo(6666.67, 1);
+      expect(m!.boundary).toBeCloseTo(6666.67, 1);
+      expect(m!.inclusive).toBe(true);
     });
     test("New day becomes new best (candidate > B)", () => {
-      // D=5000, B=1000, threshold=40% → candidate = 0.4×5000/0.6 = 3333.33 > B
       const m = calculateMaxSeparatePositiveDay(5000, 1000, 40, "NET_PROFIT", "AT_OR_BELOW");
       expect(m).not.toBeNull();
-      expect(m!).toBeGreaterThan(1000); // new best territory
+      expect(m!.boundary).toBeGreaterThan(1000);
+      expect(m!.inclusive).toBe(true);
     });
-    test("New day remains below best (candidate <= B → max = candidate or B)", () => {
-      // D=2000, B=2000, threshold=40% → candidate = 0.4×2000/0.6 = 1333.33 < B
-      // B/(D+B) = 2000/4000 = 50% > 40% → no safe positive day
+    test("candidate < B → noValidDay (AT_OR_BELOW)", () => {
+      // D=2000, B=2000, threshold=40% → candidate = 1333.33 < B
       const m = calculateMaxSeparatePositiveDay(2000, 2000, 40, "NET_PROFIT", "AT_OR_BELOW");
-      expect(m).toBe(0);
+      expect(m).not.toBeNull();
+      expect(m!.noValidDay).toBe(true);
     });
-    test("No safe positive day when ratio already violated badly", () => {
-      // D=1000, B=2000 → ratio = 200% > any threshold. candidate = 0.4×1000/0.6 = 666.67 < B
+    test("Ratio already violated badly → noValidDay", () => {
       const m = calculateMaxSeparatePositiveDay(1000, 2000, 40, "NET_PROFIT", "AT_OR_BELOW");
-      expect(m).toBe(0);
+      expect(m).not.toBeNull();
+      expect(m!.noValidDay).toBe(true);
     });
     test("PROFIT_TARGET basis → null", () => {
       const m = calculateMaxSeparatePositiveDay(2000, 1500, 40, "PROFIT_TARGET", "AT_OR_BELOW");
       expect(m).toBeNull();
     });
-    test("Zero denominator → 0 (no safe positive day)", () => {
+    test("Zero denominator → noValidDay", () => {
       const m = calculateMaxSeparatePositiveDay(0, 1000, 40, "NET_PROFIT", "AT_OR_BELOW");
-      expect(m).toBe(0);
+      expect(m).not.toBeNull();
+      expect(m!.noValidDay).toBe(true);
+    });
+  });
+
+  // ============================================================
+  // STRICT BOUNDARY REGRESSION TESTS (spec cases 1–8)
+  // ============================================================
+  describe("Strict Boundary Regression Tests", () => {
+    // Case 1: threshold = 40%, D = 3000, B = 1500 → boundary = 2000
+    test("Case 1: boundary = tD/(1-t) = 0.4×3000/0.6 = 2000", () => {
+      const m = calculateMaxSeparatePositiveDay(3000, 1500, 40, "NET_PROFIT", "AT_OR_BELOW");
+      expect(m).not.toBeNull();
+      expect(m!.boundary).toBeCloseTo(2000, 5);
+    });
+
+    // Case 2: AT_OR_BELOW — x = 2000 should satisfy the rule
+    test("Case 2: AT_OR_BELOW, x = 2000 satisfies (inclusive boundary)", () => {
+      const m = calculateMaxSeparatePositiveDay(3000, 1500, 40, "NET_PROFIT", "AT_OR_BELOW");
+      expect(m).not.toBeNull();
+      expect(m!.inclusive).toBe(true);
+      expect(m!.noValidDay).toBe(false);
+      // Verify: x = boundary = 2000 → ratio = 2000/(3000+2000) = 0.4 = 40% <= 40% ✓
+      const ratio = 2000 / (3000 + 2000);
+      expect(ratio).toBeCloseTo(0.4, 8);
+      expect(isWithinThreshold(ratio * 100, 40, "AT_OR_BELOW")).toBe(true);
+    });
+
+    // Case 3: STRICTLY_BELOW — x = 2000 should NOT satisfy the rule
+    test("Case 3: STRICTLY_BELOW, x = 2000 does NOT satisfy (exclusive boundary)", () => {
+      const m = calculateMaxSeparatePositiveDay(3000, 1500, 40, "NET_PROFIT", "STRICTLY_BELOW");
+      expect(m).not.toBeNull();
+      expect(m!.inclusive).toBe(false);
+      expect(m!.noValidDay).toBe(false);
+      expect(m!.boundary).toBeCloseTo(2000, 5);
+      // Verify: x = 2000 → ratio = 40%, which is NOT < 40%
+      const ratio = 2000 / (3000 + 2000);
+      expect(isWithinThreshold(ratio * 100, 40, "STRICTLY_BELOW")).toBe(false);
+    });
+
+    // Case 4: STRICTLY_BELOW — a value immediately below 2000 should satisfy
+    test("Case 4: STRICTLY_BELOW, x just below 2000 satisfies", () => {
+      const x = 1999.99;
+      const ratio = (x / (3000 + x)) * 100;
+      expect(isWithinThreshold(ratio, 40, "STRICTLY_BELOW")).toBe(true);
+    });
+
+    // Case 5: candidate < current best-day case
+    test("Case 5: candidate < B → noValidDay in both boundary modes", () => {
+      // D=2000, B=2000, threshold=40% → candidate = 1333.33 < B
+      const mAt = calculateMaxSeparatePositiveDay(2000, 2000, 40, "NET_PROFIT", "AT_OR_BELOW");
+      const mStrict = calculateMaxSeparatePositiveDay(2000, 2000, 40, "NET_PROFIT", "STRICTLY_BELOW");
+      expect(mAt!.noValidDay).toBe(true);
+      expect(mStrict!.noValidDay).toBe(true);
+    });
+
+    // Case 6: candidate = current best-day boundary case
+    test("Case 6: candidate = B boundary — AT_OR_BELOW allows, STRICTLY_BELOW noValidDay", () => {
+      // Construct candidate = B: tD/(1-t) = B → D = B(1-t)/t
+      // B=1500, t=0.4 → D = 1500×0.6/0.4 = 2250
+      const D = 2250, B = 1500, threshold = 40;
+      const candidate = (0.4 * D) / 0.6; // = 1500 = B
+      expect(candidate).toBeCloseTo(B, 5);
+
+      const mAt = calculateMaxSeparatePositiveDay(D, B, threshold, "NET_PROFIT", "AT_OR_BELOW");
+      expect(mAt!.noValidDay).toBe(false);
+      expect(mAt!.inclusive).toBe(true);
+      expect(mAt!.boundary).toBeCloseTo(B, 5);
+
+      const mStrict = calculateMaxSeparatePositiveDay(D, B, threshold, "NET_PROFIT", "STRICTLY_BELOW");
+      // x = B gives ratio = t exactly → strict < t fails → noValidDay
+      expect(mStrict!.noValidDay).toBe(true);
+    });
+
+    // Case 7: verify source no longer contains "No safe positive day"
+    test("Case 7: component source does not contain 'No safe positive day'", () => {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const fs = require("fs");
+      const src = fs.readFileSync(
+        "/home/z/my-project/src/components/tools/prop-firm-consistency-calculator.tsx",
+        "utf8",
+      );
+      expect(src).not.toContain("No safe positive day");
+      expect(src).not.toContain("safe positive day");
+      expect(src).not.toContain("safe profit");
+      expect(src).not.toContain("safe day");
+    });
+
+    // Case 8: verify strict mode presents result with < (exclusive)
+    test("Case 8: STRICTLY_BELOW produces inclusive=false (UI shows <)", () => {
+      const m = calculateMaxSeparatePositiveDay(3000, 1500, 40, "NET_PROFIT", "STRICTLY_BELOW");
+      expect(m).not.toBeNull();
+      expect(m!.inclusive).toBe(false);
+      // The UI should display "< boundary" not "≤ boundary"
+      expect(m!.noValidDay).toBe(false);
     });
   });
 
@@ -561,9 +659,9 @@ describe("Prop Firm Consistency Rule Calculator", () => {
       const r = calculateConsistencyResult(makeInputs({ mode: "REPAIR" }));
       expect(r.repair).toBeDefined();
     });
-    test("Max safe separate day surfaces in repair", () => {
+    test("Max separate day surfaces in repair", () => {
       const r = calculateConsistencyResult(makeInputs({ mode: "REPAIR" }));
-      expect(r.repair!.maxSafeSeparateDay).not.toBeNull();
+      expect(r.repair!.maxSeparateDay).not.toBeNull();
     });
     test("Min future days null when no planned future day", () => {
       const r = calculateConsistencyResult(makeInputs({ mode: "REPAIR", plannedFutureDay: null }));
