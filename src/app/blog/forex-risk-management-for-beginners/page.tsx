@@ -836,7 +836,8 @@ export default function ForexRiskManagementForBeginnersPage() {
               <p>Leverage controls how much margin the broker requires to open a position. Risk controls how much money you can lose if the trade goes against you. High leverage lowers the margin requirement; it does not lower the loss if price hits the stop.</p>
               <p>A position that requires very little margin can still produce a very large loss. The two numbers move independently. To estimate the collateral required for a planned XAUUSD position at a given leverage, use the{" "}
                 <Link href="/tools/xauusd-margin-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">XAUUSD Margin Calculator</Link>{" "}
-                — but remember that margin capacity is not the same as risk-based position sizing.
+                — but remember that margin capacity is not the same as risk-based position sizing. If you are trading a prop-firm evaluation, also check whether your best-day profit concentration stays within your firm&apos;s{" "}
+                <Link href="/tools/prop-firm-consistency-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">consistency rule</Link>.
               </p>
               <p className="text-foreground/90 font-medium">
                 Risk should be measured from the potential loss at the stop, not from the margin required to open the position.

@@ -377,6 +377,8 @@ export default function RiskRewardCalculatorPage() {
                   <Link href="/xauusd-pip-value/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Pip Value Calculator</Link>
                   . And to confirm the resulting position fits within your available collateral, estimate the requirement with the{" "}
                   <Link href="/tools/xauusd-margin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Margin Calculator</Link>
+                  . If you are trading a prop-firm evaluation, check your best-day concentration with the{" "}
+                  <Link href="/tools/prop-firm-consistency-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Prop Firm Consistency Calculator</Link>
                   .
                 </p>
                 <p>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingUp, Coins, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -89,6 +89,13 @@ const activeTools = [
     icon: <Coins className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/tools/prop-firm-consistency-calculator/",
+    title: "Prop Firm Consistency Rule Calculator",
+    desc: "Check your best-day percentage, consistency threshold and additional profit needed using net-profit, profitable-days or profit-target rules.",
+    icon: <Calendar className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
@@ -137,9 +144,10 @@ export default function ToolsPage() {
               position sizing with the XAUUSD Lot Size Calculator, track session
               timing with the Forex Market Hours Clock, measure movement value
               with the Pip Value Calculator, evaluate trade payoff geometry with
-              the Risk Reward Calculator, and estimate required collateral with
-              the XAUUSD Margin Calculator &mdash; all directly in your browser,
-              no registration or login required.
+              the Risk Reward Calculator, estimate required collateral with the
+              XAUUSD Margin Calculator, and check prop-firm consistency rules
+              with the Prop Firm Consistency Calculator &mdash; all directly in
+              your browser, no registration or login required.
             </p>
             <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
               All results are educational estimates. Actual trading losses can
