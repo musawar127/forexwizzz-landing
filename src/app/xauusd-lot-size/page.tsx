@@ -697,7 +697,9 @@ export default function XauusdLotSizePage() {
             <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed mb-10">
               <p>Proper position sizing is one of the last steps before entering a trade. It should come only after you have analyzed the market, identified a setup, defined your entry and stop, and decided how much you are willing to lose. Calculating lot size before completing these steps is putting the cart before the horse. Once your entry, stop and target are set, you can{" "}
                 <Link href="/tools/risk-reward-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">check the risk-to-reward ratio</Link>{" "}
-                before sizing the position.
+                before sizing the position, and{" "}
+                <Link href="/tools/xauusd-margin-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">estimate the required margin</Link>{" "}
+                to confirm the trade fits within your available collateral.
               </p>
               <p>Here is the sequence that position sizing fits into within a broader trading plan:</p>
             </div>

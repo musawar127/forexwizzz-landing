@@ -375,6 +375,8 @@ export default function RiskRewardCalculatorPage() {
                   <Link href="/xauusd-lot-size/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Lot Size Calculator</Link>
                   . Once you have planned your R:R here and know your risk amount, use the Lot Size Calculator to convert that risk amount into a lot size for your stop distance. For the monetary value of price moves, use the{" "}
                   <Link href="/xauusd-pip-value/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Pip Value Calculator</Link>
+                  . And to confirm the resulting position fits within your available collateral, estimate the requirement with the{" "}
+                  <Link href="/tools/xauusd-margin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Margin Calculator</Link>
                   .
                 </p>
                 <p>

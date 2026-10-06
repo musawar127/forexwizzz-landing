@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingUp, DollarSign, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, Coins, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -82,10 +82,16 @@ const activeTools = [
     icon: <TrendingUp className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/tools/xauusd-margin-calculator/",
+    title: "XAUUSD Margin & Leverage Calculator",
+    desc: "Calculate required gold margin from XAUUSD price, lot size, contract size and leverage. Compare leverage levels and estimate free margin and margin level.",
+    icon: <Coins className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
-  { title: "Margin Calculator", desc: "Estimate the required margin for a position based on leverage and contract size.", icon: <DollarSign className="w-6 h-6 text-muted-foreground/50" /> },
   { title: "Drawdown Calculator", desc: "Calculate how much gain is needed to recover from a given percentage drawdown.", icon: <ShieldCheck className="w-6 h-6 text-muted-foreground/50" /> },
 ];
 
@@ -130,9 +136,10 @@ export default function ToolsPage() {
               Free forex and gold trading calculators from Forex Wizard. Plan
               position sizing with the XAUUSD Lot Size Calculator, track session
               timing with the Forex Market Hours Clock, measure movement value
-              with the Pip Value Calculator, and evaluate trade payoff geometry
-              with the Risk Reward Calculator &mdash; all directly in your
-              browser, no registration or login required.
+              with the Pip Value Calculator, evaluate trade payoff geometry with
+              the Risk Reward Calculator, and estimate required collateral with
+              the XAUUSD Margin Calculator &mdash; all directly in your browser,
+              no registration or login required.
             </p>
             <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
               All results are educational estimates. Actual trading losses can
@@ -149,7 +156,7 @@ export default function ToolsPage() {
               <span className="text-foreground">Available </span>
               <span className="text-trading-green text-glow-green">Tools</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {activeTools.map((tool, i) => (
                 <FadeIn key={tool.href} delay={i * 0.07}>
                   <Link href={tool.href} className="block h-full no-underline group">
