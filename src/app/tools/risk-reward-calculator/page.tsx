@@ -381,6 +381,8 @@ export default function RiskRewardCalculatorPage() {
                   <Link href="/tools/prop-firm-consistency-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Prop Firm Consistency Calculator</Link>
                   . To calculate the full P&amp;L of the trade once you know the exit price, use the{" "}
                   <Link href="/tools/xauusd-profit-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Profit Calculator</Link>
+                  . To model the probability of hitting a loss threshold over many trades, use the{" "}
+                  <Link href="/tools/risk-of-ruin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Risk of Ruin Calculator</Link>
                   .
                 </p>
                 <p>

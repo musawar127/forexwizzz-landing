@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, Activity, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -103,6 +103,13 @@ const activeTools = [
     icon: <Target className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/tools/risk-of-ruin-calculator/",
+    title: "Risk of Ruin & Losing Streak Calculator",
+    desc: "Estimate losing-streak probability, compounded drawdown, recovery requirements and finite-horizon threshold risk from your trading statistics.",
+    icon: <Activity className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
@@ -148,14 +155,10 @@ export default function ToolsPage() {
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Free forex and gold trading calculators from Forex Wizard. Plan
-              position sizing with the XAUUSD Lot Size Calculator, track session
-              timing with the Forex Market Hours Clock, measure movement value
-              with the Pip Value Calculator, evaluate trade payoff geometry with
-              the Risk Reward Calculator, estimate required collateral with the
-              XAUUSD Margin Calculator, check prop-firm consistency rules with
-              the Prop Firm Consistency Calculator, and calculate gold trade
-              P&amp;L with the XAUUSD Profit Calculator &mdash; all directly in
-              your browser, no registration or login required.
+              position sizing, track session timing, measure pip value, evaluate
+              risk-to-reward, estimate margin, check prop-firm consistency,
+              calculate gold P&amp;L, and model risk of ruin &mdash; all
+              directly in your browser, no registration or login required.
             </p>
             <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
               All results are educational estimates. Actual trading losses can

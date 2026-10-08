@@ -543,7 +543,9 @@ export default function ForexRiskManagementForBeginnersPage() {
                   </li>
                 ))}
               </ul>
-              <p>This article deliberately does not recommend a specific percentage. The decision belongs to each trader, ideally after understanding the consequences of drawdown (explained below).</p>
+              <p>This article deliberately does not recommend a specific percentage. The decision belongs to each trader, ideally after understanding the consequences of drawdown (explained below). To model how different risk percentages affect losing-streak probability and drawdown over many trades, use the{" "}
+                <Link href="/tools/risk-of-ruin-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Risk of Ruin Calculator</Link>.
+              </p>
             </div>
           </div>
         </FadeSection>

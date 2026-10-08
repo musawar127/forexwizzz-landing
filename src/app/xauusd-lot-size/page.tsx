@@ -701,7 +701,8 @@ export default function XauusdLotSizePage() {
                 <Link href="/tools/xauusd-margin-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">estimate the required margin</Link>{" "}
                 to confirm the trade fits within your available collateral, and after the trade closes, use the{" "}
                 <Link href="/tools/xauusd-profit-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">XAUUSD Profit Calculator</Link>{" "}
-                to calculate the actual P&amp;L.
+                to calculate the actual P&amp;L. To model how your risk per trade affects the probability of hitting a drawdown threshold over many trades, use the{" "}
+                <Link href="/tools/risk-of-ruin-calculator/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Risk of Ruin Calculator</Link>.
               </p>
               <p>Here is the sequence that position sizing fits into within a broader trading plan:</p>
             </div>

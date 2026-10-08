@@ -379,7 +379,9 @@ export default function PropFirmConsistencyCalculatorPage() {
               </h2>
               <div className="space-y-4 text-base text-muted-foreground leading-relaxed">
                 <p>A consistency rule controls how concentrated profit may be. A drawdown rule controls how much loss the account may experience. They are not interchangeable.</p>
-                <p>You can pass a consistency rule and still fail a drawdown rule, or vice versa. Both may apply simultaneously. A dedicated drawdown calculator may be available separately in the future.</p>
+                <p>You can pass a consistency rule and still fail a drawdown rule, or vice versa. Both may apply simultaneously. To model losing-streak probability and drawdown risk across many trades, use the{" "}
+                  <Link href="/tools/risk-of-ruin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Risk of Ruin Calculator</Link>.
+                </p>
                 <p>For broader account risk management, see our{" "}
                   <Link href="/blog/forex-risk-management-for-beginners/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80">forex risk management for beginners guide</Link>
                   . For position sizing, use the{" "}
