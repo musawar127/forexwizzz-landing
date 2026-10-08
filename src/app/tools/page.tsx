@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -96,6 +96,13 @@ const activeTools = [
     icon: <Calendar className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
+  {
+    href: "/tools/xauusd-profit-calculator/",
+    title: "XAUUSD Profit Calculator",
+    desc: "Calculate gold profit or loss from entry, exit and lot size, including costs, break-even price, partial closes and required exit price.",
+    icon: <Target className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
 ];
 
 const upcomingTools = [
@@ -145,8 +152,9 @@ export default function ToolsPage() {
               timing with the Forex Market Hours Clock, measure movement value
               with the Pip Value Calculator, evaluate trade payoff geometry with
               the Risk Reward Calculator, estimate required collateral with the
-              XAUUSD Margin Calculator, and check prop-firm consistency rules
-              with the Prop Firm Consistency Calculator &mdash; all directly in
+              XAUUSD Margin Calculator, check prop-firm consistency rules with
+              the Prop Firm Consistency Calculator, and calculate gold trade
+              P&amp;L with the XAUUSD Profit Calculator &mdash; all directly in
               your browser, no registration or login required.
             </p>
             <p className="text-sm text-muted-foreground/70 max-w-xl mx-auto leading-relaxed mt-4">
@@ -164,7 +172,7 @@ export default function ToolsPage() {
               <span className="text-foreground">Available </span>
               <span className="text-trading-green text-glow-green">Tools</span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {activeTools.map((tool, i) => (
                 <FadeIn key={tool.href} delay={i * 0.07}>
                   <Link href={tool.href} className="block h-full no-underline group">

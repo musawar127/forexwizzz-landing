@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   AlertTriangle, ArrowRight, MessageCircle, Coins, Gauge,
   Scale, BookOpen, Info, Layers, TrendingUp, CheckCircle2,
-  XCircle,
+  XCircle, Target,
 } from "lucide-react";
 import {
   FadeSection, HeroAnimation, StickyTelegramButton,
@@ -386,6 +386,7 @@ export default function XauusdMarginCalculatorPage() {
                   <li className="flex items-start gap-2"><Layers className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Lot Size</strong> — <Link href="/xauusd-lot-size/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">XAUUSD Lot Size &amp; Risk Calculator</Link>: "How large should my trade be for a chosen risk amount and stop?"</span></li>
                   <li className="flex items-start gap-2"><TrendingUp className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Risk Reward</strong> — <Link href="/tools/risk-reward-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Risk Reward Calculator</Link>: "How far is the target relative to the stop?"</span></li>
                   <li className="flex items-start gap-2"><Gauge className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Pip Value</strong> — <Link href="/xauusd-pip-value/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">XAUUSD Pip Value Calculator</Link>: "What is a price increment worth for this position?"</span></li>
+                  <li className="flex items-start gap-2"><Target className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Profit</strong> — <Link href="/tools/xauusd-profit-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">XAUUSD Profit Calculator</Link>: "What P&amp;L results from this entry, exit and size?"</span></li>
                 </ul>
                 <p>For the broader exposure-management framework, see our{" "}
                   <Link href="/blog/forex-risk-management-for-beginners/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80">forex risk management for beginners guide</Link>

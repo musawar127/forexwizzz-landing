@@ -620,7 +620,8 @@ export default function XauusdPipValuePage() {
               <p>Once the stop level is determined by the market structure, the distance can be translated into a monetary risk figure. This is where understanding <Link href="/xauusd-lot-size/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD lot size</Link> becomes critical: the combination of stop distance, contract size, and lot size determines how much capital is at risk on the trade. To compare the reward distance against the risk distance as a ratio, use the{" "}
                 <Link href="/tools/risk-reward-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">Risk Reward Calculator</Link>{" "}
                 before sizing the position, and to confirm the planned position fits within your available collateral, check the requirement with the{" "}
-                <Link href="/tools/xauusd-margin-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD Margin Calculator</Link>.
+                <Link href="/tools/xauusd-margin-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD Margin Calculator</Link>. To calculate the full entry-to-exit trade P&amp;L, use the{" "}
+                <Link href="/tools/xauusd-profit-calculator/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">XAUUSD Profit Calculator</Link>.
               </p>
             </div>
           </div>
