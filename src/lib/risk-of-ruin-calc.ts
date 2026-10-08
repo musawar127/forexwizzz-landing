@@ -349,7 +349,7 @@ export function calculateLossesToDrawdown(
 /* ------------------------------------------------------------------ */
 
 /**
- * Nearest-rank percentile from a sorted array.
+ * Linearly interpolated percentile from a sorted array.
  * percentile is 0-100.
  */
 export function calculatePercentile(sortedValues: number[], percentile: number): number {
@@ -412,17 +412,15 @@ function simulatePath(
     const dd = 1 - equity / peak;
     if (dd > maxDrawdown) maxDrawdown = dd;
 
-    // Check threshold
+    // Check threshold — record but do NOT break; continue full horizon
     if (thresholdBasis === "STARTING_BALANCE_LOSS") {
       if (equity <= thresholdFloor) {
         hitThreshold = true;
-        break;
       }
     } else {
       // PEAK_DRAWDOWN
       if (dd >= thresholdDD) {
         hitThreshold = true;
-        break;
       }
     }
   }

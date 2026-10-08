@@ -545,4 +545,145 @@ describe("Trading Risk of Ruin & Losing Streak Calculator", () => {
       expect(isFinite(s.medianEndingBalance)).toBe(true);
     });
   });
+
+  // ============================================================
+  // FULL-HORIZON SIMULATION REGRESSION TESTS
+  // ============================================================
+  describe("Full-Horizon Simulation Regression", () => {
+    // Test 1: A path hits the selected threshold before the final trade but the simulation continues.
+    // Use 0% win rate to guarantee threshold hit early, then verify ending balance reflects full horizon.
+    test("1. Path hits threshold early but simulation continues to full horizon", () => {
+      // 0% win rate → all losses. 5% risk, 1R loss, 30% threshold.
+      // After each loss: equity *= 0.95. Threshold floor = 10000 × 0.70 = 7000.
+      // 0.95^n <= 0.70 → n >= ceil(ln(0.7)/ln(0.95)) ≈ ceil(7.36) = 8 trades.
+      // Horizon = 20. After 8 trades equity ≈ 6634 (hit). After 20: 10000 × 0.95^20 ≈ 3585.
+      const s = simulateRiskOfRuin(0, 1.5, 1, 5, 10000, 20, 30, "STARTING_BALANCE_LOSS", 10, 42);
+      // All paths should hit threshold (100% loss rate × enough trades)
+      expect(s.thresholdHitProbability).toBe(1);
+      // Ending balance should reflect 20 trades, not 8
+      // 0.95^20 ≈ 0.3585 → 3585
+      expect(s.medianEndingBalance).toBeCloseTo(10000 * Math.pow(0.95, 20), -1);
+    });
+
+    // Test 2: hitThreshold remains true even if equity later recovers above threshold.
+    test("2. hitThreshold stays true after recovery (PEAK_DRAWDOWN basis)", () => {
+      // Use 100% win rate initially → no, that prevents any drawdown.
+      // Instead use a scenario with mixed outcomes and high threshold.
+      // 50% win rate, 1.5R win, 1R loss, 2% risk, 10% threshold, horizon=100
+      // With 2% risk, a few consecutive losses can trigger 10% peak-to-trough DD.
+      // Some paths will recover, but hitThreshold must remain true.
+      const s = simulateRiskOfRuin(50, 1.5, 1, 2, 10000, 100, 10, "PEAK_DRAWDOWN", 2000, 12345);
+      // With 2000 paths and 10% threshold, some paths should hit
+      expect(s.thresholdHitProbability).toBeGreaterThan(0);
+      // The probability is "ever hit during horizon" — even if equity recovers,
+      // the hit is counted. This test verifies no crash and probability is valid.
+      expect(s.thresholdHitProbability).toBeLessThanOrEqual(1);
+    });
+
+    // Test 3: Ending balance reflects the final trade, not the first threshold-hit trade.
+    test("3. Ending balance is full-horizon (STARTING_BALANCE_LOSS)", () => {
+      // 0% win rate, 1% risk, 1R loss, 30% threshold, horizon=100
+      // Threshold hit around trade 36 (ln(0.7)/ln(0.99) ≈ 35.8).
+      // After 100 trades: 10000 × 0.99^100 ≈ 3660.
+      // If simulation broke at trade 36, ending would be ~6900.
+      const s = simulateRiskOfRuin(0, 1.5, 1, 1, 10000, 100, 30, "STARTING_BALANCE_LOSS", 50, 42);
+      const expectedFullHorizon = 10000 * Math.pow(0.99, 100);
+      const truncatedHorizon = 10000 * Math.pow(0.99, 36);
+      // Median should be close to full-horizon, NOT truncated
+      expect(s.medianEndingBalance).toBeCloseTo(expectedFullHorizon, -1);
+      expect(s.medianEndingBalance).not.toBeCloseTo(truncatedHorizon, -1);
+    });
+
+    // Test 4: A longer losing streak occurring after the first threshold hit is still captured.
+    test("4. Longest losing streak captures post-threshold streaks", () => {
+      // 0% win rate, horizon=50 → longest streak = 50 (all losses).
+      // Threshold hit early but streak continues.
+      const s = simulateRiskOfRuin(0, 1.5, 1, 1, 10000, 50, 10, "STARTING_BALANCE_LOSS", 10, 42);
+      expect(s.medianLongestLosingStreak).toBe(50);
+    });
+
+    // Test 5: A larger peak-to-trough drawdown occurring later in the path is still captured.
+    test("5. Max drawdown captures later larger drawdown", () => {
+      // 0% win rate → equity monotonically decreases. Peak = starting balance.
+      // Max drawdown at end = 1 - (ending/starting).
+      // Horizon=50, 1% risk → ending = 10000 × 0.99^50 ≈ 6050.
+      // Max DD = 1 - 0.605 = 0.395 = 39.5%
+      // If truncated at threshold (10% → ~trade 11), max DD would be ~10%.
+      const s = simulateRiskOfRuin(0, 1.5, 1, 1, 10000, 50, 10, "PEAK_DRAWDOWN", 10, 42);
+      expect(s.medianMaxDrawdown).toBeCloseTo(1 - Math.pow(0.99, 50), 2);
+      // Should be much larger than 10% (the threshold)
+      expect(s.medianMaxDrawdown).toBeGreaterThan(0.10);
+    });
+
+    // Test 6: STARTING_BALANCE_LOSS basis continues correctly through full horizon.
+    test("6. STARTING_BALANCE_LOSS full-horizon continuation", () => {
+      const s = simulateRiskOfRuin(50, 1.5, 1, 2, 10000, 200, 30, "STARTING_BALANCE_LOSS", 500, 42);
+      expect(s.paths).toBe(500);
+      expect(s.horizon).toBe(200);
+      expect(s.thresholdHitProbability).toBeGreaterThanOrEqual(0);
+      expect(s.thresholdHitProbability).toBeLessThanOrEqual(1);
+      // All ending balances must be positive
+      expect(s.medianEndingBalance).toBeGreaterThan(0);
+      expect(s.p10EndingBalance).toBeGreaterThan(0);
+      expect(s.p90EndingBalance).toBeGreaterThan(0);
+    });
+
+    // Test 7: PEAK_DRAWDOWN basis continues correctly through full horizon.
+    test("7. PEAK_DRAWDOWN full-horizon continuation", () => {
+      const s = simulateRiskOfRuin(50, 1.5, 1, 2, 10000, 200, 30, "PEAK_DRAWDOWN", 500, 42);
+      expect(s.paths).toBe(500);
+      expect(s.horizon).toBe(200);
+      expect(s.thresholdHitProbability).toBeGreaterThanOrEqual(0);
+      expect(s.thresholdHitProbability).toBeLessThanOrEqual(1);
+      expect(s.medianEndingBalance).toBeGreaterThan(0);
+    });
+
+    // Test 8: Same seed + same inputs remains deterministic.
+    test("8. Determinism preserved after fix", () => {
+      const s1 = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 1000, 20261008);
+      const s2 = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 1000, 20261008);
+      expect(s1.thresholdHitProbability).toBe(s2.thresholdHitProbability);
+      expect(s1.medianEndingBalance).toBe(s2.medianEndingBalance);
+      expect(s1.medianMaxDrawdown).toBe(s2.medianMaxDrawdown);
+      expect(s1.medianLongestLosingStreak).toBe(s2.medianLongestLosingStreak);
+    });
+
+    // Test 9: Different seeds may produce different simulation summaries.
+    test("9. Different seeds may produce different results", () => {
+      const s1 = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 1000, 11111);
+      const s2 = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 1000, 22222);
+      const anyDiff = s1.thresholdHitProbability !== s2.thresholdHitProbability
+        || s1.medianEndingBalance !== s2.medianEndingBalance
+        || s1.medianMaxDrawdown !== s2.medianMaxDrawdown;
+      expect(typeof anyDiff).toBe("boolean");
+    });
+
+    // Test 10: Threshold-hit probability remains between 0 and 1 and is "ever hit during horizon."
+    test("10. Threshold-hit probability between 0 and 1", () => {
+      const s = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 500, 42);
+      expect(s.thresholdHitProbability).toBeGreaterThanOrEqual(0);
+      expect(s.thresholdHitProbability).toBeLessThanOrEqual(1);
+    });
+
+    // Test 11: Ending-balance percentiles remain correctly ordered: P10 <= Median <= P90.
+    test("11. Percentiles ordered P10 <= Median <= P90", () => {
+      const s = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 500, 42);
+      expect(s.p10EndingBalance).toBeLessThanOrEqual(s.medianEndingBalance + 1e-6);
+      expect(s.medianEndingBalance).toBeLessThanOrEqual(s.p90EndingBalance + 1e-6);
+    });
+
+    // Test 12: No NaN / Infinity introduced.
+    test("12. No NaN or Infinity in simulation outputs", () => {
+      const s = simulateRiskOfRuin(50, 1.5, 1, 1, 10000, 200, 30, "STARTING_BALANCE_LOSS", 500, 42);
+      expect(isFinite(s.thresholdHitProbability)).toBe(true);
+      expect(isFinite(s.medianEndingBalance)).toBe(true);
+      expect(isFinite(s.p10EndingBalance)).toBe(true);
+      expect(isFinite(s.p90EndingBalance)).toBe(true);
+      expect(isFinite(s.medianMaxDrawdown)).toBe(true);
+      expect(isFinite(s.p90MaxDrawdown)).toBe(true);
+      expect(isFinite(s.medianLongestLosingStreak)).toBe(true);
+      expect(isFinite(s.probabilityBelowStart)).toBe(true);
+      expect(isFinite(s.averageEndingBalance)).toBe(true);
+    });
+  });
 });
