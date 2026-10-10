@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-october-12-16-2026",
+    title: "XAUUSD Weekly Forecast Oct 12–16, 2026: CPI & Gold Levels",
+    description:
+      "XAUUSD weekly forecast for Oct 12–16, 2026: gold support and resistance, US CPI, PPI, retail sales, Fed Beige Book and bullish or bearish scenarios.",
+    cardDescription:
+      "Gold starts Oct 12–16 near $4,194 after rebounding from a two-month low near $4,066. See XAUUSD levels, US CPI, PPI, retail sales and conditional scenarios.",
+    displayDate: "October 10, 2026",
+    publishedAt: "2026-10-10T19:15:00+05:00",
+    modifiedAt: "2026-10-10T19:15:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-october-12-16-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast October 12 to 16 2026 showing gold key support resistance with US CPI PPI retail sales and Fed Beige Book catalysts",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "US CPI"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-october-5-9-2026",
     title: "XAUUSD Weekly Forecast Oct 5–9, 2026: Gold Key Levels",
     description:
