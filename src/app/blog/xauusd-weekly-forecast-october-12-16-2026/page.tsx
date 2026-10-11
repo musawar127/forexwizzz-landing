@@ -175,7 +175,7 @@ const economicEvents = [
   {
     day: "Wednesday, October 14 — US CPI & Fed Beige Book",
     points: [
-      "September 2026 CPI is released at 8:30 AM Eastern (5:30 PM PKT). Official source: US Bureau of Labor Statistics. Reuters consensus as of October 9: headline CPI approximately +3.7% year-over-year, core CPI approximately +2.5% year-over-year.",
+      "September 2026 CPI is released at 8:30 AM Eastern (5:30 PM PKT). Official source: US Bureau of Labor Statistics. Market consensus references as of early October: headline CPI approximately +3.7% year-over-year, core CPI approximately +2.4% year-over-year. Verify the latest forecasts immediately before the release.",
       "Hotter-than-expected inflation could support Treasury yields and the US dollar, potentially pressuring non-yielding gold. Softer-than-expected inflation could reduce rate-hike expectations and potentially support gold.",
       "The Federal Reserve Beige Book is released at 2:00 PM Eastern (11:00 PM PKT). It summarizes economic conditions across Federal Reserve districts. Markets may focus on consumer demand, labor conditions, pricing pressure and business activity.",
       "The Beige Book is secondary to CPI but can influence expectations about the October 27–28 FOMC meeting.",
@@ -510,7 +510,7 @@ export default function WeeklyForecastOct12Oct16Page() {
                   XAU/USD enters October 12–16 near{" "}
                   <strong className="text-foreground/90">$4,194</strong> after
                   trading between approximately $4,066 and $4,208 during the
-                  previous week — a weekly gain of roughly 1.3%.
+                  previous week — a weekly gain of roughly 1.2%.
                 </p>
                 <p>
                   The first important support zone is approximately{" "}
@@ -643,7 +643,7 @@ export default function WeeklyForecastOct12Oct16Page() {
                   Monday October 5 opened near $4,144 and closed around $4,140.
                   On Wednesday October 7, gold printed a weekly and two-month low
                   near $4,066. By Friday October 9, spot closed near $4,194 — a
-                  weekly gain of approximately 1.3%.
+                  weekly gain of approximately 1.2%.
                 </p>
                 <p>
                   The rebound followed softer US dollar conditions, some easing
@@ -968,7 +968,7 @@ export default function WeeklyForecastOct12Oct16Page() {
                     <td className="p-4 text-foreground/90 align-top font-medium">8:30 AM</td>
                     <td className="p-4 text-foreground/90 align-top font-medium">5:30 PM</td>
                     <td className="p-4 text-foreground align-top font-medium">US CPI (Sep) — BLS</td>
-                    <td className="p-4 text-muted-foreground align-top">Reuters consensus ~3.7% YoY headline, ~2.5% core. Hot → yields up → gold down; soft → opposite.</td>
+                    <td className="p-4 text-muted-foreground align-top">Market consensus ~3.7% YoY headline, ~2.4% core. Hot → yields up → gold down; soft → opposite.</td>
                   </tr>
                   <tr className="border-b border-white/5">
                     <td className="p-4 text-muted-foreground align-top">Wed Oct 14</td>

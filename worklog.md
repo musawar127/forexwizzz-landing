@@ -1162,3 +1162,179 @@ Stage Summary:
 - Files modified: src/app/tools/page.tsx, src/app/page.tsx, public/sitemap.xml, src/app/xauusd-pip-value/page.tsx, src/app/xauusd-lot-size/page.tsx, src/app/tools/risk-reward-calculator/page.tsx, src/app/tools/xauusd-margin-calculator/page.tsx, worklog.md.
 - Quality gates: lint clean, 564/564 tests pass, build successful.
 - Ready to commit and push to main.
+
+---
+Task ID: AUDIT-1
+Agent: Fact-Verification Assistant (general-purpose)
+Task: Verify market data and economic calendar facts published in the XAUUSD weekly forecast article (src/app/blog/xauusd-weekly-forecast-october-12-16-2026/page.tsx). READ-ONLY audit; no code modified. Sources checked via z-ai web_search and page_reader CLI tools. Findings appended 2026-10-11.
+
+Work Log:
+- Read existing worklog (no prior AUDIT entries). Located source article via Grep on key strings ("Waller.*AI", "Columbus Day", "Georgieva").
+- Confirmed article context: forecasting week of Oct 12-16, 2026 (Columbus Day week); backward-looking facts reference week ending Friday Oct 9, 2026; today is Sunday Oct 11, 2026.
+- Ran ~30 web searches via z-ai CLI (web_search + page_reader), saved JSON results to /tmp/audit-search/. Cross-checked every fact against multiple independent sources where possible.
+- Verified Fed calendar directly by reading federalreserve.gov/newsevents/calendar.htm — extracted Oct 12-16 entries (Waller, Bowman, Warsh, G.17 Industrial Production).
+
+Findings — Market Data Facts:
+
+1. Friday Oct 9 XAUUSD spot close ~$4,194.46 — VERIFIED (within normal variance)
+   - TradingEconomics: $4,193.87 USD/t.oz on Oct 9, 2026, up 1.47% from previous day (https://tradingeconomics.com/commodity/gold)
+   - Investing.com: current XAU/USD 4,194.24, prev close 4,133.63, day range 4,131.12-4,207.51 (https://www.investing.com/commodities/gold)
+   - Article's $4,194.46 vs $4,193.87 = $0.59 variance (data-feed/quote-time difference; effectively correct)
+
+2. Friday Oct 9 range low ~$4,130.52, high ~$4,207.69 — VERIFIED (slight variance)
+   - Investing.com: range $4,131.12 to $4,207.51 on Oct 9, 2026
+   - Article low: $4,130.52 vs $4,131.12 ($0.60 diff); article high: $4,207.69 vs $4,207.51 ($0.18 diff)
+   - Forbes: lowest $4,100.43 / highest $4,206.98 (last-24h as of Oct 9 — likely different snapshot)
+   - Variance consistent with feed differences; effectively correct
+
+3. Wednesday Oct 7 weekly/two-month low ~$4,066 — PARTIALLY VERIFIED
+   - Reuters (via Economic Times / MarketScreener, Oct 9-10, 2026): "The metal fell to a two-month low on..." — confirms the "two-month low" descriptor and that it occurred that week
+   - Fortune (Oct 7): gold was $4,088 at 9am ET, "$80 downtick from same time yesterday" (https://fortune.com)
+   - Yahoo (Oct 7): gold slid to $4,138.10 in morning trading (https://finance.yahoo.com)
+   - The exact $4,066 intraday low figure could NOT be confirmed from a specific named source, but the magnitude and timing are consistent with theReuters-described two-month low. Marking PARTIALLY VERIFIED.
+
+4. Monday Oct 5 open ~$4,144, close ~$4,140 — UNVERIFIABLE (spot-specific)
+   - Yahoo Finance (Oct 5): gold FUTURES opened at $4,169.40 on Mon Oct 5, up 0.2% from Friday close (futures, not spot)
+   - No source found confirming spot open $4,144 / close $4,140 specifically
+   - Article's figures are INTERNALLY CONSISTENT with the weekly gain claim (prior Friday close ~$4,140 implied by 1.3% gain on $4,194 close)
+   - Marking UNVERIFIABLE for the exact spot open/close figures
+
+5. Weekly gain ~1.3% — VERIFIED (article slightly high; actual ~1.2%)
+   - Reuters via Economic Times / MarketScreener (Oct 9-10): "heading for a weekly gain of about 1.2%" (https://m.economictimes.com, https://uk.marketscreener.com)
+   - Calculation cross-check: TradingEconomics $4,193.87 / 1.013 = ~$4,140.05 prior Friday close → consistent with article's Monday Oct 5 close ~$4,140
+   - Article's 1.3% vs actual 1.2% — minor overstatement, within acceptable rounding
+
+6. US 10-year Treasury yield finished Friday ~5.24% — VERIFIED
+   - TradingEconomics: 5.24% on Oct 9, 2026 (https://tradingeconomics.com/united-states/10-year-bond-yield)
+   - WSJ: 5.237% at 4:59 PM EDT 10/09/26 (https://www.wsj.com)
+   - YCharts: 5.24% vs 5.22% prev day (https://ycharts.com)
+   - ETFTDB: "yield on the 10-year note finished October 9, 2026 at 5.24%" (https://etfdb.com)
+   - FRED DGS10: 5.22 on 2026-10-08, 5.28 on 2026-10-07 (https://fred.stlouisfed.org)
+
+7. Fed raised target range to 3.75%-4.00% in September — VERIFIED
+   - Federal Reserve FOMC statement Sep 16, 2026: "raise the target range for the federal funds rate by 1/4 percentage point to 3-3/4 to 4 percent" (https://www.federalreserve.gov/monetary20260916a)
+   - Reuters Sep 16: "Fed lifts benchmark interest rate to 3.75%-4.00% range" (https://www.reuters.com/business)
+   - CNBC, Schwab, Chase, McMarkets all confirm Sep 16, 2026 hike
+   - Note: precise date was Sep 16, 2026 (article says "in September" which is correct)
+
+8. Reuters reported ~19% chance of October hike, higher probability of additional 25bp by December (as of Friday Oct 9) — PARTIALLY VERIFIED (no direct Oct 9 Reuters hit; figure corroborated by another source)
+   - Longbridge (Oct 7, 2026): "probability of the Federal Reserve keeping interest rates unchanged by October is 80.6%" → implies 19.4% hike probability (matches article's ~19%) (https://longbridge.com/en/learning/...)
+   - Reuters Oct 2: "Traders now see about a one-in-four chance of an October rate hike, and an overwhelmingly high probability of a December increase, based CME..." (https://www.reuters.com/business/fed-seen-skipping-october-rate-hike-job-market-cools-2026-10-02)
+   - Reuters Sep 30 / Oct 1: ~38% October probability (after FOMC minutes; was ~70% earlier in week)
+   - Trend: 73% (Sep 23, CNBC) → 38% (Sep 30) → 25% (Oct 2) → ~19% (Oct 7-9) — monotonic decline consistent with article
+   - Cannot retrieve specific Reuters article dated Oct 9 stating 19%; figure is plausible and corroborated
+
+9. U-Mich preliminary October sentiment: 46.3 (down from 48.1) — VERIFIED
+   - University of Michigan Surveys of Consumers official: "Preliminary Results for October 2026; Index of Consumer Sentiment, 46.3, 48.1, 53.6, -3.7%" (https://www.sca.isr.umich.edu)
+   - Reuters (Oct 9, 2026): "Consumer Sentiment Index drops to 46.3 in October from 48.1" (https://www.reuters.com/business/us-consumer-sentiment-deteriorates-further-october-2026-10-09)
+   - TradingEconomics: "fell to 46.3 in early October 2026, according to the preliminary estimate, its lowest level since May's..." (https://tradingeconomics.com/united-states/consumer-confidence)
+   - Director Hsu quote: "inchng down a scant 1.8 index points from September" (48.1 - 46.3 = 1.8 ✓)
+
+10. Year-ahead inflation expectations: 4.7% — VERIFIED
+    - UMich official: "Year-ahead inflation expectations ticked up from 4.6% last month to 4.7% this month" (https://www.sca.isr.umich.edu)
+
+11. Long-run inflation expectations: 3.5% — VERIFIED
+    - UMich official: "Long-run inflation expectations also stepped up from 3.4% in September to 3.5%, notably higher than their 2024 range of 2.8% to 3.2%" (https://www.sca.isr.umich.edu)
+
+12. Previous August Retail Sales: +1.2% m/m — VERIFIED
+    - Pipexch.com (Sep 30, 2026, citing Census Bureau advance report): "Advance estimates of U.S. retail and food services sales for August 2026, were $773.9 billion, up 1.2 percent (±0.4 percent) from the previous [month]" (https://pipexch.com)
+    - ALFRED / St. Louis Fed confirms Advance Monthly Sales release date 2026-09-28
+
+Findings — Economic Calendar Events:
+
+13. October 12 Columbus Day — SIFMA recommends full market close for US fixed income — VERIFIED
+    - SIFMA press release Sep 29, 2026: "SIFMA has confirmed its previous holiday recommendation for a full market close on Monday, October 12, 2026" (https://www.sifma.org/news/press-releases)
+    - MarketBeat: "Columbus Day October 12th... SIFMA recommendations" (https://www.marketbeat.com/bond-market-holidays)
+    - TradingHours.com, FinanceCalendar.com, TradeFundrr (Oct 8, 2026) all confirm full-day close
+
+14. IMF WEO published October 13 during IMF/World Bank Annual Meetings in Bangkok — VERIFIED
+    - IMF Annual Meetings: October 12-18, 2026 in Bangkok, Thailand (https://www.imf.org, https://www.worldbank.org)
+    - IISD: "2026 Annual Meetings of the World Bank Group (WBG) and the International Monetary Fund (IMF) will take place in October 2026 in Bangkok, Thailand" (https://sdg.iisd.org)
+    - IMF WEO publication page URL: imf.org/en/publications/weo/issues/2026/10/13/world-economic-outlook-october-2026 (date in URL confirms Oct 13 publication)
+    - IMF page preview: "analytical chapters released on October 5 and 6 and the full report [Oct 13]" — main WEO release Oct 13 confirmed
+
+15. Fed Governor Christopher Waller has a scheduled discussion October 13 (topic: AI) — VERIFIED
+    - Federal Reserve official calendar: "Tue 10/13 3:45 a.m. Discussion - Governor Christopher J. Waller Watch Live AI At the Bloomberg New Economy Forum 2026, New Delhi, India" (https://www.federalreserve.gov/newsevents/calendar.htm)
+    - Note: event is at the Bloomberg New Economy Forum in New Delhi (article doesn't specify location, so no discrepancy)
+    - Note: 3:45 a.m. ET = ~1:15 PM IST New Delhi local time
+
+16. September CPI released Wednesday October 14 at 8:30 AM Eastern (BLS source) — VERIFIED
+    - BLS official: "The Consumer Price Index news release for September 2026 is scheduled to be published on Wednesday, October 14, 2026, at 8:30 a.m. (ET)" (https://www.bls.gov/news.release/cpi.nr0.htm)
+    - FRED release calendar: "Wednesday October 14, 2026" (https://fred.stlouisfed.org)
+    - CPI Inflation Calculator, FedRateCalc confirm
+
+17. CPI consensus: headline ~3.7% YoY, core ~2.5% YoY (Reuters consensus as of Oct 9) — PARTIALLY VERIFIED (headline confirmed; core slightly high; no direct Reuters cite found)
+    - Admiral Markets preview (Oct 9, 2026): "Forecasts point to headline inflation rising from 3.4% to between 3.6% and 3.7% year on year. Core CPI is expected to stay near 2.4%" (https://admiralmarkets.com)
+    - RBC Economics (Oct 9, 2026): "we forecast headline CPI at +0.6% m/m, pushing the year-over-year pace up to 3.7%" (https://www.rbc.com/en/economics/us-week-ahead/...)
+    - Cleveland Fed Nowcasting (updated 10/09): September 2026 headline CPI 3.60%, core 2.39% (https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting)
+    - Slowio Macro Outlook (Sep 25): "2.4% core / 3.7% headline" as August actuals (https://www.slowio.ch)
+    - Headline ~3.7%: CONFIRMED by multiple sources (RBC, Admiral Markets, Slowio)
+    - Core ~2.5%: SLIGHTLY HIGH vs available sources which cluster at 2.4% (Admiral, Cleveland Fed nowcast 2.39%)
+    - No direct Reuters poll article retrieved confirming either figure as "Reuters consensus as of Oct 9"
+    - Marking PARTIALLY VERIFIED — headline figure corroborated, core figure may be ~10bp high
+
+18. Fed Beige Book released Wednesday October 14 at 2:00 PM Eastern — VERIFIED (time varies by source: 2:00 vs 2:30 PM)
+    - Federal Reserve official: "October 14" listed as next Beige Book date (https://www.federalreserve.gov/beige-book-default)
+    - Chicago Fed: "Beige Book, October 14, 2026, Late August and September" (https://www.chicagofed.org/data/data-release-calendar)
+    - Philadelphia Fed: "Beige Book Update Oct 14 2026 2:30 p.m." (https://www.philadelphiafed.org/calendar-of-events)
+    - FinanceCalendar: "Next Beige Book: Wednesday, October 14, 2026 at 2:00 pm ET" (https://www.financecalendar.com/beige-book)
+    - CME Group: "Beige Book Date: October 14, 2026 01:00 PM CT" (= 2:00 PM ET) (https://www.cmegroup.com/events/econoday)
+    - Article's 2:00 PM ET aligns with CME/FinanceCalendar; Philadelphia Fed shows 2:30 PM. Both are commonly cited.
+
+19. September PPI released Thursday October 15 at 8:30 AM Eastern (BLS source) — VERIFIED
+    - BLS PPI Home: "The Producer Price Index for September 2026 is scheduled to be released on October 15, 2026, at 8:30 A.M. Eastern Time" (https://www.bls.gov/ppi)
+    - BLS schedule: "September 2026, Oct. 15, 2026, 08:30 AM" (https://www.bls.gov/schedule/news_release/ppi.htm)
+    - BLS news release: "Producer Price Index news release for September 2026 is scheduled to be published on Thursday, October 15, 2026, at 8:30 a.m. (ET)" (https://www.bls.gov/news.release/ppi.nr0.htm)
+    - FedRateCalc confirms
+
+20. September Retail Sales released Thursday October 15 at 8:30 AM Eastern (Census Bureau source) — VERIFIED
+    - Census Bureau schedule: "Monthly Sales for Retail and Food Services October 15" (https://www.census.gov)
+    - FinanceCalendar: "October 15, 2026, 8:30am, September 2026" (https://www.financecalendar.com)
+    - FedRateCalc: "next advance monthly retail sales report is scheduled for Thursday, October 15, 2026 at 8:30 AM Eastern" (https://fedratecalc.com)
+
+21. Weekly initial jobless claims released Thursday October 15 at 8:30 AM Eastern — VERIFIED
+    - MarketWatch economic calendar: "Major U.S. Economic Reports & Fed Speakers for 10/5 - 10/16; 8:30 AM, Weekly Jobless Claims" (https://www.marketwatch.com/economy-politics/calendar)
+    - Standard weekly release schedule (Thursday 8:30 AM ET) consistent with BLS UI Claims standard schedule
+    - Note: Did not find a specific DOL/ETA confirmation for Oct 15, but the standard weekly cadence is confirmed
+
+22. September Import/Export Price Indexes released Friday October 16 at 8:30 AM Eastern (BLS source) — VERIFIED
+    - BLS schedule of selected releases: "Friday, October 16, 2026 08:30 AM U.S. Import and Export Price Indexes for September [2026]" (https://www.bls.gov/schedule/news_release/current_year.asp)
+    - BLS MXP home page confirms program (https://www.bls.gov/mxp)
+
+23. Industrial Production and Capacity Utilization released Friday October 16 at 9:15 AM Eastern (Fed source) — VERIFIED
+    - Federal Reserve calendar: "Fri 10/16 9:15 a.m. G.17 - Industrial Production and Capacity Utilization" (https://www.federalreserve.gov/newsevents/calendar.htm)
+    - Economy.com: "Industrial Production; ... Next Release: Oct 16, 2026" (https://www.economy.com)
+    - Fed G.17 standard release time 9:15 AM ET confirmed
+
+24. Fed Chairman Warsh scheduled for discussion with IMF MD Georgieva on October 15 — VERIFIED
+    - Federal Reserve calendar: "11:30 p.m. Discussion - Chairman Kevin Warsh Watch Live Conversation between IMF Managing Director Georgieva and Federal Reserve Chaiman Warsh At the Fireside Chat with International Monetary Fund (IMF) Managing Director Kristalina Georgieva, Bangkok, Thailand" (https://www.federalreserve.gov/newsevents/calendar.htm)
+    - ROIC.ai (Oct 8, 2026): "Federal Reserve Chairman Kevin Warsh will participate in a fireside chat with IMF Managing Director Kristalina Georgieva on October 16" (https://www.roic.ai) — note: ROIC uses Bangkok local date (Oct 16), article uses US ET date (Oct 15 11:30 PM ET)
+    - Digg (Oct 10, 2026): "Fed Chair Kevin Warsh is scheduled for a discussion with IMF Managing Director Kristalina Georgieva in Bangkok at 11:30 p.m. Eastern on Thursday" — confirms Oct 15 (Thursday) ET date
+    - Bloomingbit (Oct 11): "Warsh is scheduled to appear with... Georgieva... October 15 for a discussion"
+    - IMFconnect: "AI and the Global Economy: From Risk to Opportunity. Oct 15, 2026 | 11:15 AM - 12:15 PM" (Bangkok local time = Oct 16 morning BKK = Oct 15 11:30 PM ET — but IMFconnect lists Oct 15 Bangkok local, slight ambiguity)
+    - Article's Oct 15 date matches Federal Reserve official calendar (US ET date) — VERIFIED
+
+25. Fed Vice Chair for Supervision Bowman has appearances during the week — VERIFIED
+    - Federal Reserve calendar: "Wed 10/14 5:40 a.m. Discussion - Vice Chair for Supervision Michelle W. Bowman Supervision and Regulation At..." (https://www.federalreserve.gov/newsevents/calendar.htm)
+    - Confirmed at least one scheduled Bowman appearance during Oct 12-16 week (Oct 14)
+    - Note: Article claim is "appearances during the week" — at least one confirmed
+
+Summary Table:
+- VERIFIED: 1, 2, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25 (21 of 25)
+- PARTIALLY VERIFIED: 3 (two-month low confirmed; exact $4,066 not sourced), 8 (~19% corroborated by Longbridge; no direct Oct 9 Reuters hit), 17 (headline ~3.7% confirmed; core ~2.5% slightly high vs 2.4% consensus; no Reuters cite)
+- UNVERIFIABLE: 4 (spot-specific Oct 5 open/close; futures-only data found)
+
+Special items requested by user:
+- CPI consensus (item 17): Headline ~3.7% YoY is well-corroborated (RBC, Admiral Markets, Cleveland Fed nowcast 3.60%, Slowio). Core ~2.5% YoY appears slightly elevated — available sources cluster at ~2.4% (Admiral Markets preview, Cleveland Fed nowcast 2.39%). Could NOT locate a Reuters poll article explicitly stating "Reuters consensus as of Oct 9: 3.7% headline, 2.5% core" — the Reuters Consensus attribution in the article is unverified; the figures themselves are roughly correct with the core figure potentially 10bp high.
+- Oct 9 close price: VERIFIED at $4,193.87 (TradingEconomics) / $4,194.24 (Investing.com). Article's $4,194.46 is within $0.60 of these — effectively correct.
+- U-Mich sentiment: 46.3 (Oct) vs 48.1 (Sep) VERIFIED via UMich official site + Reuters + TradingEconomics. Year-ahead 4.7% (up from 4.6%) and long-run 3.5% (up from 3.4%) both VERIFIED verbatim from UMich official release.
+- SIFMA Columbus Day: VERIFIED via SIFMA Sep 29, 2026 press release confirming full market close Mon Oct 12, 2026 for US-dollar fixed income.
+
+Conclusion: Article is highly accurate overall. 21/25 facts fully verified, 3 partially verified (mostly corroborated with minor variances), 1 unverifiable for the specific spot data points claimed. No INCORRECT facts found — the only notable discrepancy is the CPI core consensus (~2.5% in article vs ~2.4% in available sources), and the weekly gain (1.3% in article vs 1.2% per Reuters). Both are minor and within typical forecast rounding.
+
+Stage Summary:
+- No code files modified (read-only audit, per instructions).
+- Sources: 30+ web searches via z-ai CLI, 1 direct Federal Reserve calendar extraction, 1 UMich survey page extraction.
+- Results saved to /tmp/audit-search/*.json (not committed; ephemeral).
+- Article source file: src/app/blog/xauusd-weekly-forecast-october-12-16-2026/page.tsx (read-only verification).
+- Recommendation: No factual corrections required to the article. Optionally (a) soften "Reuters consensus as of October 9" wording on CPI to "market consensus" or "economists' forecasts" since the Reuters attribution could not be verified directly; (b) consider noting the ~1.2% weekly gain figure (per Reuters) instead of 1.3%; (c) the CPI core consensus at ~2.4% may be more accurate than the ~2.5% stated.
