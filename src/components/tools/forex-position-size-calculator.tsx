@@ -103,10 +103,12 @@ export function ForexPositionSizeCalculator() {
         update("pipSize", String(preset.pipSize));
         update("contractSize", String(preset.contractSize));
       }
-      // Auto-set conversion rate if quote = account currency
+      // Set conversion rate to 1 only when quote = account currency; otherwise clear it
       const quote = getQuoteCurrency(pairSelect);
       if (quote === form.accountCurrency) {
         update("conversionRate", "1");
+      } else {
+        update("conversionRate", ""); // clear stale value — user must enter the correct rate
       }
     }
   }
@@ -117,6 +119,8 @@ export function ForexPositionSizeCalculator() {
     const quote = getQuoteCurrency(pair);
     if (quote === currency) {
       update("conversionRate", "1");
+    } else {
+      update("conversionRate", ""); // clear stale value — user must enter the correct rate
     }
   }
 
@@ -281,7 +285,7 @@ Risk: ${fmtMoney(result.riskAmount)} (${fmtNum(result.riskPercentage)}%)`;
                   <>
                     <Field id="ps-comm" label={`Commission/Lot (${form.accountCurrency})`} value={form.commissionPerLot} onChange={v => update("commissionPerLot", v)} placeholder="0" />
                     <Field id="ps-slip" label="Slippage (pips)" value={form.slippagePips} onChange={v => update("slippagePips", v)} placeholder="0" />
-                    <Field id="ps-extra" label={`Additional Costs (${form.accountCurrency})`} value={form.additionalCosts} onChange={v => update("additionalCosts", v)} placeholder="0" />
+                    <Field id="ps-extra" label={`Flat Trade Costs (${form.accountCurrency})`} value={form.additionalCosts} onChange={v => update("additionalCosts", v)} placeholder="0" />
                   </>
                 )}
               </div>

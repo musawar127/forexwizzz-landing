@@ -269,13 +269,13 @@ describe("Forex Position Size Calculator", () => {
       expect(dir).toContain("GBP");
       expect(dir).toContain("USD");
     });
-    test("USD/JPY with USD account → base = account, use pair price", () => {
+    test("USD/JPY with USD account → base = account, enter 1/price", () => {
       const dir = getConversionDirection("USDJPY", "USD");
-      expect(dir).toContain("exchange rate");
+      expect(dir).toContain("1 divided by");
     });
-    test("EUR/USD with EUR account → base = account, use pair price", () => {
+    test("EUR/USD with EUR account → base = account, enter 1/price", () => {
       const dir = getConversionDirection("EURUSD", "EUR");
-      expect(dir).toContain("exchange rate");
+      expect(dir).toContain("1 divided by");
     });
   });
 
@@ -410,7 +410,7 @@ describe("Forex Position Size Calculator", () => {
       expect(labels).toContain("Risk Amount");
       expect(labels).toContain("Pip Value per Lot (account)");
       expect(labels).toContain("Raw Lot Size");
-      expect(labels).toContain("Broker-Step Lot Size");
+      expect(labels).toContain("Rounded Lot Size");
       expect(labels).toContain("Money at Risk");
     });
   });
@@ -438,6 +438,181 @@ describe("Forex Position Size Calculator", () => {
       }));
       expect(r.valid).toBe(true);
       expect(r.calculatedPipDistance).toBeCloseTo(30, 5);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: CONVERSION DIRECTION ACCURACY
+  // ============================================================
+  describe("Conversion Direction Accuracy", () => {
+    test("USD/JPY with USD account: instructs 1/price, not the price itself", () => {
+      const dir = getConversionDirection("USDJPY", "USD");
+      expect(dir).toContain("1 divided by");
+      expect(dir).toContain("USDJPY");
+      expect(dir).not.toContain("Use the current");
+      // Should mention the example rate
+      expect(dir).toContain("0.006"); // 1/150 ≈ 0.00667
+    });
+
+    test("EUR/USD with USD account: no conversion needed", () => {
+      expect(getConversionDirection("EURUSD", "USD")).toBe("");
+    });
+
+    test("EUR/GBP with USD account: GBP-to-USD rate", () => {
+      const dir = getConversionDirection("EURGBP", "USD");
+      expect(dir).toContain("GBP");
+      expect(dir).toContain("USD");
+      expect(dir).toContain("how many USD per 1 GBP");
+    });
+
+    test("EUR/USD with EUR account: 1/price instruction", () => {
+      const dir = getConversionDirection("EURUSD", "EUR");
+      expect(dir).toContain("1 divided by");
+      expect(dir).toContain("EURUSD");
+    });
+
+    test("USD/JPY with JPY account: no conversion needed", () => {
+      expect(getConversionDirection("USDJPY", "JPY")).toBe("");
+    });
+
+    test("USD/JPY with GBP account: JPY-to-GBP rate", () => {
+      const dir = getConversionDirection("USDJPY", "GBP");
+      expect(dir).toContain("JPY");
+      expect(dir).toContain("GBP");
+      expect(dir).toContain("how many GBP per 1 JPY");
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: BROKER MAXIMUM LOT DISPLAY
+  // ============================================================
+  describe("Broker Maximum Lot Display Consistency", () => {
+    test("When capped at max, brokerLots = effectiveLots = maxLot", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 1000000, riskPercentage: 50, stopLossPips: 10,
+        maxLot: 5, lotStep: 0.01,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.withinBrokerLimits).toBe(false);
+      expect(r.brokerLots).toBe(5); // capped at max
+      // All outputs should use the capped (effective) size
+      expect(r.baseCurrencyUnits).toBe(5 * 100000);
+      expect(r.miniLots).toBe(50);
+      expect(r.microLots).toBe(500);
+      expect(r.pipValueAtSize).toBe(5 * 10); // 5 lots × $10/pip
+    });
+
+    test("Below min lot: brokerLots = 0, no invalid recommendation", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 100, riskPercentage: 0.1, stopLossPips: 200,
+        minLot: 1.0, lotStep: 0.01,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.withinBrokerLimits).toBe(false);
+      expect(r.brokerLots).toBe(0);
+      expect(r.moneyAtRisk).toBe(0);
+      expect(r.pipValueAtSize).toBe(0);
+      expect(r.baseCurrencyUnits).toBe(0);
+    });
+
+    test("Within limits: brokerLots = effectiveLots (no cap needed)", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskPercentage: 1, stopLossPips: 20,
+        maxLot: 100, minLot: 0.01, lotStep: 0.01,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.withinBrokerLimits).toBe(true);
+      expect(r.brokerLots).toBe(0.5);
+      expect(r.brokerLots).toBe(r.rawLots > r.brokerLots ? r.brokerLots : r.rawLots);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: ADDITIONAL COSTS AS FLAT TRADE COST
+  // ============================================================
+  describe("Additional Costs as Flat Trade Cost", () => {
+    test("Flat cost subtracted from risk budget before lot calculation", () => {
+      const rNoCost = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, additionalCosts: 0,
+      }));
+      const rWithCost = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, additionalCosts: 20,
+      }));
+      // With $20 flat cost, available budget = $80, not $100
+      // Risk per lot = 20 × $10 = $200
+      // Lots without cost = 100/200 = 0.50
+      // Lots with cost = 80/200 = 0.40
+      expect(rNoCost.brokerLots).toBe(0.5);
+      expect(rWithCost.brokerLots).toBe(0.4);
+    });
+
+    test("Flat cost included in total money at risk", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, additionalCosts: 20,
+      }));
+      // 0.40 lots × $200/lot + $20 flat = $80 + $20 = $100
+      expect(r.moneyAtRisk).toBeCloseTo(100, 2);
+    });
+
+    test("Flat cost does not inflate per-lot cost", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, additionalCosts: 20,
+      }));
+      // costPerLot should only include commission + slippage, NOT additionalCosts
+      expect(r.costPerLot).toBe(0); // no commission or slippage set
+    });
+
+    test("Flat cost exceeding risk budget → zero lots", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 50,
+        stopLossPips: 20, additionalCosts: 60,
+      }));
+      // Available budget = max(0, 50 - 60) = 0 → 0 lots
+      expect(r.rawLots).toBe(0);
+      expect(r.brokerLots).toBe(0);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: CONVERSION RATE EDGE CASES
+  // ============================================================
+  describe("Conversion Rate Edge Cases", () => {
+    test("USD/JPY at 150 with 1/150 rate produces correct pip value", () => {
+      const r = calculatePositionSize(makeInputs({
+        pair: "USDJPY", accountCurrency: "USD",
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 30, pipSize: 0.01, contractSize: 100000,
+        conversionRate: 1 / 150, // JPY→USD = 0.00667
+        lotStep: 0.01,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.pipValuePerLotAccount).toBeCloseTo(1000 / 150, 4);
+      expect(r.brokerLots).toBe(0.5);
+    });
+
+    test("EUR/GBP with USD account at rate 1.25 produces correct pip value", () => {
+      const r = calculatePositionSize(makeInputs({
+        pair: "EURGBP", accountCurrency: "USD",
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, pipSize: 0.0001, contractSize: 100000,
+        conversionRate: 1.25, // GBP→USD
+        lotStep: 0.01,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.pipValuePerLotAccount).toBe(12.5);
+      expect(r.brokerLots).toBe(0.4);
+    });
+
+    test("Zero conversion rate → invalid", () => {
+      const r = calculatePositionSize(makeInputs({
+        pair: "USDJPY", accountCurrency: "USD",
+        conversionRate: 0,
+      }));
+      expect(r.valid).toBe(false);
     });
   });
 });

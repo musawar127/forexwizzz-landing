@@ -168,6 +168,10 @@ export function getBaseCurrency(pair: string): string {
 /**
  * Determine if conversion is needed and what direction.
  * Returns a description string, or empty if no conversion needed.
+ *
+ * For quote = account: no conversion needed (rate = 1).
+ * For base = account: user enters 1 / pair_price (e.g. USD/JPY at 150 → 1/150 = 0.00667).
+ * For third-currency: user enters the quote-to-account rate directly.
  */
 export function getConversionDirection(pair: string, accountCurrency: string): string {
   const quote = getQuoteCurrency(pair);
@@ -175,7 +179,9 @@ export function getConversionDirection(pair: string, accountCurrency: string): s
   const acct = accountCurrency.toUpperCase();
 
   if (quote === acct) return ""; // no conversion needed
-  if (base === acct) return `Use the current ${pair} exchange rate (price) as the conversion rate.`;
+  if (base === acct) {
+    return `Enter 1 divided by the current ${pair} price. For example, if ${pair} is trading at 150.00, enter ${roundTo(1 / 150, 8)} (1 / 150.00). This converts ${quote} pip values into ${acct}.`;
+  }
   return `Enter the ${quote}-to-${acct} conversion rate (how many ${acct} per 1 ${quote}).`;
 }
 
@@ -350,40 +356,47 @@ export function calculatePositionSize(inputs: PositionSizeInputs): PositionSizeR
     stopLossPips = distResult.pips;
   }
 
-  // 5. Costs per lot
+  // 5. Costs per lot (commission and slippage are per-lot; additionalCosts is a flat trade cost)
   const commissionPerLot = inputs.commissionPerLot ?? 0;
   const slippagePips = inputs.slippagePips ?? 0;
   const slippageCostPerLot = slippagePips * pipValuePerLotAccount;
-  const additionalCosts = inputs.additionalCosts ?? 0;
-  const costPerLot = commissionPerLot + slippageCostPerLot + additionalCosts;
+  const additionalCosts = inputs.additionalCosts ?? 0; // flat trade cost, not per-lot
+  const costPerLot = commissionPerLot + slippageCostPerLot; // per-lot costs only
 
-  // 6. Risk per standard lot
+  // 6. Risk per standard lot (per-lot costs only)
   const riskPerLot = stopLossPips * pipValuePerLotAccount + costPerLot;
 
   if (riskPerLot <= 0) {
     return buildErrorResult(inputs, "Risk per standard lot must be positive. Check pip value and stop-loss distance.");
   }
 
-  // 7. Raw lots
-  const rawLots = riskAmount / riskPerLot;
+  // 7. Available risk budget after flat additional costs
+  const availableRiskBudget = Math.max(0, riskAmount - additionalCosts);
 
-  // 8. Broker rounding (always DOWN)
-  const brokerLots = roundLotsDown(rawLots, lotStep);
+  // 8. Raw lots
+  const rawLots = availableRiskBudget / riskPerLot;
 
-  // 9. Broker limits check
+  // 9. Broker rounding (always DOWN)
+  const roundedLots = roundLotsDown(rawLots, lotStep);
+
+  // 10. Broker limits check — effective lots is the actual executable size
   let withinBrokerLimits = true;
   let brokerMessage: string | undefined;
-  if (brokerLots < minLot) {
+  let effectiveLots = roundedLots;
+
+  if (roundedLots < minLot) {
     withinBrokerLimits = false;
-    brokerMessage = `No valid position within risk limit. The calculated size (${roundTo(brokerLots, 4)}) is below the broker minimum (${minLot}).`;
-  } else if (brokerLots > maxLot) {
+    effectiveLots = 0; // no valid position
+    brokerMessage = `No valid position within risk limit. The calculated size (${roundTo(roundedLots, 4)}) is below the broker minimum (${minLot}).`;
+  } else if (roundedLots > maxLot) {
     withinBrokerLimits = false;
-    brokerMessage = `Calculated size (${roundTo(brokerLots, 4)}) exceeds broker maximum (${maxLot}). Capped at maximum.`;
+    effectiveLots = maxLot; // capped at maximum
+    brokerMessage = `Calculated size (${roundTo(roundedLots, 4)}) exceeds broker maximum (${maxLot}). Capped at maximum.`;
   }
 
-  // 10. Actual money at risk (at broker-rounded size, or maxLot if capped)
-  const effectiveLots = Math.min(brokerLots, maxLot);
-  const moneyAtRisk = effectiveLots * riskPerLot;
+  // Use effectiveLots consistently for all outputs
+  const brokerLots = effectiveLots; // brokerLots = the displayed/executable size
+  const moneyAtRisk = effectiveLots * riskPerLot + additionalCosts;
   const pipValueAtSize = effectiveLots * pipValuePerLotAccount;
   const estimatedStopLossAmount = effectiveLots * stopLossPips * pipValuePerLotAccount;
   const unusedRiskBudget = Math.max(0, riskAmount - moneyAtRisk);
@@ -404,11 +417,13 @@ export function calculatePositionSize(inputs: PositionSizeInputs): PositionSizeR
     { label: "Pip Value per Lot (quote)", value: `${roundTo(pipValuePerLotQuote, 4).toFixed(4)}` },
     { label: "Conversion Rate", value: conversionRate === 1 ? "1 (no conversion needed)" : `${conversionRate}` },
     { label: "Pip Value per Lot (account)", value: `${accountCurrency} ${roundTo(pipValuePerLotAccount, 4).toFixed(4)}` },
-    { label: "Cost per Lot", value: `${accountCurrency} ${roundTo(costPerLot, 4).toFixed(4)}` },
+    { label: "Cost per Lot (commission + slippage)", value: `${accountCurrency} ${roundTo(costPerLot, 4).toFixed(4)}` },
+    { label: "Flat Additional Costs", value: `${accountCurrency} ${roundTo(additionalCosts, 2).toFixed(2)}` },
     { label: "Risk per Standard Lot", value: `${accountCurrency} ${roundTo(riskPerLot, 4).toFixed(4)}` },
+    { label: "Available Risk Budget (after flat costs)", value: `${accountCurrency} ${roundTo(availableRiskBudget, 2).toFixed(2)}` },
     { label: "Raw Lot Size", value: roundTo(rawLots, 6).toFixed(6) },
-    { label: "Broker-Step Lot Size", value: roundTo(brokerLots, 4).toFixed(4) },
-    { label: "Effective Lots", value: roundTo(effectiveLots, 4).toFixed(4) },
+    { label: "Rounded Lot Size", value: roundTo(roundedLots, 4).toFixed(4) },
+    { label: "Effective (Executable) Lots", value: roundTo(effectiveLots, 4).toFixed(4) },
     { label: "Money at Risk", value: `${accountCurrency} ${roundTo(moneyAtRisk, 2).toFixed(2)}` },
     { label: "Unused Risk Budget", value: `${accountCurrency} ${roundTo(unusedRiskBudget, 2).toFixed(2)}` },
   ];
