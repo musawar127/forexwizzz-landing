@@ -19,6 +19,7 @@ import {
   Coins,
   Calendar,
   Activity,
+  Crosshair,
 } from "lucide-react";
 import {
   FadeSection,
@@ -949,6 +950,31 @@ export default function Home() {
                     Model trading account growth with compounding returns,
                     deposits, withdrawals, fees and losing periods. View charts
                     and export results.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+                    Use Calculator <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Tool 10: Forex Position Size Calculator */}
+              <Link href="/tools/forex-position-size-calculator/" className="block no-underline group">
+                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                      <Crosshair className="w-6 h-6 text-trading-green" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+                      LIVE
+                    </span>
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+                    Forex Position Size Calculator
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Calculate lot size, pip value and risk for major forex
+                    currency pairs using your balance, stop loss and broker
+                    settings.
                   </p>
                   <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
                     Use Calculator <ArrowRight className="w-4 h-4" />

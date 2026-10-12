@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, Activity, BarChart3, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, Activity, BarChart3, Crosshair, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -115,6 +115,13 @@ const activeTools = [
     title: "Forex Compounding Calculator",
     desc: "Model trading account growth with compounding returns, deposits, withdrawals, fees, variable returns and win/loss simulation. View charts and export CSV.",
     icon: <BarChart3 className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
+  {
+    href: "/tools/forex-position-size-calculator/",
+    title: "Forex Position Size Calculator",
+    desc: "Calculate lot size, pip value and risk for major forex currency pairs using your balance, stop loss and broker settings.",
+    icon: <Crosshair className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
 ];
