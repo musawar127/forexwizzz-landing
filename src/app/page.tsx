@@ -930,6 +930,31 @@ export default function Home() {
                   </span>
                 </div>
               </Link>
+
+              {/* Tool 9: Forex Compounding Calculator */}
+              <Link href="/tools/forex-compounding-calculator/" className="block no-underline group">
+                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
+                      <BarChart3 className="w-6 h-6 text-trading-green" />
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-trading-green bg-trading-green/10 border border-trading-green/30 rounded-full px-2 py-0.5">
+                      LIVE
+                    </span>
+                  </div>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+                    Forex Compounding Calculator
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
+                    Model trading account growth with compounding returns,
+                    deposits, withdrawals, fees and losing periods. View charts
+                    and export results.
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-green group-hover:translate-x-1 transition-transform">
+                    Use Calculator <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </Link>
             </div>
 
             <div className="text-center mt-8">

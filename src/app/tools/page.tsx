@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, Activity, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
+import { Calculator, Clock, Percent, TrendingUp, Coins, Calendar, Target, Activity, BarChart3, ArrowRight, BookOpen, ShieldCheck } from "lucide-react";
 import {
   FadeSection,
   FadeIn,
@@ -108,6 +108,13 @@ const activeTools = [
     title: "Risk of Ruin & Losing Streak Calculator",
     desc: "Estimate losing-streak probability, compounded drawdown, recovery requirements and finite-horizon threshold risk from your trading statistics.",
     icon: <Activity className="w-7 h-7 text-trading-green" />,
+    badge: "LIVE",
+  },
+  {
+    href: "/tools/forex-compounding-calculator/",
+    title: "Forex Compounding Calculator",
+    desc: "Model trading account growth with compounding returns, deposits, withdrawals, fees, variable returns and win/loss simulation. View charts and export CSV.",
+    icon: <BarChart3 className="w-7 h-7 text-trading-green" />,
     badge: "LIVE",
   },
 ];
