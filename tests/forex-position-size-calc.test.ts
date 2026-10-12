@@ -4,6 +4,8 @@ import {
   validatePositionSizeInputs,
   calculatePipDistance,
   roundLotsDown,
+  roundLotsDownToGrid,
+  alignMaxLotToGrid,
   roundTo,
   getPairPreset,
   getDefaultPipSize,
@@ -410,7 +412,7 @@ describe("Forex Position Size Calculator", () => {
       expect(labels).toContain("Risk Amount");
       expect(labels).toContain("Pip Value per Lot (account)");
       expect(labels).toContain("Raw Lot Size");
-      expect(labels).toContain("Rounded Lot Size");
+      expect(labels).toContain("Rounded Lot Size (grid-aligned)");
       expect(labels).toContain("Money at Risk");
     });
   });
@@ -613,6 +615,180 @@ describe("Forex Position Size Calculator", () => {
         conversionRate: 0,
       }));
       expect(r.valid).toBe(false);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: BROKER VOLUME GRID ALIGNMENT
+  // ============================================================
+  describe("Broker Volume Grid Alignment", () => {
+    test("roundLotsDownToGrid: min=0.03, step=0.02, lots=0.075 → 0.07", () => {
+      expect(roundLotsDownToGrid(0.075, 0.03, 0.02)).toBe(0.07);
+    });
+    test("roundLotsDownToGrid: min=0.03, step=0.02, lots=0.07 → 0.07", () => {
+      expect(roundLotsDownToGrid(0.07, 0.03, 0.02)).toBe(0.07);
+    });
+    test("roundLotsDownToGrid: min=0.03, step=0.02, lots=0.05 → 0.05", () => {
+      expect(roundLotsDownToGrid(0.05, 0.03, 0.02)).toBe(0.05);
+    });
+    test("roundLotsDownToGrid: min=0.03, step=0.02, lots=0.03 → 0.03 (exact minimum)", () => {
+      expect(roundLotsDownToGrid(0.03, 0.03, 0.02)).toBe(0.03);
+    });
+    test("roundLotsDownToGrid: below minimum → 0", () => {
+      expect(roundLotsDownToGrid(0.02, 0.03, 0.02)).toBe(0);
+    });
+    test("roundLotsDownToGrid: min=0.01, step=0.01, lots=0.50 → 0.50 (standard)", () => {
+      expect(roundLotsDownToGrid(0.50, 0.01, 0.01)).toBe(0.5);
+    });
+    test("roundLotsDownToGrid: float artifact 0.30000000000000004, min=0, step=0.01 → 0.30", () => {
+      expect(roundLotsDownToGrid(0.30000000000000004, 0, 0.01)).toBe(0.3);
+    });
+
+    test("alignMaxLotToGrid: max=10, min=0.03, step=0.02 → 10.03... no, 10 rounded to grid", () => {
+      // 0.03 + n*0.02 = 10 → n = (10-0.03)/0.02 = 498.5 → floor = 498 → 0.03 + 498*0.02 = 9.99
+      const aligned = alignMaxLotToGrid(10, 0.03, 0.02);
+      expect(aligned).toBe(9.99);
+      expect(aligned).toBeLessThanOrEqual(10);
+    });
+    test("alignMaxLotToGrid: max=100, min=0.01, step=0.01 → 100 (already aligned)", () => {
+      expect(alignMaxLotToGrid(100, 0.01, 0.01)).toBe(100);
+    });
+    test("alignMaxLotToGrid: max < min → 0", () => {
+      expect(alignMaxLotToGrid(0.005, 0.01, 0.01)).toBe(0);
+    });
+
+    test("Full calc: min=0.03, step=0.02 → lots align to 0.03, 0.05, 0.07...", () => {
+      // $10,000 @ 1%, 20 pip stop, pip value $10 → risk per lot = $200
+      // Risk amount = $100 → raw lots = 0.50
+      // Grid: 0.03 + n*0.02 → 0.03, 0.05, ..., 0.49 (n=23)
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskPercentage: 1, stopLossPips: 20,
+        minLot: 0.03, lotStep: 0.02, maxLot: 100,
+      }));
+      expect(r.valid).toBe(true);
+      // 0.03 + 23*0.02 = 0.49
+      expect(r.brokerLots).toBe(0.49);
+    });
+
+    test("Full calc: min=0.03, step=0.02, raw=0.075 → 0.07", () => {
+      // Tune so rawLots ≈ 0.075
+      // risk per lot = 20 × $10 = $200; rawLots = riskAmount / 200 = 0.075 → riskAmount = $15
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 1500, riskType: "PERCENTAGE", riskPercentage: 1,
+        stopLossPips: 20, minLot: 0.03, lotStep: 0.02, maxLot: 100,
+      }));
+      expect(r.valid).toBe(true);
+      // riskAmount = $15, rawLots = 15/200 = 0.075
+      expect(r.rawLots).toBeCloseTo(0.075, 4);
+      // Grid-aligned: 0.03 + 2*0.02 = 0.07
+      expect(r.brokerLots).toBe(0.07);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: FLAT COSTS EXCEEDING RISK BUDGET
+  // ============================================================
+  describe("Flat Costs Exceeding Risk Budget", () => {
+    test("Flat costs > risk budget → zero lots, valid result with warning", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 50,
+        stopLossPips: 20, additionalCosts: 60,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.brokerLots).toBe(0);
+      expect(r.moneyAtRisk).toBe(0); // no trade → no risk
+      expect(r.pipValueAtSize).toBe(0);
+      expect(r.baseCurrencyUnits).toBe(0);
+      expect(r.withinBrokerLimits).toBe(false);
+      expect(r.brokerMessage).toContain("consume the entire risk budget");
+    });
+
+    test("Flat costs = risk budget → zero lots (boundary)", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, additionalCosts: 100,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.brokerLots).toBe(0);
+      expect(r.moneyAtRisk).toBe(0);
+      expect(r.brokerMessage).toContain("consume the entire risk budget");
+    });
+
+    test("Flat costs just below budget → small position possible", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 100,
+        stopLossPips: 20, additionalCosts: 80,
+      }));
+      // Available = 20, risk per lot = 200, raw = 0.1
+      expect(r.valid).toBe(true);
+      expect(r.rawLots).toBeCloseTo(0.1, 4);
+      expect(r.brokerLots).toBe(0.1);
+      // moneyAtRisk = 0.1 × 200 + 80 = 100
+      expect(r.moneyAtRisk).toBeCloseTo(100, 2);
+    });
+
+    test("Zero position: unusedRiskBudget = full risk amount (not reduced by flat costs)", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 50,
+        stopLossPips: 20, additionalCosts: 60,
+      }));
+      // No trade recommended → unused budget = full risk amount
+      expect(r.unusedRiskBudget).toBe(50);
+    });
+
+    test("All displayed values consistent when zero position", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000, riskType: "FIXED", riskAmount: 50,
+        stopLossPips: 20, additionalCosts: 60,
+      }));
+      expect(r.brokerLots).toBe(0);
+      expect(r.moneyAtRisk).toBe(0);
+      expect(r.pipValueAtSize).toBe(0);
+      expect(r.estimatedStopLossAmount).toBe(0);
+      expect(r.baseCurrencyUnits).toBe(0);
+      expect(r.miniLots).toBe(0);
+      expect(r.microLots).toBe(0);
+      expect(r.unusedRiskBudget).toBe(50);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: NON-ALIGNED MAXIMUM LOT
+  // ============================================================
+  describe("Non-Aligned Maximum Lot", () => {
+    test("maxLot not on grid → capped to highest grid point", () => {
+      // min=0.01, step=0.01, max=10.005 → aligned max = 10.00
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000000, riskPercentage: 50, stopLossPips: 10,
+        minLot: 0.01, lotStep: 0.01, maxLot: 10.005,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.withinBrokerLimits).toBe(false);
+      // Should be capped at 10.00 (highest grid point ≤ 10.005)
+      expect(r.brokerLots).toBe(10);
+      expect(r.brokerLots).toBeLessThanOrEqual(10.005);
+    });
+
+    test("maxLot on grid → no alignment needed", () => {
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000000, riskPercentage: 50, stopLossPips: 10,
+        minLot: 0.01, lotStep: 0.01, maxLot: 10,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.brokerLots).toBe(10);
+    });
+
+    test("Non-aligned max with min offset: min=0.03, step=0.02, max=9.995", () => {
+      // Grid: 0.03, 0.05, ..., 0.03 + n*0.02
+      // 0.03 + 498*0.02 = 9.99; 0.03 + 499*0.02 = 10.01 > 9.995
+      // So aligned max = 9.99
+      const r = calculatePositionSize(makeInputs({
+        accountEquity: 10000000, riskPercentage: 50, stopLossPips: 10,
+        minLot: 0.03, lotStep: 0.02, maxLot: 9.995,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.withinBrokerLimits).toBe(false);
+      expect(r.brokerLots).toBe(9.99);
     });
   });
 });

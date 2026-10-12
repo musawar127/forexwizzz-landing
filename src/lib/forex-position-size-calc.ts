@@ -218,15 +218,40 @@ export function calculatePipDistance(
 /* ------------------------------------------------------------------ */
 
 /**
- * Round lots DOWN to the nearest lot step.
+ * Round lots DOWN to the nearest valid broker volume step,
+ * anchored at minLot: valid lots = minLot + n × lotStep (n ≥ 0).
+ *
+ * If lots < minLot, returns 0 (no valid position).
  * Never rounds upward. Handles floating-point artifacts.
  */
-export function roundLotsDown(lots: number, lotStep: number): number {
+export function roundLotsDownToGrid(lots: number, minLot: number, lotStep: number): number {
   if (!isFinite(lots) || !isFinite(lotStep) || lotStep <= 0 || lots <= 0) return 0;
-  const stepsCount = Math.floor(lots / lotStep + 1e-9);
-  const rounded = stepsCount * lotStep;
-  const stepDecimals = (lotStep.toString().split(".")[1] || "").length;
+  if (!isFinite(minLot) || minLot < 0) return 0;
+  if (lots < minLot - 1e-9) return 0; // below minimum → no valid position
+
+  // Calculate how many steps above minLot
+  const stepsAboveMin = Math.floor((lots - minLot) / lotStep + 1e-9);
+  const rounded = minLot + stepsAboveMin * lotStep;
+  const stepDecimals = Math.max(
+    (lotStep.toString().split(".")[1] || "").length,
+    (minLot.toString().split(".")[1] || "").length,
+  );
   return roundTo(rounded, stepDecimals);
+}
+
+/**
+ * Round maxLot DOWN to the nearest valid grid point (minLot + n × lotStep).
+ * Ensures the maximum is executable on the broker's volume ladder.
+ */
+export function alignMaxLotToGrid(maxLot: number, minLot: number, lotStep: number): number {
+  if (!isFinite(maxLot) || maxLot <= 0) return 0;
+  if (maxLot < minLot) return 0;
+  return roundLotsDownToGrid(maxLot, minLot, lotStep);
+}
+
+// Keep backward-compatible alias
+export function roundLotsDown(lots: number, lotStep: number): number {
+  return roundLotsDownToGrid(lots, 0, lotStep);
 }
 
 /* ------------------------------------------------------------------ */
@@ -373,33 +398,73 @@ export function calculatePositionSize(inputs: PositionSizeInputs): PositionSizeR
   // 7. Available risk budget after flat additional costs
   const availableRiskBudget = Math.max(0, riskAmount - additionalCosts);
 
+  // 7a. If flat costs consume the entire risk budget, no position is possible
+  if (availableRiskBudget <= 0) {
+    const zeroResult = buildErrorResult(inputs, "");
+    zeroResult.valid = true;
+    zeroResult.error = undefined;
+    zeroResult.riskAmount = riskAmount;
+    zeroResult.riskPercentage = riskPercentage;
+    zeroResult.pipValuePerLotQuote = pipValuePerLotQuote;
+    zeroResult.pipValuePerLotAccount = pipValuePerLotAccount;
+    zeroResult.stopLossPips = stopLossPips;
+    zeroResult.costPerLot = costPerLot;
+    zeroResult.commissionPerLot = commissionPerLot;
+    zeroResult.slippageCostPerLot = slippageCostPerLot;
+    zeroResult.additionalCosts = additionalCosts;
+    zeroResult.rawLots = 0;
+    zeroResult.brokerLots = 0;
+    zeroResult.withinBrokerLimits = false;
+    zeroResult.brokerMessage = `Flat trading costs (${accountCurrency} ${roundTo(additionalCosts, 2).toFixed(2)}) consume the entire risk budget (${accountCurrency} ${roundTo(riskAmount, 2).toFixed(2)}). No position can fit within the risk limit.`;
+    zeroResult.moneyAtRisk = 0;
+    zeroResult.pipValueAtSize = 0;
+    zeroResult.estimatedStopLossAmount = 0;
+    zeroResult.unusedRiskBudget = riskAmount; // no trade → full budget unused
+    zeroResult.breakdown = [
+      { label: "Account Equity", value: `${accountCurrency} ${roundTo(accountEquity, 2).toFixed(2)}` },
+      { label: "Risk Amount", value: `${accountCurrency} ${roundTo(riskAmount, 2).toFixed(2)} (${roundTo(riskPercentage, 2).toFixed(2)}%)` },
+      { label: "Flat Additional Costs", value: `${accountCurrency} ${roundTo(additionalCosts, 2).toFixed(2)}` },
+      { label: "Available Risk Budget", value: `${accountCurrency} 0.00 (consumed by flat costs)` },
+      { label: "Result", value: "No executable position within risk limit" },
+    ];
+    return zeroResult;
+  }
+
   // 8. Raw lots
   const rawLots = availableRiskBudget / riskPerLot;
 
-  // 9. Broker rounding (always DOWN)
-  const roundedLots = roundLotsDown(rawLots, lotStep);
+  // 9. Broker grid-aligned rounding (anchored at minLot)
+  const roundedLots = roundLotsDownToGrid(rawLots, minLot, lotStep);
+
+  // 9a. Align maxLot to the grid as well
+  const alignedMaxLot = alignMaxLotToGrid(maxLot, minLot, lotStep);
 
   // 10. Broker limits check — effective lots is the actual executable size
   let withinBrokerLimits = true;
   let brokerMessage: string | undefined;
   let effectiveLots = roundedLots;
 
-  if (roundedLots < minLot) {
+  if (roundedLots <= 0) {
     withinBrokerLimits = false;
-    effectiveLots = 0; // no valid position
+    effectiveLots = 0;
+    brokerMessage = `No valid position within risk limit. The calculated size is below the broker minimum (${minLot}).`;
+  } else if (roundedLots < minLot) {
+    withinBrokerLimits = false;
+    effectiveLots = 0;
     brokerMessage = `No valid position within risk limit. The calculated size (${roundTo(roundedLots, 4)}) is below the broker minimum (${minLot}).`;
-  } else if (roundedLots > maxLot) {
+  } else if (roundedLots > alignedMaxLot) {
     withinBrokerLimits = false;
-    effectiveLots = maxLot; // capped at maximum
-    brokerMessage = `Calculated size (${roundTo(roundedLots, 4)}) exceeds broker maximum (${maxLot}). Capped at maximum.`;
+    effectiveLots = alignedMaxLot; // capped at aligned maximum
+    brokerMessage = `Calculated size (${roundTo(roundedLots, 4)}) exceeds broker maximum. Capped at ${alignedMaxLot} (highest grid-aligned volume ≤ ${maxLot}).`;
   }
 
   // Use effectiveLots consistently for all outputs
-  const brokerLots = effectiveLots; // brokerLots = the displayed/executable size
-  const moneyAtRisk = effectiveLots * riskPerLot + additionalCosts;
+  const brokerLots = effectiveLots;
+  // When no position is recommended (effectiveLots = 0), moneyAtRisk = 0 (not flat costs)
+  const moneyAtRisk = effectiveLots > 0 ? effectiveLots * riskPerLot + additionalCosts : 0;
   const pipValueAtSize = effectiveLots * pipValuePerLotAccount;
   const estimatedStopLossAmount = effectiveLots * stopLossPips * pipValuePerLotAccount;
-  const unusedRiskBudget = Math.max(0, riskAmount - moneyAtRisk);
+  const unusedRiskBudget = effectiveLots > 0 ? Math.max(0, riskAmount - moneyAtRisk) : riskAmount;
 
   // 11. Lot equivalents
   const baseCurrencyUnits = effectiveLots * contractSize;
@@ -422,7 +487,8 @@ export function calculatePositionSize(inputs: PositionSizeInputs): PositionSizeR
     { label: "Risk per Standard Lot", value: `${accountCurrency} ${roundTo(riskPerLot, 4).toFixed(4)}` },
     { label: "Available Risk Budget (after flat costs)", value: `${accountCurrency} ${roundTo(availableRiskBudget, 2).toFixed(2)}` },
     { label: "Raw Lot Size", value: roundTo(rawLots, 6).toFixed(6) },
-    { label: "Rounded Lot Size", value: roundTo(roundedLots, 4).toFixed(4) },
+    { label: "Rounded Lot Size (grid-aligned)", value: roundTo(roundedLots, 4).toFixed(4) },
+    { label: "Grid-Aligned Max Lot", value: roundTo(alignedMaxLot, 4).toFixed(4) },
     { label: "Effective (Executable) Lots", value: roundTo(effectiveLots, 4).toFixed(4) },
     { label: "Money at Risk", value: `${accountCurrency} ${roundTo(moneyAtRisk, 2).toFixed(2)}` },
     { label: "Unused Risk Budget", value: `${accountCurrency} ${roundTo(unusedRiskBudget, 2).toFixed(2)}` },
