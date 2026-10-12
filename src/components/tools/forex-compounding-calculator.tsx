@@ -303,7 +303,7 @@ export function ForexCompoundingCalculator() {
                   <Stat label="Simple Growth Balance" value={fmtMoney(result.simpleGrowthBalance)} />
                   <Stat label="Highest Balance" value={fmtMoney(result.highestBalance)} tone="green" />
                   <Stat label="Lowest Balance" value={fmtMoney(result.lowestBalance)} tone="red" />
-                  <Stat label="Max Drawdown" value={fmtPct(result.maxDrawdownPercent)} tone="red" />
+                  <Stat label="Max Drawdown" value={fmtPct(result.maxDrawdownPercent)} tone="red" sub={result.drawdownBasis} />
                   <Stat label="Recovery Gain" value={isFinite(result.recoveryGainPercent) ? fmtPct(result.recoveryGainPercent) : "∞"} />
                   <Stat label="Best Period" value={fmtPct(result.bestPeriodReturn)} tone="green" />
                   <Stat label="Worst Period" value={fmtPct(result.worstPeriodReturn)} tone="red" />

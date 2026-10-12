@@ -499,4 +499,164 @@ describe("Forex Compounding Calculator", () => {
       }
     });
   });
+
+  // ============================================================
+  // REGRESSION: NET GAIN/LOSS ACCOUNTING FIX
+  // ============================================================
+  describe("Net Gain/Loss Accounting Fix", () => {
+    test("$1,000 @ 0% × 1 period, $10 fee → $990 final, −$10 net gain/loss", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 0, numberOfPeriods: 1,
+        fixedFeePerPeriod: 10,
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.finalBalance).toBe(990);
+      expect(r.netGainLoss).toBe(-10);
+      expect(r.totalFees).toBe(10);
+    });
+
+    test("Fees are NOT added back to net gain/loss", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 0, numberOfPeriods: 1,
+        fixedFeePerPeriod: 10,
+      }));
+      // Old (wrong) formula would give: 990 - 1000 - 0 + 0 + 10 = 0
+      // New (correct) formula gives: 990 - 1000 - 0 + 0 = -10
+      expect(r.netGainLoss).toBe(-10);
+      expect(r.netGainLoss).not.toBe(0);
+    });
+
+    test("Cash flows do not count as trading profit", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 0, numberOfPeriods: 5,
+        recurringDeposit: 100,
+      }));
+      // No trading return → net gain/loss should be 0
+      expect(r.netGainLoss).toBe(0);
+      expect(r.finalBalance).toBe(1500);
+      expect(r.totalDeposits).toBe(500);
+    });
+
+    test("Withdrawals do not count as trading loss", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 0, numberOfPeriods: 5,
+        recurringWithdrawal: 100,
+      }));
+      // No trading return → net gain/loss should be 0
+      expect(r.netGainLoss).toBe(0);
+      expect(r.finalBalance).toBe(500);
+      expect(r.totalWithdrawals).toBe(500);
+    });
+
+    test("Total return % reflects corrected net gain/loss", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 0, numberOfPeriods: 1,
+        fixedFeePerPeriod: 10,
+      }));
+      // netGainLoss = -10, totalContributedCapital = 1000
+      expect(r.totalReturnPercent).toBeCloseTo(-1, 5); // -1%
+    });
+
+    test("Positive return with fees: net includes fee impact", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 5, numberOfPeriods: 1,
+        fixedFeePerPeriod: 10,
+      }));
+      // 1000 × 1.05 = 1050, fee = 10, final = 1040
+      expect(r.finalBalance).toBe(1040);
+      // netGainLoss = 1040 - 1000 - 0 + 0 = 40 (not 40+10=50)
+      expect(r.netGainLoss).toBe(40);
+      expect(r.totalFees).toBe(10);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: DRAWDOWN WITH CASH FLOWS
+  // ============================================================
+  describe("Drawdown With Cash Flows", () => {
+    test("Drawdown basis label present", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 5, numberOfPeriods: 5,
+      }));
+      expect(r.drawdownBasis).toBeDefined();
+      expect(r.drawdownBasis).toContain("drawdown");
+    });
+
+    test("No cash flows → simple label", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 5, numberOfPeriods: 5,
+        recurringDeposit: 0, recurringWithdrawal: 0,
+      }));
+      expect(r.drawdownBasis).toBe("Account-balance drawdown");
+    });
+
+    test("With cash flows → explicit raw-balance label", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 5, numberOfPeriods: 5,
+        recurringDeposit: 100,
+      }));
+      expect(r.drawdownBasis).toContain("includes deposits and withdrawals");
+    });
+
+    test("Withdrawal can increase raw drawdown without trading loss", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: 0, numberOfPeriods: 2,
+        recurringWithdrawal: 200,
+      }));
+      // Period 1: 1000 → 800 (withdrawal). Peak was 1000. DD = 20%.
+      // No trading loss, but raw drawdown is 20% due to withdrawal.
+      expect(r.maxDrawdownPercent).toBeGreaterThan(0);
+      expect(r.drawdownBasis).toContain("includes deposits and withdrawals");
+    });
+
+    test("Deposit does not artificially reduce drawdown below zero", () => {
+      const r = calculateCompounding(makeInputs({
+        initialBalance: 1000, returnPerPeriod: -5, numberOfPeriods: 3,
+        recurringDeposit: 50,
+      }));
+      // Trading loss creates real drawdown; deposits may partially offset
+      // but the raw drawdown should still be positive.
+      expect(r.maxDrawdownPercent).toBeGreaterThanOrEqual(0);
+    });
+  });
+
+  // ============================================================
+  // REGRESSION: VARIABLE RETURNS ARRAY IMMUTABILITY
+  // ============================================================
+  describe("Variable Returns Array Immutability", () => {
+    test("Original variableReturns array is not mutated", () => {
+      const originalReturns = [2, 3, -1];
+      const inputs = makeInputs({
+        mode: "VARIABLE", initialBalance: 1000, numberOfPeriods: 10,
+        variableReturns: originalReturns,
+      });
+      calculateCompounding(inputs);
+      // The original array should still have 3 elements (not padded to 10)
+      expect(originalReturns.length).toBe(3);
+      expect(originalReturns).toEqual([2, 3, -1]);
+    });
+
+    test("Calculation still works correctly with padding", () => {
+      const r = calculateCompounding(makeInputs({
+        mode: "VARIABLE", initialBalance: 1000, numberOfPeriods: 5,
+        variableReturns: [5, 3],
+      }));
+      expect(r.valid).toBe(true);
+      expect(r.periods.length).toBe(5);
+      expect(r.periods[0].returnPercent).toBe(5);
+      expect(r.periods[1].returnPercent).toBe(3);
+      expect(r.periods[2].returnPercent).toBe(0); // padded
+    });
+
+    test("Truncation does not mutate original", () => {
+      const originalReturns = [5, 3, 10, 20, 1];
+      const inputs = makeInputs({
+        mode: "VARIABLE", initialBalance: 1000, numberOfPeriods: 2,
+        variableReturns: originalReturns,
+      });
+      calculateCompounding(inputs);
+      expect(originalReturns.length).toBe(5);
+      expect(originalReturns).toEqual([5, 3, 10, 20, 1]);
+    });
+  });
 });

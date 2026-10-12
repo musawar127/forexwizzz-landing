@@ -75,6 +75,8 @@ export interface CompoundingResult {
   highestBalance: number;
   lowestBalance: number;
   maxDrawdownPercent: number;
+  /** Label describing what the drawdown is measured against. */
+  drawdownBasis: string;
   recoveryGainPercent: number;
   bestPeriodReturn: number;
   worstPeriodReturn: number;
@@ -292,7 +294,8 @@ export function calculateCompounding(inputs: CompoundingInputs): CompoundingResu
     returns = new Array(numberOfPeriods).fill(r);
     winFlags = new Array(numberOfPeriods).fill(null);
   } else if (inputs.mode === "VARIABLE") {
-    returns = inputs.variableReturns!;
+    // Copy the array to avoid mutating the caller's input
+    returns = [...inputs.variableReturns!];
     // If fewer returns than periods, pad with 0 (not silently repeated)
     while (returns.length < numberOfPeriods) returns.push(0);
     // If more returns than periods, truncate
@@ -371,7 +374,10 @@ export function calculateCompounding(inputs: CompoundingInputs): CompoundingResu
   }
 
   const finalBalance = balance;
-  const netGainLoss = finalBalance - initialBalance - totalDeposits + totalWithdrawals + totalFees;
+  // Net gain/loss = pure trading performance. Fees are already deducted from
+  // the closing balance, so they are NOT added back here. Deposits and
+  // withdrawals are external cash flows, not trading performance.
+  const netGainLoss = finalBalance - initialBalance - totalDeposits + totalWithdrawals;
   const totalContributedCapital = initialBalance + totalDeposits;
   const totalReturnPercent = totalContributedCapital > 0
     ? (netGainLoss / totalContributedCapital) * 100
@@ -379,6 +385,15 @@ export function calculateCompounding(inputs: CompoundingInputs): CompoundingResu
   const recoveryGainPercent = maxDrawdownPercent > 0 && maxDrawdownPercent < 100
     ? (maxDrawdownPercent / (100 - maxDrawdownPercent)) * 100
     : maxDrawdownPercent >= 100 ? Infinity : 0;
+
+  // Drawdown basis label: the drawdown is measured from raw account-balance
+  // peaks, which include external deposits and withdrawals. This means a
+  // withdrawal can increase the drawdown percentage even without a trading
+  // loss. The label makes this distinction explicit.
+  const hasCashFlows = (deposit > 0 || withdrawal > 0);
+  const drawdownBasis = hasCashFlows
+    ? "Raw account-balance drawdown (includes deposits and withdrawals)"
+    : "Account-balance drawdown";
 
   // Break-even: the return per period needed to offset fees
   // If fixedFee + percentageFee per period, break-even return ≈ (fees / balance) × 100
@@ -403,6 +418,7 @@ export function calculateCompounding(inputs: CompoundingInputs): CompoundingResu
     highestBalance,
     lowestBalance,
     maxDrawdownPercent,
+    drawdownBasis,
     recoveryGainPercent,
     bestPeriodReturn,
     worstPeriodReturn,
@@ -469,6 +485,7 @@ function buildErrorResult(inputs: CompoundingInputs, error: string): Compounding
     highestBalance: 0,
     lowestBalance: 0,
     maxDrawdownPercent: 0,
+    drawdownBasis: "Account-balance drawdown",
     recoveryGainPercent: 0,
     bestPeriodReturn: 0,
     worstPeriodReturn: 0,
