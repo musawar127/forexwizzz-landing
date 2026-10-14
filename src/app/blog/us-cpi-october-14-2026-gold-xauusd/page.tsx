@@ -185,7 +185,7 @@ export default function UsCpiOct142026Page() {
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
               The table below shows September 2026 CPI data released on October 14, 2026. Actual figures are from the{" "}
               <a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">US Bureau of Labor Statistics</a>.
-              Forecast figures are from market consensus surveys compiled before the release.
+              Forecast figures are from a Reuters economist survey (headline YoY 3.6%) and an Investing.com pre-release economic calendar snapshot (all four indicators), compiled before the release.
             </p>
             <div className="glass-strong rounded-2xl overflow-hidden gradient-border">
               <div className="overflow-x-auto">
@@ -214,7 +214,7 @@ export default function UsCpiOct142026Page() {
               </div>
             </div>
             <p className="text-xs text-muted-foreground/70 mt-3">
-              Source: Actual — BLS September 2026 CPI report. Forecast — pre-release market consensus surveys. Red indicates actual exceeded forecast.
+              Source: Actual — BLS September 2026 CPI report. Forecast — Reuters economist survey and Investing.com pre-release calendar snapshot. Red indicates actual exceeded forecast.
             </p>
           </div>
         </FadeSection>
@@ -483,6 +483,7 @@ export default function UsCpiOct142026Page() {
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.bls.gov/news.release/cpi.t01.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">BLS — CPI Detailed Table 1</a></span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.reuters.com/world/india/gold-prices-hold-firm-ahead-us-inflation-data-2026-10-14/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Reuters — Gold market report (October 14, 2026)</a></span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.reuters.com/world/asia-pacific/dollar-languishes-focus-turns-cpi-fed-speakers-2026-10-14/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Reuters — Dollar market report (October 14, 2026)</a></span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.investing.com/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Investing.com — Pre-release economic calendar forecast snapshot</a></span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span>For broader macro context: <Link href="/blog/xauusd-fundamental-analysis/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80">XAUUSD Fundamental Analysis Guide</Link></span></li>
               </ul>
             </div>
