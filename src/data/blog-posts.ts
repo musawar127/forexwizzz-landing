@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
       "September 2026 CPI hit 3.7% YoY (vs 3.6% forecast). Gold fell ~1.7% to ~$4,086 as the dollar and yields strengthened. Full analysis of the inflation data and XAUUSD impact.",
     displayDate: "October 14, 2026",
     publishedAt: "2026-10-14T19:45:00+05:00",
-    modifiedAt: "2026-10-14T19:45:00+05:00",
+    modifiedAt: "2026-10-14T20:30:00+05:00",
     author: {
       name: "ForexWizard Editorial Team",
       url: "https://forexwizard.online/about/",
