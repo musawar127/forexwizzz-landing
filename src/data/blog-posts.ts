@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "us-cpi-october-14-2026-gold-xauusd",
+    title: "US CPI October 14, 2026: Gold & XAUUSD Reaction",
+    description:
+      "US CPI rose to 3.7% in September 2026, sending gold lower. Explore the inflation results, XAUUSD reaction, US dollar strength and Fed outlook.",
+    cardDescription:
+      "September 2026 CPI hit 3.7% YoY (vs 3.6% forecast). Gold fell ~1.7% to ~$4,086 as the dollar and yields strengthened. Full analysis of the inflation data and XAUUSD impact.",
+    displayDate: "October 14, 2026",
+    publishedAt: "2026-10-14T19:45:00+05:00",
+    modifiedAt: "2026-10-14T19:45:00+05:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/us-cpi-october-14-2026-gold-xauusd.jpg",
+    imageAlt:
+      "US CPI October 14 2026 gold XAUUSD reaction showing 3.7% headline inflation and the impact on gold prices, dollar and Treasury yields",
+    tags: ["US CPI", "XAUUSD", "Gold", "Inflation"],
+    readingTime: "8 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-october-12-16-2026",
     title: "XAUUSD Weekly Forecast Oct 12–16, 2026: CPI & Gold Levels",
     description:

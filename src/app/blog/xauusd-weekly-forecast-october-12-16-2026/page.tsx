@@ -1080,6 +1080,36 @@ export default function WeeklyForecastOct12Oct16Page() {
           </div>
         </FadeSection>
 
+        {/* OCTOBER 14 CPI UPDATE */}
+        <FadeSection className="py-8 md:py-10 px-4">
+          <div className="max-w-4xl mx-auto">
+            <Link
+              href="/blog/us-cpi-october-14-2026-gold-xauusd/"
+              className="block no-underline"
+            >
+              <div className="glass rounded-2xl p-5 md:p-6 border border-trading-red/30 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 hover:scale-[1.01] transition-transform duration-300">
+                <div className="w-11 h-11 rounded-xl bg-trading-red/10 flex items-center justify-center shrink-0">
+                  <AlertTriangle className="w-6 h-6 text-trading-red" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs font-bold text-muted-foreground tracking-wider mb-1">OCTOBER 14 CPI UPDATE — NEW ANALYSIS PUBLISHED</p>
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-1">
+                    US CPI October 14, 2026: Why Gold (XAUUSD) Fell
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    September 2026 CPI hit 3.7% YoY (above 3.6% forecast). Gold fell ~1.7% to ~$4,086
+                    as the dollar and yields strengthened. Read the full CPI analysis and gold reaction.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-2 text-sm font-bold text-trading-red shrink-0">
+                  Read CPI analysis
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        </FadeSection>
+
         {/* LAST WEEK LINK */}
         <FadeSection className="py-12 md:py-16 px-4">
           <div className="max-w-4xl mx-auto">
