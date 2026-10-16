@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
       "Gold rebounds after hot CPI. Kitco spot near $4,191 (Oct 16, intraday) after the Oct 14 selloff to ~$4,084. See XAUUSD key levels, China GDP, flash PMI, jobless claims and conditional scenarios for Oct 19–23.",
     displayDate: "October 16, 2026",
     publishedAt: "2026-10-16T19:55:00+05:00",
-    modifiedAt: "2026-10-16T21:15:00+05:00",
+    modifiedAt: "2026-10-16T21:25:00+05:00",
     author: {
       name: "ForexWizard Editorial Team",
       url: "https://forexwizard.online/about/",
