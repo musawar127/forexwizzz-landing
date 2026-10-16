@@ -67,12 +67,12 @@ function TelegramCTA({ text, variant = "primary", className = "" }: { text: stri
 }
 
 const keyLevelsTable = [
-  { area: "Friday spot observation", level: "~$4,150", why: "Reuters Oct 15 intraday spot gold observation (~$4,153)", tone: "muted" as const },
-  { area: "Immediate support", level: "$4,100–$4,120", why: "Post-CPI recovery base and Oct 15 reaction zone", tone: "gold" as const },
-  { area: "Secondary support", level: "$4,065–$4,085", why: "Oct 14 CPI-day low area; previous two-month low proximity", tone: "gold" as const },
-  { area: "Major support", level: "$3,980–$4,020", why: "Psychological $4,000 + demand shelf below October range", tone: "gold" as const },
-  { area: "Immediate resistance", level: "$4,165–$4,185", why: "Oct 12 weekly forecast resistance zone; pre-CPI structure", tone: "green" as const },
-  { area: "Secondary resistance", level: "$4,200–$4,210", why: "Round-number $4,200 + Oct 9 high proximity (~$4,208)", tone: "green" as const },
+  { area: "Friday spot observation", level: "~$4,191", why: "Kitco spot XAU/USD, Oct 16 2026 ~10:22 AM EDT (Bid $4,190.60 / Ask $4,192.60). Intraday — the weekly close had not yet formed.", tone: "muted" as const },
+  { area: "Immediate support (role-reversal)", level: "$4,165–$4,185", why: "Former immediate resistance, reclaimed by Friday's spot (~$4,191). Potential support on a pullback.", tone: "gold" as const },
+  { area: "Secondary support", level: "$4,100–$4,120", why: "Post-CPI recovery base and Oct 15 reaction zone", tone: "gold" as const },
+  { area: "Major support", level: "$4,065–$4,085", why: "Oct 14 CPI-day low ~$4,084 (Reuters, lowest since Oct 7); Oct 7 two-month low ~$4,066 proximity", tone: "gold" as const },
+  { area: "Deep support", level: "$3,980–$4,020", why: "Psychological $4,000 + demand shelf below October range", tone: "gold" as const },
+  { area: "Immediate resistance", level: "$4,200–$4,210", why: "Round-number $4,200 + Oct 9 high ~$4,208 + Oct 12 intraday high above $4,200", tone: "green" as const },
   { area: "Major resistance", level: "$4,255–$4,265", why: "September 28 high near $4,261; previous structure", tone: "green" as const },
 ];
 
@@ -99,13 +99,13 @@ const economicEvents = [
 ];
 
 const checklistItems = [
-  "Friday spot gold observation (~$4,150)",
+  "Friday spot gold observation (~$4,191, Kitco Oct 16, intraday)",
   "Post-CPI recovery structure",
-  "$4,100–$4,120 immediate support",
-  "$4,065–$4,085 secondary support",
-  "$3,980–$4,020 major support",
-  "$4,165–$4,185 immediate resistance",
-  "$4,200–$4,210 secondary resistance",
+  "$4,165–$4,185 reclaimed support (role-reversal)",
+  "$4,100–$4,120 secondary support",
+  "$4,065–$4,085 major support (CPI low zone)",
+  "$3,980–$4,020 deep support",
+  "$4,200–$4,210 immediate resistance",
   "$4,255–$4,265 major resistance",
   "US Dollar Index (DXY)",
   "US 10-year Treasury yield",
@@ -123,10 +123,10 @@ const checklistItems = [
 ];
 
 const faqs = [
-  { q: "What is the gold price outlook for October 19–23, 2026?", a: "Gold enters the week near $4,150 after rebounding from the October 14 CPI selloff. The first support zone is approximately $4,100–$4,120, and the first resistance is approximately $4,165–$4,185. The week's main catalysts are China Q3 GDP (Monday), US jobless claims (Thursday), and Flash PMI plus final U-Mich sentiment (Friday)." },
-  { q: "Can XAUUSD recover after the US CPI selloff?", a: "Gold has already recovered much of the October 14 CPI-driven decline. Reuters reported spot gold near $4,153 on October 15, up from approximately $4,086 on October 14. The recovery was driven by a softer dollar and declining Treasury yields. Whether the recovery continues depends on whether yields and the dollar remain soft or re-strengthen." },
-  { q: "What are the key gold support levels this week?", a: "The nearest support is approximately $4,100–$4,120 (post-CPI recovery base). Below that, $4,065–$4,085 (CPI-day low area and previous two-month low proximity), then the major $3,980–$4,020 zone (psychological $4,000 and demand shelf)." },
-  { q: "What are the key gold resistance levels this week?", a: "Immediate resistance is approximately $4,165–$4,185 (pre-CPI structure). Above that, $4,200–$4,210 (round number and Oct 9 high proximity), then the major $4,255–$4,265 zone (September 28 high near $4,261)." },
+  { q: "What is the gold price outlook for October 19–23, 2026?", a: "Gold enters the week near $4,191 after rebounding from the October 14 CPI selloff (Kitco spot, October 16, ~10:22 AM EDT — an intraday observation, not the weekly close). The first support zone is the reclaimed $4,165–$4,185 area (former resistance), and the first resistance is approximately $4,200–$4,210. The week's main catalysts are China Q3 GDP (Monday), US jobless claims (Thursday), and Flash PMI plus final U-Mich sentiment (Friday)." },
+  { q: "Can XAUUSD recover after the US CPI selloff?", a: "Gold has already recovered much of the October 14 CPI-driven decline. Reuters reported spot gold near $4,153 on October 15 (Thursday), up from approximately $4,084 on October 14 (Reuters CPI-day low, its lowest since October 7). By Friday October 16, Kitco spot reached approximately $4,191 intraday (~10:22 AM EDT). The recovery was driven by a softer dollar and declining Treasury yields. Whether it continues depends on whether yields and the dollar remain soft or re-strengthen." },
+  { q: "What are the key gold support levels this week?", a: "The nearest support is the reclaimed $4,165–$4,185 zone (former immediate resistance, now a potential role-reversal support). Below that, $4,100–$4,120 (post-CPI recovery base), then $4,065–$4,085 (Oct 14 CPI-day low ~$4,084 and Oct 7 two-month low proximity), then the deep $3,980–$4,020 zone (psychological $4,000 and demand shelf)." },
+  { q: "What are the key gold resistance levels this week?", a: "Immediate resistance is approximately $4,200–$4,210 (round-number $4,200, Oct 9 high ~$4,208 and Oct 12 intraday high above $4,200). Above that, the major $4,255–$4,265 zone (September 28 high near $4,261). The former $4,165–$4,185 resistance has been reclaimed by Friday's spot and is now treated as support, not resistance." },
   { q: "Which US economic releases could affect gold?", a: "Tuesday's housing data (Housing Starts, Pending Home Sales), Thursday's weekly jobless claims, and Friday's Flash PMI plus final University of Michigan sentiment. None of these are as impactful as last week's CPI, but they can shift yield and dollar expectations." },
   { q: "When is the next Federal Reserve meeting?", a: "The next FOMC meeting is October 27–28, 2026 — outside the October 19–23 forecast period. The Fed communications blackout begins October 17. Markets will be pricing expectations into yields and the dollar ahead of the meeting, which indirectly affects gold." },
   { q: "How does a weaker US dollar affect gold?", a: "Gold is priced in US dollars. When the dollar weakens, gold becomes cheaper for non-dollar buyers, which can increase demand. A weaker dollar also typically reflects lower real yields, reducing the opportunity cost of holding non-yielding gold. However, gold and the dollar can occasionally strengthen simultaneously during risk-off episodes." },
@@ -197,15 +197,14 @@ export default function WeeklyForecastOct19Oct23Page() {
             <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
                 Gold enters the October 19–23 trading week near{" "}
-                <strong className="text-foreground/90">$4,150</strong> after a volatile post-CPI week.
+                <strong className="text-foreground/90">$4,191</strong> after a volatile post-CPI week.
                 The October 14 US CPI report (3.7% YoY headline, above 3.6% forecast) initially sent gold tumbling
-                to approximately $4,086, but the metal rebounded sharply as the dollar and Treasury yields retreated.
+                to approximately $4,084 (Reuters spot low, its lowest since October 7), but the metal rebounded sharply as the dollar and Treasury yields retreated.
               </p>
               <p>
                 Reuters reported spot gold near{" "}
-                <strong className="text-foreground/90">$4,153</strong> on October 15,
-                with US December futures settling near $4,170. By Friday October 16,
-                the dollar was on course for its first weekly decline in over a month.
+                <strong className="text-foreground/90">$4,153</strong> on October 15 (Thursday),
+                with US December futures settling near $4,170. By Friday October 16, Kitco spot gold reached approximately $4,191 intraday (~10:22 AM EDT, Bid $4,190.60 / Ask $4,192.60), and the dollar was on course for its first weekly decline in over a month.
               </p>
               <p>
                 This week's calendar is lighter than last week's CPI-heavy schedule,
@@ -214,8 +213,8 @@ export default function WeeklyForecastOct19Oct23Page() {
                 yield, dollar and risk-sentiment dynamics that drive gold.
               </p>
               <p className="text-foreground/90 font-medium">
-                Market snapshot: October 16, 2026 — prices are intraday observations, not confirmed weekly closes.
-                The US trading session may still be in progress at publication time.
+                Market snapshot: October 16, 2026 (~10:22 AM EDT) — prices are intraday observations, not confirmed weekly closes.
+                The Friday weekly closing candle had not yet formed at publication time.
               </p>
             </div>
           </HeroAnimation>
@@ -232,21 +231,21 @@ export default function WeeklyForecastOct19Oct23Page() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 <div className="glass rounded-xl p-4 text-center">
                   <p className="text-xs text-muted-foreground mb-1">Spot Gold (XAU/USD)</p>
-                  <p className="text-2xl font-bold text-trading-gold">~$4,150</p>
-                  <p className="text-xs text-muted-foreground/70">Reuters Oct 15 intraday</p>
+                  <p className="text-2xl font-bold text-trading-gold">~$4,191</p>
+                  <p className="text-xs text-muted-foreground/70">Kitco Oct 16 ~10:22 AM EDT</p>
                 </div>
                 <div className="glass rounded-xl p-4 text-center">
                   <p className="text-xs text-muted-foreground mb-1">Short-Term Structure</p>
-                  <p className="text-2xl font-bold text-trading-green">Recovering</p>
-                  <p className="text-xs text-muted-foreground/70">Post-CPI rebound</p>
+                  <p className="text-2xl font-bold text-trading-green">Reclaiming</p>
+                  <p className="text-xs text-muted-foreground/70">Above former $4,165–$4,185 resistance</p>
                 </div>
                 <div className="glass rounded-xl p-4 text-center">
                   <p className="text-xs text-muted-foreground mb-1">Nearest Support</p>
-                  <p className="text-2xl font-bold text-trading-gold">$4,100–$4,120</p>
+                  <p className="text-2xl font-bold text-trading-gold">$4,165–$4,185</p>
                 </div>
                 <div className="glass rounded-xl p-4 text-center">
                   <p className="text-xs text-muted-foreground mb-1">Nearest Resistance</p>
-                  <p className="text-2xl font-bold text-trading-green">$4,165–$4,185</p>
+                  <p className="text-2xl font-bold text-trading-green">$4,200–$4,210</p>
                 </div>
                 <div className="glass rounded-xl p-4 text-center">
                   <p className="text-xs text-muted-foreground mb-1">Primary Catalyst</p>
@@ -258,8 +257,8 @@ export default function WeeklyForecastOct19Oct23Page() {
                 </div>
               </div>
               <p className="text-xs text-muted-foreground/70 mt-4">
-                Market-data cutoff: October 15–16, 2026. Prices are Reuters-reported intraday spot observations, not official weekly closes.
-                The US session may still be in progress at publication time.
+                Market-data cutoff: October 16, 2026, ~10:22 AM EDT (Kitco spot). Friday's weekly closing candle had not yet formed at publication time.
+                October 14–15 levels are Reuters intraday observations; October 16 is a Kitco intraday observation. None are official weekly closes.
               </p>
             </div>
           </div>
@@ -275,14 +274,14 @@ export default function WeeklyForecastOct19Oct23Page() {
               </h2>
               <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  The week began with gold near $4,194 after the previous week's recovery from a two-month low.
+                  The week began with gold near $4,194 — the October 9 (Friday) weekly close that carried into Monday's open — after the previous week's recovery from a two-month low.
                   Monday was Columbus Day (reduced US bond liquidity). Tuesday brought the IMF World Economic Outlook
                   and Fed Governor Waller's discussion.
                 </p>
                 <p>
                   <strong className="text-foreground/90">Wednesday October 14 — CPI shock:</strong> The BLS released September 2026 CPI at 8:30 AM ET.
                   Headline CPI was 3.7% YoY (above 3.6% forecast) and core CPI was 2.6% YoY (above 2.5% forecast).
-                  Gasoline surged 9.1% MoM and energy rose 5.2% MoM. Gold fell approximately 1.7% to around $4,086
+                  Gasoline surged 9.1% MoM and energy rose 5.2% MoM. Gold fell to approximately $4,084 (Reuters: spot down ~1.8% to $4,083.94 by 2:05 PM EDT, its lowest since October 7)
                   as Treasury yields and the dollar strengthened. See our full{" "}
                   <Link href="/blog/us-cpi-october-14-2026-gold-xauusd/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">CPI analysis</Link>.
                 </p>
@@ -293,14 +292,15 @@ export default function WeeklyForecastOct19Oct23Page() {
                   This rebound demonstrated that the CPI-driven sell-off was not necessarily a one-directional trend.
                 </p>
                 <p>
-                  <strong className="text-foreground/90">Friday October 16:</strong> The dollar was on course for its first weekly decline in more than a month,
+                  <strong className="text-foreground/90">Friday October 16:</strong> Kitco spot gold reached approximately $4,191 intraday (~10:22 AM EDT, Bid $4,190.60 / Ask $4,192.60),
+                  reclaiming the former $4,165–$4,185 resistance zone. The dollar was on course for its first weekly decline in more than a month,
                   amid falling yields and financial-market uncertainty ({" "}
                   <a href="https://www.reuters.com/world/asia-pacific/euro-gets-much-needed-reprieve-ai-wobbles-rock-dollar-2026-10-16/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Reuters</a>).
-                  This is an intraday observation, not a confirmed weekly close.
+                  This is an intraday observation; the Friday weekly closing candle had not yet formed at publication time.
                 </p>
                 <p className="text-sm text-muted-foreground/80 border-l-2 border-trading-gold/40 pl-4">
-                  Source basis: Reuters market reports (October 14–16). Spot gold and futures are different instruments.
-                  Prices are intraday observations with explicit timestamps, not official daily or weekly closing prices.
+                  Source basis: Reuters market reports (October 14–15) and Kitco spot gold (October 16). Spot gold and futures are different instruments.
+                  Prices are intraday observations with explicit timestamps, not official daily or weekly closing prices. The $4,194 reference is the October 9 weekly close (USA Today), not the October 12 close.
                 </p>
               </div>
             </div>
@@ -317,14 +317,14 @@ export default function WeeklyForecastOct19Oct23Page() {
               </h2>
               <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  <strong className="text-foreground/90">Short-term structure:</strong> Gold has recovered from the October 14 CPI-driven low near $4,086
-                  back toward the $4,150 area. This places price approximately midway between the CPI low and the pre-CPI
-                  close near $4,194. The short-term structure is range-bound between approximately $4,086 (CPI low)
-                  and $4,194 (pre-CPI close), with the recovery stalling near the $4,150–$4,160 zone.
+                  <strong className="text-foreground/90">Short-term structure:</strong> Gold has recovered from the October 14 CPI-driven low near $4,084
+                  to approximately $4,191 by Friday October 16 (Kitco, ~10:22 AM EDT). This places spot above the former immediate resistance zone ($4,165–$4,185),
+                  which now acts as a potential role-reversal support on a pullback. The next upside reference is the October 9 weekly close near $4,194 and the $4,200 round number;
+                  the October 12 close was approximately $4,165 (USA Today), not $4,194.
                 </p>
                 <p>
-                  <strong className="text-foreground/90">Swing references:</strong> The key recent swing low is approximately $4,086 (Oct 14 CPI low).
-                  The pre-CPI swing high is approximately $4,194 (Oct 12 close). The October 7 two-month low near $4,066
+                  <strong className="text-foreground/90">Swing references:</strong> The key recent swing low is approximately $4,084 (Oct 14 CPI low, Reuters — its lowest since October 7).
+                  The pre-CPI reference is approximately $4,194 (Oct 9 weekly close, carried into the Oct 12 open). The October 7 two-month low near $4,066
                   remains the deeper downside reference. The September 28 high near $4,261 is the broader upside target.
                 </p>
                 <p>
@@ -334,12 +334,12 @@ export default function WeeklyForecastOct19Oct23Page() {
                 </p>
                 <p>
                   <strong className="text-foreground/90">Level methodology:</strong> Support and resistance zones are derived from verified spot-gold
-                  price observations (Reuters, October 12–16) and completed daily swing data. Each zone is explained by a specific historical event
+                  price observations (Reuters October 14–15; Kitco October 16) and completed daily swing data. Each zone is explained by a specific historical event
                   or structural reference. No technical levels are copied from previous forecasts unless the current market structure supports them.
                 </p>
                 <p>
-                  <strong className="text-foreground/90">Invalidation:</strong> The bullish recovery case invalidates on a daily close below $4,065.
-                  The bearish case invalidates on a sustained move above $4,200. For a deeper framework, see our{" "}
+                  <strong className="text-foreground/90">Invalidation:</strong> The bullish recovery case invalidates on a daily close below $4,165 (the reclaimed zone fails).
+                  The bearish case invalidates on a sustained move above $4,210. For a deeper framework, see our{" "}
                   <Link href="/xauusd-support-resistance/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">XAUUSD support and resistance guide</Link>.
                 </p>
               </div>
@@ -382,8 +382,8 @@ export default function WeeklyForecastOct19Oct23Page() {
               ))}
             </div>
             <p className="text-xs text-muted-foreground/70 mt-4">
-              Levels derived from Reuters spot gold observations (October 12–16, 2026) and completed daily swing data.
-              Treat as approximate zones, not exact guaranteed values.
+              Levels derived from Reuters (Oct 14–15) and Kitco (Oct 16) spot-gold observations and completed daily swing data.
+              The $4,194 reference is the October 9 weekly close (USA Today), not the October 12 close. Treat as approximate zones, not exact guaranteed values.
             </p>
           </div>
         </FadeSection>
@@ -402,11 +402,11 @@ export default function WeeklyForecastOct19Oct23Page() {
                   <h3 className="text-xl md:text-2xl font-extrabold text-trading-green">Bullish Scenario</h3>
                 </div>
                 <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground/90">Trigger:</strong> Dollar and Treasury yields continue to retreat from post-CPI highs, and gold breaks above $4,165–$4,185.</p>
-                  <p><strong className="text-foreground/90">Confirmation:</strong> A daily close above $4,185, followed by acceptance above $4,200–$4,210.</p>
-                  <p><strong className="text-foreground/90">Levels to monitor:</strong> $4,200, $4,210, then $4,255–$4,265.</p>
+                  <p><strong className="text-foreground/90">Trigger:</strong> Dollar and Treasury yields continue to retreat from post-CPI highs, and gold builds on Friday's reclaim of $4,165–$4,185 by breaking above $4,200–$4,210.</p>
+                  <p><strong className="text-foreground/90">Confirmation:</strong> A daily close above $4,210, followed by acceptance toward $4,255–$4,265.</p>
+                  <p><strong className="text-foreground/90">Levels to monitor:</strong> $4,210, then $4,255–$4,265.</p>
                   <p><strong className="text-foreground/90">Economic driver:</strong> Weak Flash PMI or elevated jobless claims easing Fed-tightening expectations.</p>
-                  <p><strong className="text-foreground/90">Invalidation:</strong> A daily close back below $4,100.</p>
+                  <p><strong className="text-foreground/90">Invalidation:</strong> A daily close back below $4,165 (the reclaimed zone fails).</p>
                 </div>
               </div>
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-muted-foreground/50">
@@ -415,9 +415,9 @@ export default function WeeklyForecastOct19Oct23Page() {
                   <h3 className="text-xl md:text-2xl font-extrabold text-foreground">Range / Neutral Scenario</h3>
                 </div>
                 <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground/90">Trigger:</strong> Gold remains between $4,100 and $4,185, consolidating after the CPI-driven volatility.</p>
+                  <p><strong className="text-foreground/90">Trigger:</strong> Gold remains between $4,165 (reclaimed support) and $4,210 (immediate resistance), consolidating after the CPI-driven volatility.</p>
                   <p><strong className="text-foreground/90">Confirmation:</strong> Multiple daily closes inside the range with declining volatility and no decisive catalyst.</p>
-                  <p><strong className="text-foreground/90">Levels to monitor:</strong> $4,100 floor and $4,185 ceiling. A compression toward $4,140–$4,150 often precedes a directional break.</p>
+                  <p><strong className="text-foreground/90">Levels to monitor:</strong> $4,165 floor and $4,210 ceiling. A compression toward $4,185–$4,195 often precedes a directional break.</p>
                   <p><strong className="text-foreground/90">Economic driver:</strong> Mixed economic data (housing OK, claims stable, PMI in line) that does not significantly change Fed expectations.</p>
                   <p><strong className="text-foreground/90">Invalidation:</strong> A clean break and daily close outside either boundary.</p>
                 </div>
@@ -428,11 +428,11 @@ export default function WeeklyForecastOct19Oct23Page() {
                   <h3 className="text-xl md:text-2xl font-extrabold text-trading-gold">Bearish Scenario</h3>
                 </div>
                 <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground/90">Trigger:</strong> Dollar and yields re-strengthen as markets re-price Fed tightening after the hot CPI, and gold loses $4,100.</p>
-                  <p><strong className="text-foreground/90">Confirmation:</strong> A daily close below $4,100, followed by a break of $4,065–$4,085.</p>
-                  <p><strong className="text-foreground/90">Levels to monitor:</strong> $4,065 (October low zone), then $3,980–$4,020 (psychological $4,000 area).</p>
+                  <p><strong className="text-foreground/90">Trigger:</strong> Dollar and yields re-strengthen as markets re-price Fed tightening after the hot CPI, and gold loses the reclaimed $4,165 zone.</p>
+                  <p><strong className="text-foreground/90">Confirmation:</strong> A daily close below $4,165, followed by a break of $4,100–$4,120.</p>
+                  <p><strong className="text-foreground/90">Levels to monitor:</strong> $4,100–$4,120 (recovery base), then $4,065–$4,085 (CPI low zone), then $3,980–$4,020 (psychological $4,000 area).</p>
                   <p><strong className="text-foreground/90">Economic driver:</strong> Strong Flash PMI, low jobless claims, or hawkish market re-pricing ahead of the October 27–28 FOMC.</p>
-                  <p><strong className="text-foreground/90">Invalidation:</strong> A recovery back above $4,185.</p>
+                  <p><strong className="text-foreground/90">Invalidation:</strong> A recovery back above $4,210.</p>
                 </div>
               </div>
             </div>
@@ -629,8 +629,8 @@ export default function WeeklyForecastOct19Oct23Page() {
                 <span className="text-trading-gold text-glow-gold">October 19–23</span>
               </h2>
               <ol className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
-                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-gold/20 flex items-center justify-center text-trading-gold font-bold text-sm shrink-0">1</span><span>Gold rebounded from the October 14 CPI selloff (~$4,086) to approximately $4,150 as the dollar and yields retreated. The post-CPI recovery is real but not yet confirmed as a trend change.</span></li>
-                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-gold/20 flex items-center justify-center text-trading-gold font-bold text-sm shrink-0">2</span><span>Key support is $4,100–$4,120 (recovery base) and $4,065–$4,085 (CPI low zone). Key resistance is $4,165–$4,185 (pre-CPI structure) and $4,200–$4,210 (round number + Oct 9 high).</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-gold/20 flex items-center justify-center text-trading-gold font-bold text-sm shrink-0">1</span><span>Gold rebounded from the October 14 CPI selloff (~$4,084) to approximately $4,191 by Friday October 16 (Kitco, intraday), reclaiming the former $4,165–$4,185 resistance. The post-CPI recovery is real but the Friday weekly close had not yet formed at publication time.</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-gold/20 flex items-center justify-center text-trading-gold font-bold text-sm shrink-0">2</span><span>Key support is $4,165–$4,185 (reclaimed former resistance, now role-reversal) and $4,100–$4,120 (recovery base); $4,065–$4,085 is the CPI low zone. Key resistance is $4,200–$4,210 (round number + Oct 9 high) and $4,255–$4,265 (Sept 28 high).</span></li>
                 <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-gold/20 flex items-center justify-center text-trading-gold font-bold text-sm shrink-0">3</span><span>This week's calendar is lighter: China Q3 GDP (Monday), US housing (Tuesday), jobless claims (Thursday), Flash PMI and final U-Mich sentiment (Friday). The FOMC blackout begins October 17.</span></li>
                 <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-gold/20 flex items-center justify-center text-trading-gold font-bold text-sm shrink-0">4</span><span>The October 27–28 FOMC meeting is the next major Fed event. Markets will price expectations into yields and the dollar throughout this week, indirectly driving gold.</span></li>
               </ol>
@@ -663,21 +663,25 @@ export default function WeeklyForecastOct19Oct23Page() {
               <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
                 <p>Trading forex, gold and CFDs involves significant risk and may not be suitable for everyone.</p>
                 <p>This article is provided for educational and informational purposes only and should not be considered financial advice, investment advice or a recommendation to buy or sell any financial instrument.</p>
-                <p>Market prices are intraday observations with explicit timestamps, not official closing prices. The US trading session may not have closed at publication time. Always perform your own analysis and use appropriate risk management.</p>
+                <p>Market prices are intraday observations with explicit timestamps, not official closing prices. The US trading session had not closed at publication time (Kitco spot observed ~10:22 AM EDT on October 16). Always perform your own analysis and use appropriate risk management.</p>
               </div>
             </div>
             <div className="glass rounded-2xl p-6 md:p-8">
               <h2 className="text-lg md:text-xl font-bold text-foreground mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-trading-gold" />Sources and Methodology</h2>
               <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                <p><strong className="text-foreground/90">Publication date:</strong> October 16, 2026, 19:55 PKT.</p>
-                <p><strong className="text-foreground/90">Market-data cutoff:</strong> October 15–16, 2026. Prices are Reuters-reported intraday spot gold observations, not official weekly closes.</p>
+                <p><strong className="text-foreground/90">Publication date:</strong> October 16, 2026, 19:55 PKT. <span className="text-muted-foreground/80">Corrected: October 16, 2026, 21:15 PKT (spot price and technical-level refresh).</span></p>
+                <p><strong className="text-foreground/90">Market-data cutoff:</strong> October 16, 2026, ~10:22 AM EDT (Kitco spot XAU/USD, Bid $4,190.60 / Ask $4,192.60). Friday's weekly closing candle had not yet formed at publication time. October 14–15 levels are Reuters intraday observations; October 16 is a Kitco intraday observation.</p>
                 <p><strong className="text-foreground/90">Instrument:</strong> Spot XAU/USD. US December gold futures are referenced separately where applicable.</p>
-                <p><strong className="text-foreground/90">Support/resistance methodology:</strong> Derived from verified spot-gold price observations (Reuters, October 12–16) and completed daily swing data. Each zone has a documented historical reason.</p>
+                <p><strong className="text-foreground/90">Support/resistance methodology:</strong> Derived from verified spot-gold price observations (Reuters October 14–15; Kitco October 16) and completed daily swing data. Each zone has a documented historical reason. The $4,194 reference is the October 9 weekly close (USA Today), not the October 12 close (which was ~$4,165).</p>
                 <p><strong className="text-foreground/90">Key data sources:</strong></p>
                 <ul className="space-y-1 pl-2">
+                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.kitco.com/charts/gold?sitetype=fullsite" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Kitco — Spot Gold chart (October 16, 2026, ~10:22 AM EDT)</a></span></li>
                   <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">BLS — September 2026 CPI Report</a></span></li>
+                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.reuters.com/world/india/gold-prices-hold-firm-ahead-us-inflation-data-2026-10-14" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Reuters — Gold drops on hot US CPI (October 14, 2026)</a></span></li>
                   <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.reuters.com/world/india/gold-rebounds-one-week-low-dollar-slips-2026-10-15/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Reuters — Gold rebound (October 15, 2026)</a></span></li>
                   <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.reuters.com/world/asia-pacific/euro-gets-much-needed-reprieve-ai-wobbles-rock-dollar-2026-10-16/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Reuters — Dollar weekly decline (October 16, 2026)</a></span></li>
+                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.usatoday.com/story/money/personalfinance/2026/10/12/gold-price-on-october-12-2026/92214541007" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">USA Today — Gold price October 12, 2026 (previous close $4,194)</a></span></li>
+                  <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://tradingeconomics.com/commodity/gold" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Trading Economics — Gold price (October 16, 2026 corroboration)</a></span></li>
                   <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.newyorkfed.org/research/calendars/i-oct26.html" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">New York Fed — October 2026 Economic Calendar</a></span></li>
                   <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Federal Reserve — FOMC Calendar</a></span></li>
                   <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">University of Michigan — Surveys of Consumers</a></span></li>
