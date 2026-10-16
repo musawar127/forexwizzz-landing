@@ -1364,3 +1364,27 @@ Stage Summary:
 - GitHub Actions run: 38930562395 — completed successfully.
 - Final market-data timestamp: Kitco spot XAU/USD, October 16, 2026, ~10:22 AM EDT (Bid $4,190.60 / Ask $4,192.60); Friday weekly close explicitly NOT yet formed.
 - Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-october-19-23-2026/ — verified.
+
+---
+Task ID: timestamp-fix-oct19-23
+Agent: Z.ai Code (main)
+Task: Fix one future-dated timestamp in the Forex Wizard October 19–23 weekly forecast. The prior correction (7f17520) set modifiedAt to 2026-10-16T21:15:00+05:00, which was ahead of the actual local time when the file was authored.
+
+Work Log:
+- Captured accurate current Pakistan time: 2026-10-16T21:25:17+05:00 (fresh, immediately before edit).
+- Inspected commit history: 7f17520 committed at 2026-10-16T21:15:44 PKT (16:15:44 UTC). The modifiedAt value 21:15:00 was written into the file ~21:10-21:12 PKT (future-dated at authoring time).
+- Determined truthful modifiedAt for this new modification: 2026-10-16T21:25:00+05:00 (17s before fresh capture, guaranteed non-future at file-write and commit time).
+- Edited src/data/blog-posts.ts: modifiedAt 21:15:00 -> 21:25:00 PKT. publishedAt unchanged (2026-10-16T19:55:00+05:00).
+- Edited article Sources section: "Corrected: ... 21:15 PKT (spot price and technical-level refresh)." -> "Corrected: ... 21:25 PKT (spot price and technical-level refresh; timestamp alignment)."
+- Left canonical URL, article content, prices ($4,191 Kitco Oct 16 ~10:22 AM EDT), technical levels, and sitemap unchanged.
+- Quality gates: bun test 831/831 pass; bun run lint clean; bun run build clean (42/42 pages); git diff --check clean.
+- Dev server verification: rendered dateModified=2026-10-16T21:25:00+05:00, datePublished preserved, canonical preserved, stale 21:15 gone.
+- Committed as e768212, pushed to main (7f17520..e768212). GitHub Actions run 38931964668 (Deploy to GitHub Pages) = Success.
+- Live page verified at https://forexwizard.online/blog/xauusd-weekly-forecast-october-19-23-2026/: HTTP 200, ld+json dateModified=21:25, datePublished=19:55, canonical preserved, BreadcrumbList (3 items) preserved, 21:25 present, 21:15 absent, prices/levels intact.
+
+Stage Summary:
+- Files changed: src/data/blog-posts.ts, src/app/blog/xauusd-weekly-forecast-october-19-23-2026/page.tsx (2 files, +2/−2 lines).
+- Commit: e7682129344ecc845f795bdd965cfc28940bee35 (pushed to main).
+- GitHub Actions run: 38931964668 — Success.
+- Final timestamps: publishedAt = 2026-10-16T19:55:00+05:00 (unchanged); modifiedAt = 2026-10-16T21:25:00+05:00 (truthful, non-future).
+- Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-october-19-23-2026/ — verified.
