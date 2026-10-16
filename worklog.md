@@ -1338,3 +1338,29 @@ Stage Summary:
 - Results saved to /tmp/audit-search/*.json (not committed; ephemeral).
 - Article source file: src/app/blog/xauusd-weekly-forecast-october-12-16-2026/page.tsx (read-only verification).
 - Recommendation: No factual corrections required to the article. Optionally (a) soften "Reuters consensus as of October 9" wording on CPI to "market consensus" or "economists' forecasts" since the Reuters attribution could not be verified directly; (b) consider noting the ~1.2% weekly gain figure (per Reuters) instead of 1.3%; (c) the CPI core consensus at ~2.4% may be more accurate than the ~2.5% stated.
+
+---
+Task ID: correction-oct19-23
+Agent: Z.ai Code (main)
+Task: Correct outdated market observations and technical levels in the published October 19–23 XAUUSD weekly forecast (repo musawar127/forexwizzz-landing, branch main, prior commit 2578322).
+
+Work Log:
+- Read existing article src/app/blog/xauusd-weekly-forecast-october-19-23-2026/page.tsx (732 lines) and blog-posts.ts metadata.
+- Verified day-of-week for Oct 2026 dates: Oct 12=Mon, Oct 14=Wed, Oct 15=Thu, Oct 16=Fri. Confirmed the article mislabelled the Oct 15 Reuters observation as "Friday".
+- Web-searched to verify the Kitco source and find the latest reliable spot-gold observation. Confirmed: Kitco spot XAU/USD, Oct 16 2026 ~10:22 AM EDT, Bid $4,190.60 / Ask $4,192.60 (corroborated by Kitco charts page $4,188.50 at 10:15 AM ET and Trading Economics $4,190.50).
+- Verified Oct 14 CPI-day low = ~$4,084 (Reuters: spot $4,083.94 by 2:05 PM EDT, lowest since Oct 7); tightened from prior ~$4,086.
+- Verified the $4,194 reference is the Oct 9 weekly close (USA Today "previous close of $4,194" on Oct 12), NOT the Oct 12 close (~$4,165). Corrected the misattribution.
+- Reassessed technical levels: Friday's spot (~$4,191) reclaimed the former $4,165–$4,185 resistance → now a role-reversal support. Immediate resistance moved up to $4,200–$4,210; major resistance $4,255–$4,265 retained.
+- Updated keyLevelsTable, checklistItems, faqs, hero, market dashboard, weekly recap, technical analysis, levels caption, three scenarios, key takeaways, risk disclaimer and sources/methodology. Added Kitco, Reuters Oct 14, USA Today, Trading Economics source links.
+- Preserved SEO: canonical URL, publishedAt (2026-10-16T19:55:00+05:00), headline, BlogPosting + BreadcrumbList structured data, hero image, internal links all unchanged. Updated modifiedAt to 2026-10-16T21:15:00+05:00. Sitemap article lastmod already 2026-10-16.
+- Quality gates: bun run lint clean; bun run build clean (42/42 static pages); git diff --check clean.
+- Browser self-verification (dev server, port 3000): confirmed $4,191, Kitco 10:22 AM EDT, $4,084, role-reversal, reclaim language, Oct 9 close, weekly-close disclaimer all render; no console/page errors; structured data dateModified=21:15, datePublished=19:55, canonical + breadcrumb preserved; S/R table renders 7 corrected rows; dashboard + 3 scenarios + FAQ + takeaways + sources verified; blog index card description updated.
+- Committed as 7f17520, pushed to main. GitHub Actions run 38930562395 (Deploy to GitHub Pages) completed successfully.
+- Live page verified at https://forexwizard.online/blog/xauusd-weekly-forecast-october-19-23-2026/ — all corrected content present, stale prices absent, SEO preserved.
+
+Stage Summary:
+- Files changed: src/app/blog/xauusd-weekly-forecast-october-19-23-2026/page.tsx, src/data/blog-posts.ts (2 files, +70/−66).
+- Commit: 7f17520b571cce59019cc6e32075d117d143d8a9 (pushed to main).
+- GitHub Actions run: 38930562395 — completed successfully.
+- Final market-data timestamp: Kitco spot XAU/USD, October 16, 2026, ~10:22 AM EDT (Bid $4,190.60 / Ask $4,192.60); Friday weekly close explicitly NOT yet formed.
+- Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-october-19-23-2026/ — verified.
