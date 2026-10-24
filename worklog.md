@@ -1491,3 +1491,26 @@ Stage Summary:
 - BLOCKER: No GitHub authentication available in this environment. The credentials that enabled earlier pushes (7f17520, e768212) have expired/been removed and cannot be restored from within the sandbox.
 - Required access to unblock: a GitHub Personal Access Token (PAT) with `repo` scope for musawar127/forexwizzz-landing, provided via GH_TOKEN/GITHUB_TOKEN env var, ~/.git-credentials, or an installed+authenticated GitHub CLI. Once provided, run `git push origin main` (fast-forward, no force).
 - No deployment or indexing success is claimed. Report is honest about the authentication failure.
+
+---
+Task ID: deploy-resume-2
+Agent: Z.ai Code (main)
+Task: Resume deployment with user-provided fine-grained PAT. Verify commits, push, verify live site + GSC.
+
+Work Log:
+- Loaded token into session env var GH_TOKEN (never written to file/.git/config/history).
+- Verified local commits 788c70e (Task 1) and 6087618 (Task 2) intact.
+- Fetched origin/main (e768212); confirmed clean fast-forward, no divergence, no force-push needed.
+- Initial push attempts failed with empty $GH_TOKEN (env var did not persist across separate Bash tool invocations).
+- Re-loaded token in single command; authenticated API calls now succeed: GET /user returns HTTP 200; repo permissions API reports {admin:true, push:true, ...}.
+- However, git push returns 403: "Permission to musawar127/forexwizzz-landing.git denied to musawar127."
+- Diagnosed via response headers: "x-accepted-github-permissions: metadata=read" — the token only has Metadata:Read for this repo.
+- Definitive test: POST /repos/.../git/blobs returns HTTP 403 "Resource not accessible by personal access token" — confirms Contents:Write is NOT granted.
+- Token is valid (expires 2026-11-23) and authenticated, but its fine-grained repository permissions are insufficient for push.
+- The API "permissions.push:true" reflects the USER's repo role, not the TOKEN's scope. The token was created with Metadata:Read only; Contents:Read+Write was not applied.
+
+Stage Summary:
+- Push still blocked. Root cause: token missing Contents: Write permission (HTTP 403 on write operations).
+- Required fix: user must recreate the fine-grained PAT with "Contents: Read and Write" permission explicitly selected for musawar127/forexwizzz-landing (not just the default Metadata:Read).
+- Once a corrected token is provided, deployment is ready: 5 commits fast-forward to origin/main, no force needed.
+- No deployment or indexing success claimed.
