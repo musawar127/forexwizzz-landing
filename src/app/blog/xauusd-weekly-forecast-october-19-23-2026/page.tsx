@@ -77,23 +77,23 @@ const keyLevelsTable = [
 ];
 
 const economicEvents = [
-  { day: "Monday, October 19 — China Q3 GDP", points: [
-    "China Q3 GDP scheduled at 10:00 AM China Standard Time (7:00 AM PKT). Source: National Bureau of Statistics of China.",
-    "China is the world's largest gold consumer. Stronger Chinese growth could support gold demand and Asian risk sentiment; weaker data could weigh on the yuan and commodity outlook.",
+  { day: "China Q3 GDP — Sun Oct 18 (New York) / Mon Oct 19 (London)", points: [
+    "China Q3 GDP is scheduled for 10:00 AM China Standard Time on Monday, October 19. That is Sunday, October 18 at 10:00 PM New York time (EDT, UTC−4) and Monday, October 19 at 3:00 AM London time (BST, UTC+1). The date differs across timezones because the release falls late Sunday evening in the Americas but early Monday morning in Europe.",
+    "Source: National Bureau of Statistics of China. China is the world's largest gold consumer. Stronger Chinese growth could support gold demand and Asian risk sentiment; weaker data could weigh on the yuan and commodity outlook.",
     "This release does not directly move US Treasury yields or the dollar, but it can shift global growth expectations and safe-haven flows.",
   ]},
   { day: "Tuesday, October 20 — US Housing Data", points: [
-    "New Residential Construction (Housing Starts) at 8:30 AM ET (5:30 PM PKT). Philadelphia Fed Non-Manufacturing Survey also at 8:30 AM ET.",
-    "NAR Pending Home Sales at 10:00 AM ET (7:00 PM PKT). Source: New York Fed October 2026 calendar.",
+    "New Residential Construction (Housing Starts) at 8:30 AM New York (EDT) / 1:30 PM London (BST). Philadelphia Fed Non-Manufacturing Survey also at 8:30 AM EDT.",
+    "NAR Pending Home Sales at 10:00 AM New York (EDT) / 3:00 PM London (BST). Source: New York Fed October 2026 calendar.",
     "Housing data is secondary for gold but can influence broader US growth and yield expectations. Strong housing could reinforce the higher-for-longer rates narrative.",
   ]},
   { day: "Thursday, October 22 — Initial Jobless Claims", points: [
-    "Weekly US initial jobless claims at 8:30 AM ET (5:30 PM PKT). Source: US Department of Labor.",
+    "Weekly US initial jobless claims at 8:30 AM New York (EDT) / 1:30 PM London (BST). Source: US Department of Labor.",
     "After the weak September NFP (+29,000) and the hot CPI, labor-market data is under heightened scrutiny. Elevated claims could ease Fed-tightening expectations and support gold; low claims could do the opposite.",
   ]},
   { day: "Friday, October 23 — Flash PMI & U-Mich Sentiment", points: [
-    "S&P Global US Flash PMI (Manufacturing, Services, Composite) at 9:45 AM ET (6:45 PM PKT). Source: S&P Global PMI.",
-    "Final University of Michigan Consumer Sentiment at 10:00 AM ET (7:00 PM PKT). Source: University of Michigan Surveys of Consumers. Preliminary October reading was 46.3.",
+    "S&P Global US Flash PMI (Manufacturing, Services, Composite) at 9:45 AM New York (EDT) / 2:45 PM London (BST). Source: S&P Global PMI.",
+    "Final University of Michigan Consumer Sentiment at 10:00 AM New York (EDT) / 3:00 PM London (BST). Source: University of Michigan Surveys of Consumers. Preliminary October reading was 46.3.",
     "Strong PMI could reinforce US growth and yield expectations (bearish for gold). Weak PMI or lower sentiment could ease rate-hike pressure (bullish for gold). The final U-Mich sentiment includes revised inflation expectations.",
   ]},
 ];
@@ -442,60 +442,59 @@ export default function WeeklyForecastOct19Oct23Page() {
         {/* ECONOMIC CALENDAR */}
         <FadeSection className="py-16 md:py-20 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
-              <span className="text-foreground">Economic Calendar: </span>
-              <span className="text-trading-gold text-glow-gold">October 19–23, 2026</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3">
+              <span className="text-foreground">Economic Calendar — </span>
+              <span className="text-trading-gold text-glow-gold">New York &amp; London Times</span>
             </h2>
+            <p className="text-sm text-muted-foreground/80 mb-6 leading-relaxed">
+              All event times below are shown in New York (EDT, UTC−4) and London (BST, UTC+1). These offsets apply to the
+              October 19–23, 2026 forecast period. China&apos;s Q3 GDP release falls on a different calendar date in New York
+              (Sunday evening) than in London (Monday morning) — see the first row.
+            </p>
+            <h3 className="sr-only">Economic Calendar October 19 to 23 2026 in New York and London time</h3>
             <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
               <table className="w-full text-sm">
                 <thead><tr className="border-b border-white/10">
-                  <th className="text-left p-4 font-bold text-foreground">Day</th>
-                  <th className="text-left p-4 font-bold text-foreground">ET</th>
-                  <th className="text-left p-4 font-bold text-foreground">PKT</th>
                   <th className="text-left p-4 font-bold text-foreground">Event</th>
+                  <th className="text-left p-4 font-bold text-foreground">New York (EDT)</th>
+                  <th className="text-left p-4 font-bold text-foreground">London (BST)</th>
                   <th className="text-left p-4 font-bold text-foreground">Gold relevance</th>
                 </tr></thead>
                 <tbody>
                   <tr className="border-b border-white/5">
-                    <td className="p-4 text-muted-foreground align-top">Mon Oct 19</td>
-                    <td className="p-4 text-muted-foreground align-top">—</td>
-                    <td className="p-4 text-muted-foreground align-top">7:00 AM</td>
                     <td className="p-4 text-foreground font-medium align-top">China Q3 GDP</td>
-                    <td className="p-4 text-muted-foreground align-top">China is largest gold consumer. Growth data can shift Asian demand and risk sentiment.</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Sun Oct 18, 10:00 PM</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Mon Oct 19, 3:00 AM</td>
+                    <td className="p-4 text-muted-foreground align-top">China is largest gold consumer. Growth data can shift Asian demand and risk sentiment. Date differs across timezones.</td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="p-4 text-muted-foreground align-top">Tue Oct 20</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">8:30 AM</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">5:30 PM</td>
                     <td className="p-4 text-foreground font-medium align-top">Housing Starts + Philly Fed</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Tue Oct 20, 8:30 AM</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Tue Oct 20, 1:30 PM</td>
                     <td className="p-4 text-muted-foreground align-top">Secondary for gold. Can influence US growth and yield expectations.</td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="p-4 text-muted-foreground align-top">Tue Oct 20</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">10:00 AM</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">7:00 PM</td>
                     <td className="p-4 text-foreground font-medium align-top">Pending Home Sales</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Tue Oct 20, 10:00 AM</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Tue Oct 20, 3:00 PM</td>
                     <td className="p-4 text-muted-foreground align-top">Housing-market health proxy. Weak data could ease rate-hike pressure.</td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="p-4 text-muted-foreground align-top">Thu Oct 22</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">8:30 AM</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">5:30 PM</td>
                     <td className="p-4 text-foreground font-medium align-top">Initial Jobless Claims</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Thu Oct 22, 8:30 AM</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Thu Oct 22, 1:30 PM</td>
                     <td className="p-4 text-muted-foreground align-top">Post-NFP labor scrutiny. Elevated claims → Fed-pivot hopes → gold supportive.</td>
                   </tr>
                   <tr className="border-b border-white/5">
-                    <td className="p-4 text-muted-foreground align-top">Fri Oct 23</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">9:45 AM</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">6:45 PM</td>
                     <td className="p-4 text-foreground font-medium align-top">Flash PMI (Mfg + Services)</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Fri Oct 23, 9:45 AM</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Fri Oct 23, 2:45 PM</td>
                     <td className="p-4 text-muted-foreground align-top">Real-time growth read. Strong PMI → yields up → gold pressured; weak → opposite.</td>
                   </tr>
                   <tr>
-                    <td className="p-4 text-muted-foreground align-top">Fri Oct 23</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">10:00 AM</td>
-                    <td className="p-4 text-foreground/90 font-medium align-top">7:00 PM</td>
                     <td className="p-4 text-foreground font-medium align-top">Final U-Mich Sentiment</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Fri Oct 23, 10:00 AM</td>
+                    <td className="p-4 text-foreground/90 font-medium align-top">Fri Oct 23, 3:00 PM</td>
                     <td className="p-4 text-muted-foreground align-top">Preliminary was 46.3. Includes revised inflation expectations. Fed watches closely.</td>
                   </tr>
                 </tbody>
@@ -512,6 +511,7 @@ export default function WeeklyForecastOct19Oct23Page() {
               ))}
             </div>
             <p className="text-xs text-muted-foreground/70 mt-4">
+              Times shown in New York (EDT, UTC−4) and London (BST, UTC+1) for the October 19–23, 2026 forecast period.
               Sources: New York Fed October 2026 calendar, National Bureau of Statistics of China, S&P Global PMI, University of Michigan.
               October 27–28 FOMC and October 29 GDP/PCE are outside this forecast window. Re-verify times before trading.
             </p>
@@ -669,7 +669,7 @@ export default function WeeklyForecastOct19Oct23Page() {
             <div className="glass rounded-2xl p-6 md:p-8">
               <h2 className="text-lg md:text-xl font-bold text-foreground mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-trading-gold" />Sources and Methodology</h2>
               <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                <p><strong className="text-foreground/90">Publication date:</strong> October 16, 2026, 19:55 PKT. <span className="text-muted-foreground/80">Corrected: October 16, 2026, 21:25 PKT (spot price and technical-level refresh; timestamp alignment).</span></p>
+                <p><strong className="text-foreground/90">Publication date:</strong> October 16, 2026 at 10:55 AM New York (EDT) / 3:55 PM London (BST). <span className="text-muted-foreground/80">Corrected October 24, 2026 at 12:01 PM New York (EDT) / 5:01 PM London (BST): US/UK timezone and calendar optimization.</span></p>
                 <p><strong className="text-foreground/90">Market-data cutoff:</strong> October 16, 2026, ~10:22 AM EDT (Kitco spot XAU/USD, Bid $4,190.60 / Ask $4,192.60). Friday's weekly closing candle had not yet formed at publication time. October 14–15 levels are Reuters intraday observations; October 16 is a Kitco intraday observation.</p>
                 <p><strong className="text-foreground/90">Instrument:</strong> Spot XAU/USD. US December gold futures are referenced separately where applicable.</p>
                 <p><strong className="text-foreground/90">Support/resistance methodology:</strong> Derived from verified spot-gold price observations (Reuters October 14–15; Kitco October 16) and completed daily swing data. Each zone has a documented historical reason. The $4,194 reference is the October 9 weekly close (USA Today), not the October 12 close (which was ~$4,165).</p>
