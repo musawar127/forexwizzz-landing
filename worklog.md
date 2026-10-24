@@ -1462,3 +1462,32 @@ Stage Summary:
 - Files: new article page (786 lines), blog-posts.ts (+20 lines), sitemap.xml (+6 lines), Oct 19-23 page (1 line link update), OG image script + 5 image files.
 - Commit: 6087618 (local, not pushed — credential issue).
 - BLOCKER: GitHub push authentication unavailable. Both 788c70e and 6087618 are local and ready to push when credentials are restored.
+
+---
+Task ID: deploy-resume
+Agent: Z.ai Code (main)
+Task: Resume from local commits 788c70e and 6087618, restore GitHub auth, push to origin/main, verify deployment and indexing.
+
+Work Log:
+- Verified repository status: branch main, local HEAD c03c794, 4 commits ahead of origin/main (e768212). Clean fast-forward, no divergence — no force-push needed.
+- Confirmed both content commits intact in chain: 788c70e (Task 1: US/UK timezone) and 6087618 (Task 2: Oct 26-30 article).
+- Attempted to restore GitHub authentication via every available mechanism:
+  * git credential.helper: not configured (global or local)
+  * ~/.git-credentials and ~/.config/git/credentials: do not exist
+  * gh CLI: not installed; bunx gh is a different package (NodeJS 'gh' v2.8.9, not GitHub CLI) and cannot authenticate
+  * GitHub CLI official binary download: 404 (release URL changed); apt install requires root
+  * env tokens (GH_TOKEN/GITHUB_TOKEN): none set
+  * .env / .netrc / SSH keys: none contain GitHub credentials
+  * git credential-cache daemon: no cached credentials
+- Verified live site current state to confirm deployment gap:
+  * https://forexwizard.online/blog/xauusd-weekly-forecast-october-26-30-2026/ -> HTTP 404 (not deployed)
+  * https://forexwizard.online/blog/xauusd-weekly-forecast-october-19-23-2026/ -> HTTP 200, still shows 18 PKT instances (Task 1 correction NOT live)
+  * Live sitemap: 0 entries for october-26-30
+- Push remains blocked: "fatal: could not read Username for 'https://github.com': No such device or address"
+- Cannot verify GitHub Actions, live article, or request Google Search Console indexing because the push did not succeed.
+
+Stage Summary:
+- Local commits ready: 788c70e, 6087618 (plus 2 automated worklog snapshots). Clean fast-forward to push.
+- BLOCKER: No GitHub authentication available in this environment. The credentials that enabled earlier pushes (7f17520, e768212) have expired/been removed and cannot be restored from within the sandbox.
+- Required access to unblock: a GitHub Personal Access Token (PAT) with `repo` scope for musawar127/forexwizzz-landing, provided via GH_TOKEN/GITHUB_TOKEN env var, ~/.git-credentials, or an installed+authenticated GitHub CLI. Once provided, run `git push origin main` (fast-forward, no force).
+- No deployment or indexing success is claimed. Report is honest about the authentication failure.
