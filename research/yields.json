@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://tradingeconomics.com/united-states/government-bond-yield",
+    "name": "US 10 Year Treasury Note Yield - Quote - Chart",
+    "snippet": "The yield on US 10 Year Note Bond Yield rose to 5.28% on October 2, 2026, marking a 0.04 percentage points increase from the previous session.",
+    "host_name": "tradingeconomics.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.cnbc.com/quotes/US10Y",
+    "name": "US10Y: U.S. 10 Year Treasury - Stock Price, Quote and News",
+    "snippet": "10-year Treasury yield ticks higher despite weaker-than-expected jobs report October 2, 2026 CNBC.com. 10-year yield rises as traders look past inflation ...",
+    "host_name": "www.cnbc.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://fred.stlouisfed.org/series/dgs10",
+    "name": "Market Yield on U.S. Treasury Securities at 10-Year Constant",
+    "snippet": "10-year yield estimated. Treasury Securities at 10-Year Constant Maturity, 2026-10-01: 5.24 | Percent, Not Seasonally Adjusted | Daily Updated: Oct 2, 2026 … ...",
+    "host_name": "fred.stlouisfed.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://ycharts.com/indicators/10_year_treasury_rate",
+    "name": "10 Year Treasury Rate - Real-Time & Historical Yield Trends",
+    "snippet": "Last Value, 5.28% ; Latest Period, Oct 02 2026 ; Last Updated, Oct 2 2026, 18:00 EDT ; Next Release, Oct 5 2026, 18:00 EDT ; Long Term Average, 4.26%.",
+    "host_name": "ycharts.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.cnbc.com/2026/10/02/heres-how-high-the-10-year-treasury-yield-needs-to-rise-before-income-investors-should-worry-according-to-ubs.html",
+    "name": "Here's how high the 10-year Treasury yield needs to rise",
+    "snippet": "The benchmark 10-year remains around 5.29% after earlier this week hitting its highest levels since 2002.",
+    "host_name": "www.cnbc.com",
+    "rank": 4,
+    "date": "Oct 2, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.macrotrends.net/2016/10-year-treasury-bond-rate-yield-chart",
+    "name": "10 Year Treasury Yield (1962-2026)",
+    "snippet": "Chart ; 2026-09-10, 4.95% ; 2026-09-09, 4.83% ; 2026-09-08, 4.80% ; 2026-09-04, 4.78%.",
+    "host_name": "www.macrotrends.net",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.cnbc.com/2026/09/14/10-year-us-treasury-is-closing-in-on-5percent.html",
+    "name": "10-year Treasury yield hits 5% before reversing as traders",
+    "snippet": "The 10-year Treasury yield briefly hit the psychologically important 5% threshold. If the yield moves beyond 5.02%, it would reach its highest ...",
+    "host_name": "www.cnbc.com",
+    "rank": 6,
+    "date": "Sep 13, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.wsj.com/market-data/quotes/bond/BX/TMUBMUSD10Y",
+    "name": "US 10 Year Treasury Note TMUBMUSD10Y (Tullett Prebon)",
+    "snippet": "10/02/26 Yield 5.283% 0.000 Price 94 ・ 2-Year Yield Hits Highest Level ・ 10 Year 0/32 5.283% U.K. are delayed at least 15 minutes.",
+    "host_name": "www.wsj.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://en.macromicro.me/series/354/10year-bond-yield",
+    "name": "US - 10-Year Treasury Yield | Series",
+    "snippet": "US - 10-Year Treasury Yield. 2026-10-02. 5.28 %. 5.23 %. Specs. Category. Fixed Income Market. Region. United States. Frequency. Day. Units. Percent. Related ...",
+    "host_name": "en.macromicro.me",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://chrismancommentary.com/post/capital-markets-wrap-october-2-2026",
+    "name": "Capital Markets Wrap - October 2, 2026",
+    "snippet": "The 10-year Treasury yield had climbed to 5.34 percent and the 30-year reached 5.69 percent, levels not seen since 2002, as persistent Treasury ...",
+    "host_name": "chrismancommentary.com",
+    "rank": 9,
+    "date": "Oct 2, 2026",
+    "favicon": ""
+  }
+]

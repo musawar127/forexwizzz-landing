@@ -1,0 +1,92 @@
+[
+  {
+    "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+    "name": "FedWatch",
+    "snippet": "Use FedWatch to track the probabilities of changes to the Fed rate, as implied by 30-Day Fed Funds futures prices. Last Price 5.259 Change +0.031 % Change +0. ...",
+    "host_name": "www.cmegroup.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://streetstats.finance/rates/fedfunds",
+    "name": "Fed Funds Rate Forecast 2026-2031",
+    "snippet": "The current effective federal funds rate is 3.88%. As of market close on October 2, 2026, futures markets are pricing the rate to rise to about 4.1% by January ...",
+    "host_name": "streetstats.finance",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.ishares.com/us/insights/portfolio-insights/fed-outlook-rates-kevin-warsh-fixed-income-2026",
+    "name": "Fed Outlook 2026: Rate forecasts and fixed income strategies",
+    "snippet": "According to the Fed's latest projections, policymakers expect the fed funds rate to gradually decline toward a longer-run level of ...",
+    "host_name": "www.ishares.com",
+    "rank": 2,
+    "date": "Sep 17, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.jpmorgan.com/insights/global-research/economy/fed-rate-cuts",
+    "name": "What's The Fed's Next Move? | J.P. Morgan Global Research",
+    "snippet": "bringing the federal funds rate to 3.75–4.0%. The FOMC voted unanimously to raise rates by a quarter of a percentage point, to 3.75–4.0%, in line with market ...",
+    "host_name": "www.jpmorgan.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "name": "The Fed - Meeting calendars and information",
+    "snippet": "Meeting calendars, statements, and minutes (2021-2027). The FOMC holds eight regularly scheduled meetings during the year and other meetings as needed.",
+    "host_name": "www.federalreserve.gov",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+    "name": "How many Fed rate cuts in 2026? Predictions & Odds",
+    "snippet": "This market will resolve according to the exact amount of cuts of 25 basis points in 2026 by the Fed (including any cuts made during the December meeting).",
+    "host_name": "polymarket.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.fidelity.com/learning-center/trading-investing/the-fed-meeting",
+    "name": "How high could interest rates go",
+    "snippet": "The dot plot showed that the median of FOMC members expects 1 additional rate hike in 2026, and no cuts or hikes in 2027.",
+    "host_name": "www.fidelity.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.atlantafed.org/research-and-data/data/market-probability-tracker",
+    "name": "Market Probability Tracker",
+    "snippet": "This tool estimates the market-implied probabilities of various ranges for the three-month average fed funds rate.",
+    "host_name": "www.atlantafed.org",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.mufgresearch.com/rates/august-2026-fed-rates-call-update",
+    "name": "August 2026 Fed & Rates Call Update",
+    "snippet": "We do not see the urgency to re-start hikes and, therefore, we expect the Fed to remain on hold through 2026 · We update our Fed call and push ...",
+    "host_name": "www.mufgresearch.com",
+    "rank": 8,
+    "date": "Aug 20, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.facebook.com/cnbc/videos/the-federal-reserves-latest-projections-pointed-to-one-rate-increase-in-2026-tho/987309310603431",
+    "name": "The Federal Reserve's latest projections pointed to one rate",
+    "snippet": "Nine of 18 officials projected that the federal funds rate would end 2026 above its current range of 3.5% to 3.75%. However, the projections ...",
+    "host_name": "www.facebook.com",
+    "rank": 9,
+    "date": "",
+    "favicon": ""
+  }
+]
