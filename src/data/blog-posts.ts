@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-october-26-30-2026",
+    title: "XAUUSD Weekly Forecast Oct 26–30, 2026 | Gold & Fed",
+    description:
+      "XAUUSD weekly forecast for October 26–30, 2026. Explore gold support, resistance, the Fed decision, PCE inflation and key trading scenarios.",
+    cardDescription:
+      "Gold fell ~3% to ~$3,994 in Oct 19–23 as hot CPI, strong data and oil fueled higher-for-longer bets. See XAUUSD levels, the Oct 28 FOMC decision, Oct 29 GDP + PCE and conditional scenarios for Oct 26–30.",
+    displayDate: "October 24, 2026",
+    publishedAt: "2026-10-24T12:07:00-04:00",
+    modifiedAt: "2026-10-24T12:07:00-04:00",
+    author: {
+      name: "ForexWizard Editorial Team",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-october-26-30-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast October 26 to 30 2026 showing gold key support resistance ahead of the FOMC decision with GDP and PCE catalysts",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "FOMC"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-october-19-23-2026",
     title: "XAUUSD Weekly Forecast Oct 19–23, 2026: Gold Levels After CPI",
     description:

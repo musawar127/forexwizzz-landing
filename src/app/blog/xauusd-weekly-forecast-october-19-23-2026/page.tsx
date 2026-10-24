@@ -135,7 +135,7 @@ const faqs = [
 
 const continueLearning = [
   { href: "/xauusd-support-resistance/", title: "XAUUSD Support and Resistance", desc: "How to identify important gold support and resistance zones for clearer trade planning.", icon: <Layers className="w-7 h-7 text-trading-gold" />, accent: "from-trading-gold/10 to-transparent" },
-  { href: "/blog/xauusd-weekly-forecast-october-12-16-2026/", title: "Previous Weekly Forecast (Oct 12–16)", desc: "Last week's forecast including the CPI update and pre-CPI key levels.", icon: <LineChart className="w-7 h-7 text-trading-gold" />, accent: "from-trading-gold/10 to-transparent" },
+  { href: "/blog/xauusd-weekly-forecast-october-26-30-2026/", title: "Next Weekly Forecast (Oct 26–30)", desc: "The following week's forecast covering the FOMC decision, GDP and PCE releases.", icon: <LineChart className="w-7 h-7 text-trading-gold" />, accent: "from-trading-gold/10 to-transparent" },
   { href: "/blog/us-cpi-october-14-2026-gold-xauusd/", title: "US CPI October 14 Analysis", desc: "Full analysis of the September 2026 CPI report and its impact on gold.", icon: <Activity className="w-7 h-7 text-trading-green" />, accent: "from-trading-green/10 to-transparent" },
   { href: "/tools/forex-position-size-calculator/", title: "Forex Position Size Calculator", desc: "Calculate lot size from your account risk and stop-loss distance before entering.", icon: <Target className="w-7 h-7 text-trading-green" />, accent: "from-trading-green/10 to-transparent" },
 ];
