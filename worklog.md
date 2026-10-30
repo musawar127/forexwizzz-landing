@@ -1555,3 +1555,55 @@ Stage Summary:
 - GitHub Actions run 40123406302: success
 - Token saved securely via git credential.helper store (~/.git-credentials, chmod 600) for future sessions
 - GSC indexing: not available programmatically; manual steps provided
+
+---
+Task ID: publish-nov-2-6-2026
+Agent: Z.ai Code (main)
+Task: Publish XAUUSD Weekly Forecast Nov 2–6, 2026 as a new blog post.
+
+Work Log:
+- Studied Oct 26–30 post structure (TSX format, metadata fields, components, schema, image pattern).
+- Verified all 9 internal links from the article body exist in the codebase.
+- Generated OG cover image (1200x630 JPG + 640/960/1200 webp variants) via scripts/create-weekly-forecast-nov-2-6-og.js.
+- Added blog post entry to src/data/blog-posts.ts as FIRST entry (slug, title, description, cardDescription, dates, author "Forex Wizard", image, alt, tags, readingTime).
+- Added sitemap entry (lastmod 2026-10-31, priority 0.8).
+- Created article page src/app/blog/xauusd-weekly-forecast-november-2-6-2026/page.tsx (630 lines) with:
+  * Exactly ONE H1 (the article title)
+  * Quick Answer box + Table of Contents (visible HTML)
+  * 9 id anchors: quick-answer, key-takeaways, last-week-recap, why-gold-is-falling, support-resistance, economic-calendar, scenarios, risk-plan, faq
+  * Article (not BlogPosting) JSON-LD with headline, image, datePublished/Modified 2026-10-31, author+publisher "Forex Wizard", publisher logo forexwizard-logo.webp, mainEntityOfPage=canonical
+  * FAQPage JSON-LD with 6 questions matching visible FAQ text exactly
+  * BreadcrumbList JSON-LD (Home > Blog > this post)
+  * Self-referencing canonical with trailing slash
+  * OG/Twitter tags with cover image and alt text
+  * Meta keywords
+  * Cover image eager-loaded (LCP); width/height attributes
+  * Support/resistance table (9 rows) + economic calendar table (10 rows) with ET/GMT/PKT columns
+  * 3 scenarios (bearish/bullish/range) with conditions, what-to-watch, invalidation
+  * All internal links (Link components, no nofollow); all external links rel=noopener noreferrer
+  * Risk disclaimer + sources section
+  * Continue Learning cards linking to existing pages
+- Preserved all wording, numbers, price levels, dates, times exactly as provided.
+- Quality gates: bun run lint clean; bun run build clean (44/44 pages); git diff --check clean.
+- Dev server verification: all schema, id anchors, prices, PKT, internal links, external rel=noopener confirmed.
+- Committed as a3738f3 "Add XAUUSD weekly forecast Nov 2–6, 2026".
+- Re-saved token securely (~/.git-credentials, chmod 600, credential.helper store).
+- Pushed: 1650cff..a3738f3, fast-forward, success. Local=remote in sync.
+- GitHub Actions run 41125899098 (commit a3738f3, Deploy to GitHub Pages): completed/success.
+- Live verification (all PASS):
+  * https://forexwizard.online/blog/xauusd-weekly-forecast-november-2-6-2026/ → HTTP 200
+  * Schema: Article + BreadcrumbList (3 items) + FAQPage (6 questions) all present
+  * Article datePublished=dateModified=2026-10-31T01:40:00+05:00; publisher logo correct
+  * One H1; canonical self-referencing; SEO title and meta description exact
+  * OG image correct; all 9 id anchors present
+  * Prices $3,890/$3,880/$3,950/$4,083 present; PKT and 18:30 present
+  * Internal links live; external links rel=noopener
+  * Sitemap: 1 entry for nov-2-6
+  * Blog index: article appears (link + title)
+
+Stage Summary:
+- DEPLOYMENT SUCCESSFUL. Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-november-2-6-2026/
+- Commit: a3738f3 (on origin/main, in sync)
+- GitHub Actions: 41125899098 success
+- Files: 9 added/changed (article page, blog-posts.ts, sitemap.xml, OG script, 5 image files)
+- Token saved securely for future sessions
