@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-november-2-6-2026",
+    title: "XAUUSD Weekly Forecast Nov 2–6, 2026 | Gold at 1-Year Low",
+    description:
+      "XAUUSD weekly forecast for Nov 2–6, 2026: gold hits a one-year low near $3,890. See key levels, NFP, ISM, BoE, Fed hike odds and PKT times.",
+    cardDescription:
+      "Gold hit a one-year low near $3,890 on Oct 30 as oil, ~5% yields and Fed hike bets hit metals. See XAUUSD levels, ISM, the US midterms, BoE and Friday's NFP for Nov 2–6.",
+    displayDate: "October 31, 2026",
+    publishedAt: "2026-10-31T01:40:00+05:00",
+    modifiedAt: "2026-10-31T01:40:00+05:00",
+    author: {
+      name: "Forex Wizard",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-november-2-6-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast November 2 to 6 2026 showing gold at a one-year low with key support resistance levels ahead of US NFP, ISM, midterm elections and Bank of England catalysts",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "NFP"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-october-26-30-2026",
     title: "XAUUSD Weekly Forecast Oct 26–30, 2026 | Gold & Fed",
     description:
