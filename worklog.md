@@ -1634,3 +1634,36 @@ Stage Summary:
 - Files: 9 added/changed (article page 653 lines, blog-posts.ts +20, sitemap +6, OG script, 5 image files)
 - Step 8 skipped (no forward links in older posts)
 - Token saved securely for future sessions
+
+---
+Task ID: edit-nov-9-13-gmt-cet-uae-india
+Agent: Z.ai Code (main)
+Task: EDIT the published Nov 9–13, 2026 post to add UK/Europe/UAE/India time conversions and matching SEO updates (13 edits).
+
+Work Log:
+- Applied all 13 edits exactly as specified (no OLD text mismatches; all found and replaced).
+- EDIT 1: Byline updated with "Updated November 7, 2026 with GMT, CET and local time conversions".
+- EDIT 2: Meta description (blog-posts.ts description) updated to "GMT, CET, UAE and PKT times"; OG/Twitter/Article schema inherit via post.description.
+- EDIT 3: Meta keywords list replaced with 14 keywords (added 4: US CPI time UK, US CPI release time GMT, US CPI time Pakistan, gold forecast GMT time).
+- EDIT 4: Blog index cardDescription updated to "GMT, CET and PKT times".
+- EDIT 5: Quick Answer last sentence updated to "(13:30 GMT / 14:30 CET / 18:30 PKT)".
+- EDIT 6: TOC label changed to "Economic calendar (GMT, CET, PKT)".
+- EDIT 7: Key Takeaways bullet updated with CPI and PPI GMT/PKT times.
+- EDIT 8: Economic calendar H2 changed to "(ET, GMT, CET and PKT)"; clock note replaced with detailed time-zone/clock-change explanation; main table expanded to 8 columns (Day, Event, New York ET, UK GMT, Europe CET, UAE GST, Pakistan PKT, India IST) with horizontal scroll (min-w-[900px], overflow-x-auto) on desktop and 6-field grid on mobile; new H3 "US CPI and PPI Release Time by Country (8:30 AM ET)" sub-table added with id="cpi-time-by-country" (15 rows covering New York through Sydney); Quick rule paragraph added.
+- EDIT 9: CPI and PPI labels in "Events that matter most" updated with GMT/CET/PKT times.
+- EDIT 10: Risk plan bullet updated to "at 13:30 GMT (14:30 CET, 18:30 PKT)".
+- EDIT 11: FAQ Q2 replaced ("What time is US CPI in the UK, Europe, UAE, India and Pakistan?"); new Q7 added ("Why do US data release times look different in the UK and Europe this month?").
+- EDIT 12: Final Thoughts updated to "plan around the calendar in your local time (GMT, CET or PKT)".
+- EDIT 13: FAQPage JSON-LD regenerated with 7 questions (text matches visible FAQ exactly); Article dateModified and article:modified_time set to 2026-11-07T20:03:00+05:00 (current publish time); datePublished unchanged (2026-11-07T19:37:00+05:00). No schema blocks duplicated.
+- Quality gates: lint clean; build clean (45/45 pages); git diff --check clean.
+- Dev server verified all 13 edits render correctly.
+- Committed 322613b "Add GMT, CET, UAE and India time conversions to Nov 9–13 forecast" (2 files: page.tsx +134/-52, blog-posts.ts +6/-0; no worklog/snapshot contamination).
+- Pushed: 87e6390..322613b, fast-forward, in sync.
+- GitHub Actions run 42384778778: completed/success.
+- Live verification (all PASS): HTTP 200; one H1; meta description has "GMT, CET, UAE and PKT times"; byline updated; main calendar table has 8 columns (browser-confirmed); CPI-by-country table visible (15 rows incl. Dubai GST 5:30 PM); 7 visible FAQ details; FAQPage schema has 7 questions (Q2 and Q7 correct); TOC economic label "Economic calendar (GMT, CET, PKT)"; Article dateModified 2026-11-07T20:03:00+05:00; datePublished unchanged; 3 tables total (support/resistance 3-col, main calendar 8-col, CPI-by-country 3-col); no console errors.
+
+Stage Summary:
+- EDIT SUCCESSFUL. Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-november-9-13-2026/
+- Commit: 322613b (on origin/main, in sync)
+- GitHub Actions: 42384778778 success
+- Files: 2 changed (page.tsx, blog-posts.ts); no unrelated files
