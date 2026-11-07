@@ -151,7 +151,7 @@ const tocItems = [
 
 const continueLearning = [
   { href: "/xauusd-support-resistance/", title: "XAUUSD Support and Resistance", desc: "How to identify important gold support and resistance zones for clearer trade planning.", icon: <Layers className="w-7 h-7 text-trading-gold" />, accent: "from-trading-gold/10 to-transparent" },
-  { href: "/blog/xauusd-weekly-forecast-november-2-6-2026/", title: "Previous Weekly Forecast (Nov 2–6)", desc: "Last week's forecast covering the one-year low, NFP and the post-jobs-report reaction.", icon: <LineChart className="w-7 h-7 text-trading-gold" />, accent: "from-trading-gold/10 to-transparent" },
+  { href: "/blog/xauusd-weekly-forecast-november-2-6-2026/", title: "Previous Weekly Forecast (Nov 2–6)", desc: "Last week's forecast covering the one-year low, Fed hike odds and the NFP preview.", icon: <LineChart className="w-7 h-7 text-trading-gold" />, accent: "from-trading-gold/10 to-transparent" },
   { href: "/blog/xauusd-fundamental-analysis/", title: "XAUUSD Fundamental Analysis", desc: "How the Fed, real yields and the dollar drive gold prices over time.", icon: <Activity className="w-7 h-7 text-trading-green" />, accent: "from-trading-green/10 to-transparent" },
   { href: "/xauusd-lot-size/", title: "XAUUSD Lot Size Calculator", desc: "Calculate the right lot size for your gold trades from account risk and stop distance.", icon: <Target className="w-7 h-7 text-trading-green" />, accent: "from-trading-green/10 to-transparent" },
 ];
