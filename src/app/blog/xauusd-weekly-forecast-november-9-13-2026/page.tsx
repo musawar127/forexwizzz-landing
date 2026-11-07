@@ -34,6 +34,10 @@ export const metadata: Metadata = {
     "Fed rate hike gold",
     "XAUUSD support and resistance",
     "gold forecast November 2026",
+    "US CPI time UK",
+    "US CPI release time GMT",
+    "US CPI time Pakistan",
+    "gold forecast GMT time",
   ],
   authors: [{ name: post.author.name, url: post.author.url }],
   creator: "Forex Wizard",
@@ -80,8 +84,8 @@ const faqPageStructuredData = {
       acceptedAnswer: { "@type": "Answer", text: "Gold closed last week near $4,045. Support is $4,035–$4,000 and $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday's US CPI report is the main catalyst. This is educational analysis, not a prediction." },
     },
     {
-      "@type": "Question", name: "What time is US CPI in Pakistan time (PKT)?",
-      acceptedAnswer: { "@type": "Answer", text: "The October CPI report is released on Tuesday, November 10 at 8:30 AM ET, which is 13:30 GMT or 18:30 PKT. US PPI follows on Friday, November 13 at the same time." },
+      "@type": "Question", name: "What time is US CPI in the UK, Europe, UAE, India and Pakistan?",
+      acceptedAnswer: { "@type": "Answer", text: "The October CPI report is released on Tuesday, November 10 at 8:30 AM ET. That is 13:30 GMT in the UK, 14:30 CET in Europe, 17:30 in the UAE, 18:30 PKT in Pakistan and 19:00 IST in India. US PPI follows on Friday, November 13 at the same times." },
     },
     {
       "@type": "Question", name: "Will gold go up or down after CPI?",
@@ -98,6 +102,10 @@ const faqPageStructuredData = {
     {
       "@type": "Question", name: "Is the US market open on Veterans Day, November 11?",
       acceptedAnswer: { "@type": "Answer", text: "The US stock market is open, but the bond market and government offices are closed, and no major US data is scheduled. Gold still trades, but liquidity can be thinner, so moves can be uneven." },
+    },
+    {
+      "@type": "Question", name: "Why do US data release times look different in the UK and Europe this month?",
+      acceptedAnswer: { "@type": "Answer", text: "The UK and Europe changed their clocks on October 25, while the US changed on November 1. For one week, US releases came one hour earlier than usual in UK and European time. From November 1 the normal gap is back: New York is 5 hours behind London and 6 hours behind Central Europe, so 8:30 AM ET is 13:30 GMT and 14:30 CET." },
     },
   ],
 };
@@ -126,15 +134,33 @@ const supportResistanceTable = [
 ];
 
 const economicCalendar = [
-  { day: "Mon, Nov 9", event: "China CPI and PPI (Oct)", et: "n/a", gmt: "01:30", pkt: "06:30" },
-  { day: "Mon, Nov 9", event: "NY Fed consumer inflation expectations", et: "11:00", gmt: "16:00", pkt: "21:00" },
-  { day: "Tue, Nov 10", event: "US CPI (Oct): headline and core", et: "08:30", gmt: "13:30", pkt: "18:30" },
-  { day: "Wed, Nov 11", event: "US Veterans Day (bond market closed, no major US data)", et: "n/a", gmt: "n/a", pkt: "n/a" },
-  { day: "Thu, Nov 12", event: "UK GDP (Q3)", et: "n/a", gmt: "07:00", pkt: "12:00" },
-  { day: "Thu, Nov 12", event: "US weekly jobless claims", et: "08:30", gmt: "13:30", pkt: "18:30" },
-  { day: "Thu, Nov 12", event: "US existing home sales (Oct)", et: "10:00", gmt: "15:00", pkt: "20:00" },
-  { day: "Thu, Nov 12", event: "US 30-year Treasury auction", et: "13:00", gmt: "18:00", pkt: "23:00" },
-  { day: "Fri, Nov 13", event: "US PPI (Oct)", et: "08:30", gmt: "13:30", pkt: "18:30" },
+  { day: "Mon, Nov 9", event: "China CPI and PPI (Oct)", et: "20:30 (Sun, Nov 8)", gmt: "01:30", cet: "02:30", gst: "05:30", pkt: "06:30", ist: "07:00" },
+  { day: "Mon, Nov 9", event: "NY Fed consumer inflation expectations", et: "11:00", gmt: "16:00", cet: "17:00", gst: "20:00", pkt: "21:00", ist: "21:30" },
+  { day: "Tue, Nov 10", event: "US CPI (Oct): headline and core", et: "08:30", gmt: "13:30", cet: "14:30", gst: "17:30", pkt: "18:30", ist: "19:00" },
+  { day: "Wed, Nov 11", event: "US Veterans Day (bond market closed, no major US data)", et: "n/a", gmt: "n/a", cet: "n/a", gst: "n/a", pkt: "n/a", ist: "n/a" },
+  { day: "Thu, Nov 12", event: "UK GDP (Q3)", et: "02:00", gmt: "07:00", cet: "08:00", gst: "11:00", pkt: "12:00", ist: "12:30" },
+  { day: "Thu, Nov 12", event: "US weekly jobless claims", et: "08:30", gmt: "13:30", cet: "14:30", gst: "17:30", pkt: "18:30", ist: "19:00" },
+  { day: "Thu, Nov 12", event: "US existing home sales (Oct)", et: "10:00", gmt: "15:00", cet: "16:00", gst: "19:00", pkt: "20:00", ist: "20:30" },
+  { day: "Thu, Nov 12", event: "US 30-year Treasury auction", et: "13:00", gmt: "18:00", cet: "19:00", gst: "22:00", pkt: "23:00", ist: "23:30" },
+  { day: "Fri, Nov 13", event: "US PPI (Oct)", et: "08:30", gmt: "13:30", cet: "14:30", gst: "17:30", pkt: "18:30", ist: "19:00" },
+];
+
+const cpiTimeByCountry = [
+  { city: "New York, Washington, Toronto", tz: "EST (UTC−5)", time: "8:30 AM" },
+  { city: "Chicago, Dallas", tz: "CST (UTC−6)", time: "7:30 AM" },
+  { city: "London, Dublin, Lisbon (UK / Ireland / Portugal)", tz: "GMT (UTC+0)", time: "1:30 PM" },
+  { city: "Paris, Berlin, Frankfurt, Madrid, Rome, Zurich", tz: "CET (UTC+1)", time: "2:30 PM" },
+  { city: "Lagos (Nigeria)", tz: "WAT (UTC+1)", time: "2:30 PM" },
+  { city: "Athens, Cairo, Johannesburg", tz: "EET / SAST (UTC+2)", time: "3:30 PM" },
+  { city: "Istanbul, Riyadh, Doha, Nairobi, Moscow", tz: "UTC+3", time: "4:30 PM" },
+  { city: "Dubai, Abu Dhabi, Muscat (UAE / Oman)", tz: "GST (UTC+4)", time: "5:30 PM" },
+  { city: "Karachi, Lahore, Islamabad (Pakistan)", tz: "PKT (UTC+5)", time: "6:30 PM" },
+  { city: "Mumbai, Delhi (India)", tz: "IST (UTC+5:30)", time: "7:00 PM" },
+  { city: "Dhaka (Bangladesh)", tz: "UTC+6", time: "7:30 PM" },
+  { city: "Bangkok, Jakarta", tz: "UTC+7", time: "8:30 PM" },
+  { city: "Singapore, Hong Kong, Kuala Lumpur, Manila, Perth", tz: "UTC+8", time: "9:30 PM" },
+  { city: "Tokyo, Seoul", tz: "UTC+9", time: "10:30 PM" },
+  { city: "Sydney, Melbourne", tz: "AEDT (UTC+11)", time: "12:30 AM (next day)" },
 ];
 
 const tocItems = [
@@ -143,7 +169,7 @@ const tocItems = [
   { href: "#last-week-recap", label: "Last week recap" },
   { href: "#why-gold-moved", label: "Why gold moved" },
   { href: "#support-resistance", label: "Support and resistance levels" },
-  { href: "#economic-calendar", label: "Economic calendar (PKT)" },
+  { href: "#economic-calendar", label: "Economic calendar (GMT, CET, PKT)" },
   { href: "#scenarios", label: "Bullish, bearish and range scenarios" },
   { href: "#risk-plan", label: "Risk plan for CPI week" },
   { href: "#faq", label: "FAQ" },
@@ -201,7 +227,7 @@ export default function WeeklyForecastNov9Nov13Page() {
               <span className="text-foreground">XAUUSD Weekly Forecast Nov 9–13, 2026: Gold Holds $4,000 Before US CPI</span>
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground/80 mb-8">
-              By the Forex Wizard Team · Published November 7, 2026 · Data through Friday&apos;s close (Nov 6) · 12 min read
+              By the Forex Wizard Team · Published November 7, 2026 · Updated November 7, 2026 with GMT, CET and local time conversions · Data through Friday&apos;s close (Nov 6) · 12 min read
             </p>
             <FadeIn delay={0.3} className="mb-8">
               <div className="glass-strong rounded-2xl overflow-hidden gradient-border">
@@ -226,7 +252,7 @@ export default function WeeklyForecastNov9Nov13Page() {
                 <span className="text-trading-gold text-glow-gold">Gold Forecast This Week</span>
               </h2>
               <p className="text-base md:text-lg text-foreground/90 leading-relaxed font-medium mb-4">
-                <strong>Gold (XAUUSD) closed last week near $4,045, about 4% above its Oct 30 low but below the $4,145 weekly high, after a strong NFP lifted December Fed hike odds to roughly 80%. For Nov 9–13, support is $4,035–$4,000 and then $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday&apos;s US CPI report (18:30 PKT) is the main catalyst.</strong>
+                <strong>Gold (XAUUSD) closed last week near $4,045, about 4% above its Oct 30 low but below the $4,145 weekly high, after a strong NFP lifted December Fed hike odds to roughly 80%. For Nov 9–13, support is $4,035–$4,000 and then $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday&apos;s US CPI report (13:30 GMT / 14:30 CET / 18:30 PKT) is the main catalyst.</strong>
               </p>
               <div className="mt-5 pt-5 border-t border-white/10">
                 <p className="text-sm font-bold text-foreground mb-3">In this article:</p>
@@ -259,7 +285,7 @@ export default function WeeklyForecastNov9Nov13Page() {
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Dollar and yields:</strong> The US dollar index rose about 0.7% on Friday to near 102.3, and the 10-year Treasury yield rose to about 4.87%.</span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Oil:</strong> Brent crude fell more than 16% on the week to near $98 on hopes of a US–Iran deal, easing some inflation pressure.</span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Key levels:</strong> Support is $4,035–$4,000, then $3,990. Resistance is $4,075–$4,090, then $4,125–$4,147.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">This week&apos;s events:</strong> US CPI (Tue, 18:30 PKT), US Veterans Day (Wed) and US PPI (Fri).</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">This week&apos;s events:</strong> US CPI (Tue, 13:30 GMT / 18:30 PKT), US Veterans Day (Wed) and US PPI (Fri, 13:30 GMT / 18:30 PKT).</span></li>
               </ul>
             </div>
           </div>
@@ -399,56 +425,108 @@ export default function WeeklyForecastNov9Nov13Page() {
 
         {/* ECONOMIC CALENDAR */}
         <FadeSection className="py-12 md:py-16 px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 id="economic-calendar" className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3">
               <span className="text-foreground">Economic Calendar This Week: </span>
-              <span className="text-trading-gold text-glow-gold">Nov 9–13, 2026 (ET, GMT and PKT)</span>
+              <span className="text-trading-gold text-glow-gold">Nov 9–13, 2026 (ET, GMT, CET and PKT)</span>
             </h2>
             <p className="text-sm text-muted-foreground/80 mb-6 leading-relaxed">
-              US clocks changed on November 1, so US releases are at 8:30 AM ET = 13:30 GMT = <strong className="text-foreground/90">18:30 PKT</strong>.
+              <strong className="text-foreground/90">Time zones and clock changes:</strong> The UK and Europe moved back to winter time on October 25 (UK = GMT, Central Europe = CET). The US moved back on November 1 (New York = EST). The usual gaps are back: New York is 5 hours behind London, 6 hours behind Central Europe and 10 hours behind Pakistan. So 8:30 AM ET = 13:30 GMT = 14:30 CET = 18:30 PKT. Countries without daylight saving time, such as the UAE, Pakistan and India, keep a fixed offset to GMT. Sydney is on summer time (AEDT, UTC+11) until April.
             </p>
             <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
-              <table className="w-full text-sm">
-                <thead><tr className="border-b border-white/10">
-                  <th className="text-left p-4 font-bold text-foreground">Day</th>
-                  <th className="text-left p-4 font-bold text-foreground">Event</th>
-                  <th className="text-left p-4 font-bold text-foreground">ET</th>
-                  <th className="text-left p-4 font-bold text-foreground">GMT</th>
-                  <th className="text-left p-4 font-bold text-foreground">PKT</th>
-                </tr></thead>
-                <tbody>
-                  {economicCalendar.map((row, i) => (
-                    <tr key={i} className={`border-b border-white/5 last:border-0 ${(row.event.includes("US CPI") || row.event.includes("US PPI")) ? "bg-trading-gold/5" : ""}`}>
-                      <td className="p-4 text-muted-foreground align-top whitespace-nowrap">{row.day}</td>
-                      <td className="p-4 align-top font-medium text-foreground">{row.event}</td>
-                      <td className="p-4 text-foreground/90 align-top">{row.et}</td>
-                      <td className="p-4 text-foreground/90 align-top">{row.gmt}</td>
-                      <td className="p-4 text-foreground/90 align-top font-medium">{row.pkt}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm min-w-[900px]">
+                  <thead><tr className="border-b border-white/10">
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">Day</th>
+                    <th className="text-left p-3 font-bold text-foreground">Event</th>
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">New York (ET)</th>
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">UK (GMT)</th>
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">Europe (CET)</th>
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">UAE (GST)</th>
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">Pakistan (PKT)</th>
+                    <th className="text-left p-3 font-bold text-foreground whitespace-nowrap">India (IST)</th>
+                  </tr></thead>
+                  <tbody>
+                    {economicCalendar.map((row, i) => (
+                      <tr key={i} className={`border-b border-white/5 last:border-0 ${(row.event.includes("US CPI") || row.event.includes("US PPI")) ? "bg-trading-gold/5" : ""}`}>
+                        <td className="p-3 text-muted-foreground align-top whitespace-nowrap">{row.day}</td>
+                        <td className="p-3 align-top font-medium text-foreground">{row.event}</td>
+                        <td className="p-3 text-foreground/90 align-top">{row.et}</td>
+                        <td className="p-3 text-foreground/90 align-top">{row.gmt}</td>
+                        <td className="p-3 text-foreground/90 align-top">{row.cet}</td>
+                        <td className="p-3 text-foreground/90 align-top">{row.gst}</td>
+                        <td className="p-3 text-foreground/90 align-top font-medium">{row.pkt}</td>
+                        <td className="p-3 text-foreground/90 align-top">{row.ist}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div className="md:hidden space-y-4">
               {economicCalendar.map((row, i) => (
                 <div key={i} className={`glass-strong rounded-2xl p-5 gradient-border ${(row.event.includes("US CPI") || row.event.includes("US PPI")) ? "border-l-4 border-l-trading-gold/50" : ""}`}>
                   <p className="text-xs text-muted-foreground mb-1">{row.day}</p>
                   <p className="text-base font-bold text-foreground mb-3">{row.event}</p>
-                  <div className="grid grid-cols-3 gap-2 text-sm">
-                    <div><span className="text-muted-foreground/70 block">ET</span><span className="text-foreground/90">{row.et}</span></div>
-                    <div><span className="text-muted-foreground/70 block">GMT</span><span className="text-foreground/90">{row.gmt}</span></div>
-                    <div><span className="text-muted-foreground/70 block">PKT</span><span className="text-foreground/90 font-medium">{row.pkt}</span></div>
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div><span className="text-muted-foreground/70 block">New York (ET)</span><span className="text-foreground/90">{row.et}</span></div>
+                    <div><span className="text-muted-foreground/70 block">UK (GMT)</span><span className="text-foreground/90">{row.gmt}</span></div>
+                    <div><span className="text-muted-foreground/70 block">Europe (CET)</span><span className="text-foreground/90">{row.cet}</span></div>
+                    <div><span className="text-muted-foreground/70 block">UAE (GST)</span><span className="text-foreground/90">{row.gst}</span></div>
+                    <div><span className="text-muted-foreground/70 block">Pakistan (PKT)</span><span className="text-foreground/90 font-medium">{row.pkt}</span></div>
+                    <div><span className="text-muted-foreground/70 block">India (IST)</span><span className="text-foreground/90">{row.ist}</span></div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-6 space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+
+            {/* CPI/PPI Release Time by Country sub-table */}
+            <div id="cpi-time-by-country" className="mt-10">
+              <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-4">US CPI and PPI Release Time by Country (8:30 AM ET)</h3>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
+                Use this table for US CPI (Tuesday, Nov 10), jobless claims (Thursday, Nov 12) and PPI (Friday, Nov 13). All three are released at 8:30 AM New York time.
+              </p>
+              <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead><tr className="border-b border-white/10">
+                      <th className="text-left p-4 font-bold text-foreground">City / region</th>
+                      <th className="text-left p-4 font-bold text-foreground whitespace-nowrap">Time zone</th>
+                      <th className="text-left p-4 font-bold text-foreground">Local time of the 8:30 AM ET release</th>
+                    </tr></thead>
+                    <tbody>
+                      {cpiTimeByCountry.map((row, i) => (
+                        <tr key={i} className="border-b border-white/5 last:border-0">
+                          <td className="p-4 align-top font-medium text-foreground">{row.city}</td>
+                          <td className="p-4 text-foreground/90 align-top whitespace-nowrap">{row.tz}</td>
+                          <td className="p-4 text-trading-gold align-top font-bold">{row.time}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="md:hidden space-y-3">
+                {cpiTimeByCountry.map((row, i) => (
+                  <div key={i} className="glass-strong rounded-xl p-4 gradient-border">
+                    <p className="text-sm font-bold text-foreground mb-1">{row.city}</p>
+                    <p className="text-xs text-muted-foreground mb-2">{row.tz}</p>
+                    <p className="text-lg font-extrabold text-trading-gold">{row.time}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mt-5">
+                <strong className="text-foreground/90">Quick rule:</strong> UK = New York + 5 hours, Central Europe = New York + 6, UAE = New York + 9, Pakistan = New York + 10, India = New York + 10.5.
+              </p>
+            </div>
+
+            <div className="mt-10 space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
               <h3 className="text-lg md:text-xl font-bold text-foreground">Events that matter most for gold</h3>
               <p>
-                <strong className="text-foreground/90">US CPI (Tue).</strong> This is the main event. Analysts expect headline CPI to rise about 0.3% month-on-month in October, down from 0.6% in September, and core CPI to rise about 0.2%, down from 0.3%. According to CMC Markets, year-on-year figures may not be published for October because last year&apos;s October CPI was not released during the government shutdown, so the month-on-month numbers will drive the reaction. After last week&apos;s strong jobs report, a core reading at or above 0.3% would likely strengthen December hike bets and pressure gold. A clearly softer print could ease hike odds and support a recovery toward $4,125–$4,147.
+                <strong className="text-foreground/90">US CPI (Tue, 13:30 GMT / 14:30 CET / 18:30 PKT).</strong> This is the main event. Analysts expect headline CPI to rise about 0.3% month-on-month in October, down from 0.6% in September, and core CPI to rise about 0.2%, down from 0.3%. According to CMC Markets, year-on-year figures may not be published for October because last year&apos;s October CPI was not released during the government shutdown, so the month-on-month numbers will drive the reaction. After last week&apos;s strong jobs report, a core reading at or above 0.3% would likely strengthen December hike bets and pressure gold. A clearly softer print could ease hike odds and support a recovery toward $4,125–$4,147.
               </p>
               <p>
-                <strong className="text-foreground/90">US PPI (Fri).</strong> September PPI rose 1.3% month-on-month and 6.3% year-on-year, so pipeline inflation is a concern. A hot PPI after CPI would reinforce the hawkish tone. A softer reading would add to any relief after CPI.
+                <strong className="text-foreground/90">US PPI (Fri, 13:30 GMT / 14:30 CET / 18:30 PKT).</strong> September PPI rose 1.3% month-on-month and 6.3% year-on-year, so pipeline inflation is a concern. A hot PPI after CPI would reinforce the hawkish tone. A softer reading would add to any relief after CPI.
               </p>
               <p>
                 <strong className="text-foreground/90">Fed speakers and hike odds (all week).</strong> With December hike odds near 80%, any comment from Fed officials on inflation or the labor market can move yields, the dollar and gold between data releases.
@@ -520,7 +598,7 @@ export default function WeeklyForecastNov9Nov13Page() {
                 CPI and PPI can move gold by tens of dollars within minutes. A few basic habits help.
               </p>
               <ul className="space-y-3 text-base md:text-lg text-muted-foreground leading-relaxed">
-                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Expect wide spreads and fast moves</strong> at 18:30 PKT on Tuesday and Friday.</span></li>
+                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Expect wide spreads and fast moves</strong> at 13:30 GMT (14:30 CET, 18:30 PKT) on Tuesday and Friday.</span></li>
                 <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Avoid trading the first minutes after a release</strong> unless you have a clear plan. Let the first reaction settle.</span></li>
                 <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Size positions for the stop-loss distance.</strong> Bigger volatility means a smaller lot size. Use our <Link href="/xauusd-lot-size/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD lot size calculator</Link> and read our guide to <Link href="/blog/forex-risk-management-for-beginners/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">forex risk management for beginners</Link>.</span></li>
                 <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Know your sessions.</strong> Read <Link href="/blog/xauusd-volatility-trading-sessions/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">why XAUUSD volatility changes by trading session</Link> and our <Link href="/blog/best-time-to-trade-forex/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">best time to trade forex</Link> guide for PKT hours.</span></li>
@@ -553,8 +631,8 @@ export default function WeeklyForecastNov9Nov13Page() {
                 <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">Gold closed last week near $4,045. Support is $4,035–$4,000 and $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday&apos;s US CPI report is the main catalyst. This is educational analysis, not a prediction.</p></div>
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">What time is US CPI in Pakistan time (PKT)?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
-                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">The October CPI report is released on Tuesday, November 10 at 8:30 AM ET, which is 13:30 GMT or <strong className="text-foreground/90">18:30 PKT</strong>. US PPI follows on Friday, November 13 at the same time.</p></div>
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">What time is US CPI in the UK, Europe, UAE, India and Pakistan?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
+                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">The October CPI report is released on Tuesday, November 10 at 8:30 AM ET. That is 13:30 GMT in the UK, 14:30 CET in Europe, 17:30 in the UAE, 18:30 PKT in Pakistan and 19:00 IST in India. US PPI follows on Friday, November 13 at the same times.</p></div>
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">Will gold go up or down after CPI?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
@@ -572,6 +650,10 @@ export default function WeeklyForecastNov9Nov13Page() {
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">Is the US market open on Veterans Day, November 11?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
                 <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">The US stock market is open, but the bond market and government offices are closed, and no major US data is scheduled. Gold still trades, but liquidity can be thinner, so moves can be uneven.</p></div>
               </details>
+              <details className="glass-strong rounded-2xl gradient-border group">
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">Why do US data release times look different in the UK and Europe this month?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
+                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">The UK and Europe changed their clocks on October 25, while the US changed on November 1. For one week, US releases came one hour earlier than usual in UK and European time. From November 1 the normal gap is back: New York is 5 hours behind London and 6 hours behind Central Europe, so 8:30 AM ET is 13:30 GMT and 14:30 CET.</p></div>
+              </details>
             </div>
           </div>
         </FadeSection>
@@ -585,7 +667,7 @@ export default function WeeklyForecastNov9Nov13Page() {
                 <span className="text-trading-gold text-glow-gold">Thoughts</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Gold enters the week holding above $4,000 after a 4% rebound, but strong US data and a Fed that is still leaning toward hikes keep the bigger picture cautious. Tuesday&apos;s CPI report is the key test. Respect the levels, plan around the calendar in PKT, keep position sizes small, and let price confirm a scenario before acting.
+                Gold enters the week holding above $4,000 after a 4% rebound, but strong US data and a Fed that is still leaning toward hikes keep the bigger picture cautious. Tuesday&apos;s CPI report is the key test. Respect the levels, plan around the calendar in your local time (GMT, CET or PKT), keep position sizes small, and let price confirm a scenario before acting.
               </p>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
                 For more educational XAUUSD analysis and weekly outlooks, join the Forex Wizard community on Telegram:{" "}
