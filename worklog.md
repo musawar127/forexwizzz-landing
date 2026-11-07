@@ -1607,3 +1607,30 @@ Stage Summary:
 - GitHub Actions: 41125899098 success
 - Files: 9 added/changed (article page, blog-posts.ts, sitemap.xml, OG script, 5 image files)
 - Token saved securely for future sessions
+
+---
+Task ID: publish-nov-9-13-2026
+Agent: Z.ai Code (main)
+Task: Publish XAUUSD Weekly Forecast Nov 9–13, 2026 as a new blog post.
+
+Work Log:
+- Verified all 12 internal links from article body return HTTP 200 on live site (none removed).
+- Checked Nov 2-6 and Oct 26-30 posts for forward links: neither has a forward link to a newer forecast, so step 8 (Latest banner) skipped per instructions.
+- Generated cover image (1200x630 JPG + 640/960/1200 webp). VLM initially flagged bottom text overlap; fixed by stacking CATALYSTS label and value vertically. VLM re-check: PASS (all text visible, readable, not cut off).
+- Added blog post to src/data/blog-posts.ts as FIRST entry (author "Forex Wizard", publishedAt/modifiedAt 2026-11-07T19:37:00+05:00).
+- Added sitemap entry (lastmod 2026-11-07, priority 0.8).
+- Created article page (653 lines) with: 10 id anchors (quick-answer, key-takeaways, forecast-review, last-week-recap, why-gold-moved, support-resistance, economic-calendar, scenarios, risk-plan, faq); TOC linking all 9 sections; Quick Answer box; Article + FAQPage (6 Qs matching visible text) + BreadcrumbList JSON-LD; support/resistance table (10 rows); economic calendar (9 rows, ET/GMT/PKT); 3 scenarios; risk plan; FAQ; disclaimer; sources. Continue Learning uses 4 specified cards (/xauusd-support-resistance/, /blog/xauusd-weekly-forecast-november-2-6-2026/, /blog/xauusd-fundamental-analysis/, /xauusd-lot-size/) — NO position-size-calculator.
+- Preserved all wording, numbers, prices, dates, times exactly as provided.
+- Quality gates: lint clean; build clean (45/45 pages); git diff --check clean.
+- Committed 125a781 "Add XAUUSD weekly forecast Nov 9–13, 2026" (9 files, no worklog/snapshot contamination).
+- Re-saved token securely. Pushed: a3738f3..125a781, fast-forward, in sync.
+- GitHub Actions run 42382809062: completed/success.
+- Live verification (all PASS): HTTP 200; Article+FAQPage+BreadcrumbList schema; one H1; canonical self-referencing; SEO title/meta desc exact; OG image loads; all 10 id anchors; prices $4,045/$4,000/$4,090/$4,145; PKT 18:30; 4 Continue Learning cards correct (no position-size-calculator); external rel=noopener; sitemap 1 entry; blog index shows article. Browser: cover image loads, TOC/Quick Answer/FAQ visible, no console errors.
+
+Stage Summary:
+- DEPLOYMENT SUCCESSFUL. Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-november-9-13-2026/
+- Commit: 125a781 (on origin/main, in sync)
+- GitHub Actions: 42382809062 success
+- Files: 9 added/changed (article page 653 lines, blog-posts.ts +20, sitemap +6, OG script, 5 image files)
+- Step 8 skipped (no forward links in older posts)
+- Token saved securely for future sessions
