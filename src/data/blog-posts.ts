@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-november-9-13-2026",
+    title: "XAUUSD Weekly Forecast Nov 9–13, 2026 | Gold Before CPI",
+    description:
+      "XAUUSD weekly forecast for Nov 9–13, 2026: gold rebounds to ~$4,045 as NFP beats. See CPI, PPI, key levels, Fed hike odds and PKT times.",
+    cardDescription:
+      "Gold rebounded about 4% from a one-year low but fell 1% Friday as a strong NFP lifted Fed hike odds near 80%. See XAUUSD levels, US CPI (Tue), PPI and PKT times for Nov 9–13.",
+    displayDate: "November 7, 2026",
+    publishedAt: "2026-11-07T19:37:00+05:00",
+    modifiedAt: "2026-11-07T19:37:00+05:00",
+    author: {
+      name: "Forex Wizard",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-november-9-13-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast November 9 to 13 2026 showing gold holding above 4000 with key support resistance levels ahead of US CPI and PPI",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "CPI"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-november-2-6-2026",
     title: "XAUUSD Weekly Forecast Nov 2–6, 2026 | Gold at 1-Year Low",
     description:
