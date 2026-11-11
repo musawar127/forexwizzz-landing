@@ -1667,3 +1667,25 @@ Stage Summary:
 - Commit: 322613b (on origin/main, in sync)
 - GitHub Actions: 42384778778 success
 - Files: 2 changed (page.tsx, blog-posts.ts); no unrelated files
+
+---
+Task ID: edit-tools-hub-seo
+Agent: Z.ai Code (main)
+Task: EDIT the Tools hub page (/tools/) for SEO and content improvements.
+
+Work Log:
+- Verified all 10 tool URLs return HTTP 200 on live site.
+- Generated new tools OG image (/tools-og-image.jpg, 1200x630) via scripts/create-tools-og-image.js. VLM-verified PASS (all text visible, readable, shows "Free XAUUSD & Forex Calculators" and subtitle).
+- Rewrote src/app/tools/page.tsx: new title tag, meta description (12 keywords), OG/Twitter tags with new image, visible breadcrumb (Home > Tools), new H1 "Free Forex & XAUUSD Trading Calculators", 10 tool cards with H3-linked titles (not whole-card links), "Best for" lines, aria-label "Open the [tool name]" on buttons, LIVE badges kept. Added 8 id anchors (tools, coming-soon, which-calculator, how-to-use, example, time-zones, faq, related-guides). Added sections: which-calculator table (10 rows), how-to-use (6 steps), example (gold trade sizing), time-zones (forex market hours), FAQ (7 questions, <details>), related-guides (6 cards). Added CollectionPage schema (mainEntity ItemList of 10 tools with name+URL), BreadcrumbList (Home > Tools), FAQPage (7 questions matching visible text). Kept existing footer, SiteFooter, StickyTelegramButton, Telegram CTA.
+- Updated sitemap lastmod for /tools/ only → 2026-11-12 (today's date).
+- Quality gates: lint clean; build clean (45/45 pages); git diff --check clean.
+- Committed d6436dd "Improve SEO and content of Tools hub page" (5 files: page.tsx, sitemap.xml, tools-og-image.jpg, tools-og-image.svg, create-tools-og-image.js; no worklog/snapshot contamination).
+- Pushed: 322613b..d6436dd, fast-forward, in sync.
+- GitHub Actions run 43092539507: completed/success.
+- Live verification (cache-busted, all PASS): HTTP 200; one H1; new title "Free XAUUSD & Forex Calculators | Lot Size, Pips, Margin"; new meta description present; canonical unchanged (https://forexwizard.online/tools/); all 10 tool links present with unchanged URLs; FAQ visible with 7 questions; CollectionPage(10 items)+BreadcrumbList(2)+FAQPage(7) schema valid; 8 id anchors; aria-labels on buttons; OG image loads (HTTP 200, 48273 bytes).
+
+Stage Summary:
+- DEPLOYMENT SUCCESSFUL. Live URL: https://forexwizard.online/tools/
+- Commit: d6436dd (on origin/main, in sync)
+- GitHub Actions: 43092539507 success
+- Files: 5 changed (page.tsx +344/-145, sitemap +1/-1, OG image new, OG SVG new, OG script new)
