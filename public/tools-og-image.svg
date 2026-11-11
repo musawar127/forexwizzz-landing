@@ -1,0 +1,51 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0a0a0f"/><stop offset="55%" style="stop-color:#0d0f16"/><stop offset="100%" style="stop-color:#0a0a0f"/></linearGradient>
+<linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#00e676"/><stop offset="100%" style="stop-color:#ffd740"/></linearGradient>
+<filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="630" fill="url(#bg)"/>
+<g opacity="0.16">
+    <rect x="24" y="130" width="12" height="20" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="72" y="139" width="12" height="73" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="120" y="148" width="12" height="72" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="168" y="157" width="12" height="71" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="216" y="166" width="12" height="70" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="264" y="145" width="12" height="69" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="312" y="154" width="12" height="68" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="360" y="163" width="12" height="67" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="408" y="172" width="12" height="66" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="456" y="181" width="12" height="65" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="504" y="132" width="12" height="64" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="552" y="141" width="12" height="63" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="600" y="150" width="12" height="62" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="648" y="159" width="12" height="61" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="696" y="168" width="12" height="60" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="744" y="147" width="12" height="59" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="792" y="156" width="12" height="58" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="840" y="165" width="12" height="57" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="888" y="174" width="12" height="56" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="936" y="155" width="12" height="55" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="984" y="134" width="12" height="54" fill="#ffd740" opacity="0.18" rx="2"/>
+    <rect x="1032" y="143" width="12" height="53" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="1080" y="152" width="12" height="52" fill="#00e676" opacity="0.18" rx="2"/>
+    <rect x="1128" y="161" width="12" height="51" fill="#ffd740" opacity="0.18" rx="2"/></g>
+<circle cx="980" cy="110" r="220" fill="#00e676" opacity="0.05"/>
+<circle cx="180" cy="540" r="180" fill="#ffd740" opacity="0.05"/>
+<g><circle cx="80" cy="68" r="9" fill="#00e676" filter="url(#glow)"/><text x="100" y="76" font-family="system-ui,sans-serif" font-size="26" font-weight="800" fill="#f0f0f0">Forex <tspan fill="#00e676">Wizard</tspan></text></g>
+<rect x="80" y="148" width="300" height="38" rx="19" fill="#00e676" opacity="0.08" stroke="#00e676" stroke-opacity="0.35" stroke-width="1"/>
+<text x="230" y="173" font-family="system-ui,sans-serif" font-size="17" font-weight="700" fill="#00e676" text-anchor="middle" letter-spacing="1.4">FREE TRADING CALCULATORS</text>
+<text x="80" y="270" font-family="system-ui,sans-serif" font-size="54" font-weight="900" fill="#f0f0f0" letter-spacing="-1.5">Free XAUUSD &amp;</text>
+<text x="80" y="334" font-family="system-ui,sans-serif" font-size="54" font-weight="900" letter-spacing="-1.5"><tspan fill="#ffd740">Forex</tspan><tspan fill="#f0f0f0"> Calculators</tspan></text>
+<text x="80" y="384" font-family="system-ui,sans-serif" font-size="22" font-weight="600" fill="#9ca3af">Lot Size · Pip Value · Margin · Risk-Reward · Market Hours</text>
+<g font-family="system-ui,sans-serif">
+<rect x="80" y="430" width="510" height="120" rx="16" fill="#ffffff" opacity="0.03" stroke="#00e676" stroke-opacity="0.25" stroke-width="1"/>
+<text x="100" y="465" font-size="13" font-weight="700" fill="#9ca3af" letter-spacing="1.2">10 FREE TOOLS · NO LOGIN</text>
+<text x="100" y="520" font-size="34" font-weight="900" fill="#00e676">Lot Size · Pips · Margin</text>
+<rect x="610" y="430" width="510" height="120" rx="16" fill="#ffffff" opacity="0.03" stroke="#ffd740" stroke-opacity="0.25" stroke-width="1"/>
+<text x="630" y="465" font-size="13" font-weight="700" fill="#9ca3af" letter-spacing="1.2">RISK &amp; GROWTH</text>
+<text x="630" y="520" font-size="34" font-weight="900" fill="#ffd740">Risk · Ruin · Compound</text>
+</g>
+<rect x="80" y="578" width="1040" height="2" rx="1" fill="url(#gg)" opacity="0.4"/>
+<text x="80" y="606" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#00e676" letter-spacing="1">forexwizard.online/tools · Educational estimates · Not financial advice</text>
+</svg>
