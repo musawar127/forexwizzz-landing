@@ -1689,3 +1689,30 @@ Stage Summary:
 - Commit: d6436dd (on origin/main, in sync)
 - GitHub Actions: 43092539507 success
 - Files: 5 changed (page.tsx +344/-145, sitemap +1/-1, OG image new, OG SVG new, OG script new)
+
+---
+Task ID: update-nov-9-13-post-cpi
+Agent: Z.ai Code (main)
+Task: EDIT the published Nov 9–13, 2026 post to add post-CPI update, new levels and refreshed metadata (9 edits).
+
+Work Log:
+- EDIT 1: H1/headline changed to "Gold Falls Below $4,000 After Hot US CPI"; title tag to "| Gold After Hot CPI"; meta description, cardDescription, keywords (18), OG/Twitter, Article schema all updated. blog-posts.ts title/description/cardDescription/modifiedAt updated.
+- EDIT 2: Byline updated to "Updated November 12, 2026 with October CPI results and new levels".
+- EDIT 3: Inserted new update section (id="update") after byline, before Quick Answer: callout box with CPI results, Mon-Thu timeline bullets, updated levels table (8 rows: R4 $4,114-$4,140 down to S3 ~$3,800, current ~$3,950), "What to watch on Friday" PPI paragraph, reference note. Desktop table + mobile cards.
+- EDIT 4: Quick Answer bold paragraph replaced with post-CPI version ($3,950, 90% hike odds, new levels, PPI catalyst).
+- EDIT 5: TOC: "Update: CPI result and new levels" added as FIRST item linking to #update.
+- EDIT 6: FAQ Q1 (forecast), Q3 (→ "How did gold react to the October CPI report?"), Q5 (levels) all replaced with post-CPI answers. 7 questions kept in order. FAQPage schema regenerated to match.
+- EDIT 7: Continue Learning card already had correct text ("Fed hike odds and the NFP preview") — no change needed.
+- EDIT 8: Sources line updated with BLS CPI release, Reuters via CNBC/Kitco, "All figures as of November 6–12, 2026".
+- EDIT 9: dateModified set to 2026-11-12T16:56:00+05:00 (Article schema, article:modified_time, blog-posts modifiedAt). datePublished unchanged. FAQPage regenerated (7 questions). Article headline/description updated. Sitemap lastmod for this post → 2026-11-12.
+- Quality gates: lint clean; build clean (45/45 pages); git diff --check clean.
+- Committed 602de8f "Update Nov 9–13 forecast after October CPI: new levels and FAQ" (3 files: page.tsx +76/-16, blog-posts.ts +4/-4, sitemap +1/-1; no worklog/snapshot contamination).
+- Pushed: d6436dd..602de8f, fast-forward, in sync.
+- GitHub Actions run 43213891641: completed/success.
+- Live verification (cache-busted, all PASS): HTTP 200; one H1 with NEW wording; new title tag "| Gold After Hot CPI"; new meta description; canonical unchanged; update section with id="update" and levels table ($3,950); Quick Answer updated; TOC has Update first; FAQ Q1/Q3/Q5 updated (7 questions); FAQPage schema 7 questions; sources updated; dateModified 2026-11-12T16:56:00+05:00; datePublished unchanged.
+
+Stage Summary:
+- DEPLOYMENT SUCCESSFUL. Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-november-9-13-2026/
+- Commit: 602de8f (on origin/main, in sync)
+- GitHub Actions: 43213891641 success
+- Files: 3 changed (page.tsx, blog-posts.ts, sitemap.xml)
