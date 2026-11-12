@@ -1716,3 +1716,60 @@ Stage Summary:
 - Commit: 602de8f (on origin/main, in sync)
 - GitHub Actions: 43213891641 success
 - Files: 3 changed (page.tsx, blog-posts.ts, sitemap.xml)
+
+---
+Task ID: improve-xauusd-lot-size-page
+Agent: Z.ai Code (main)
+Task: IMPROVE the existing /xauusd-lot-size/ page with new metadata, content, FAQ, schema and links. Do NOT change calculator logic.
+
+AUDIT (old state):
+- Old title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard"
+- Old H1: "XAUUSD Lot Size Calculator & Gold Risk Guide"
+- Old meta description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications."
+- Old schema: WebApplication (no free offer), BreadcrumbList (Home > Trading Tools > XAUUSD Lot Size Calculator), FAQPage (8 Qs)
+- Old FAQ: 8 questions
+- Section order: H1 → What Is → Calculator → What Does 1 Lot Mean → Standard/Mini/Micro → Why Lot Size Matters → Position Size vs Lot Size → What Information Needed → Basic Formula → Hypothetical Example → Stop-Loss Distance → Account Risk → Leverage → Margin → Tick Size/Value → What It Should Include → Common Mistakes → Trading Plan → Volatile Sessions → Financial Platforms → Risk Checklist → Continue Learning → Telegram CTA → FAQ → Footer
+
+CHANGES:
+- Metadata: new title, description, 9 keywords, OG/Twitter title+description (existing OG image kept — not generic).
+- H1: changed to "XAUUSD Lot Size Calculator: How to Calculate Lot Size for Gold".
+- Byline: added "By the Forex Wizard Team · Last updated November 12, 2026 · Free educational tool" under H1.
+- Quick Answer box (id="quick-answer"): inserted directly under H1/byline, before existing "What Is" section.
+- Schema: WebApplication updated with free offer (price 0, USD); BreadcrumbList updated (Home > Tools > XAUUSD Lot Size Calculator); FAQPage added with 17 questions (8 existing + 9 new); FAQPage script tag added.
+- Lot sizes table (standard/mini/micro): MERGED into existing "Standard, Mini and Micro Lot Concepts" section (id="lot-sizes") — added table after existing concept cards.
+- Pips/Points (id="pips-points"): NEW section added.
+- Step-by-step formula: MERGED into existing "Basic XAUUSD Lot Size Formula" section (id="formula") — added 6-step list after existing formula content.
+- More examples: MERGED into existing "Hypothetical XAUUSD Lot Size Example" section (id="examples") — added 4 new examples after existing example.
+- Lot size table at 1% risk (id="lot-size-table"): NEW section added.
+- Small accounts (id="small-accounts"): NEW section added.
+- Common mistakes (id="mistakes"): id added to existing H2, no content change needed.
+- Broker differences (id="broker-differences"): NEW section added.
+- News/volatility CPI content: MERGED into existing "Lot Size During Volatile XAUUSD Sessions" section (id="news-volatility") — added CPI Nov 10 example + links after existing content.
+- Related Tools and Guides (id="related-tools"): MERGED into existing "Continue Learning" section — added H3 + 9-item link list after existing cards.
+- FAQ (id="faq"): id added to existing H2; 9 new questions merged into existing 8 (total 17).
+- Educational disclaimer: added before Telegram CTA.
+- Sitemap: lastmod for /xauusd-lot-size/ → 2026-11-12.
+- Calculator logic/inputs/results: NOT changed. Calculator renders with 13 inputs.
+- No calculator JavaScript touched.
+
+MERGES (kept existing, added missing):
+1. lot-sizes: existing concept cards kept, new table added after.
+2. formula: existing formula kept, new 6-step list added after.
+3. examples: existing hypothetical example kept, new 4 examples added after.
+4. mistakes: existing 9 mistake cards kept, id added only.
+5. news-volatility: existing session content kept, new CPI example + links added after.
+6. related-tools: existing 8 continue-learning cards kept, new 9-item tool list added after.
+7. faq: existing 8 Qs kept, 9 new Qs added (total 17).
+SKIPPED: none. All sections merged or added as new.
+
+Quality gates: lint clean; build clean (45/45 pages); git diff --check clean.
+Committed be8a947 "Improve XAUUSD lot size page: content, FAQ, schema and links" (2 files: page.tsx +218/-18, sitemap +1/-1; no worklog/snapshot).
+Pushed: 602de8f..be8a947, fast-forward, in sync.
+GitHub Actions run 43217007719: completed/success.
+Live verification (cache-busted, all PASS): HTTP 200; one H1 ("How to Calculate Lot Size for Gold"); new title tag; new meta description; canonical unchanged; calculator renders with 13 inputs; 12 id anchors; 17 FAQ; WebApplication+BreadcrumbList+FAQPage schema (not duplicated); all 14 new internal links present; lot size table; examples; CPI Nov 10 content; Related Tools list. Browser: no console errors.
+
+Stage Summary:
+- DEPLOYMENT SUCCESSFUL. Live URL: https://forexwizard.online/xauusd-lot-size/
+- Commit: be8a947 (on origin/main, in sync)
+- GitHub Actions: 43217007719 success
+- Files: 2 changed (page.tsx, sitemap.xml)
