@@ -16,12 +16,23 @@ import { SiteFooter } from "@/components/site-footer";
 import { XauusdLotSizeCalculator } from "@/components/tools/xauusd-lot-size-calculator";
 
 export const metadata: Metadata = {
-  title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard",
-  description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications.",
+  title: "XAUUSD Lot Size Calculator: How Many Lots to Trade Gold",
+  description: "Free XAUUSD lot size calculator. Enter balance, risk % and stop loss to get gold lot size, with formulas, examples for $500–$25,000 accounts and FAQs.",
+  keywords: [
+    "XAUUSD lot size calculator",
+    "gold lot size calculator",
+    "how to calculate lot size for gold",
+    "XAUUSD lot size",
+    "gold position size calculator",
+    "0.01 lot gold how many ounces",
+    "XAUUSD lot size $1000 account",
+    "XAUUSD risk calculator",
+    "gold lot size formula",
+  ],
   alternates: { canonical: "https://forexwizard.online/xauusd-lot-size/" },
   openGraph: {
-    title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard",
-    description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications.",
+    title: "XAUUSD Lot Size Calculator | Forex Wizard",
+    description: "Free XAUUSD lot size calculator. Enter balance, risk % and stop loss to get gold lot size, with formulas, examples for $500–$25,000 accounts and FAQs.",
     type: "website",
     url: "https://forexwizard.online/xauusd-lot-size/",
     siteName: "Forex Wizard",
@@ -29,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "XAUUSD Lot Size Calculator & Gold Risk Guide | Forex Wizard",
-    description: "Use Forex Wizard's free XAUUSD lot size calculator to estimate gold position size using your equity, risk percentage, entry, stop loss and broker specifications.",
+    title: "XAUUSD Lot Size Calculator | Forex Wizard",
+    description: "Free XAUUSD lot size calculator. Enter balance, risk % and stop loss to get gold lot size, with formulas, examples for $500–$25,000 accounts and FAQs.",
     images: ["/og-xauusd-calculator.jpg"],
   },
 };
@@ -59,7 +70,7 @@ const breadcrumbStructuredData = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: "https://forexwizard.online/" },
-    { "@type": "ListItem", position: 2, name: "Trading Tools", item: "https://forexwizard.online/tools/" },
+    { "@type": "ListItem", position: 2, name: "Tools", item: "https://forexwizard.online/tools/" },
     { "@type": "ListItem", position: 3, name: "XAUUSD Lot Size Calculator", item: "https://forexwizard.online/xauusd-lot-size/" },
   ],
 };
@@ -188,6 +199,15 @@ const faqs = [
   { q: "Does leverage change the correct lot size?", a: "Leverage affects the margin required to hold a position, but it does not change the market risk. The correct lot size should be based on the potential loss at your stop-loss level relative to your account size and risk tolerance, not on how much margin leverage saves you. High leverage can make it easy to take on positions that are far too large for your account. Lower margin does not mean lower risk." },
   { q: "What is the difference between lot size and margin?", a: "Lot size determines your market exposure and the potential profit or loss of your trade. Margin is the amount of money your broker locks as collateral to maintain the open position. They are related but distinct concepts. A trade might require a small margin but carry a very large potential loss. Position sizing should always be based on the potential loss at the stop-loss, not on the margin requirement." },
   { q: "Can an XAUUSD lot size calculator give the exact position size?", a: "A calculator can provide a useful estimate, but its accuracy depends entirely on the inputs you provide. If you enter incorrect contract size, tick value, or stop distance, the output will be wrong. Additionally, a calculator cannot account for slippage, spread widening, or other real-market execution factors. A calculator is a tool to support decision-making, not a substitute for understanding the concepts behind the calculation." },
+  { q: "What is 1 lot in XAUUSD?", a: "On most MT4 and MT5 brokers, 1 standard lot of XAUUSD is 100 ounces of gold. A $1 price move on 1 lot is worth $100. Some brokers use different contract sizes, so check your broker's specification." },
+  { q: "How many ounces is 0.01 lot of gold?", a: "0.01 lot is 1 ounce on brokers that use a 100-ounce contract. A $1 move on 0.01 lot is worth $1." },
+  { q: "How do I calculate lot size for gold?", a: "Divide your risk amount by the stop-loss distance in dollars multiplied by 100 (ounces per lot). For example, risking $50 with a $10 stop gives 50 ÷ (10 × 100) = 0.05 lots. Round down to your broker's lot step." },
+  { q: "What lot size should I use for a $1,000 account?", a: "There is no single correct lot size. It depends on your risk percentage and stop distance. At 1% risk ($10) with a $10 stop, the calculated size is 0.01 lots. Wider stops produce sizes below the usual 0.01 minimum, which would risk more than 1%." },
+  { q: "How much is a $1 move worth per lot?", a: "A $1 move is worth $100 on 1.00 lot, $10 on 0.10 lot and $1 on 0.01 lot, assuming a 100-ounce contract." },
+  { q: "What is the minimum lot size for XAUUSD?", a: "Many MT4 and MT5 brokers set the minimum at 0.01 lots. Some brokers and cent accounts offer smaller steps. Check your broker's specification." },
+  { q: "How much margin do I need for 1 lot of gold?", a: "Margin = price × ounces per lot × lots ÷ leverage. With gold at $4,000, 1 lot of 100 ounces has a notional value of $400,000, so margin is about $4,000 at 1:100 leverage. Use the XAUUSD Margin & Leverage Calculator to check your own numbers." },
+  { q: "Should I use a fixed lot size or a fixed risk percentage?", a: "A fixed risk percentage adjusts the lot size to each stop distance, so your dollar risk stays consistent. A fixed lot size means your risk changes whenever your stop changes. Many traders prefer fixed-percentage risk, but you should choose a method that matches your own plan." },
+  { q: "Does the lot size change if my account is in EUR, GBP, PKR or INR?", a: "The formula is the same, but gold profit and loss are in US dollars, so convert your risk amount to US dollars first. Example 4 above shows a GBP account. The XAUUSD & Forex Pip Value Calculator can convert to your account currency." },
 ];
 
 const faqStructuredData = {
@@ -208,6 +228,7 @@ export default function XauusdLotSizePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppStructuredData) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
 
       <header className="relative z-20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -235,11 +256,25 @@ export default function XauusdLotSizePage() {
                 Forex Wizard Trading Guide
               </span>
             </FadeIn>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4">
               <span className="text-trading-gold text-glow-gold">XAUUSD Lot Size Calculator</span>
               <br />
-              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl">&amp; Gold Risk Guide</span>
+              <span className="text-foreground text-2xl sm:text-3xl md:text-4xl">How to Calculate Lot Size for Gold</span>
             </h1>
+            <p className="text-sm text-muted-foreground/70 mb-8 italic">
+              By the Forex Wizard Team · Last updated November 12, 2026 · Free educational tool
+            </p>
+
+            {/* QUICK ANSWER */}
+            <div id="quick-answer" className="glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-trading-gold/50 max-w-3xl mx-auto text-left mb-12">
+              <h2 className="text-xl md:text-2xl font-extrabold mb-4">
+                <span className="text-foreground">Quick Answer: </span>
+                <span className="text-trading-gold text-glow-gold">How Many Lots Should You Trade in Gold?</span>
+              </h2>
+              <p className="text-base md:text-lg text-foreground/90 leading-relaxed font-medium">
+                <strong>Lot size for XAUUSD = risk amount ÷ (stop-loss distance in dollars × ounces per lot).</strong> On most brokers, 1 lot is 100 ounces, so a $1 move on 1 lot is $100. Risking $50 with a $10 stop gives $50 ÷ ($10 × 100) = 0.05 lots. Use the calculator below with your own balance, risk percentage and stop, and confirm your broker&apos;s contract size first.
+              </p>
+            </div>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
               Use our free XAUUSD lot size calculator to estimate gold position
               size from your account equity, risk percentage, entry price, stop
@@ -368,7 +403,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Standard, Mini and Micro </span><span className="text-trading-gold text-glow-gold">Lot Concepts</span></h2>
+              <h2 id="lot-sizes" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Standard, Mini and Micro </span><span className="text-trading-gold text-glow-gold">Lot Concepts</span></h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">Common terminology explained — with the caveat that XAUUSD conventions vary by broker.</p>
             </div>
             <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -388,6 +423,30 @@ export default function XauusdLotSizePage() {
             </div>
             <div className="mt-8 glass rounded-2xl p-5 border border-trading-gold/20">
               <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Note:</span> Do not assume every broker labels lots identically. Some brokers may not use the standard/mini/micro labels at all and instead simply allow you to trade in volume increments (e.g., 0.01 to 50.00 lots) with the contract size defining the actual exposure.</p>
+            </div>
+            {/* Lot sizes quick-reference table */}
+            <div className="mt-8">
+              <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
+                <table className="w-full text-sm">
+                  <thead><tr className="border-b border-white/10">
+                    <th className="text-left p-4 font-bold text-foreground">Lot size</th>
+                    <th className="text-left p-4 font-bold text-foreground">Ounces of gold</th>
+                    <th className="text-left p-4 font-bold text-foreground">Profit or loss per $1 move</th>
+                    <th className="text-left p-4 font-bold text-foreground">Per $0.10 move (10 points)</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr className="border-b border-white/5"><td className="p-4 font-medium text-foreground">1.00 (standard lot)</td><td className="p-4 text-trading-gold font-bold">100 oz</td><td className="p-4 text-trading-green font-bold">$100</td><td className="p-4 text-muted-foreground">$10</td></tr>
+                    <tr className="border-b border-white/5"><td className="p-4 font-medium text-foreground">0.10 (mini lot)</td><td className="p-4 text-trading-gold font-bold">10 oz</td><td className="p-4 text-trading-green font-bold">$10</td><td className="p-4 text-muted-foreground">$1</td></tr>
+                    <tr><td className="p-4 font-medium text-foreground">0.01 (micro lot)</td><td className="p-4 text-trading-gold font-bold">1 oz</td><td className="p-4 text-trading-green font-bold">$1</td><td className="p-4 text-muted-foreground">$0.10</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="md:hidden space-y-3">
+                <div className="glass-strong rounded-xl p-4 gradient-border"><p className="text-xs text-muted-foreground mb-1">1.00 (standard lot)</p><p className="text-lg font-bold text-trading-gold mb-1">100 oz</p><p className="text-sm text-trading-green">$100 per $1 move · $10 per $0.10</p></div>
+                <div className="glass-strong rounded-xl p-4 gradient-border"><p className="text-xs text-muted-foreground mb-1">0.10 (mini lot)</p><p className="text-lg font-bold text-trading-gold mb-1">10 oz</p><p className="text-sm text-trading-green">$10 per $1 move · $1 per $0.10</p></div>
+                <div className="glass-strong rounded-xl p-4 gradient-border"><p className="text-xs text-muted-foreground mb-1">0.01 (micro lot)</p><p className="text-lg font-bold text-trading-gold mb-1">1 oz</p><p className="text-sm text-trading-green">$1 per $1 move · $0.10 per $0.10</p></div>
+              </div>
+              <p className="text-xs text-muted-foreground/70 mt-3 leading-relaxed">Most MT4 and MT5 brokers use 100 ounces per standard lot, but contract sizes, minimum lots and lot steps differ. Always check your broker&apos;s symbol specification before trading.</p>
             </div>
           </div>
         </FadeSection>
@@ -473,7 +532,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Basic XAUUSD </span><span className="text-trading-gold text-glow-gold">Lot Size Formula</span></h2>
+              <h2 id="formula" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Basic XAUUSD </span><span className="text-trading-gold text-glow-gold">Lot Size Formula</span></h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">A general educational concept — not a universal formula for all brokers.</p>
             </div>
             <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
@@ -489,6 +548,18 @@ export default function XauusdLotSizePage() {
                 <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-gold font-semibold">Why there is no single universal formula:</span> Each broker can define contract size, tick size, and tick value differently. A formula that produces the correct lot size for one broker may produce an incorrect result for another. Any calculation must use your own broker&rsquo;s specifications.</p>
               </div>
             </div>
+            {/* Step-by-step formula */}
+            <div className="mt-8 glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+              <h3 className="text-lg font-bold text-foreground mb-4">XAUUSD Lot Size Formula, Step by Step</h3>
+              <ol className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-green/20 flex items-center justify-center text-trading-green font-bold text-sm shrink-0">1</span><span><strong className="text-foreground/90">Risk amount</strong> = account balance × risk percentage. A $5,000 account risking 1% risks $50.</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-green/20 flex items-center justify-center text-trading-green font-bold text-sm shrink-0">2</span><span><strong className="text-foreground/90">Stop distance</strong> = the difference between entry price and stop-loss price, in dollars.</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-green/20 flex items-center justify-center text-trading-green font-bold text-sm shrink-0">3</span><span><strong className="text-foreground/90">Lot size</strong> = risk amount ÷ (stop distance × ounces per lot). With 100 ounces per lot, that is risk ÷ (stop distance × 100).</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-green/20 flex items-center justify-center text-trading-green font-bold text-sm shrink-0">4</span><span><strong className="text-foreground/90">Round down</strong> to your broker&apos;s lot step, usually 0.01. Rounding up increases your risk.</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-green/20 flex items-center justify-center text-trading-green font-bold text-sm shrink-0">5</span><span><strong className="text-foreground/90">Check margin</strong> at your leverage with the <Link href="/tools/xauusd-margin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Margin &amp; Leverage Calculator</Link>.</span></li>
+                <li className="flex items-start gap-3"><span className="w-7 h-7 rounded-full bg-trading-green/20 flex items-center justify-center text-trading-green font-bold text-sm shrink-0">6</span><span><strong className="text-foreground/90">Recalculate if you move your stop.</strong> A new stop distance means a new lot size.</span></li>
+              </ol>
+            </div>
           </div>
         </FadeSection>
 
@@ -496,7 +567,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Hypothetical </span><span className="text-trading-gold text-glow-gold">XAUUSD Lot Size Example</span></h2>
+              <h2 id="examples" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Hypothetical </span><span className="text-trading-gold text-glow-gold">XAUUSD Lot Size Example</span></h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">A step-by-step walkthrough using hypothetical values. This is not a recommended trade.</p>
             </div>
             <div className="space-y-6">
@@ -539,6 +610,19 @@ export default function XauusdLotSizePage() {
               <div className="glass rounded-2xl p-5 border border-trading-red/30">
                 <p className="text-sm text-muted-foreground leading-relaxed"><span className="text-trading-red font-semibold">Disclaimer:</span> This example is entirely hypothetical and uses illustrative broker specifications. It does not represent a recommended trade, a real market scenario, or a suggestion about appropriate lot sizes for any reader. The actual contract size, tick size, and tick value at your broker may differ. Do not use this example as the basis for real trading decisions.</p>
               </div>
+              {/* More gold lot size examples */}
+              <FadeIn>
+                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
+                  <h3 className="text-lg font-bold text-foreground mb-4">More Gold Lot Size Examples</h3>
+                  <p className="text-sm text-muted-foreground mb-4">These are educational examples with round numbers, not trade recommendations.</p>
+                  <ul className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+                    <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Example 1:</strong> $5,000 account, 1% risk ($50), buy at $4,000, stop at $3,990 ($10 stop). Lot size = 50 ÷ (10 × 100) = <strong className="text-foreground/90">0.05 lots</strong>.</span></li>
+                    <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Example 2:</strong> Same trade with a wider $25 stop. Lot size = 50 ÷ (25 × 100) = <strong className="text-foreground/90">0.02 lots</strong>. A wider stop means a smaller position for the same risk.</span></li>
+                    <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Example 3:</strong> $1,000 account, 1% risk ($10), $10 stop. Lot size = 10 ÷ (10 × 100) = <strong className="text-foreground/90">0.01 lots</strong>, which is the usual minimum.</span></li>
+                    <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Example 4:</strong> Account in GBP, risking £50. If GBP/USD were 1.30 (an illustrative rate), the risk is $65. With a $10 stop, lot size = 65 ÷ (10 × 100) = 0.065, rounded down to <strong className="text-foreground/90">0.06 lots</strong>. Gold is priced in US dollars, so convert your risk to dollars first.</span></li>
+                  </ul>
+                </div>
+              </FadeIn>
             </div>
           </div>
         </FadeSection>
@@ -672,7 +756,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Common XAUUSD </span><span className="text-trading-gold text-glow-gold">Lot Size Mistakes</span></h2>
+              <h2 id="mistakes" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Common XAUUSD </span><span className="text-trading-gold text-glow-gold">Lot Size Mistakes</span></h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {commonMistakes.map((item, i) => (
@@ -731,7 +815,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Lot Size During Volatile </span><span className="text-trading-gold text-glow-gold">XAUUSD Sessions</span></h2>
+              <h2 id="news-volatility" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Lot Size During Volatile </span><span className="text-trading-gold text-glow-gold">XAUUSD Sessions</span></h2>
             </div>
             <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>Volatility and execution conditions in XAUUSD can change significantly depending on the time of day, the session, and scheduled economic events. While position sizing principles remain the same regardless of when you trade, the practical implications of a given lot size can differ considerably between a quiet Asian session and a volatile London&ndash;New York overlap.</p>
@@ -749,6 +833,19 @@ export default function XauusdLotSizePage() {
             </div>
             <div className="mt-8 text-base text-muted-foreground leading-relaxed">
               <p>For a detailed guide to understanding how sessions affect XAUUSD trading conditions, see our resource on the <Link href="/best-time-to-trade-xauusd/" className="text-trading-gold hover:text-trading-gold/80 transition-colors no-underline font-medium">best time to trade XAUUSD</Link>.</p>
+            </div>
+            {/* Sizing gold trades around news and volatility */}
+            <div className="mt-8 glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-trading-gold/50">
+              <h3 className="text-lg font-bold text-foreground mb-4">Sizing Gold Trades Around News and Volatility</h3>
+              <div className="space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>Gold can move tens of dollars within minutes around major releases such as US CPI, Nonfarm Payrolls and Fed decisions. For example, spot gold fell by roughly $80 shortly after the US CPI release on November 10, 2026. In fast markets, stops can fill at worse prices than expected, so some traders reduce size or stay out around these events. See how this played out in our{" "}
+                  <Link href="/blog/xauusd-weekly-forecast-november-9-13-2026/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD weekly forecast for Nov 9–13, 2026</Link>, and read{" "}
+                  <Link href="/blog/xauusd-volatility-trading-sessions/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">why XAUUSD volatility changes by trading session</Link>. Our{" "}
+                  <Link href="/tools/forex-market-hours/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Forex Market Hours &amp; Live Session Clock</Link>{" "}
+                  shows session times in your local time. To mark sensible stop levels, see our guide to{" "}
+                  <Link href="/xauusd-support-resistance/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD support and resistance</Link>.
+                </p>
+              </div>
             </div>
           </div>
         </FadeSection>
@@ -807,7 +904,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Continue </span><span className="text-trading-gold text-glow-gold">Learning</span></h2>
+              <h2 id="related-tools" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Continue </span><span className="text-trading-gold text-glow-gold">Learning</span></h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto">Explore more of Forex Wizard to deepen your gold trading knowledge and build a well-rounded understanding of XAUUSD.</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -824,10 +921,113 @@ export default function XauusdLotSizePage() {
                 </FadeIn>
               ))}
             </div>
+            {/* Related Tools and Guides list */}
+            <div className="mt-12 max-w-4xl mx-auto">
+              <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-6 text-center">Related Tools and Guides</h3>
+              <ul className="space-y-3 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/tools/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">All Free Forex & XAUUSD Calculators</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/xauusd-pip-value/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD & Forex Pip Value Calculator</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/tools/xauusd-margin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Margin & Leverage Calculator</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/tools/risk-reward-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Forex & XAUUSD Risk Reward Calculator</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/tools/xauusd-profit-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Profit Calculator</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/tools/risk-of-ruin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Risk of Ruin & Losing Streak Calculator</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/tools/forex-position-size-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Forex Position Size Calculator (currency pairs)</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/blog/forex-risk-management-for-beginners/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Forex Risk Management for Beginners</a></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><a href="/xauusd-analysis/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD Analysis</a> and <a href="/gold-signals/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Gold Signals</a></li>
+              </ul>
+            </div>
           </div>
         </FadeSection>
 
-        {/* TELEGRAM CTA */}
+        {/* NEW SECTIONS: Pips/Points, Lot Size Table, Small Accounts, Broker Differences */}
+        <FadeSection className="py-20 md:py-28 px-4">
+          <div className="max-w-4xl mx-auto space-y-16">
+            {/* PIPS, POINTS AND DOLLARS */}
+            <div id="pips-points">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Pips, Points and </span><span className="text-trading-gold text-glow-gold">Dollars in Gold</span></h2>
+              <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p>Brokers describe gold price moves in different ways, which causes many sizing mistakes. On many platforms a $0.10 move is one pip and a $0.01 move is one point. Other brokers call a $0.01 move one pip. Because the naming varies, the safest method is to size by dollar distance: measure your stop as the difference between entry and stop in dollars, then use the formula below. To compare conventions and convert to your account currency, use the{" "}
+                  <Link href="/xauusd-pip-value/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD &amp; Forex Pip Value Calculator</Link>.
+                </p>
+              </div>
+            </div>
+
+            {/* LOT SIZE TABLE */}
+            <div id="lot-size-table">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">XAUUSD Lot Size Table at </span><span className="text-trading-gold text-glow-gold">1% Risk</span></h2>
+              <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead><tr className="border-b border-white/10">
+                      <th className="text-left p-4 font-bold text-foreground">Account balance</th>
+                      <th className="text-left p-4 font-bold text-foreground">Risk (1%)</th>
+                      <th className="text-left p-4 font-bold text-foreground">$5 stop</th>
+                      <th className="text-left p-4 font-bold text-foreground">$10 stop</th>
+                      <th className="text-left p-4 font-bold text-foreground">$20 stop</th>
+                      <th className="text-left p-4 font-bold text-foreground">$30 stop</th>
+                    </tr></thead>
+                    <tbody>
+                      <tr className="border-b border-white/5"><td className="p-4 text-foreground font-medium">$500</td><td className="p-4 text-muted-foreground">$5</td><td className="p-4 text-trading-gold font-bold">0.01</td><td className="p-4 text-muted-foreground">&lt;0.01*</td><td className="p-4 text-muted-foreground">&lt;0.01*</td><td className="p-4 text-muted-foreground">&lt;0.01*</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-4 text-foreground font-medium">$1,000</td><td className="p-4 text-muted-foreground">$10</td><td className="p-4 text-trading-gold font-bold">0.02</td><td className="p-4 text-trading-gold font-bold">0.01</td><td className="p-4 text-muted-foreground">&lt;0.01*</td><td className="p-4 text-muted-foreground">&lt;0.01*</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-4 text-foreground font-medium">$5,000</td><td className="p-4 text-muted-foreground">$50</td><td className="p-4 text-trading-gold font-bold">0.10</td><td className="p-4 text-trading-gold font-bold">0.05</td><td className="p-4 text-trading-gold font-bold">0.02</td><td className="p-4 text-trading-gold font-bold">0.01</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-4 text-foreground font-medium">$10,000</td><td className="p-4 text-muted-foreground">$100</td><td className="p-4 text-trading-gold font-bold">0.20</td><td className="p-4 text-trading-gold font-bold">0.10</td><td className="p-4 text-trading-gold font-bold">0.05</td><td className="p-4 text-trading-gold font-bold">0.03</td></tr>
+                      <tr><td className="p-4 text-foreground font-medium">$25,000</td><td className="p-4 text-muted-foreground">$250</td><td className="p-4 text-trading-gold font-bold">0.50</td><td className="p-4 text-trading-gold font-bold">0.25</td><td className="p-4 text-trading-gold font-bold">0.12</td><td className="p-4 text-trading-gold font-bold">0.08</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="md:hidden space-y-3">
+                {[
+                  { bal: "$500", risk: "$5", s5: "0.01", s10: "<0.01*", s20: "<0.01*", s30: "<0.01*" },
+                  { bal: "$1,000", risk: "$10", s5: "0.02", s10: "0.01", s20: "<0.01*", s30: "<0.01*" },
+                  { bal: "$5,000", risk: "$50", s5: "0.10", s10: "0.05", s20: "0.02", s30: "0.01" },
+                  { bal: "$10,000", risk: "$100", s5: "0.20", s10: "0.10", s20: "0.05", s30: "0.03" },
+                  { bal: "$25,000", risk: "$250", s5: "0.50", s10: "0.25", s20: "0.12", s30: "0.08" },
+                ].map((r, i) => (
+                  <div key={i} className="glass-strong rounded-xl p-4 gradient-border">
+                    <p className="text-sm font-bold text-foreground mb-2">{r.bal} · Risk {r.risk}</p>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div><span className="text-muted-foreground/70">$5 stop:</span> <span className="text-trading-gold font-bold">{r.s5}</span></div>
+                      <div><span className="text-muted-foreground/70">$10 stop:</span> <span className="text-trading-gold font-bold">{r.s10}</span></div>
+                      <div><span className="text-muted-foreground/70">$20 stop:</span> <span className="text-trading-gold font-bold">{r.s20}</span></div>
+                      <div><span className="text-muted-foreground/70">$30 stop:</span> <span className="text-trading-gold font-bold">{r.s30}</span></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground/70 mt-4 leading-relaxed">*Lot sizes assume 100 ounces per lot and are rounded down to 0.01. &quot;&lt;0.01&quot; means the calculated size is below the usual minimum lot, so the smallest trade would risk more than 1% of the account. This table is an educational reference, not a recommendation. Use the calculator above for your own numbers.</p>
+            </div>
+
+            {/* SMALL ACCOUNTS */}
+            <div id="small-accounts">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Lot Size for Small Accounts </span><span className="text-trading-gold text-glow-gold">($100, $500, $1,000)</span></h2>
+              <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p>On gold, small accounts run into the minimum lot size. With 0.01 lots (1 ounce), a $10 stop risks $10. That is 1% of a $1,000 account, 2% of a $500 account and 10% of a $100 account. If the smallest lot already risks more than you intend, you can use a broker or account type with smaller lot steps, trade less often, or accept that the account is too small to risk 1% per trade on gold. Do not widen your leverage to compensate, because that increases risk. Understand how losing streaks affect a small account with the{" "}
+                  <Link href="/tools/risk-of-ruin-calculator/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Risk of Ruin &amp; Losing Streak Calculator</Link>.
+                </p>
+              </div>
+            </div>
+
+            {/* BROKER DIFFERENCES */}
+            <div id="broker-differences">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"><span className="text-foreground">Broker Differences to Check </span><span className="text-trading-gold text-glow-gold">Before You Trade</span></h2>
+              <ul className="space-y-3 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Contract size:</strong> most brokers use 100 ounces per lot, but check yours.</span></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Minimum lot and lot step:</strong> often 0.01, but some offer smaller steps.</span></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Leverage and margin rules:</strong> these change how much margin one lot needs.</span></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Spread, commission and slippage:</strong> these affect your real risk, especially in fast markets.</span></li>
+                <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">›</span><span><strong className="text-foreground/90">Account currency:</strong> if your account is in EUR, GBP, PKR or INR, convert your risk amount to US dollars before sizing a gold trade.</span></li>
+              </ul>
+            </div>
+
+            {/* EDUCATIONAL DISCLAIMER */}
+            <div className="glass rounded-2xl border border-trading-red/20 p-6 md:p-8">
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                Educational estimates only. Spreads, slippage, commissions, gaps and broker-specific contract sizes can change real results. Always verify your broker&apos;s specifications before trading. This page is not financial advice.
+              </p>
+            </div>
+          </div>
+        </FadeSection>
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="relative max-w-4xl mx-auto">
             <div className="absolute inset-0 bg-gradient-to-br from-trading-gold/5 via-transparent to-trading-green/5 rounded-3xl blur-sm" />
@@ -854,7 +1054,7 @@ export default function XauusdLotSizePage() {
         <FadeSection className="py-20 md:py-28 px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+              <h2 id="faq" className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
                 <span className="text-foreground">Frequently Asked </span>
                 <span className="text-trading-gold text-glow-gold">Questions</span>
               </h2>
