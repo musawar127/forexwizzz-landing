@@ -38,6 +38,10 @@ export const metadata: Metadata = {
     "US CPI release time GMT",
     "US CPI time Pakistan",
     "gold forecast GMT time",
+    "gold price after CPI",
+    "US CPI October 2026 gold",
+    "gold falls below 4000",
+    "Fed December hike gold",
   ],
   authors: [{ name: post.author.name, url: post.author.url }],
   creator: "Forex Wizard",
@@ -57,7 +61,7 @@ export const metadata: Metadata = {
 
 const blogPostingStructuredData = {
   "@context": "https://schema.org", "@type": "Article",
-  headline: "XAUUSD Weekly Forecast Nov 9–13, 2026: Gold Holds $4,000 Before US CPI",
+  headline: "XAUUSD Weekly Forecast Nov 9–13, 2026: Gold Falls Below $4,000 After Hot US CPI",
   description: post.description, image: [IMAGE_URL],
   datePublished: post.publishedAt, dateModified: post.modifiedAt, mainEntityOfPage: CANONICAL,
   author: { "@type": "Organization", name: "Forex Wizard", url: post.author.url },
@@ -81,15 +85,15 @@ const faqPageStructuredData = {
   mainEntity: [
     {
       "@type": "Question", name: "What is the XAUUSD forecast for November 9–13, 2026?",
-      acceptedAnswer: { "@type": "Answer", text: "Gold closed last week near $4,045. Support is $4,035–$4,000 and $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday's US CPI report is the main catalyst. This is educational analysis, not a prediction." },
+      acceptedAnswer: { "@type": "Answer", text: "Gold fell below $4,000 after a hotter-than-expected US CPI report on November 10 and traded near $3,950 on Thursday, November 12. Support is $3,930–$3,940, then $3,870–$3,895. Resistance is $3,980–$4,000 and $4,055–$4,067. Friday's US PPI report is the next catalyst. This is educational analysis, not a prediction." },
     },
     {
       "@type": "Question", name: "What time is US CPI in the UK, Europe, UAE, India and Pakistan?",
       acceptedAnswer: { "@type": "Answer", text: "The October CPI report is released on Tuesday, November 10 at 8:30 AM ET. That is 13:30 GMT in the UK, 14:30 CET in Europe, 17:30 in the UAE, 18:30 PKT in Pakistan and 19:00 IST in India. US PPI follows on Friday, November 13 at the same times." },
     },
     {
-      "@type": "Question", name: "Will gold go up or down after CPI?",
-      acceptedAnswer: { "@type": "Answer", text: "It depends on the data. A hot core CPI could lift December Fed hike odds and push gold toward $4,000 and lower. A clearly soft reading could ease hike bets and support a move toward $4,125–$4,147. Expect sharp moves in both directions around the release." },
+      "@type": "Question", name: "How did gold react to the October CPI report?",
+      acceptedAnswer: { "@type": "Answer", text: "US CPI rose 0.4% in October against 0.3% expected, and core CPI rose 0.3% against 0.2% expected. Gold fell about 2% on the release and ended the day down roughly 3% near $4,013, then slipped toward $3,950 by Thursday as the dollar and Treasury yields rose and December Fed hike odds climbed." },
     },
     {
       "@type": "Question", name: "Why did gold fall after the NFP report on November 6?",
@@ -97,7 +101,7 @@ const faqPageStructuredData = {
     },
     {
       "@type": "Question", name: "What are the key support and resistance levels for gold this week?",
-      acceptedAnswer: { "@type": "Answer", text: "Support is at $4,035–$4,040, $4,000–$4,022, $3,990 and $3,930–$3,940. Resistance is at $4,075–$4,090, $4,125–$4,135 and $4,145–$4,157. Levels can differ by $10–$20 between brokers." },
+      acceptedAnswer: { "@type": "Answer", text: "After the CPI selloff, support is at $3,930–$3,940, then $3,870–$3,895 and about $3,800. Resistance is at $3,980–$3,990, $4,000–$4,013, $4,055–$4,067 and $4,114–$4,140. Levels can differ by $10–$20 between brokers." },
     },
     {
       "@type": "Question", name: "Is the US market open on Veterans Day, November 11?",
@@ -164,6 +168,7 @@ const cpiTimeByCountry = [
 ];
 
 const tocItems = [
+  { href: "#update", label: "Update: CPI result and new levels" },
   { href: "#key-takeaways", label: "Key takeaways" },
   { href: "#forecast-review", label: "How last week's forecast played out" },
   { href: "#last-week-recap", label: "Last week recap" },
@@ -224,10 +229,10 @@ export default function WeeklyForecastNov9Nov13Page() {
               </span>
             </FadeIn>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight mb-6">
-              <span className="text-foreground">XAUUSD Weekly Forecast Nov 9–13, 2026: Gold Holds $4,000 Before US CPI</span>
+              <span className="text-foreground">XAUUSD Weekly Forecast Nov 9–13, 2026: Gold Falls Below $4,000 After Hot US CPI</span>
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground/80 mb-8">
-              By the Forex Wizard Team · Published November 7, 2026 · Updated November 7, 2026 with GMT, CET and local time conversions · Data through Friday&apos;s close (Nov 6) · 12 min read
+              By the Forex Wizard Team · Published November 7, 2026 · Updated November 12, 2026 with October CPI results and new levels · Data through Friday&apos;s close (Nov 6) · 12 min read
             </p>
             <FadeIn delay={0.3} className="mb-8">
               <div className="glass-strong rounded-2xl overflow-hidden gradient-border">
@@ -243,6 +248,67 @@ export default function WeeklyForecastNov9Nov13Page() {
           </HeroAnimation>
         </section>
 
+        {/* UPDATE: CPI RESULT AND NEW LEVELS */}
+        <FadeSection className="py-8 md:py-12 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div id="update" className="glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-trading-red/50">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-5">
+                <span className="text-foreground">Update, Nov 12: Hot US CPI Pushes Gold Below </span>
+                <span className="text-trading-gold text-glow-gold">$4,000</span>
+              </h2>
+              <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  <strong className="text-foreground/90">Update (Thursday, Nov 12, 2026):</strong> Our bearish scenario played out. October US CPI rose 0.4% against a 0.3% forecast, and core CPI rose 0.3% against a 0.2% forecast. Gold fell below $4,000 and traded near $3,950 on Thursday, its lowest level since November 4.
+                </p>
+                <ul className="space-y-3 pl-1">
+                  <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">•</span><span><strong className="text-foreground/90">Monday, Nov 9:</strong> Gold closed near $4,139, a three-week high, as Iran diplomacy pushed oil lower and the dollar weakened.</span></li>
+                  <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">•</span><span><strong className="text-foreground/90">Tuesday, Nov 10:</strong> Before the data, Fed Governor Christopher Waller said a 0.3% core reading would lead him to consider a half-point hike in December. CPI then came in hotter: headline +0.4% (September: +0.6%) and core +0.3% (the same as August and September). Official year-on-year figures were not published for October, so the monthly numbers drove the reaction. Gold fell about 2% on the release and ended the day down roughly 3%, near $4,013. The 10-year Treasury yield returned to about 5.00%.</span></li>
+                  <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">•</span><span><strong className="text-foreground/90">Wednesday, Nov 11:</strong> The dollar firmed on hawkish Fed comments and gold slipped about 1.2% to near $3,984.</span></li>
+                  <li className="flex items-start gap-2"><span className="text-trading-gold shrink-0 mt-1">•</span><span><strong className="text-foreground/90">Thursday, Nov 12:</strong> The dollar climbed to its highest in about 19 months, according to Reuters, and gold fell for a third straight session. Markets price roughly a 90% chance of a 25 bp Fed hike in December and about a 10% chance of a 50 bp hike, up from near zero before the CPI report.</span></li>
+                </ul>
+              </div>
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-4">Updated XAUUSD levels for Friday, Nov 13</h3>
+                <div className="hidden md:block glass rounded-2xl overflow-hidden">
+                  <table className="w-full text-sm">
+                    <thead><tr className="border-b border-white/10">
+                      <th className="text-left p-3 font-bold text-foreground">Type</th>
+                      <th className="text-left p-3 font-bold text-foreground">Zone</th>
+                      <th className="text-left p-3 font-bold text-foreground">Why it matters</th>
+                    </tr></thead>
+                    <tbody>
+                      <tr className="border-b border-white/5"><td className="p-3 font-medium text-foreground">Resistance 4</td><td className="p-3 font-bold text-trading-green">$4,114–$4,140</td><td className="p-3 text-muted-foreground">Monday&apos;s futures settlement and three-week high</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-3 font-medium text-foreground">Resistance 3</td><td className="p-3 font-bold text-trading-green">$4,055–$4,067</td><td className="p-3 text-muted-foreground">Tuesday&apos;s post-CPI level and Wednesday&apos;s high</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-3 font-medium text-foreground">Resistance 2</td><td className="p-3 font-bold text-trading-green">$4,000–$4,013</td><td className="p-3 text-muted-foreground">Psychological level and Tuesday&apos;s close</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-3 font-medium text-foreground">Resistance 1</td><td className="p-3 font-bold text-trading-green">$3,980–$3,990</td><td className="p-3 text-muted-foreground">Wednesday&apos;s level and former support</td></tr>
+                      <tr className="border-b border-white/5 bg-trading-gold/5"><td className="p-3 font-medium text-foreground">Current price</td><td className="p-3 font-bold text-muted-foreground">~$3,950</td><td className="p-3 text-muted-foreground">Spot gold on Thursday, Nov 12 (about 11:14 GMT)</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-3 font-medium text-foreground">Support 1</td><td className="p-3 font-bold text-trading-gold">$3,930–$3,940</td><td className="p-3 text-muted-foreground">Thursday&apos;s low area and the Nov 4 base</td></tr>
+                      <tr className="border-b border-white/5"><td className="p-3 font-medium text-foreground">Support 2</td><td className="p-3 font-bold text-trading-gold">$3,870–$3,895</td><td className="p-3 text-muted-foreground">Oct 30 low and the one-year-low zone</td></tr>
+                      <tr><td className="p-3 font-medium text-foreground">Support 3</td><td className="p-3 font-bold text-trading-gold">~$3,800</td><td className="p-3 text-muted-foreground">Round-number reference</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="md:hidden space-y-3">
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Resistance 4</p><p className="text-lg font-bold text-trading-green mb-1">$4,114–$4,140</p><p className="text-xs text-muted-foreground">Monday&apos;s futures settlement and three-week high</p></div>
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Resistance 3</p><p className="text-lg font-bold text-trading-green mb-1">$4,055–$4,067</p><p className="text-xs text-muted-foreground">Tuesday&apos;s post-CPI level and Wednesday&apos;s high</p></div>
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Resistance 2</p><p className="text-lg font-bold text-trading-green mb-1">$4,000–$4,013</p><p className="text-xs text-muted-foreground">Psychological level and Tuesday&apos;s close</p></div>
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Resistance 1</p><p className="text-lg font-bold text-trading-green mb-1">$3,980–$3,990</p><p className="text-xs text-muted-foreground">Wednesday&apos;s level and former support</p></div>
+                  <div className="glass rounded-xl p-4 border-l-4 border-l-trading-gold/50"><p className="text-xs text-muted-foreground mb-1">Current price</p><p className="text-lg font-bold text-muted-foreground mb-1">~$3,950</p><p className="text-xs text-muted-foreground">Spot gold on Thursday, Nov 12 (about 11:14 GMT)</p></div>
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Support 1</p><p className="text-lg font-bold text-trading-gold mb-1">$3,930–$3,940</p><p className="text-xs text-muted-foreground">Thursday&apos;s low area and the Nov 4 base</p></div>
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Support 2</p><p className="text-lg font-bold text-trading-gold mb-1">$3,870–$3,895</p><p className="text-xs text-muted-foreground">Oct 30 low and the one-year-low zone</p></div>
+                  <div className="glass rounded-xl p-4"><p className="text-xs text-muted-foreground mb-1">Support 3</p><p className="text-lg font-bold text-trading-gold mb-1">~$3,800</p><p className="text-xs text-muted-foreground">Round-number reference</p></div>
+                </div>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-5">
+                  <strong className="text-foreground/90">What to watch on Friday:</strong> US PPI (October) is released at 13:30 GMT (14:30 CET, 17:30 UAE, 18:30 PKT, 19:00 India). September PPI rose 1.3%, and forecasts point to a smaller monthly gain of roughly 0.3–0.4%. A hotter PPI would reinforce December hike bets and could extend the pressure toward $3,870–$3,895. A soft reading could bring a rebound toward $3,980–$4,000, where sellers have been active. Gold is on track for a weekly loss of roughly 2–3% versus last Friday&apos;s close near $4,045 unless it recovers by Friday&apos;s close.
+                </p>
+                <p className="text-sm text-muted-foreground/70 italic mt-4">
+                  The sections below are the original forecast published on November 7 and are kept for reference. The levels in this update replace the original levels.
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeSection>
+
         {/* QUICK ANSWER + TOC */}
         <FadeSection className="py-8 md:py-12 px-4">
           <div className="max-w-4xl mx-auto">
@@ -252,7 +318,7 @@ export default function WeeklyForecastNov9Nov13Page() {
                 <span className="text-trading-gold text-glow-gold">Gold Forecast This Week</span>
               </h2>
               <p className="text-base md:text-lg text-foreground/90 leading-relaxed font-medium mb-4">
-                <strong>Gold (XAUUSD) closed last week near $4,045, about 4% above its Oct 30 low but below the $4,145 weekly high, after a strong NFP lifted December Fed hike odds to roughly 80%. For Nov 9–13, support is $4,035–$4,000 and then $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday&apos;s US CPI report (13:30 GMT / 14:30 CET / 18:30 PKT) is the main catalyst.</strong>
+                <strong>Gold (XAUUSD) fell below $4,000 after hotter-than-expected US CPI on Nov 10 and traded near $3,950 on Thursday, Nov 12, with December Fed hike odds near 90%. Support is $3,930–$3,940, then $3,870–$3,895. Resistance is $3,980–$4,000 and $4,055–$4,067. Friday&apos;s US PPI (13:30 GMT / 14:30 CET / 18:30 PKT) is the next catalyst.</strong>
               </p>
               <div className="mt-5 pt-5 border-t border-white/10">
                 <p className="text-sm font-bold text-foreground mb-3">In this article:</p>
@@ -628,15 +694,15 @@ export default function WeeklyForecastNov9Nov13Page() {
             <div className="space-y-4">
               <details className="glass-strong rounded-2xl gradient-border group">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">What is the XAUUSD forecast for November 9–13, 2026?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
-                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">Gold closed last week near $4,045. Support is $4,035–$4,000 and $3,990. Resistance is $4,075–$4,090 and $4,125–$4,147. Tuesday&apos;s US CPI report is the main catalyst. This is educational analysis, not a prediction.</p></div>
+                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">Gold fell below $4,000 after a hotter-than-expected US CPI report on November 10 and traded near $3,950 on Thursday, November 12. Support is $3,930–$3,940, then $3,870–$3,895. Resistance is $3,980–$4,000 and $4,055–$4,067. Friday&apos;s US PPI report is the next catalyst. This is educational analysis, not a prediction.</p></div>
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">What time is US CPI in the UK, Europe, UAE, India and Pakistan?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
                 <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">The October CPI report is released on Tuesday, November 10 at 8:30 AM ET. That is 13:30 GMT in the UK, 14:30 CET in Europe, 17:30 in the UAE, 18:30 PKT in Pakistan and 19:00 IST in India. US PPI follows on Friday, November 13 at the same times.</p></div>
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">Will gold go up or down after CPI?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
-                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">It depends on the data. A hot core CPI could lift December Fed hike odds and push gold toward $4,000 and lower. A clearly soft reading could ease hike bets and support a move toward $4,125–$4,147. Expect sharp moves in both directions around the release.</p></div>
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">How did gold react to the October CPI report?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
+                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">US CPI rose 0.4% in October against 0.3% expected, and core CPI rose 0.3% against 0.2% expected. Gold fell about 2% on the release and ended the day down roughly 3% near $4,013, then slipped toward $3,950 by Thursday as the dollar and Treasury yields rose and December Fed hike odds climbed.</p></div>
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">Why did gold fall after the NFP report on November 6?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
@@ -644,7 +710,7 @@ export default function WeeklyForecastNov9Nov13Page() {
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">What are the key support and resistance levels for gold this week?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
-                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">Support is at $4,035–$4,040, $4,000–$4,022, $3,990 and $3,930–$3,940. Resistance is at $4,075–$4,090, $4,125–$4,135 and $4,145–$4,157. Levels can differ by $10–$20 between brokers.</p></div>
+                <div className="px-5 pb-5 -mt-2"><p className="text-sm text-muted-foreground leading-relaxed">After the CPI selloff, support is at $3,930–$3,940, then $3,870–$3,895 and about $3,800. Resistance is at $3,980–$3,990, $4,000–$4,013, $4,055–$4,067 and $4,114–$4,140. Levels can differ by $10–$20 between brokers.</p></div>
               </details>
               <details className="glass-strong rounded-2xl gradient-border group">
                 <summary className="flex items-center justify-between p-5 cursor-pointer list-none select-none"><h3 className="text-base font-bold text-foreground pr-4">Is the US market open on Veterans Day, November 11?</h3><ArrowRight className="w-5 h-5 text-trading-gold shrink-0 transition-transform group-open:rotate-45" /></summary>
@@ -685,7 +751,7 @@ export default function WeeklyForecastNov9Nov13Page() {
               <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/november-2026" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Bank of England Monetary Policy Summary, Nov 2026</a></span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80">Federal Reserve FOMC statement, Oct 28, 2026</a></span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span>U.S. Bureau of Labor Statistics (Employment Situation and release schedule); Reuters; Investing.com and Rio Times closing data; CME FedWatch; CMC Markets; public economic calendars. All figures as of November 6–7, 2026.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span>U.S. Bureau of Labor Statistics (Employment Situation and release schedule); Reuters; Investing.com and Rio Times closing data; CME FedWatch; CMC Markets; public economic calendars. Also: U.S. Bureau of Labor Statistics CPI release, Nov 10, 2026; Reuters (via CNBC and Kitco), Nov 10–12, 2026; CME FedWatch. All figures as of November 6–12, 2026.</span></li>
               </ul>
             </div>
           </div>

@@ -52,14 +52,14 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "xauusd-weekly-forecast-november-9-13-2026",
-    title: "XAUUSD Weekly Forecast Nov 9–13, 2026 | Gold Before CPI",
+    title: "XAUUSD Weekly Forecast Nov 9–13, 2026 | Gold After Hot CPI",
     description:
-      "XAUUSD weekly forecast for Nov 9–13, 2026: gold rebounds to ~$4,045 as NFP beats. See CPI, PPI, key levels and GMT, CET, UAE and PKT times.",
+      "XAUUSD weekly forecast for Nov 9–13, 2026, updated: gold falls below $4,000 after hot US CPI. Key levels, PPI, Fed hike odds and GMT, CET, PKT times.",
     cardDescription:
-      "Gold rebounded about 4% from a one-year low but fell 1% Friday as a strong NFP lifted Fed hike odds near 80%. See XAUUSD levels, US CPI (Tue), PPI and GMT, CET and PKT times for Nov 9–13.",
+      "Gold fell below $4,000 after hot US CPI on Nov 10 and traded near $3,950 on Nov 12 with December Fed hike odds near 90%. Updated levels, PPI, GMT/CET/PKT times for Nov 9–13.",
     displayDate: "November 7, 2026",
     publishedAt: "2026-11-07T19:37:00+05:00",
-    modifiedAt: "2026-11-07T20:03:00+05:00",
+    modifiedAt: "2026-11-12T16:56:00+05:00",
     author: {
       name: "Forex Wizard",
       url: "https://forexwizard.online/about/",
