@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-november-16-20-2026",
+    title: "XAUUSD Weekly Forecast Nov 16–20, 2026 | Gold & Fed Minutes",
+    description:
+      "XAUUSD weekly forecast for Nov 16–20, 2026: gold near $3,880 after a one-year low. Key levels, retail sales, FOMC minutes, UK CPI and GMT, CET, PKT times.",
+    cardDescription:
+      "Gold closed near $3,880 after a one-year low of $3,852 as the dollar hit a 19-month high on Fed hike bets. See XAUUSD levels, FOMC minutes, US retail sales, UK CPI and GMT, CET and PKT times for Nov 16–20.",
+    displayDate: "November 14, 2026",
+    publishedAt: "2026-11-14T17:53:00+05:00",
+    modifiedAt: "2026-11-14T17:53:00+05:00",
+    author: {
+      name: "Forex Wizard",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-november-16-20-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast November 16 to 20 2026 showing gold near 3880 after a one-year low with key support resistance levels ahead of FOMC minutes, US retail sales and UK CPI",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "FOMC"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-november-9-13-2026",
     title: "XAUUSD Weekly Forecast Nov 9–13, 2026 | Gold After Hot CPI",
     description:
