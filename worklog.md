@@ -1773,3 +1773,46 @@ Stage Summary:
 - Commit: be8a947 (on origin/main, in sync)
 - GitHub Actions: 43217007719 success
 - Files: 2 changed (page.tsx, sitemap.xml)
+
+---
+Task ID: nov16-20-article
+Agent: full-stack-developer
+Task: Write the XAUUSD Weekly Forecast November 16–20, 2026 article page
+
+Work Log:
+- Read worklog.md for previous agent context (Nov 9-13 article, edits, deployments)
+- Read the existing Nov 9–13 article as structural template
+- Created src/app/blog/xauusd-weekly-forecast-november-16-20-2026/page.tsx
+- Used all verified market data exactly as specified (no invented numbers)
+- Modeled design on the existing article (same components, styling, schema patterns)
+
+Stage Summary:
+- File created: src/app/blog/xauusd-weekly-forecast-november-16-20-2026/page.tsx
+- Line count: 819
+- All prices, dates, sources used exactly as specified
+- One H1, Article + BreadcrumbList + FAQPage JSON-LD included
+- US/UK timezone format (ET/GMT/CET/GST/PKT/IST) used throughout
+- 12 id anchors: quick-answer, key-takeaways, forecast-review, last-week-recap, why-gold-moved, support-resistance, gold-in-eur-gbp, economic-calendar, time-by-country, scenarios, risk-plan, faq
+
+---
+Task ID: publish-nov-16-20-2026
+Agent: Z.ai Code (main) + full-stack-developer subagent (article page)
+Task: Publish XAUUSD Weekly Forecast Nov 16–20, 2026 as a new blog post.
+
+Work Log:
+- Verified all 13 internal links return HTTP 200 on live site.
+- Generated cover image (1200x630 JPG + 640/960/1200 webp variants). VLM-verified PASS.
+- Added blog post to src/data/blog-posts.ts as FIRST entry.
+- Added sitemap entry (lastmod 2026-11-14).
+- Created article page (819 lines) with: 12 id anchors (quick-answer through faq); TOC with 11 links; Quick Answer box; Article + BreadcrumbList + FAQPage (7 Qs) JSON-LD; S/R table (9 rows); Gold EUR/GBP table (5 rows); Economic calendar (13 rows, 8 columns ET/GMT/CET/GST/PKT/IST); Release-by-country table (15 rows, 4 columns); 3 scenarios; risk plan; 7 FAQ; disclaimer; sources; Telegram CTA; Continue Learning (4 cards with specified URLs); cover image eager-loaded.
+- Quality gates: lint clean; build clean (46/46 pages); git diff --check clean.
+- Committed 9fa4998 "Add XAUUSD weekly forecast Nov 16–20, 2026" (9 files, no worklog/snapshot).
+- Pushed: 15228a6..9fa4998, fast-forward, in sync.
+- GitHub Actions run 43598414649: completed/success.
+- Live verification (cache-busted, all PASS): HTTP 200; one H1; title tag "XAUUSD Weekly Forecast Nov 16–20, 2026 | Gold & Fed Minutes"; meta description correct; canonical correct; 12 id anchors; $3,880 and $3,852 present; FOMC minutes present; EUR/GBP section present; 8-column calendar present; by-country table present; 3 scenarios; 7 FAQ; FAQPage schema 7 Qs; Continue Learning cards (prev forecast Nov 9-13, lot size); OG image loads (200, 48279 bytes); sitemap 1 entry; blog index lists article first.
+
+Stage Summary:
+- DEPLOYMENT SUCCESSFUL. Live URL: https://forexwizard.online/blog/xauusd-weekly-forecast-november-16-20-2026/
+- Commit: 9fa4998 (on origin/main, in sync)
+- GitHub Actions: 43598414649 success
+- Files: 9 added (article page 819 lines, blog-posts.ts +20, sitemap +6, OG script, 5 image files)
