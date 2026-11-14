@@ -297,14 +297,14 @@ export default function WeeklyForecastNov16Nov20Page() {
                 <span className="text-trading-gold text-glow-gold">Key Takeaways</span>
               </h2>
               <ul className="space-y-3 text-base md:text-lg text-muted-foreground leading-relaxed">
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Price:</strong> Spot gold closed Friday near $3,880, down about 1% on the day but down about 4–5% on the week from last Friday&apos;s close near $4,045.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Weekly move:</strong> Gold fell through $4,000, $3,950 and $3,930–$3,940 and touched a one-year low of about $3,852 on Thursday before bouncing. It is now roughly 30% below its January record.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Fed:</strong> Rates are at 3.75%–4.00%. Markets price about a 90% chance of a 25 bp hike at the December 8–9 meeting and about a 10% chance of a 50 bp hike, up from near zero before the CPI report.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Dollar and yields:</strong> The US dollar index reached a 19-month high, and the 10-year Treasury yield returned to about 5.00%.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Oil:</strong> Higher oil prices added to inflation worries after hopes of a US–Iran deal faded.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Currencies:</strong> EUR/USD closed near 1.1028 and GBP/USD near 1.3209 on Friday. Gold was worth about €3,518 and about £2,938 per ounce.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Key levels:</strong> Support is $3,867–$3,874, then $3,852, ~$3,800 and ~$3,700. Resistance is $3,903–$3,925, $3,960–$3,985, $4,000–$4,031 and $4,055–$4,070.</span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">This week&apos;s events:</strong> US retail sales (Tue, 13:30 GMT / 14:30 CET / 18:30 PKT), FOMC minutes (Wed, 19:00 GMT / 20:00 CET / 00:00 PKT Thursday) and UK CPI (Wed, 07:00 GMT / 08:00 CET).</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Price:</strong> Spot gold closed Friday near $3,880 after a Friday range of roughly $3,867–$3,924. Thursday&apos;s low of about $3,852 was the lowest since October 2025.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Performance:</strong> Gold fell roughly 4–5% on the week, is about flat versus the Oct 30 close near $3,875, is down about 10% in 2026 and sits roughly 30% below its January record near $5,595.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Fed:</strong> Rates are at 3.75%–4.00%. Markets see a December 9 hike as very likely (roughly 85–90%), and the CME FedWatch tool, as reported by Reuters, showed about a 14.5% chance of a larger 50 bp hike, up from 0% a week earlier.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Dollar and yields:</strong> The US dollar index is near 103.2, its highest in about 19 months, and had its best week since September. The 2-year Treasury yield rose about 34 bp in two sessions, the sharpest two-day rise in 3½ years.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Inflation:</strong> October CPI rose 0.4% month-on-month (core 0.3%), above forecasts. October PPI rose 0.3% month-on-month, below forecasts, but about 6.5% year-on-year.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Gold in EUR and GBP:</strong> At Friday&apos;s closing exchange rates, gold was about €3,518 and £2,938 per ounce.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">Key levels:</strong> Support is $3,867–$3,852, then $3,800. Resistance is $3,903–$3,925, then $3,960–$3,985.</span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-5 h-5 text-trading-green shrink-0 mt-1" /><span><strong className="text-foreground/90">This week&apos;s events:</strong> US retail sales (Tue, 13:30 GMT), UK CPI (Wed, 07:00 GMT), FOMC minutes (Wed, 19:00 GMT) and NVIDIA earnings (Tue, after the US close).</span></li>
               </ul>
             </div>
           </div>
@@ -320,11 +320,11 @@ export default function WeeklyForecastNov16Nov20Page() {
               <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
                   Our{" "}
-                  <Link href="/blog/xauusd-weekly-forecast-november-9-13-2026/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Nov 9–13 weekly forecast</Link>{" "}
-                  named a bearish scenario in which a hot October CPI report would break gold below $4,000 and open the way toward $3,930–$3,940 and then $3,870–$3,895, the one-year-low zone. It marked $4,000 as the line to hold and a 0.3% core CPI reading as the trigger.
+                  <Link href="/blog/xauusd-weekly-forecast-november-9-13-2026/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Nov 9–13 weekly forecast</Link>{", "}
+                  updated on November 12 after the CPI report, listed $3,930–$3,940 and then $3,870–$3,895 as support, with $3,800 as the next reference. It marked $3,980–$4,000 as the area where sellers had been active and said a softer PPI could bring a rebound.
                 </p>
                 <p>
-                  That scenario played out in full. October headline CPI rose 0.4% (forecast 0.3%) and core CPI rose 0.3% (forecast 0.2%) on November 10. Gold fell about 2% on the release and broke $4,000 the same day. It kept sliding through $3,950 and $3,930–$3,940 and touched a one-year low of about $3,852 on Thursday, November 12, before bouncing. The dollar climbed to a 19-month high and December Fed hike odds rose to roughly 90%, with about a 10% chance of a 50 bp hike. Levels are reference zones, not guarantees, and markets do not always follow a plan this closely.
+                  The levels worked as a map. Gold broke through $3,930–$3,940 and $3,870–$3,895 on Thursday and hit a one-year low near $3,852. Friday&apos;s softer PPI lifted gold only to $3,924, well below the $3,980–$4,000 resistance zone. The $3,800 reference has not been tested yet. Levels are reference zones, not guarantees, and markets do not always follow a plan this closely.
                 </p>
               </div>
             </div>
@@ -340,20 +340,14 @@ export default function WeeklyForecastNov16Nov20Page() {
               </h2>
               <div className="space-y-5 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  <strong className="text-foreground/90">Monday, Nov 9:</strong> Gold closed near $4,139, a three-week high, as Iran diplomacy pushed oil lower and the dollar weakened. The setup looked constructive for a push toward $4,145–$4,157.
+                  Gold started the week strongly, closing Monday near $4,139, a three-week high, as Iran diplomacy pushed oil lower and the dollar slipped. That reversed on Tuesday, when hotter-than-expected US CPI sent gold down about 3% to near $4,013. Gold lost $4,000 on Wednesday and closed near $3,984.
                 </p>
                 <p>
-                  <strong className="text-foreground/90">Tuesday, Nov 10:</strong> Before the data, Fed Governor Christopher Waller said a 0.3% core CPI reading would lead him to consider a half-point hike in December. CPI then came in hotter: headline +0.4% (September: +0.6%) and core +0.3% (the same as August and September). Gold fell about 2% on the release and ended the day down roughly 3%, near $4,013. The 10-year Treasury yield returned to about 5.00%.
+                  On Thursday gold fell about 2.8% to close near $3,877 and touched $3,852. The dollar climbed to its highest in about 19 months and the 2-year Treasury yield jumped as Fed officials warned that inflation remains stubborn, with some signalling openness to a 50 bp hike. Oil rose after President Trump said the US does not need a deal with Iran, which added to inflation worries.
                 </p>
                 <p>
-                  <strong className="text-foreground/90">Wednesday, Nov 11:</strong> Veterans Day. No major US data was scheduled and the bond market was closed, but hawkish Fed comments and a firmer dollar pushed gold down about 1.2% to near $3,984.
-                </p>
-                <p>
-                  <strong className="text-foreground/90">Thursday, Nov 12:</strong> The dollar climbed to its highest in about 19 months, according to Reuters, and gold fell for a third straight session. Markets price roughly a 90% chance of a 25 bp Fed hike in December and about a 10% chance of a 50 bp hike, up from near zero before the CPI report. Gold touched a one-year low of about $3,852 before bouncing.
-                </p>
-                <p>
-                  <strong className="text-foreground/90">Friday, Nov 13:</strong> Gold steadied near $3,880, up on the day but still down about 4–5% for the week. For the earlier part of this move, see our{" "}
-                  <Link href="/blog/xauusd-weekly-forecast-november-9-13-2026/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Nov 9–13 weekly forecast</Link>{" "}
+                  On Friday, US PPI rose 0.3% month-on-month, below forecasts, but remained about 6.5% higher than a year ago. Gold traded between roughly $3,867 and $3,924 and finished near $3,880. For earlier context, see our{" "}
+                  <Link href="/blog/xauusd-weekly-forecast-november-2-6-2026/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">Nov 2–6 weekly forecast</Link>{" "}
                   and our{" "}
                   <Link href="/blog/us-cpi-october-14-2026-gold-xauusd/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">US CPI October 14 gold analysis</Link>.
                 </p>
@@ -367,35 +361,31 @@ export default function WeeklyForecastNov16Nov20Page() {
           <div className="max-w-4xl mx-auto">
             <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border">
               <h2 id="why-gold-moved" className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6">
-                <span className="text-foreground">Why Did Gold Move This Week? The Main Drivers</span>
+                <span className="text-foreground">Why Is Gold Falling? The Main Drivers</span>
               </h2>
               <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed">
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">1. Hot US CPI and Fed hike pricing</h3>
-                  <p>October headline CPI rose 0.4% against a 0.3% forecast and core CPI rose 0.3% against a 0.2% forecast. Fed Governor Waller had already flagged that a 0.3% core reading would lead him to consider a half-point hike in December. The hot print pushed markets to price about a 90% chance of a 25 bp hike and about a 10% chance of a 50 bp hike, up from near zero beforehand. Higher expected rates raise the opportunity cost of holding non-yielding gold.</p>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">1. Fed hike expectations moved up a gear</h3>
+                  <p>After the CPI report, Fed officials pointed to stubborn inflation and some said they were open to a larger rate rise. The chance of a 50 bp hike in December went from zero to about 14.5% in one week. Higher expected rates raise the opportunity cost of holding non-yielding gold.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">2. A stronger dollar at a 19-month high</h3>
-                  <p>The dollar index climbed to its highest level in about 19 months, according to Reuters. A stronger dollar makes gold more expensive for buyers using other currencies and tends to weigh on gold. EUR/USD fell to about 1.1028 and GBP/USD to about 1.3209 by Friday&apos;s close.</p>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">2. The dollar and Treasury yields surged</h3>
+                  <p>The dollar index reached its highest level in about 19 months and posted its strongest weekly gain since September. A strong dollar makes gold more expensive for buyers in other currencies and tends to weigh on it.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">3. A surge in Treasury yields</h3>
-                  <p>The 10-year Treasury yield returned to about 5.00% as traders priced in a more hawkish Fed. Higher real yields are a key headwind for gold, because they increase the return on safe interest-bearing assets relative to gold, which pays no interest.</p>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">3. Inflation data stayed hot</h3>
+                  <p>October CPI was above forecasts, and PPI was still running at about 6.5% year-on-year even though the monthly gain was smaller than expected. This kept the market focused on how much further the Fed may raise rates.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">4. Higher oil prices add to inflation worries</h3>
-                  <p>Hopes of a US–Iran deal faded during the week and oil prices moved higher. Higher energy prices feed into inflation expectations, which in turn strengthen the case for a larger Fed hike. That is a negative mix for gold in the short term, even though gold is sometimes seen as an inflation hedge over the long run.</p>
-                </div>
-                <div>
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">5. Liquidation and stop-loss selling</h3>
-                  <p>As gold broke $4,000 and then $3,950, stop-loss orders clustered below those levels triggered, accelerating the move. Position liquidation to cover losses elsewhere, including in equities, also added to the selling pressure on Thursday before the bounce.</p>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">4. Oil and Middle East headlines</h3>
+                  <p>Oil prices jumped on Friday and remain a key inflation input. Headlines about an Iran deal can swing oil, yields and gold quickly in either direction.</p>
                 </div>
                 <div className="pt-4 border-t border-white/10">
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">Why gold still faces headwinds</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">The longer-term view is mixed</h3>
                   <p>
-                    Gold pays no interest, so higher expected rates and a firm dollar remain the main obstacles. Analyst forecasts have also come down: Goldman Sachs cut its end-2026 gold forecast to $4,150 from $4,650, according to Reuters. Read our guide to{" "}
+                    Analyst forecasts remain divided. Goldman Sachs cut its end-2026 gold target to $4,150, while still expecting higher prices in 2027, according to Kitco. Read our guide to{" "}
                     <Link href="/blog/xauusd-fundamental-analysis/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">XAUUSD fundamental analysis</Link>{" "}
-                    for the bigger picture.
+                    to see how the Fed, real yields and the dollar drive gold.
                   </p>
                 </div>
               </div>
@@ -411,7 +401,7 @@ export default function WeeklyForecastNov16Nov20Page() {
               <span className="text-trading-gold text-glow-gold">Nov 16–20</span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-              Levels come from recent price action and may differ by $10–$20 between brokers and data providers. Treat them as zones, not exact lines. For a refresher on how to mark these zones, see our guide to{" "}
+              Levels come from recent price action and may differ by $10–$20 between brokers. Treat them as zones, not exact lines. For how to mark these zones yourself, see our guide to{" "}
               <Link href="/xauusd-support-resistance/" className="text-trading-gold underline underline-offset-2 hover:text-trading-gold/80 transition-colors">XAUUSD support and resistance</Link>.
             </p>
             <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
@@ -443,10 +433,10 @@ export default function WeeklyForecastNov16Nov20Page() {
             </div>
             <div className="mt-6 space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
               <p>
-                <strong className="text-foreground/90">Technical read:</strong> Gold is trading below the 20-day moving average near $4,000–$4,031 and well below the 50-week moving average near $4,247. It has not reclaimed the 4-hour 200-period average. That keeps the bigger picture bearish while gold holds below $3,925. A sustained break below $3,852 would open $3,800 and then $3,700. A recovery above $3,925 would be the first sign of an oversold bounce.
+                <strong className="text-foreground/90">Technical read:</strong> Gold remains in a clear downtrend, trading below its 20-day average of about $4,031 and close to its one-year low. Friday&apos;s bounce stalled at $3,924. As long as gold stays below $3,925, the bias stays cautious. The first sign of stabilization would be a hold above $3,852 followed by a recovery of $3,903–$3,925. A weekly close below $3,852 would put $3,800 in play.
               </p>
               <p>
-                <strong className="text-foreground/90">Note on one-year low:</strong> Thursday&apos;s low of about $3,852 was the lowest gold has traded in roughly a year. Bounces from such levels can be sharp but often fail unless the macro picture changes. Treat the first reclaim of $3,903–$3,925 as the minimum signal of stabilization.
+                <strong className="text-foreground/90">Weekend gap risk:</strong> Headlines on Iran, oil or Fed speakers over the weekend can cause a gap at the Sunday market open. Check spreads and prices before placing any order in the first hour of the week.
               </p>
             </div>
           </div>
@@ -461,7 +451,10 @@ export default function WeeklyForecastNov16Nov20Page() {
                 <span className="text-trading-gold text-glow-gold">Euros and Pounds</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-                XAUUSD is quoted in US dollars, but gold is also traded as XAUEUR and XAUGBP. The euro and pound values below are calculated from XAUUSD and the closing EUR/USD and GBP/USD rates on Friday, November 13. They move with both gold and the exchange rates, so a falling dollar can lift gold priced in euros or pounds even when XAUUSD is flat.
+                Gold is priced in US dollars, so its price in euros and pounds depends on XAUUSD and on the exchange rate. At Friday&apos;s closing rates (EUR/USD near 1.1028 and GBP/USD near 1.3209), gold was worth about €3,518 and £2,938 per ounce. These are calculated figures, not broker quotes.
+              </p>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+                Gold fell by less in euros and pounds than in dollars last week, because both currencies also weakened. EUR/USD is near its lowest level since April 2025 as the Fed&apos;s tightening path outpaces the ECB&apos;s. GBP/USD fell from about 1.346 to 1.321 on the week, its biggest weekly decline since September, although the Bank of England&apos;s rate rise to 4.00% on November 5 has limited the slide.
               </p>
               <div className="hidden md:block glass rounded-2xl overflow-hidden">
                 <table className="w-full text-sm">
@@ -493,7 +486,7 @@ export default function WeeklyForecastNov16Nov20Page() {
                 ))}
               </div>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed mt-5">
-                <strong className="text-foreground/90">Quick rule:</strong> To estimate gold in euros, divide XAUUSD by EUR/USD. To estimate gold in pounds, divide XAUUSD by GBP/USD. So $3,880 ÷ 1.1028 ≈ €3,518, and $3,880 ÷ 1.3209 ≈ £2,938. UK CPI on Wednesday can move GBP/USD and therefore XAUGBP even when XAUUSD is quiet.
+                The euro and pound values shift whenever EUR/USD or GBP/USD move, so recalculate before you trade. Euro and sterling traders should also watch UK CPI on Wednesday and the ZEW survey on Tuesday, which can move the currency side of the calculation.
               </p>
             </div>
           </div>
@@ -507,7 +500,7 @@ export default function WeeklyForecastNov16Nov20Page() {
               <span className="text-trading-gold text-glow-gold">Nov 16–20, 2026 (ET, GMT, CET and PKT)</span>
             </h2>
             <p className="text-sm text-muted-foreground/80 mb-6 leading-relaxed">
-              <strong className="text-foreground/90">Time zones and clock changes:</strong> There are no clock changes. New York is on EST, the UK is on GMT and Central Europe is on CET. The usual gaps apply: New York is 5 hours behind London, 6 hours behind Central Europe and 10 hours behind Pakistan. So 8:30 AM ET = 13:30 GMT = 14:30 CET = 18:30 PKT. Countries without daylight saving time, such as the UAE, Pakistan and India, keep a fixed offset to GMT. Sydney is on summer time (AEDT, UTC+11) until April.
+              <strong className="text-foreground/90">Time zones this week:</strong> There are no clock changes. New York is on EST, the UK is on GMT and Central Europe is on CET. New York is 5 hours behind London, 6 hours behind Central Europe and 10 hours behind Pakistan. So 8:30 AM ET = 13:30 GMT = 14:30 CET = 18:30 PKT, and 2:00 PM ET = 19:00 GMT = 20:00 CET = 00:00 PKT (next day).
             </p>
             <div className="hidden md:block glass-strong rounded-2xl overflow-hidden gradient-border">
               <div className="overflow-x-auto">
@@ -597,29 +590,31 @@ export default function WeeklyForecastNov16Nov20Page() {
                 ))}
               </div>
               <p className="text-sm md:text-base text-muted-foreground leading-relaxed mt-5">
-                <strong className="text-foreground/90">Quick rule:</strong> UK = New York + 5 hours, Central Europe = New York + 6, UAE = New York + 9, Pakistan = New York + 10, India = New York + 10.5. So the FOMC minutes at 2:00 PM ET are at 7:00 PM in London, 8:00 PM in Frankfurt, 11:00 PM in Dubai, 12:00 AM on Thursday in Karachi and 12:30 AM on Thursday in Mumbai.
+                <strong className="text-foreground/90">Quick rule:</strong> UK = New York + 5 hours, Central Europe = New York + 6, UAE = New York + 9, Pakistan = New York + 10, India = New York + 10.5. Use our{" "}
+                <Link href="/tools/forex-market-hours/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Forex Market Hours &amp; Live Session Clock</Link>{" "}
+                to see sessions in your own time zone.
               </p>
             </div>
 
             <div className="mt-10 space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed">
               <h3 className="text-lg md:text-xl font-bold text-foreground">Events that matter most for gold</h3>
               <p>
-                <strong className="text-foreground/90">FOMC minutes (Wed, 19:00 GMT / 20:00 CET / 00:00 PKT Thursday).</strong> This is the main event. The minutes of the October 27–28 Fed meeting will show how broad the support was for the rate decision and how officials weighed inflation, the labor market and financial conditions. If the minutes reveal openness to a larger December hike, gold could extend its slide toward $3,852 and $3,800. A more cautious tone could help an oversold rebound toward $3,903–$3,925.
+                <strong className="text-foreground/90">FOMC minutes (Wed, 19:00 GMT / 20:00 CET / 00:00 PKT Thursday).</strong> The minutes cover the October 27–28 meeting, when the Fed held rates at 3.75%–4.00% with two members voting for a hike. Traders will look for how many officials were open to hiking soon and how much support there was for a larger move. A hawkish tone could extend the pressure on gold. A message of patience could support a relief bounce. Because Fed officials have spoken openly since CPI, the minutes will matter most if they contain surprises.
               </p>
               <p>
-                <strong className="text-foreground/90">US retail sales (Tue, 13:30 GMT / 14:30 CET / 18:30 PKT).</strong> October retail sales are a direct read on US consumer strength. A strong number supports the case for a larger hike and pressures gold. A soft print could ease hike odds and help gold stabilize. Control-group sales, which feed into GDP, matter most for the bond market.
+                <strong className="text-foreground/90">US retail sales (Tue, 13:30 GMT / 14:30 CET / 18:30 PKT).</strong> Forecasts point to a modest October gain of around 0.2%. Strong consumer spending would reinforce the case for more tightening. A weak reading could ease hike bets.
               </p>
               <p>
-                <strong className="text-foreground/90">NVIDIA earnings (Tue, after the US close).</strong> NVIDIA is a market leader and its results can move equity indices broadly. A large move in tech shares can spill into gold through position liquidation and risk sentiment, as it did last week.
+                <strong className="text-foreground/90">NVIDIA earnings (Tue, after the US close).</strong> Technology stocks have driven cross-market selling in recent weeks, and gold has sometimes fallen with equities when investors needed to raise cash. A large move in tech shares can spill over into gold, in either direction.
               </p>
               <p>
-                <strong className="text-foreground/90">UK CPI (Wed, 07:00 GMT / 08:00 CET).</strong> UK CPI mainly affects sterling and Bank of England expectations, so it matters most for gold priced in pounds (XAUGBP). Its direct effect on XAUUSD is usually smaller than US data, but it can move the dollar through GBP/USD.
+                <strong className="text-foreground/90">UK CPI (Wed, 07:00 GMT / 08:00 CET).</strong> UK inflation shapes Bank of England expectations after its recent hike to 4.00%. It moves sterling and therefore XAUGBP more than XAUUSD, but it can affect the dollar side of gold through GBP/USD.
               </p>
               <p>
-                <strong className="text-foreground/90">Fed speakers and Iran headlines.</strong> Comments from Fed officials on inflation, the labor market or the December meeting can move yields and gold between data releases. Any headline on US–Iran talks can move oil and the inflation story.
+                <strong className="text-foreground/90">Fed speakers and Iran headlines.</strong> Fed Chair Kevin Warsh speaks on Monday, and other officials will speak through the week. Any hint about the size of a December hike can move yields and the dollar. Oil and Iran headlines remain a wildcard.
               </p>
               <p>
-                <strong className="text-foreground/90">Just beyond this week:</strong> Flash PMIs on November 23–24, PCE and GDP on November 25, the next NFP on December 4, the Fed decision on December 9 and CPI on December 10.
+                <strong className="text-foreground/90">Just beyond this week:</strong> Flash PMIs are due on November 23–24, PCE inflation and the second GDP estimate on November 25, the November jobs report on December 4, and the Fed decision on December 9. November CPI is due on December 10, after the Fed meeting.
               </p>
             </div>
           </div>
@@ -637,33 +632,33 @@ export default function WeeklyForecastNov16Nov20Page() {
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-trading-green/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-trading-green/10 flex items-center justify-center"><TrendingUp className="w-6 h-6 text-trading-green" /></div>
-                  <h3 className="text-xl md:text-2xl font-extrabold text-trading-green">Bullish scenario: a cautious Fed tone sparks an oversold rebound</h3>
+                  <h3 className="text-xl md:text-2xl font-extrabold text-trading-green">Bullish scenario: an oversold rebound</h3>
                 </div>
                 <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground/90">Conditions:</strong> The FOMC minutes reveal division or caution about a larger December hike, soft US retail sales on Tuesday, the dollar easing back from its 19-month high, the 10-year yield slipping below 5.00%, and oil stabilizing without a fresh surge.</p>
-                  <p><strong className="text-foreground/90">What to watch:</strong> A reclaim of $3,903–$3,925 would be the first sign of stabilization, followed by $3,960–$3,985 and the $4,000–$4,031 area. A sustained break above $4,031 would put $4,055–$4,070 in play and signal a deeper oversold bounce.</p>
-                  <p><strong className="text-foreground/90">Weakens this scenario:</strong> A close back below $3,867, and especially a fresh low beneath $3,852.</p>
+                  <p><strong className="text-foreground/90">Conditions:</strong> Minutes that show division or patience, weak retail sales, a pullback in the dollar, easing oil prices or a calmer tone from Fed speakers.</p>
+                  <p><strong className="text-foreground/90">What to watch:</strong> A hold above $3,852 followed by a reclaim of $3,903–$3,925 would be the first sign of recovery. The next test is $3,960–$3,985, then $4,000–$4,031.</p>
+                  <p><strong className="text-foreground/90">Reality check:</strong> Gold has failed to hold bounces since the CPI report, so rallies into $3,960–$4,031 may meet sellers.</p>
                 </div>
               </div>
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-trading-gold/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-trading-gold/10 flex items-center justify-center"><TrendingDown className="w-6 h-6 text-trading-gold" /></div>
-                  <h3 className="text-xl md:text-2xl font-extrabold text-trading-gold">Bearish scenario: hawkish minutes extend the selloff</h3>
+                  <h3 className="text-xl md:text-2xl font-extrabold text-trading-gold">Bearish scenario: the slide continues</h3>
                 </div>
                 <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground/90">Conditions:</strong> The minutes show broad support for considering a larger December hike, strong US retail sales on Tuesday, the dollar holding at its 19-month high or extending gains, the 10-year yield staying above 5.00%, and oil pushing higher on Iran headlines.</p>
-                  <p><strong className="text-foreground/90">What to watch:</strong> A break and close below $3,852 would open $3,800, the round-number reference and a widely watched downside target. A move through $3,800 would put ~$3,700 in focus, the next round-number reference.</p>
-                  <p><strong className="text-foreground/90">Weakens this scenario:</strong> A quick recovery above $3,925 with rising volume.</p>
+                  <p><strong className="text-foreground/90">Conditions:</strong> Hawkish FOMC minutes or Fed speeches, firm retail sales, the dollar index holding above 103, Treasury yields rising further, or oil moving higher.</p>
+                  <p><strong className="text-foreground/90">What to watch:</strong> A close below $3,852 would open $3,800, then $3,700. A move toward 50 bp hike pricing above about 20% would add to the pressure.</p>
+                  <p><strong className="text-foreground/90">Weakens this scenario:</strong> A recovery back above $3,925.</p>
                 </div>
               </div>
               <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border border-l-4 border-l-muted-foreground/50">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-muted-foreground/10 flex items-center justify-center"><Minus className="w-6 h-6 text-muted-foreground" /></div>
-                  <h3 className="text-xl md:text-2xl font-extrabold text-foreground">Range scenario: mixed minutes and a digestion week</h3>
+                  <h3 className="text-xl md:text-2xl font-extrabold text-foreground">Range scenario: a digestion week</h3>
                 </div>
                 <div className="space-y-3 text-sm md:text-base text-muted-foreground leading-relaxed">
-                  <p><strong className="text-foreground/90">Conditions:</strong> The minutes are balanced and do not clearly lean toward a larger hike, retail sales come in close to forecasts, and hike odds stay near 85–90% for a 25 bp move.</p>
-                  <p><strong className="text-foreground/90">What to watch:</strong> Price rotating between roughly $3,852 and $3,925, with sharp spikes around the FOMC minutes and retail sales that fade. After a 4–5% weekly drop, gold may simply digest near the one-year low while traders wait for the flash PMIs and PCE later in the month.</p>
+                  <p><strong className="text-foreground/90">Conditions:</strong> Mixed data and a market waiting for the Fed&apos;s December decision.</p>
+                  <p><strong className="text-foreground/90">What to watch:</strong> Price rotating between roughly $3,852 and $3,925, with sharp spikes around retail sales and the minutes that fade.</p>
                 </div>
               </div>
             </div>
@@ -679,14 +674,14 @@ export default function WeeklyForecastNov16Nov20Page() {
                 <span className="text-trading-gold text-glow-gold">Fed Minutes Week</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
-                The FOMC minutes and US retail sales can move gold by tens of dollars within minutes. A few basic habits help.
+                Gold has made large moves in recent weeks, so risk control matters more than usual.
               </p>
               <ul className="space-y-3 text-base md:text-lg text-muted-foreground leading-relaxed">
-                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Expect wide spreads and fast moves</strong> at 13:30 GMT (14:30 CET, 18:30 PKT) on Tuesday for retail sales and around 19:00 GMT (20:00 CET, 00:00 PKT Thursday) on Wednesday for the FOMC minutes.</span></li>
-                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Avoid trading the first minutes after a release</strong> unless you have a clear plan. Let the first reaction settle, especially around the minutes when text is being parsed.</span></li>
+                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Expect fast moves and wide spreads</strong> around US retail sales (13:30 GMT) and the FOMC minutes (19:00 GMT).</span></li>
+                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Avoid trading the first minutes after a release</strong> unless you have a clear plan. Let the first reaction settle.</span></li>
                 <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Size positions for the stop-loss distance.</strong> Bigger volatility means a smaller lot size. Use our <Link href="/xauusd-lot-size/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">XAUUSD lot size calculator</Link> and read our guide to <Link href="/blog/forex-risk-management-for-beginners/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">forex risk management for beginners</Link>.</span></li>
                 <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Know your sessions.</strong> Read <Link href="/blog/xauusd-volatility-trading-sessions/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">why XAUUSD volatility changes by trading session</Link> and our <Link href="/blog/best-time-to-trade-forex/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">best time to trade forex</Link> guide for PKT hours.</span></li>
-                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Watch NVIDIA earnings on Tuesday after the US close.</strong> A large move in tech shares can spill into gold through risk sentiment and position liquidation.</span></li>
+                <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">Plan for the late-night release.</strong> The FOMC minutes arrive at 20:00 CET, 23:00 in the UAE and midnight in Pakistan. Do not hold a trade you cannot watch.</span></li>
                 <li className="flex items-start gap-2"><AlertTriangle className="w-5 h-5 text-trading-red shrink-0 mt-1" /><span><strong className="text-foreground/90">If you follow signals,</strong> read <Link href="/blog/how-to-follow-forex-signals/" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">how to follow forex signals</Link> and never risk money you cannot afford to lose.</span></li>
               </ul>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-5">
@@ -751,7 +746,7 @@ export default function WeeklyForecastNov16Nov20Page() {
                 <span className="text-trading-gold text-glow-gold">Thoughts</span>
               </h2>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                Gold enters the week near a one-year low after a 4–5% drop, with the dollar at a 19-month high and markets pricing about a 90% chance of a December Fed hike. The FOMC minutes on Wednesday are the key test: a hawkish tone could extend the slide toward $3,800, while a cautious tone could spark an oversold rebound toward $3,903–$3,925. Respect the levels, plan around the calendar in your local time (GMT, CET or PKT), keep position sizes small, and let price confirm a scenario before acting.
+                Gold enters the new week near a one-year low, pressured by a strong dollar, rising Fed hike expectations and stubborn inflation. The FOMC minutes, US retail sales and Fed speakers are the main tests, and the December 9 Fed decision is the next big milestone. Respect the levels, plan around the calendar in your local time (GMT, CET or PKT), keep position sizes small, and let price confirm a scenario before acting.
               </p>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mt-4">
                 For more educational XAUUSD analysis and weekly outlooks, join the Forex Wizard community on Telegram:{" "}
@@ -768,7 +763,7 @@ export default function WeeklyForecastNov16Nov20Page() {
               <h2 className="text-lg md:text-xl font-bold text-foreground mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-trading-gold" />Sources and data</h2>
               <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">Federal Reserve FOMC statement, Oct 28, 2026</a></span></li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.bls.gov/news.release/cpi.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">U.S. Bureau of Labor Statistics CPI release</a></span></li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span><a href="https://www.bls.gov/news.release/cpi.htm" target="_blank" rel="noopener noreferrer" className="text-trading-green underline underline-offset-2 hover:text-trading-green/80 transition-colors">U.S. Bureau of Labor Statistics CPI release</a> and PPI release, Nov 13, 2026</span></li>
                 <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-trading-green shrink-0 mt-1" /><span>Reuters, Kitco and Investing.com spot data; CME FedWatch (as reported by Reuters); Yahoo Finance and Trading Economics currency data; public economic calendars. Euro and pound gold prices are calculated from XAUUSD and the closing EUR/USD and GBP/USD rates. All figures as of November 13–14, 2026.</span></li>
               </ul>
             </div>
