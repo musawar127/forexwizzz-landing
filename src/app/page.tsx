@@ -57,7 +57,7 @@ function TelegramCTA({
   className?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center gap-2 font-bold text-base md:text-lg rounded-xl px-6 py-3.5 md:px-8 md:py-4 transition-all duration-300 cursor-pointer no-underline select-none";
+    "inline-flex items-center justify-center gap-2 font-bold text-base md:text-lg rounded-xl px-6 py-3.5 md:px-8 md:py-4 transition-all duration-250 cursor-pointer no-underline select-none";
 
   const variants = {
     primary:
@@ -231,14 +231,14 @@ const telegramFeatures = [
   {
     title: "Market Analysis",
     desc: "In-depth market breakdowns and key levels to watch.",
-    gradient: "from-blue-400/10 to-transparent",
-    icon: <BarChart3 className="w-6 h-6 text-blue-400" />,
+    gradient: "from-trading-green/10 to-transparent",
+    icon: <BarChart3 className="w-6 h-6 text-trading-green" />,
   },
   {
     title: "Community Discussions",
     desc: "Real-time conversations with traders sharing ideas and feedback.",
-    gradient: "from-purple-400/10 to-transparent",
-    icon: <MessageCircle className="w-6 h-6 text-purple-400" />,
+    gradient: "from-trading-gold/10 to-transparent",
+    icon: <MessageCircle className="w-6 h-6 text-trading-gold" />,
   },
 ];
 
@@ -314,21 +314,21 @@ export default function Home() {
       </header>
 
       <main className="min-h-screen bg-trading-dark text-foreground overflow-x-hidden">
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 md:py-28 overflow-hidden">
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-trading-green/5 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-trading-gold/5 rounded-full blur-[100px] pointer-events-none" />
+        <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-16 md:py-24 overflow-hidden">
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-trading-green/[0.04] rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-trading-gold/[0.04] rounded-full blur-[100px] pointer-events-none" />
 
           <CandlestickBackground />
 
           <HeroAnimation className="relative z-10 text-center max-w-4xl mx-auto">
             <FadeIn delay={0.2} className="inline-flex">
-              <span className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6 text-sm text-trading-green">
+              <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-5 text-sm text-trading-green">
                 <span className="w-2 h-2 bg-trading-green rounded-full animate-pulse" />
                 100% Free Trading Community
               </span>
             </FadeIn>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] mb-5">
               <span className="text-foreground">GET FREE </span>
               <span className="text-trading-green text-glow-green">FOREX</span>
               <span className="text-foreground"> &amp; </span>
@@ -337,18 +337,18 @@ export default function Home() {
               <span className="text-foreground">TRADING SIGNALS</span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
               Forex Wizard is a free Telegram community where traders share daily
               Forex and Gold trading signals, XAUUSD analysis, market breakdowns,
               and educational trading content. Join to follow real-time discussions
               and improve your understanding of the forex market.
             </p>
 
-            <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <FadeIn delay={0.5} className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <TelegramCTA text="Join Forex Wizard on Telegram" variant="primary" />
               <Link
                 href="/tools/"
-                className="inline-flex items-center justify-center gap-2 font-bold text-base rounded-xl px-6 py-3.5 md:px-8 md:py-4 glass-strong text-trading-gold border border-trading-gold/30 hover:bg-trading-gold/10 hover:scale-105 active:scale-95 transition-all duration-300 no-underline select-none"
+                className="inline-flex items-center justify-center gap-2 font-bold text-sm md:text-base rounded-xl px-5 py-3 md:px-7 md:py-3.5 glass-strong text-trading-gold border border-trading-gold/30 hover:bg-trading-gold/10 hover:scale-[1.03] active:scale-95 transition-all duration-250 no-underline select-none"
               >
                 <Calculator className="w-5 h-5" />
                 Explore Free Trading Tools
@@ -356,7 +356,7 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={0.8}>
-              <p className="mt-6 text-sm text-muted-foreground flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+              <p className="mt-5 text-sm text-muted-foreground flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
                 <span className="flex items-center gap-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-trading-green" />
                   100% Free to Join
@@ -380,17 +380,17 @@ export default function Home() {
           </FloatingElement>
         </section>
 
-        <FadeSection className="relative py-20 md:py-28 px-4">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-trading-green/[0.03] to-transparent pointer-events-none" />
+        <FadeSection className="relative py-14 md:py-20 px-4">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-trading-green/[0.02] to-transparent pointer-events-none" />
           <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-5 tracking-tight">
               <span className="text-trading-gold text-glow-gold">
                 LOOKING FOR YOUR NEXT
               </span>
               <br />
               <span className="text-foreground">TRADING OPPORTUNITY?</span>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm md:text-base text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
               Instead of searching for trading opportunities alone, join the
               Forex Wizard free Telegram community. Members share daily Forex analysis,
               Gold and XAUUSD trading ideas, and market commentary to help each
@@ -400,10 +400,10 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-foreground">SEE WHAT OUR </span>
                 <span className="text-trading-green text-glow-green">
                   COMMUNITY
@@ -411,15 +411,15 @@ export default function Home() {
                 <br />
                 <span className="text-foreground">IS SAYING</span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
                 Real feedback from members of our trading community.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {testimonials.map((t, i) => (
                 <FadeIn key={i} delay={i * 0.1}>
-                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                  <div className="glass-strong rounded-2xl p-5 flex flex-col gap-3 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full">
                     <div className="flex gap-1">
                       {Array.from({ length: 5 }).map((_, si) => (
                         <Star
@@ -427,7 +427,7 @@ export default function Home() {
                           className={`w-4 h-4 ${
                             si < t.stars
                               ? "fill-trading-gold text-trading-gold"
-                              : "text-white/20"
+                              : "text-white/15"
                           }`}
                         />
                       ))}
@@ -436,7 +436,7 @@ export default function Home() {
                       &ldquo;{t.text}&rdquo;
                     </p>
                     <div className="flex items-center gap-3 pt-2 border-t border-white/5">
-                      <div className="w-9 h-9 rounded-full bg-gradient-to-br from-trading-green/20 to-trading-gold/20 flex items-center justify-center text-sm font-bold text-trading-green">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-trading-green/20 to-trading-gold/20 flex items-center justify-center text-xs font-bold text-trading-green">
                         {t.name.charAt(0)}
                       </div>
                       <span className="text-sm font-semibold text-foreground/80">
@@ -448,7 +448,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/80 mb-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mb-6 max-w-lg mx-auto">
               Results vary. Trading involves risk. Past performance does not
               guarantee future results.
             </p>
@@ -459,15 +459,15 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-trading-gold text-glow-gold">MEMBER RESULTS</span>
                 <br />
                 <span className="text-foreground">FROM OUR COMMUNITY</span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
                 Real screenshots shared by our community members showing their trading activity.
               </p>
             </div>
@@ -475,7 +475,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
               {earningImages.map((img, i) => (
                 <ScaleIn key={i} delay={i * 0.1}>
-                  <div className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300">
+                  <div className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-250">
                     <div className="p-3 border-b border-white/5 flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-trading-green animate-pulse" />
                       <span className="text-xs font-semibold text-muted-foreground">
@@ -499,7 +499,7 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-center text-xs text-muted-foreground/80 mb-8 max-w-lg mx-auto">
+            <p className="text-center text-xs text-muted-foreground/80 mb-6 max-w-lg mx-auto">
               Results vary. Trading involves risk. Past performance does not
               guarantee future results. These are real screenshots shared by community members.
             </p>
@@ -510,20 +510,20 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="relative z-10 max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-trading-gold text-glow-gold">INSIDE OUR</span>
                 <br />
                 <span className="text-foreground">TELEGRAM COMMUNITY</span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
                 Take a look at what our members see every day in the group.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
               <ScaleIn className="sm:col-span-2 lg:col-span-2">
                 <div className="glass-strong rounded-2xl overflow-hidden gradient-border">
                   <div className="p-3 border-b border-white/5 flex items-center gap-2">
@@ -548,7 +548,7 @@ export default function Home() {
 
               {telegramFeatures.map((item, i) => (
                 <FadeIn key={i} delay={(i + 1) * 0.1}>
-                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full">
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full">
                     <div
                       className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center`}
                     >
@@ -574,17 +574,17 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-foreground">WHY JOIN OUR</span>
                 <br />
                 <span className="text-trading-green text-glow-green">
                   COMMUNITY?
                 </span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-xl mx-auto">
                 Forex Wizard provides a focused space for Forex and Gold traders
                 to share market analysis, discuss XAUUSD price levels, and follow
                 trading setups together. Explore our{" "}
@@ -603,10 +603,10 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
               {features.map((f, i) => (
                 <FadeIn key={i} delay={i * 0.08}>
-                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 group h-full">
+                  <div className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-250 group h-full">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-trading-gold/10 flex items-center justify-center text-trading-green group-hover:from-trading-green/20 group-hover:to-trading-gold/20 transition-colors duration-300">
                         {f.icon}
@@ -630,16 +630,16 @@ export default function Home() {
         </FadeSection>
 
         {/* LATEST MARKET ANALYSIS — dynamic, sourced from blogPosts */}
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-foreground">LATEST </span>
                 <span className="text-trading-gold text-glow-gold">
                   MARKET ANALYSIS
                 </span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
                 Stay updated with our latest XAUUSD forecasts, technical
                 analysis and educational market research.
               </p>
@@ -648,7 +648,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {latestAnalysisPosts.map((post, i) => (
                 <FadeIn key={post.slug} delay={i * 0.07}>
-                  <article className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                  <article className="glass-strong rounded-2xl overflow-hidden gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                     <Link
                       href={`/blog/${post.slug}/`}
                       className="block no-underline group"
@@ -722,17 +722,17 @@ export default function Home() {
         </FadeSection>
 
         {/* FREE FOREX TRADING TOOLS */}
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
+            <div className="text-center mb-10">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-strong mb-6">
                 <Calculator className="w-8 h-8 text-trading-gold" />
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-foreground">FREE FOREX </span>
                 <span className="text-trading-gold text-glow-gold">TRADING TOOLS</span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
                 Practical calculators to help you understand position sizing and
                 manage trading risk.
               </p>
@@ -741,7 +741,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {/* Tool 1: XAUUSD Calculator */}
               <Link href="/xauusd-lot-size/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Calculator className="w-6 h-6 text-trading-green" />
@@ -765,7 +765,7 @@ export default function Home() {
 
               {/* Tool 2: Forex Market Hours */}
               <Link href="/tools/forex-market-hours/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Clock className="w-6 h-6 text-trading-green" />
@@ -789,7 +789,7 @@ export default function Home() {
 
               {/* Tool 3: Pip Value Calculator */}
               <Link href="/xauusd-pip-value/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Calculator className="w-6 h-6 text-trading-green" />
@@ -813,7 +813,7 @@ export default function Home() {
 
               {/* Tool 4: Risk Reward Calculator */}
               <Link href="/tools/risk-reward-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Scale className="w-6 h-6 text-trading-green" />
@@ -837,7 +837,7 @@ export default function Home() {
 
               {/* Tool 5: XAUUSD Margin Calculator */}
               <Link href="/tools/xauusd-margin-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Coins className="w-6 h-6 text-trading-green" />
@@ -861,7 +861,7 @@ export default function Home() {
 
               {/* Tool 6: Prop Firm Consistency Calculator */}
               <Link href="/tools/prop-firm-consistency-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Calendar className="w-6 h-6 text-trading-green" />
@@ -885,7 +885,7 @@ export default function Home() {
 
               {/* Tool 7: XAUUSD Profit Calculator */}
               <Link href="/tools/xauusd-profit-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Target className="w-6 h-6 text-trading-green" />
@@ -909,7 +909,7 @@ export default function Home() {
 
               {/* Tool 8: Risk of Ruin Calculator */}
               <Link href="/tools/risk-of-ruin-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Activity className="w-6 h-6 text-trading-green" />
@@ -934,7 +934,7 @@ export default function Home() {
 
               {/* Tool 9: Forex Compounding Calculator */}
               <Link href="/tools/forex-compounding-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <BarChart3 className="w-6 h-6 text-trading-green" />
@@ -959,7 +959,7 @@ export default function Home() {
 
               {/* Tool 10: Forex Position Size Calculator */}
               <Link href="/tools/forex-position-size-calculator/" className="block no-underline group">
-                <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border hover:scale-[1.02] transition-transform duration-300 h-full flex flex-col">
+                <div className="glass-strong rounded-2xl p-5 md:p-6 gradient-border hover:scale-[1.02] transition-transform duration-250 h-full flex flex-col">
                   <div className="flex items-center gap-2 mb-4">
                     <div className="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-trading-green/10 to-transparent flex items-center justify-center">
                       <Crosshair className="w-6 h-6 text-trading-green" />
@@ -995,14 +995,14 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">
                 <span className="text-foreground">LEARNING </span>
                 <span className="text-trading-green text-glow-green">CENTER</span>
               </h2>
-              <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">
                 Explore practical Forex Wizard guides covering XAUUSD analysis, trading
                 strategy, price action, support and resistance, trading sessions, lot
                 size, and pip value.
@@ -1014,7 +1014,7 @@ export default function Home() {
                 <FadeIn key={i} delay={i * 0.08}>
                   <Link
                     href={guide.href}
-                    className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-300 group h-full no-underline"
+                    className="glass-strong rounded-2xl p-6 flex flex-col gap-4 gradient-border hover:scale-[1.02] transition-transform duration-250 group h-full no-underline"
                   >
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-trading-green/10 to-trading-gold/10 flex items-center justify-center group-hover:from-trading-green/20 group-hover:to-trading-gold/20 transition-colors duration-300">
                       {guide.icon}
@@ -1036,7 +1036,7 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="max-w-3xl mx-auto text-center">
             <PulsingIcon className="inline-flex items-center justify-center w-20 h-20 rounded-full glass-strong mb-8 glow-green-sm">
               <Clock className="w-10 h-10 text-trading-green" />
@@ -1049,7 +1049,7 @@ export default function Home() {
                 MARKET SETUP
               </span>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm md:text-base text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
               The Forex and Gold markets move every day. Join the Forex Wizard
               community now so you don&apos;t miss the next trading idea, market
               update, or XAUUSD analysis shared by fellow traders.
@@ -1061,11 +1061,11 @@ export default function Home() {
           </div>
         </FadeSection>
 
-        <FadeSection className="py-20 md:py-28 px-4" delay={0.1}>
+        <FadeSection className="py-14 md:py-20 px-4" delay={0.1}>
           <div className="relative max-w-4xl mx-auto">
             <div className="absolute inset-0 bg-gradient-to-br from-trading-green/5 via-transparent to-trading-gold/5 rounded-3xl blur-sm" />
 
-            <div className="relative glass-strong rounded-3xl p-8 md:p-14 text-center gradient-border">
+            <div className="relative glass-strong rounded-3xl p-6 md:p-10 text-center gradient-border">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
                 <span className="text-foreground">READY TO JOIN THE</span>
                 <br />
@@ -1073,7 +1073,7 @@ export default function Home() {
                   COMMUNITY?
                 </span>
               </h2>
-              <p className="text-base md:text-lg text-muted-foreground mb-10 leading-relaxed max-w-xl mx-auto">
+              <p className="text-sm md:text-base text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
                 Get free access to Forex and Gold trading signals, daily market
                 updates, XAUUSD analysis, and trading community discussions. Forex
                 trading involves significant risk — all content shared is for

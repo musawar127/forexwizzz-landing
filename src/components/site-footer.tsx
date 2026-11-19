@@ -18,7 +18,7 @@ const footerLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="py-10 px-4 border-t border-white/5">
+    <footer className="py-8 px-4 border-t border-white/5">
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-sm text-muted-foreground mb-2">
           Forex Wizard &mdash; Free Forex &amp; Gold Trading Signals Community

@@ -25,7 +25,7 @@ export function CandlestickBackground() {
   ];
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15">
       <svg
         className="absolute bottom-0 left-0 w-full h-full"
         preserveAspectRatio="none"
@@ -39,7 +39,7 @@ export function CandlestickBackground() {
               y1={80 - c.h - 10}
               x2={c.x + 6}
               y2={80 - c.h + 30}
-              stroke={c.green ? "#00e676" : "#ff1744"}
+              stroke={c.green ? "#00d980" : "#ff1744"}
               strokeWidth={1.5}
               opacity={0.6}
             />
@@ -49,7 +49,7 @@ export function CandlestickBackground() {
               y={80 - Math.max(c.o, c.c)}
               width={12}
               height={Math.abs(c.c - c.o) || 4}
-              fill={c.green ? "#00e676" : "#ff1744"}
+              fill={c.green ? "#00d980" : "#ff1744"}
               opacity={0.7}
               rx={1}
             />

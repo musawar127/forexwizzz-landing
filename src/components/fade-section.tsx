@@ -96,7 +96,7 @@ export function HeroAnimation({
 export function PulsingGlow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <motion.div
-      animate={{ boxShadow: ["0 0 20px rgba(0,230,118,0.3)", "0 0 40px rgba(0,230,118,0.5)", "0 0 20px rgba(0,230,118,0.3)"] }}
+      animate={{ boxShadow: ["0 0 12px rgba(0,217,128,0.25)", "0 0 24px rgba(0,217,128,0.35)", "0 0 12px rgba(0,217,128,0.25)"] }}
       transition={{ duration: 2, repeat: Infinity }}
       className={className}
     >
@@ -145,11 +145,11 @@ export function StickyTelegramButton({
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.5, duration: 0.5 }}
-      className="fixed bottom-6 right-4 md:right-8 z-50 flex items-center gap-2 bg-[#0088cc] hover:bg-[#0077b5] text-white font-bold text-sm md:text-base rounded-full pl-4 pr-5 py-3.5 shadow-[0_4px_20px_rgba(0,136,204,0.5)] hover:shadow-[0_4px_30px_rgba(0,136,204,0.7)] transition-all duration-300 hover:scale-105 active:scale-95 no-underline select-none"
+      className="fixed bottom-5 right-4 md:right-6 z-50 flex items-center gap-2 bg-[#00d980] hover:bg-[#00c172] text-[#08090d] font-bold text-sm md:text-base rounded-2xl px-4 py-3 shadow-[0_4px_20px_rgba(0,217,128,0.35)] hover:shadow-[0_4px_30px_rgba(0,217,128,0.5)] transition-all duration-250 hover:scale-[1.03] active:scale-95 no-underline select-none"
       aria-label={label}
     >
       <svg
-        className="w-5 h-5 md:w-6 md:h-6"
+        className="w-5 h-5 md:w-5 md:h-5"
         viewBox="0 0 24 24"
         fill="currentColor"
       >
