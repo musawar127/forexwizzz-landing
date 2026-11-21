@@ -51,6 +51,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "xauusd-weekly-forecast-november-23-27-2026",
+    title: "XAUUSD Weekly Forecast Nov 23–27, 2026 | Gold Near $3,500",
+    description:
+      "XAUUSD weekly forecast for Nov 23–27, 2026: gold near $3,550 after its worst week in 8 months. Levels, US PCE, flash PMIs and GMT, CET, PKT times.",
+    cardDescription:
+      "Gold fell 8.6% last week to near $3,548, its lowest since September 2025, as hawkish Fed minutes, a strong dollar and a stock rout hit prices. See XAUUSD levels, US PCE, flash PMIs and GMT, CET and PKT times for Nov 23–27.",
+    displayDate: "November 22, 2026",
+    publishedAt: "2026-11-22T04:46:00+05:00",
+    modifiedAt: "2026-11-22T04:46:00+05:00",
+    author: {
+      name: "Forex Wizard",
+      url: "https://forexwizard.online/about/",
+    },
+    image: "/blog/xauusd-weekly-forecast-november-23-27-2026.jpg",
+    imageAlt:
+      "XAUUSD weekly forecast November 23 to 27 2026 showing gold near 3550 after its worst week in eight months with key support resistance levels ahead of US PCE and flash PMIs",
+    tags: ["XAUUSD", "Gold", "Weekly Forecast", "PCE"],
+    readingTime: "12 min read",
+  },
+  {
     slug: "xauusd-weekly-forecast-november-16-20-2026",
     title: "XAUUSD Weekly Forecast Nov 16–20, 2026 | Gold & Fed Minutes",
     description:
